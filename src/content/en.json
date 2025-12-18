@@ -1,0 +1,136 @@
+{
+  "hero": {
+    "eyebrow": "Software Engineering Student · Software Engineer",
+    "title": "I build scalable systems using Clean Architecture, DDD, and CQRS.",
+    "subtitle": "Software Engineering student at **Universidad Peruana de Ciencias Aplicadas (UPC)**, currently in my **seventh academic term** and ranked in the **top fifth of my class**. I develop scalable backend systems and full-stack applications with .NET and Next.js, focusing on robust APIs and clean architectural practices.",
+    "ctaPrimary": "View projects",
+    "ctaSecondary": "Download CV",
+    "ctaTertiary": "Contact me",
+    "highlightsTitle": "Highlights",
+    "highlights": [
+      "Tech Lead — EduSpace (5-member team)",
+      ".NET 8 · Next.js · Vue · MySQL · Docker",
+      "Clean Architecture · DDD · CQRS",
+      "JWT + 2FA Authentication",
+      "Agile / Scrum methodologies"
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Selection of projects where I applied software engineering principles, clean architecture, and robust API design.",
+    "viewDemo": "Live Demo",
+    "viewGithub": "GitHub",
+    "items": [
+      {
+        "name": "EduSpace",
+        "role": "Tech Lead",
+        "description": "Enterprise platform for educational management with Clean Architecture, DDD, and CQRS. Developed two parallel versions (production + experimental) for comparative analysis and A/B testing as part of experimental design methodology.",
+        "stack": [".NET 8", "ASP.NET Core", "MySQL", "Docker", "Vue 3"],
+        "highlights": ["5-member team", "Experimental design (2 versions)", "JWT + 2FA", "Swagger/OpenAPI"],
+        "links": { "demo": "https://eduspace-frontend-web-app-production.up.railway.app/", "github": "https://github.com/ExperimentDesign/eduspace-frontend-web-app" }
+      },
+      {
+        "name": "Finance App",
+        "role": "Personal Project",
+        "description": "Corporate bond management system with financial calculation engine (TCEA/TREA, cash flows, schedules).",
+        "stack": ["Next.js 15", "TypeScript", "Firebase", "Tailwind", "shadcn/ui"],
+        "highlights": ["Roles (issuer/investor)", "Dashboard + validations", "Vercel deployment"],
+        "links": { "demo": "https://finance-app-kappa-six.vercel.app/", "github": "https://github.com/andrest04/finance-app" }
+      },
+      {
+        "name": "Booking Platform (Italy)",
+        "role": "Software Engineer",
+        "description": "Web booking platform with responsive UI, auth, and optimized NoSQL database.",
+        "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"],
+        "highlights": ["Scrum", "Firestore design/optimization", "Authentication"],
+        "links": { "demo": "", "github": "" }
+      }
+    ]
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Software Engineering student focused on backend architecture, scalable systems, and technical leadership.",
+    "cards": [
+      {
+        "title": "Education",
+        "items": [
+          "Universidad Peruana de Ciencias Aplicadas (UPC)",
+          "Software Engineering — 7th term",
+          "Top fifth of my class"
+        ]
+      },
+      {
+        "title": "Focus",
+        "items": [
+          "Clean Architecture, DDD, and CQRS in real projects",
+          "REST API design and data modeling",
+          "Scalability, maintainability, and documentation"
+        ]
+      },
+      {
+        "title": "Teamwork",
+        "items": [
+          "Technical leadership in EduSpace",
+          "Agile methodologies (Scrum)",
+          "Clear communication and results-driven mindset"
+        ]
+      }
+    ],
+    "principleLabel": "Principle:",
+    "principleText": "build with architectural fundamentals, measure outcomes, and keep code maintainable to scale."
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "A curated stack I've used in real projects (backend + architecture + delivery).",
+    "groups": [
+      {
+        "title": "Backend",
+        "items": [".NET 8", "ASP.NET Core", "Node.js", "Express.js", "Entity Framework Core", "REST APIs"]
+      },
+      {
+        "title": "Architecture",
+        "items": ["Clean Architecture", "DDD", "CQRS", "Repository Pattern", "Unit of Work", "Microservices (baseline)"]
+      },
+      {
+        "title": "Databases",
+        "items": ["MySQL", "Firebase/Firestore", "MongoDB", "SQL Server"]
+      },
+      {
+        "title": "Frontend",
+        "items": ["React", "Next.js", "Vue 3", "TypeScript", "TailwindCSS", "shadcn/ui"]
+      },
+      {
+        "title": "DevOps & Tools",
+        "items": ["Docker", "Git/GitHub", "Postman", "Swagger/OpenAPI", "Vercel", "Railway"]
+      }
+    ],
+    "strengthsTitle": "Technical strengths",
+    "strengths": [
+      "API design and data modeling with scalability in mind.",
+      "Clean architecture applied end-to-end in real projects.",
+      "Agile delivery with solid practices (docs, Git, deployment)."
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "cardTitle": "Contact information",
+    "cardSubtitle": "Have a project in mind? Let's talk!",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "locationLabel": "Location",
+    "locationValue": "Lima, Peru",
+    "socialTitle": "Social links",
+    "linkedinLabel": "LinkedIn",
+    "githubLabel": "GitHub"
+  },
+  "nav": {
+    "projects": "Projects",
+    "about": "About",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "footer": {
+    "text": "Built with Next.js · Electric Blue Glass",
+    "rights": "All rights reserved."
+  }
+}
