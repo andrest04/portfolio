@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
+
+Personal portfolio showcasing software engineering projects with emphasis on Clean Architecture, DDD, CQRS, and scalable backend systems.
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router, React Server Components)
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS 4, shadcn/ui components
+- **Animation**: Framer Motion
+- **i18n**: Custom implementation with middleware-based routing (`/en`, `/es`)
+- **Architecture**: Server-first with glass-morphism UI design
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── [lang]/           # Localized routes (en, es)
+│   ├── api/cv/           # CV download endpoint
+│   └── globals.css
+├── components/
+│   ├── layout/           # Navbar
+│   ├── sections/         # Hero, Projects, About, Skills, Contact
+│   └── ui/               # Reusable UI components (Button, Card, Input, etc.)
+├── content/              # i18n JSON dictionaries (en.json, es.json)
+├── lib/                  # Utilities and i18n helpers
+└── proxy.ts              # Middleware for locale detection
+```
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` — Start development server (localhost:3000)
+- `npm run build` — Create production build
+- `npm run start` — Start production server
+- `npm run lint` — Run ESLint
 
-## Learn More
+## Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Internationalization**: Automatic locale detection with `/en` and `/es` routes
+- **Responsive Design**: Mobile-first approach with glass-morphism aesthetics
+- **Type Safety**: Strict TypeScript with no `any` types
+- **Animation**: Smooth transitions with Framer Motion
+- **CV Download**: Dynamic PDF serving via API route
+- **SEO**: Sitemap and robots.txt generation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Code Style
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Self-documenting code (no comments)
+- Strict TypeScript types
+- Path alias `@/*` for `./src/*`
+- Functional components with interface-based props
+- Tailwind utility classes with CSS custom properties
+- All user-facing text externalized in `src/content/{locale}.json`
 
-## Deploy on Vercel
+## Architecture Decisions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Middleware**: Located in `src/proxy.ts` (not root `middleware.ts`)
+- **Routing**: Localized with `[lang]` dynamic segment
+- **Components**: Server Components by default, Client Components marked with `"use client"`
+- **Content Management**: JSON-based i18n with `getDictionary()` helper
