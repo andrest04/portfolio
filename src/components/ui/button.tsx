@@ -5,20 +5,20 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 ease-out disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--primary-glow))]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 ease-out disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow",
   {
     variants: {
       variant: {
-        default: "bg-[rgb(var(--primary))] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)] hover:shadow-[0_0_40px_rgba(var(--primary),0.25)]",
+        default: "bg-accent-primary text-white shadow-[var(--shadow-ring)] hover:shadow-[var(--shadow-glow-primary-lg)] hover:scale-[1.02]",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20",
         outline:
-          "border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.92)] backdrop-blur-[18px] hover:border-[rgba(255,255,255,0.22)] hover:bg-[rgba(255,255,255,0.09)]",
+          "border border-border-medium bg-surface-default text-text-primary backdrop-blur-[var(--glass-backdrop)] hover:border-border-strong hover:bg-surface-medium",
         secondary:
-          "bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.92)] hover:bg-[rgba(255,255,255,0.09)]",
+          "bg-surface-default text-text-primary hover:bg-surface-medium hover:shadow-[var(--shadow-glow-secondary-sm)]",
         ghost:
-          "text-[rgba(255,255,255,0.70)] hover:bg-[rgba(255,255,255,0.06)] hover:text-[rgba(255,255,255,0.92)]",
-        link: "text-[rgb(var(--primary))] underline-offset-4 hover:underline",
+          "text-text-secondary hover:bg-surface-default hover:text-text-primary",
+        link: "text-accent-primary underline-offset-4 hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

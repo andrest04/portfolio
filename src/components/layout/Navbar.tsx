@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import GlassCard from "@/components/ui/GlassCard";
@@ -18,12 +18,9 @@ export default function Navbar({ lang, t }: NavbarProps) {
 
   const otherLang = lang === "es" ? "en" : "es";
 
-  const switchHref = useMemo(() => {
-    if (!pathname) return `/${otherLang}`;
-    const parts = pathname.split("/");
-    parts[1] = otherLang;
-    return parts.join("/") || `/${otherLang}`;
-  }, [pathname, otherLang]);
+  const switchHref = pathname
+    ? pathname.split("/").map((p, i) => i === 1 ? otherLang : p).join("/")
+    : `/${otherLang}`;
 
   const items = [
     { href: "#projects", label: t.nav.projects },
@@ -39,14 +36,14 @@ export default function Navbar({ lang, t }: NavbarProps) {
         className="flex items-center justify-between px-4 py-3 sm:px-5"
       >
         <a href="#" className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[rgba(255,255,255,0.06)] text-sm font-semibold text-[rgba(255,255,255,0.92)] shadow-[0_0_0_1px_rgba(255,255,255,0.12)]">
+          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-surface-default text-sm font-semibold text-text-primary shadow-[var(--shadow-ring)]">
             AT.
           </div>
           <div className="hidden sm:block">
-            <p className="text-sm font-semibold text-[rgba(255,255,255,0.92)]">
+            <p className="text-sm font-semibold text-text-primary">
               Andrés Torres
             </p>
-            <p className="text-xs text-[rgba(255,255,255,0.70)]">
+            <p className="text-xs text-text-secondary">
               {lang === "es" ? "Estudiante · Full-Stack" : "Student · Full-Stack"}
             </p>
           </div>
@@ -57,7 +54,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
             <a
               key={it.href}
               href={it.href}
-              className="text-[rgba(255,255,255,0.70)] transition hover:text-[rgba(255,255,255,0.92)]"
+              className="text-text-secondary transition hover:text-text-primary"
             >
               {it.label}
             </a>
@@ -67,14 +64,14 @@ export default function Navbar({ lang, t }: NavbarProps) {
         <div className="flex items-center gap-2">
           <Link
             href={switchHref}
-            className="rounded-2xl border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.06)] px-3 py-2 text-xs font-medium text-[rgba(255,255,255,0.92)] backdrop-blur-[18px] transition hover:border-[rgba(255,255,255,0.22)] hover:bg-[rgba(255,255,255,0.09)]"
+            className="rounded-2xl border border-border-medium bg-surface-default px-3 py-2 text-xs font-medium text-text-primary backdrop-blur-[var(--glass-backdrop)] transition hover:border-accent-secondary hover:bg-surface-medium hover:text-accent-secondary"
           >
             {lang.toUpperCase()} → {otherLang.toUpperCase()}
           </Link>
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden grid h-10 w-10 place-items-center rounded-2xl border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.92)] backdrop-blur-[18px] transition hover:bg-[rgba(255,255,255,0.09)]"
+            className="md:hidden grid h-11 w-11 place-items-center rounded-2xl border border-border-medium bg-surface-default text-text-primary backdrop-blur-[var(--glass-backdrop)] transition hover:bg-surface-medium"
             aria-label="Toggle menu"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
@@ -91,7 +88,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
                   key={it.href}
                   href={it.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-2 text-sm text-[rgba(255,255,255,0.70)] hover:bg-[rgba(255,255,255,0.06)] hover:text-[rgba(255,255,255,0.92)]"
+                  className="rounded-xl px-3 py-2 text-sm text-text-secondary hover:bg-surface-default hover:text-text-primary"
                 >
                   {it.label}
                 </a>

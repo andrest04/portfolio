@@ -19,7 +19,7 @@ export default function Contact({ t }: ContactProps) {
   return (
     <section id="contact" className="py-16 sm:py-20 lg:py-24">
       <MotionIn>
-        <h2 className="text-center text-3xl font-semibold tracking-tight text-[rgba(255,255,255,0.92)] sm:text-4xl">
+        <h2 className="text-center text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
           {c.title}
         </h2>
       </MotionIn>
@@ -28,10 +28,10 @@ export default function Contact({ t }: ContactProps) {
         <MotionIn delay={0.06}>
           <GlassCard variant="solid" className="p-6 sm:p-8">
             <div>
-              <h3 className="text-lg font-semibold text-[rgba(255,255,255,0.92)]">
+              <h3 className="text-lg font-semibold text-text-primary">
                 {c.cardTitle}
               </h3>
-              <p className="mt-1 text-sm text-[rgba(255,255,255,0.70)]">
+              <p className="mt-1 text-sm text-text-secondary">
                 {c.cardSubtitle}
               </p>
             </div>
@@ -42,10 +42,10 @@ export default function Contact({ t }: ContactProps) {
                   <Mail className="h-4 w-4" />
                 </IconBox>
                 <div>
-                  <p className="text-sm font-medium text-[rgba(255,255,255,0.92)]">{c.emailLabel}</p>
+                  <p className="text-sm font-medium text-text-primary">{c.emailLabel}</p>
                   <a
                     href={`mailto:${email}`}
-                    className="text-sm text-[rgba(255,255,255,0.70)] underline-offset-4 hover:text-[rgba(255,255,255,0.92)] hover:underline"
+                    className="text-sm text-text-secondary underline-offset-4 hover:text-text-primary hover:underline"
                   >
                     {email}
                   </a>
@@ -57,10 +57,10 @@ export default function Contact({ t }: ContactProps) {
                   <Phone className="h-4 w-4" />
                 </IconBox>
                 <div>
-                  <p className="text-sm font-medium text-[rgba(255,255,255,0.92)]">{c.phoneLabel}</p>
+                  <p className="text-sm font-medium text-text-primary">{c.phoneLabel}</p>
                   <a
                     href={`tel:${phoneHref}`}
-                    className="text-sm text-[rgba(255,255,255,0.70)] underline-offset-4 hover:text-[rgba(255,255,255,0.92)] hover:underline"
+                    className="text-sm text-text-secondary underline-offset-4 hover:text-text-primary hover:underline"
                   >
                     {phoneDisplay}
                   </a>
@@ -72,16 +72,16 @@ export default function Contact({ t }: ContactProps) {
                   <MapPin className="h-4 w-4" />
                 </IconBox>
                 <div>
-                  <p className="text-sm font-medium text-[rgba(255,255,255,0.92)]">{c.locationLabel}</p>
-                  <p className="text-sm text-[rgba(255,255,255,0.70)]">{location}</p>
+                  <p className="text-sm font-medium text-text-primary">{c.locationLabel}</p>
+                  <p className="text-sm text-text-secondary">{location}</p>
                 </div>
               </div>
             </div>
 
-            <div className="my-6 h-px w-full bg-[rgba(255,255,255,0.12)]" />
+            <div className="my-6 h-px w-full bg-border-default" />
 
             <div>
-              <p className="text-sm font-semibold text-[rgba(255,255,255,0.92)]">
+              <p className="text-sm font-semibold text-text-primary">
                 {c.socialTitle}
               </p>
 
@@ -104,7 +104,7 @@ export default function Contact({ t }: ContactProps) {
 
 function IconBox({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mt-0.5 grid h-10 w-10 place-items-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.06)] text-[rgb(var(--primary))] backdrop-blur-[18px]">
+    <div className="mt-0.5 grid h-11 w-11 place-items-center rounded-2xl border border-border-default bg-surface-default text-accent-primary backdrop-blur-[var(--glass-backdrop)] transition-colors hover:text-accent-secondary">
       {children}
     </div>
   );
@@ -124,11 +124,11 @@ function SocialBtn({
       variant="outline"
       size="sm"
       asChild
-      className="rounded-2xl border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.06)] backdrop-blur-[18px] hover:border-[rgba(255,255,255,0.22)] hover:bg-[rgba(255,255,255,0.09)]"
+      className="rounded-2xl"
     >
       <a href={href} target="_blank" rel="noreferrer">
-        <span className="text-[rgb(var(--primary))]">{children}</span>
-        <span className="text-[rgba(255,255,255,0.70)]">{label}</span>
+        <span className="text-accent-primary">{children}</span>
+        <span className="text-text-secondary">{label}</span>
       </a>
     </Button>
   )
