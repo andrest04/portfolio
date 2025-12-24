@@ -26,24 +26,52 @@
         "role": "Tech Lead",
         "description": "Plataforma enterprise para gestión educativa con Clean Architecture, DDD y CQRS. Desarrollé dos versiones paralelas (producción + experimental) para análisis comparativo y A/B testing como parte de metodología de diseño de experimentos.",
         "stack": [".NET 8", "ASP.NET Core", "MySQL", "Docker", "Vue 3"],
-        "highlights": ["Equipo de 5", "Diseño de experimentos (2 versiones)", "JWT + 2FA", "Swagger/OpenAPI"],
-        "links": { "demo": "https://eduspace-frontend-web-app-production.up.railway.app/", "github": "https://github.com/ExperimentDesign/eduspace-frontend-web-app" }
+        "highlights": [
+          "Equipo de 5",
+          "Diseño de experimentos (2 versiones)",
+          "JWT + 2FA",
+          "Swagger/OpenAPI"
+        ],
+        "links": {
+          "demo": "https://eduspace-frontend-web-app-production.up.railway.app/",
+          "github": "https://github.com/ExperimentDesign/eduspace-frontend-web-app"
+        }
       },
       {
         "name": "Finance App",
         "role": "Proyecto personal",
         "description": "Sistema de gestión de bonos corporativos con motor de cálculo financiero (TCEA/TREA, flujos, cronogramas).",
-        "stack": ["Next.js 15", "TypeScript", "Firebase", "Tailwind", "shadcn/ui"],
-        "highlights": ["Roles (emisor/inversionista)", "Dashboard + validaciones", "Deploy en Vercel"],
-        "links": { "demo": "https://finance-app-kappa-six.vercel.app/", "github": "https://github.com/andrest04/finance-app" }
+        "stack": [
+          "Next.js 15",
+          "TypeScript",
+          "Firebase",
+          "Tailwind",
+          "shadcn/ui"
+        ],
+        "highlights": [
+          "Roles (emisor/inversionista)",
+          "Dashboard + validaciones",
+          "Deploy en Vercel"
+        ],
+        "links": {
+          "demo": "https://finance-app-kappa-six.vercel.app/",
+          "github": "https://github.com/andrest04/finance-app"
+        }
       },
       {
         "name": "Plataforma de reservas (Italia)",
         "role": "Ingeniero de Software",
         "description": "Plataforma web de reservas con UI responsive, auth y base NoSQL optimizada.",
         "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"],
-        "highlights": ["Scrum", "Diseño/optimización Firestore", "Autenticación"],
-        "links": { "demo": "", "github": "" }
+        "highlights": [
+          "Scrum",
+          "Diseño/optimización Firestore",
+          "Autenticación"
+        ],
+        "links": {
+          "demo": "https://inti-eta.vercel.app/en",
+          "github": "https://github.com/xMathyu/inti-webapp"
+        }
       }
     ]
   },
@@ -85,11 +113,25 @@
     "groups": [
       {
         "title": "Backend",
-        "items": [".NET 8", "ASP.NET Core", "Node.js", "Express.js", "Entity Framework Core", "REST APIs"]
+        "items": [
+          ".NET 8",
+          "ASP.NET Core",
+          "Node.js",
+          "Express.js",
+          "Entity Framework Core",
+          "REST APIs"
+        ]
       },
       {
         "title": "Arquitectura",
-        "items": ["Clean Architecture", "DDD", "CQRS", "Repository Pattern", "Unit of Work", "Microservices (base)"]
+        "items": [
+          "Clean Architecture",
+          "DDD",
+          "CQRS",
+          "Repository Pattern",
+          "Unit of Work",
+          "Microservices (base)"
+        ]
       },
       {
         "title": "Bases de datos",
@@ -97,11 +139,25 @@
       },
       {
         "title": "Frontend",
-        "items": ["React", "Next.js", "Vue.js 3", "TypeScript", "TailwindCSS", "shadcn/ui"]
+        "items": [
+          "React",
+          "Next.js",
+          "Vue.js 3",
+          "TypeScript",
+          "TailwindCSS",
+          "shadcn/ui"
+        ]
       },
       {
         "title": "DevOps & Herramientas",
-        "items": ["Docker", "Git/GitHub", "Postman", "Swagger/OpenAPI", "Vercel", "Railway"]
+        "items": [
+          "Docker",
+          "Git/GitHub",
+          "Postman",
+          "Swagger/OpenAPI",
+          "Vercel",
+          "Railway"
+        ]
       }
     ],
     "strengthsTitle": "Fortalezas técnicas",
