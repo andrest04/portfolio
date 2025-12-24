@@ -24,42 +24,54 @@ export async function generateMetadata({
   const { lang } = await params;
   const isEn = lang === "en";
 
+  const title = isEn
+    ? "Andrés Torres - Full-Stack Developer | .NET, React, Node.js"
+    : "Andrés Torres - Desarrollador Full-Stack | .NET, React, Node.js";
+
+  const description = isEn
+    ? "Portfolio of Andrés Torres, Full-Stack Developer specialized in .NET 8, React, Node.js and PostgreSQL. 7th term Software Engineering student in Peru building scalable systems with Clean Architecture, DDD, and CQRS."
+    : "Portfolio de Andrés Torres, desarrollador Full-Stack especializado en .NET 8, React, Node.js y PostgreSQL. Estudiante de 7mo término de Ingeniería de Software en Perú construyendo sistemas escalables con Clean Architecture, DDD y CQRS.";
+
   return {
-    title: isEn ? "Andrés Torres | Portfolio" : "Andrés Torres | Portafolio",
-    description: isEn
-      ? "Software Engineering student building scalable systems with Clean Architecture, DDD, and CQRS."
-      : "Estudiante de Ingeniería de Software construyendo sistemas escalables con Clean Architecture, DDD y CQRS.",
+    title,
+    description,
+
+    keywords: isEn
+      ? ["full-stack developer", "software engineer", ".NET", "React", "Node.js", "PostgreSQL", "Clean Architecture", "DDD", "CQRS", "Peru", "Lima"]
+      : ["desarrollador full-stack", "ingeniero software", ".NET", "React", "Node.js", "PostgreSQL", "Clean Architecture", "DDD", "CQRS", "Perú", "Lima"],
+
+    authors: [{ name: "Andrés Torres" }],
+
     openGraph: {
-      title: isEn ? "Andrés Torres | Portfolio" : "Andrés Torres | Portafolio",
-      description: isEn
-        ? "Full-stack projects with strong architecture and delivery."
-        : "Proyectos full-stack con enfoque en arquitectura y entrega.",
-      url: "https://andres-torres.com",
-      siteName: "Andrés Torres",
+      title,
+      description,
+      url: isEn ? "https://andres-torres.com/en" : "https://andres-torres.com/es",
+      siteName: "Andrés Torres Portfolio",
       images: [
         {
           url: "/og.png",
           width: 1200,
           height: 630,
-          alt: "Andrés Torres Portfolio",
+          alt: title,
         },
       ],
       type: "website",
       locale: isEn ? "en_US" : "es_ES",
     },
+
     twitter: {
       card: "summary_large_image",
-      title: isEn ? "Andrés Torres | Portfolio" : "Andrés Torres | Portafolio",
-      description: isEn
-        ? "Software Engineering student building scalable systems."
-        : "Estudiante de Ingeniería de Software construyendo sistemas escalables.",
+      title,
+      description,
       images: ["/og.png"],
     },
+
     icons: {
       icon: "/favicon.ico",
       shortcut: "/favicon-16x16.png",
       apple: "/apple-touch-icon.png",
     },
+
     robots: {
       index: true,
       follow: true,
