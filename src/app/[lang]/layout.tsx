@@ -100,7 +100,7 @@ export default async function RootLayout({
 
         <div className="flex min-h-screen flex-col">
           <Navbar lang={lang as "es" | "en"} t={t} />
-          <main className="mx-auto w-full max-w-6xl flex-1 px-4 sm:px-6 lg:px-8">
+          <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 sm:px-6 lg:px-8">
             {children}
           </main>
         </div>

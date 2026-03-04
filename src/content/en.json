@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "Software Engineering Student · Software Engineer",
     "title": "I build scalable systems using Clean Architecture, DDD, and CQRS.",
-    "subtitle": "Software Engineering student at **Universidad Peruana de Ciencias Aplicadas (UPC)**, currently in my **seventh academic term** and ranked in the **top fifth of my class**. I develop scalable backend systems and full-stack applications with .NET and Next.js, focusing on robust APIs and clean architectural practices.",
+    "subtitle": "Software Engineering student at **Universidad Peruana de Ciencias Aplicadas (UPC)**, currently in my **eighth academic term** and ranked in the **top fifth of my class**. I develop scalable backend systems and full-stack applications with .NET and Next.js, focusing on robust APIs and clean architectural practices.",
     "ctaPrimary": "View projects",
     "ctaSecondary": "Download CV",
     "ctaTertiary": "Contact me",
@@ -83,7 +83,7 @@
         "title": "Education",
         "items": [
           "Universidad Peruana de Ciencias Aplicadas (UPC)",
-          "Software Engineering — 7th term",
+          "Software Engineering — 8th term",
           "Top fifth of my class"
         ]
       },

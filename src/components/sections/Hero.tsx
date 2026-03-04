@@ -12,7 +12,7 @@ export default function Hero({ t }: HeroProps) {
 
   return (
     <section className="py-16 sm:py-20 lg:py-24">
-      <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+      <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
         <div className="order-2 lg:order-1 lg:col-span-7">
           <MotionIn>
             <div className="inline-flex items-center gap-2 rounded-full border border-border-default bg-surface-default px-3 py-1 text-sm text-text-secondary backdrop-blur-[var(--glass-backdrop)]">
@@ -58,64 +58,66 @@ export default function Hero({ t }: HeroProps) {
         </div>
 
         <div className="order-1 lg:order-2 lg:col-span-5">
-          <MotionIn delay={0.04}>
-            <GlassCard variant="solid" className="overflow-hidden p-0">
-              <div className="relative aspect-[3/4] w-full">
-                <Image
-                  src="/profile.png"
-                  alt="Andrés Torres - Full-Stack Developer"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
-                />
-              </div>
-            </GlassCard>
-          </MotionIn>
+          <div className="mx-auto w-full max-w-md lg:ml-auto lg:mr-0 lg:max-w-[400px] xl:max-w-[460px]">
+            <MotionIn delay={0.04}>
+              <GlassCard variant="solid" className="overflow-hidden p-0">
+                <div className="relative aspect-[3/4] w-full">
+                  <Image
+                    src="/profile.png"
+                    alt="Andrés Torres - Full-Stack Developer"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                  />
+                </div>
+              </GlassCard>
+            </MotionIn>
 
-          <MotionIn delay={0.08}>
-            <GlassCard variant="solid" className="mt-6 p-5 sm:p-6">
-              <h2 className="text-base font-semibold text-text-primary">
-                {hero.highlightsTitle}
-              </h2>
+            <MotionIn delay={0.08}>
+              <GlassCard variant="solid" className="mt-6 p-5 sm:p-6">
+                <h2 className="text-base font-semibold text-text-primary">
+                  {hero.highlightsTitle}
+                </h2>
 
-              <ul className="mt-4 space-y-3 text-sm text-text-secondary">
-                {(hero.highlights ?? []).map((item: string, idx: number) => (
-                  <li key={idx} className="flex gap-3">
-                    <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-accent-primary" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+                <ul className="mt-4 space-y-3 text-sm text-text-secondary">
+                  {(hero.highlights ?? []).map((item: string, idx: number) => (
+                    <li key={idx} className="flex gap-3">
+                      <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-accent-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <div className="mt-6 flex flex-wrap gap-3 text-sm">
-                <a
-                  href="https://github.com/andrest04"
-                  className="rounded-xl border border-border-default bg-surface-default px-3 py-2 text-text-primary backdrop-blur-[var(--glass-backdrop)] transition duration-200 ease-out hover:border-border-strong hover:bg-surface-medium"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
+                <div className="mt-6 flex flex-wrap gap-3 text-sm">
+                  <a
+                    href="https://github.com/andrest04"
+                    className="rounded-xl border border-border-default bg-surface-default px-3 py-2 text-text-primary backdrop-blur-[var(--glass-backdrop)] transition duration-200 ease-out hover:border-border-strong hover:bg-surface-medium"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    GitHub
+                  </a>
 
-                <a
-                  href="https://linkedin.com/in/andres-torres-garcia"
-                  className="rounded-xl border border-border-default bg-surface-default px-3 py-2 text-text-primary backdrop-blur-[var(--glass-backdrop)] transition duration-200 ease-out hover:border-border-strong hover:bg-surface-medium"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  LinkedIn
-                </a>
+                  <a
+                    href="https://linkedin.com/in/andres-torres-garcia"
+                    className="rounded-xl border border-border-default bg-surface-default px-3 py-2 text-text-primary backdrop-blur-[var(--glass-backdrop)] transition duration-200 ease-out hover:border-border-strong hover:bg-surface-medium"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    LinkedIn
+                  </a>
 
-                <a
-                  href="mailto:andresalbertotorresgarcia@gmail.com"
-                  className="rounded-xl border border-border-default bg-surface-default px-3 py-2 text-text-primary backdrop-blur-[var(--glass-backdrop)] transition duration-200 ease-out hover:border-border-strong hover:bg-surface-medium"
-                >
-                  Email
-                </a>
-              </div>
-            </GlassCard>
-          </MotionIn>
+                  <a
+                    href="mailto:andresalbertotorresgarcia@gmail.com"
+                    className="rounded-xl border border-border-default bg-surface-default px-3 py-2 text-text-primary backdrop-blur-[var(--glass-backdrop)] transition duration-200 ease-out hover:border-border-strong hover:bg-surface-medium"
+                  >
+                    Email
+                  </a>
+                </div>
+              </GlassCard>
+            </MotionIn>
+          </div>
         </div>
       </div>
     </section>
