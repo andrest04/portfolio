@@ -33,19 +33,51 @@ export async function generateMetadata({
     : "Portfolio de Andrés Torres, desarrollador Full-Stack especializado en .NET 8, React, Node.js y PostgreSQL. Estudiante de 7mo término de Ingeniería de Software en Perú construyendo sistemas escalables con Clean Architecture, DDD y CQRS.";
 
   return {
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL ??
+        (process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}`
+          : "http://localhost:3000"),
+    ),
     title,
     description,
 
     keywords: isEn
-      ? ["full-stack developer", "software engineer", ".NET", "React", "Node.js", "PostgreSQL", "Clean Architecture", "DDD", "CQRS", "Peru", "Lima"]
-      : ["desarrollador full-stack", "ingeniero software", ".NET", "React", "Node.js", "PostgreSQL", "Clean Architecture", "DDD", "CQRS", "Perú", "Lima"],
+      ? [
+          "full-stack developer",
+          "software engineer",
+          ".NET",
+          "React",
+          "Node.js",
+          "PostgreSQL",
+          "Clean Architecture",
+          "DDD",
+          "CQRS",
+          "Peru",
+          "Lima",
+        ]
+      : [
+          "desarrollador full-stack",
+          "ingeniero software",
+          ".NET",
+          "React",
+          "Node.js",
+          "PostgreSQL",
+          "Clean Architecture",
+          "DDD",
+          "CQRS",
+          "Perú",
+          "Lima",
+        ],
 
     authors: [{ name: "Andrés Torres" }],
 
     openGraph: {
       title,
       description,
-      url: isEn ? "https://andres-torres.com/en" : "https://andres-torres.com/es",
+      url: isEn
+        ? "https://andres-torres.com/en"
+        : "https://andres-torres.com/es",
       siteName: "Andrés Torres Portfolio",
       images: [
         {
@@ -91,7 +123,9 @@ export default async function RootLayout({
 
   return (
     <html lang={lang}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[rgb(var(--bg))] text-[rgba(var(--text),0.92)]`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[rgb(var(--bg))] text-[rgba(var(--text),0.92)]`}
+      >
         <div className="pointer-events-none fixed inset-0 -z-10">
           <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[rgba(var(--primary),0.18)] blur-[120px]" />
           <div className="absolute top-40 -left-40 h-[520px] w-[520px] rounded-full bg-[rgba(var(--primary-glow),0.10)] blur-[140px]" />
