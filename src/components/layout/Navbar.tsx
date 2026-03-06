@@ -54,7 +54,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
             <a
               key={it.href}
               href={it.href}
-              className="text-text-secondary transition hover:text-text-primary"
+              className="!text-white transition hover:!text-white/80"
             >
               {it.label}
             </a>
