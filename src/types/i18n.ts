@@ -59,6 +59,7 @@ export interface Dictionary {
     githubLabel: string;
   };
   nav: {
+    hero: string;
     projects: string;
     about: string;
     skills: string;

@@ -11,7 +11,7 @@ export default function Hero({ t }: HeroProps) {
   const hero = t.hero;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section id="hero" className="py-16 sm:py-20 lg:py-24">
       <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
         <div className="order-2 lg:order-1 lg:col-span-7">
           <MotionIn>
@@ -26,7 +26,13 @@ export default function Hero({ t }: HeroProps) {
 
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
               {hero.subtitle.split("**").map((part, i) =>
-                i % 2 === 1 ? <strong key={i} className="text-text-primary font-semibold">{part}</strong> : part
+                i % 2 === 1 ? (
+                  <strong key={i} className="text-text-primary font-semibold">
+                    {part}
+                  </strong>
+                ) : (
+                  part
+                ),
               )}
             </p>
 

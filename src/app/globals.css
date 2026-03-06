@@ -19,34 +19,34 @@
   --foreground: 255 255 255;
 
   /* === ACCENT COLORS (OKLCH for better manipulation) === */
-  --accent-primary: oklch(0.62 0.21 250);        /* Blue - existing primary */
-  --accent-primary-glow: oklch(0.70 0.18 250);   /* Lighter blue for glows */
-  --accent-secondary: oklch(0.75 0.14 195);      /* Cyan - NEW secondary accent */
+  --accent-primary: oklch(0.62 0.21 250); /* Blue - existing primary */
+  --accent-primary-glow: oklch(0.7 0.18 250); /* Lighter blue for glows */
+  --accent-secondary: oklch(0.75 0.14 195); /* Cyan - NEW secondary accent */
   --accent-secondary-glow: oklch(0.82 0.12 195); /* Lighter cyan for glows */
-  --accent-tertiary: oklch(0.78 0.15 75);        /* Amber - for special states */
+  --accent-tertiary: oklch(0.78 0.15 75); /* Amber - for special states */
 
   /* === SURFACE OPACITIES (Glass Morphism) === */
-  --surface-subtle: 0.04;      /* Very subtle hover states */
-  --surface-default: 0.06;     /* Default glass cards */
-  --surface-medium: 0.10;      /* Solid variant cards */
-  --surface-strong: 0.14;      /* Emphasized surfaces */
+  --surface-subtle: 0.04; /* Very subtle hover states */
+  --surface-default: 0.06; /* Default glass cards */
+  --surface-medium: 0.1; /* Solid variant cards */
+  --surface-strong: 0.14; /* Emphasized surfaces */
 
   /* === BORDER OPACITIES === */
-  --border-subtle: 0.08;       /* Very subtle borders */
-  --border-default: 0.12;      /* Default borders */
-  --border-medium: 0.16;       /* Solid variant borders */
-  --border-strong: 0.20;       /* Hover/focus borders */
-  --border-emphasis: 0.24;     /* Strong focus rings */
+  --border-subtle: 0.08; /* Very subtle borders */
+  --border-default: 0.12; /* Default borders */
+  --border-medium: 0.16; /* Solid variant borders */
+  --border-strong: 0.2; /* Hover/focus borders */
+  --border-emphasis: 0.24; /* Strong focus rings */
 
   /* === TEXT OPACITIES === */
-  --text-primary: 0.95;        /* Headings, important text */
-  --text-secondary: 0.75;      /* Body text, descriptions */
-  --text-tertiary: 0.50;       /* Muted text, placeholders */
-  --text-disabled: 0.35;       /* Disabled states */
+  --text-primary: 0.95; /* Headings, important text */
+  --text-secondary: 0.75; /* Body text, descriptions */
+  --text-tertiary: 0.5; /* Muted text, placeholders */
+  --text-disabled: 0.35; /* Disabled states */
 
   /* === GLASS MORPHISM EFFECTS === */
-  --glass-blur: 18px;          /* Standard backdrop blur */
-  --glass-blur-strong: 24px;   /* Enhanced blur for emphasis */
+  --glass-blur: 18px; /* Standard backdrop blur */
+  --glass-blur-strong: 24px; /* Enhanced blur for emphasis */
 
   /* === SHADOW TOKENS === */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -54,18 +54,24 @@
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.18);
 
   /* Primary Glow (Blue) */
-  --shadow-glow-primary-sm: 0 0 20px color-mix(in srgb, var(--accent-primary) 15%, transparent),
-                            0 0 10px color-mix(in srgb, var(--accent-primary-glow) 8%, transparent);
-  --shadow-glow-primary-md: 0 0 24px color-mix(in srgb, var(--accent-primary) 18%, transparent),
-                            0 0 12px color-mix(in srgb, var(--accent-primary-glow) 10%, transparent);
-  --shadow-glow-primary-lg: 0 0 40px color-mix(in srgb, var(--accent-primary) 25%, transparent);
+  --shadow-glow-primary-sm:
+    0 0 20px color-mix(in srgb, var(--accent-primary) 15%, transparent),
+    0 0 10px color-mix(in srgb, var(--accent-primary-glow) 8%, transparent);
+  --shadow-glow-primary-md:
+    0 0 24px color-mix(in srgb, var(--accent-primary) 18%, transparent),
+    0 0 12px color-mix(in srgb, var(--accent-primary-glow) 10%, transparent);
+  --shadow-glow-primary-lg: 0 0 40px
+    color-mix(in srgb, var(--accent-primary) 25%, transparent);
 
   /* Secondary Glow (Cyan) - NEW */
-  --shadow-glow-secondary-sm: 0 0 20px color-mix(in srgb, var(--accent-secondary) 18%, transparent),
-                              0 0 10px color-mix(in srgb, var(--accent-secondary-glow) 10%, transparent);
-  --shadow-glow-secondary-md: 0 0 28px color-mix(in srgb, var(--accent-secondary) 22%, transparent),
-                              0 0 14px color-mix(in srgb, var(--accent-secondary-glow) 12%, transparent);
-  --shadow-glow-secondary-lg: 0 0 48px color-mix(in srgb, var(--accent-secondary) 30%, transparent);
+  --shadow-glow-secondary-sm:
+    0 0 20px color-mix(in srgb, var(--accent-secondary) 18%, transparent),
+    0 0 10px color-mix(in srgb, var(--accent-secondary-glow) 10%, transparent);
+  --shadow-glow-secondary-md:
+    0 0 28px color-mix(in srgb, var(--accent-secondary) 22%, transparent),
+    0 0 14px color-mix(in srgb, var(--accent-secondary-glow) 12%, transparent);
+  --shadow-glow-secondary-lg: 0 0 48px
+    color-mix(in srgb, var(--accent-secondary) 30%, transparent);
 
   /* Subtle ring shadow for cards */
   --shadow-ring: 0 0 0 1px rgba(255, 255, 255, var(--border-default));
@@ -179,7 +185,12 @@
   --color-chart-1: var(--chart-1);
 }
 
-html, body {
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
   height: 100%;
 }
 
@@ -190,23 +201,36 @@ body {
 
 /* Ambient gradient overlay for depth (bold enhancement) */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
   background:
-    radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--accent-primary) 8%, transparent) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--accent-secondary) 10%, transparent) 0%, transparent 50%);
+    radial-gradient(
+      circle at 20% 30%,
+      color-mix(in srgb, var(--accent-primary) 8%, transparent) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      color-mix(in srgb, var(--accent-secondary) 10%, transparent) 0%,
+      transparent 50%
+    );
   pointer-events: none;
   z-index: -1;
   animation: ambientPulse 20s ease-in-out infinite;
 }
 
 @keyframes ambientPulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 ::selection {

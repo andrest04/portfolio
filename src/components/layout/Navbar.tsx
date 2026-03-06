@@ -19,14 +19,18 @@ export default function Navbar({ lang, t }: NavbarProps) {
   const otherLang = lang === "es" ? "en" : "es";
 
   const switchHref = pathname
-    ? pathname.split("/").map((p, i) => i === 1 ? otherLang : p).join("/")
+    ? pathname
+        .split("/")
+        .map((p, i) => (i === 1 ? otherLang : p))
+        .join("/")
     : `/${otherLang}`;
 
   const items = [
+    { href: "#hero", label: t.nav.hero },
     { href: "#projects", label: t.nav.projects },
     { href: "#about", label: t.nav.about },
     { href: "#skills", label: t.nav.skills },
-    { href: "#contact", label: t.nav.contact }
+    { href: "#contact", label: t.nav.contact },
   ];
 
   return (
@@ -44,7 +48,9 @@ export default function Navbar({ lang, t }: NavbarProps) {
               Andrés Torres
             </p>
             <p className="text-xs text-text-secondary">
-              {lang === "es" ? "Estudiante · Full-Stack" : "Student · Full-Stack"}
+              {lang === "es"
+                ? "Estudiante · Full-Stack"
+                : "Student · Full-Stack"}
             </p>
           </div>
         </a>

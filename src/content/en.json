@@ -180,6 +180,7 @@
     "githubLabel": "GitHub"
   },
   "nav": {
+    "hero": "Home",
     "projects": "Projects",
     "about": "About",
     "skills": "Skills",
