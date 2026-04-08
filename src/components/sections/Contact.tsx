@@ -38,14 +38,14 @@ export default function Contact({ t }: ContactProps) {
 
             <div className="mt-6 space-y-4">
               <div className="flex items-start gap-4">
-                <IconBox>
+                <IconBox aria-hidden="true">
                   <Mail className="h-4 w-4" />
                 </IconBox>
                 <div>
                   <p className="text-sm font-medium text-text-primary">{c.emailLabel}</p>
                   <a
                     href={`mailto:${email}`}
-                    className="text-sm text-text-secondary underline-offset-4 hover:text-text-primary hover:underline"
+                    className="cursor-pointer break-all text-sm text-text-secondary underline-offset-4 transition-colors duration-200 hover:text-text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-sm"
                   >
                     {email}
                   </a>
@@ -53,14 +53,14 @@ export default function Contact({ t }: ContactProps) {
               </div>
 
               <div className="flex items-start gap-4">
-                <IconBox>
+                <IconBox aria-hidden="true">
                   <Phone className="h-4 w-4" />
                 </IconBox>
                 <div>
                   <p className="text-sm font-medium text-text-primary">{c.phoneLabel}</p>
                   <a
                     href={`tel:${phoneHref}`}
-                    className="text-sm text-text-secondary underline-offset-4 hover:text-text-primary hover:underline"
+                    className="cursor-pointer text-sm text-text-secondary underline-offset-4 transition-colors duration-200 hover:text-text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-sm"
                   >
                     {phoneDisplay}
                   </a>
@@ -68,7 +68,7 @@ export default function Contact({ t }: ContactProps) {
               </div>
 
               <div className="flex items-start gap-4">
-                <IconBox>
+                <IconBox aria-hidden="true">
                   <MapPin className="h-4 w-4" />
                 </IconBox>
                 <div>
@@ -102,9 +102,9 @@ export default function Contact({ t }: ContactProps) {
   );
 }
 
-function IconBox({ children }: { children: React.ReactNode }) {
+function IconBox({ children, "aria-hidden": ariaHidden }: { children: React.ReactNode; "aria-hidden"?: boolean | "true" | "false" }) {
   return (
-    <div className="mt-0.5 grid h-11 w-11 place-items-center rounded-2xl border border-border-default bg-surface-default text-accent-primary backdrop-blur-[var(--glass-backdrop)] transition-colors hover:text-accent-secondary">
+    <div aria-hidden={ariaHidden} className="mt-0.5 grid h-11 w-11 place-items-center rounded-2xl border border-border-default bg-surface-default text-accent-primary backdrop-blur-[var(--glass-backdrop)]">
       {children}
     </div>
   );
@@ -126,9 +126,10 @@ function SocialBtn({
       asChild
       className="rounded-2xl"
     >
-      <a href={href} target="_blank" rel="noreferrer">
+      <a href={href} target="_blank" rel="noreferrer" className="cursor-pointer">
         <span className="text-accent-primary">{children}</span>
         <span className="text-text-secondary">{label}</span>
+        <span className="sr-only">(opens in new tab)</span>
       </a>
     </Button>
   )

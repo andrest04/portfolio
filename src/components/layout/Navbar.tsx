@@ -4,8 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import GlassCard from "@/components/ui/GlassCard";
+import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Dictionary } from "@/types/i18n";
+import { cn } from "@/lib/utils";
 
 type NavbarProps = {
   lang: "es" | "en";
@@ -39,7 +41,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
         variant="solid"
         className="flex items-center justify-between px-4 py-3 sm:px-5"
       >
-        <a href="#" className="flex items-center gap-3">
+        <a href="#" className="flex items-center gap-3 cursor-pointer">
           <div className="grid h-11 w-11 place-items-center rounded-2xl bg-surface-default text-sm font-semibold text-text-primary shadow-[var(--shadow-ring)]">
             AT.
           </div>
@@ -55,12 +57,12 @@ export default function Navbar({ lang, t }: NavbarProps) {
           </div>
         </a>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6 text-sm">
           {items.map((it) => (
             <a
               key={it.href}
               href={it.href}
-              className="!text-white transition hover:!text-white/80"
+              className="!text-white transition hover:!text-white/80 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-lg"
             >
               {it.label}
             </a>
@@ -68,41 +70,46 @@ export default function Navbar({ lang, t }: NavbarProps) {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link
-            href={switchHref}
-            className="rounded-2xl border border-border-medium bg-surface-default px-3 py-2 text-xs font-medium text-text-primary backdrop-blur-[var(--glass-backdrop)] transition hover:border-accent-secondary hover:bg-surface-medium hover:text-accent-secondary"
-          >
-            {lang.toUpperCase()} → {otherLang.toUpperCase()}
-          </Link>
+          <Button variant="outline" size="sm" asChild className="rounded-2xl">
+            <Link href={switchHref}>
+              {lang.toUpperCase()} → {otherLang.toUpperCase()}
+            </Link>
+          </Button>
 
-          <button
+          <Button
+            variant="outline"
+            size="icon"
+            className="md:hidden rounded-2xl"
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden grid h-11 w-11 place-items-center rounded-2xl border border-border-medium bg-surface-default text-text-primary backdrop-blur-[var(--glass-backdrop)] transition hover:bg-surface-medium"
             aria-label="Toggle menu"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          </Button>
         </div>
       </GlassCard>
 
-      {open && (
-        <div className="mt-3 md:hidden">
-          <GlassCard variant="default" className="p-3">
-            <div className="flex flex-col">
-              {items.map((it) => (
-                <a
-                  key={it.href}
-                  href={it.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-2 text-sm text-text-secondary hover:bg-surface-default hover:text-text-primary"
-                >
-                  {it.label}
-                </a>
-              ))}
-            </div>
-          </GlassCard>
-        </div>
-      )}
+      <nav
+        aria-label="Mobile navigation"
+        className={cn(
+          "mt-3 md:hidden transition-all duration-200 ease-out overflow-hidden",
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        )}
+      >
+        <GlassCard variant="default" className="p-3">
+          <div className="flex flex-col">
+            {items.map((it) => (
+              <a
+                key={it.href}
+                href={it.href}
+                onClick={() => setOpen(false)}
+                className="rounded-xl py-3 px-4 text-sm text-text-secondary hover:bg-surface-default hover:text-text-primary cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow"
+              >
+                {it.label}
+              </a>
+            ))}
+          </div>
+        </GlassCard>
+      </nav>
     </div>
   );
 }

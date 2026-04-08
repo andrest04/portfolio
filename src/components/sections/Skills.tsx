@@ -23,21 +23,21 @@ export default function Skills({ t }: SkillsProps) {
           <div className="grid gap-6 sm:grid-cols-2">
             {(skills.groups ?? []).map((g, idx: number) => (
               <MotionIn key={g.title ?? idx} delay={0.04 * idx}>
-                <GlassCard className="h-full p-5 sm:p-6">
+                <GlassCard hover={false} className="h-full p-5 sm:p-6">
                   <h3 className="text-base font-semibold text-text-primary">
                     {g.title}
                   </h3>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <ul role="list" className="mt-4 flex flex-wrap gap-2">
                     {(g.items ?? []).map((item: string) => (
-                      <span
+                      <li
                         key={item}
-                        className="rounded-xl border border-border-default bg-surface-default px-3 py-1 text-xs text-text-secondary backdrop-blur-[var(--glass-backdrop)]"
+                        className="rounded-xl border border-border-default bg-surface-default px-3 py-1.5 text-xs text-text-secondary backdrop-blur-[var(--glass-backdrop)] sm:text-sm"
                       >
                         {item}
-                      </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </GlassCard>
               </MotionIn>
             ))}
@@ -46,15 +46,15 @@ export default function Skills({ t }: SkillsProps) {
 
         <div className="lg:col-span-4">
           <MotionIn delay={0.12}>
-            <GlassCard variant="solid" className="p-5 sm:p-6">
+            <GlassCard hover={false} variant="solid" className="p-5 sm:p-6">
               <h3 className="text-base font-semibold text-text-primary">
                 {skills.strengthsTitle}
               </h3>
 
-              <ul className="mt-4 space-y-3 text-sm text-text-secondary">
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-text-secondary">
                 {(skills.strengths ?? []).map((s: string, i: number) => (
                   <li key={i} className="flex gap-3">
-                    <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-accent-primary" />
+                    <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-accent-primary" />
                     <span>{s}</span>
                   </li>
                 ))}
