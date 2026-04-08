@@ -72,6 +72,22 @@
           "demo": "https://inti-eta.vercel.app/en",
           "github": "https://github.com/xMathyu/inti-webapp"
         }
+      },
+      {
+        "name": "Kataleya Flawers",
+        "role": "Full-Stack Developer",
+        "description": "Website for a flower shop with 32 years of history in Lima. E-commerce with floral arrangement catalog, customer gallery, WhatsApp ordering integration, and location map.",
+        "stack": ["Next.js", "React", "Tailwind", "Cloudinary", "Vercel"],
+        "highlights": [
+          "Solo project",
+          "WhatsApp integration",
+          "Image optimization with Cloudinary",
+          "Vercel deployment"
+        ],
+        "links": {
+          "demo": "https://kataleya-flawers.vercel.app/",
+          "github": "https://github.com/andrest04/kataleya-flawers-web"
+        }
       }
     ]
   },
