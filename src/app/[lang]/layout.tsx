@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
+import CustomCursor from "@/components/ui/CustomCursor";
 import { getDictionary } from "@/lib/i18n";
 
 const geistSans = Geist({
@@ -138,6 +139,7 @@ export default async function RootLayout({
             {children}
           </main>
         </div>
+        <CustomCursor />
         <Analytics />
         <SpeedInsights />
       </body>
