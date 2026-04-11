@@ -161,6 +161,14 @@
       "Entrega ágil con buenas prácticas (documentación, Git, deploy)."
     ]
   },
+  "stats": {
+    "items": [
+      { "value": 4, "label": "Proyectos construidos" },
+      { "value": 6, "label": "Tecnologías" },
+      { "value": 8, "label": "Ciclos académicos" },
+      { "value": 1, "label": "Pasantía" }
+    ]
+  },
   "contact": {
     "title": "Contacto",
     "cardTitle": "Información de contacto",
