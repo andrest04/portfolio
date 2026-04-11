@@ -33,15 +33,14 @@ export default function Navbar({ lang, t }: NavbarProps) {
 
   const items = [
     { href: "#hero", label: t.nav.hero, id: "hero" },
-    { href: "#experience", label: t.nav.experience, id: "experience" },
     { href: "#projects", label: t.nav.projects, id: "projects" },
-    { href: "#about", label: t.nav.about, id: "about" },
-    { href: "#skills", label: t.nav.skills, id: "skills" },
+    { href: "#experience", label: t.nav.experience, id: "experience" },
+    { href: "#about-skills", label: t.nav.aboutSkills, id: "about-skills" },
     { href: "#contact", label: t.nav.contact, id: "contact" },
   ];
 
   useEffect(() => {
-    const sectionIds = ["hero", "experience", "projects", "about", "skills", "contact"];
+    const sectionIds = ["hero", "projects", "experience", "about-skills", "contact"];
     const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
 
     const observer = new IntersectionObserver(
