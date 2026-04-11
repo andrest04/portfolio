@@ -46,13 +46,20 @@ export default function CommandPalette({ lang, t }: CommandPaletteProps) {
 
   const navigate = (href: string) => {
     setOpen(false);
-    if (href.startsWith("#")) {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    } else if (href.startsWith("/")) {
-      router.push(href);
-    } else {
-      window.open(href, "_blank");
-    }
+
+    // Wait for dialog close animation to finish before acting
+    setTimeout(() => {
+      if (href.startsWith("#")) {
+        const el = document.querySelector(href);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      } else if (href.startsWith("http")) {
+        window.open(href, "_blank");
+      } else {
+        router.push(href);
+      }
+    }, 150);
   };
 
   const otherLang = lang === "es" ? "en" : "es";
