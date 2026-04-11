@@ -299,6 +299,49 @@ a:not([class*="bg-"]):hover {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateGradient {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    transparent 40%,
+    var(--accent-primary) 50%,
+    var(--accent-secondary) 60%,
+    transparent 70%
+  );
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+  animation: rotateGradient 3s linear infinite;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
