@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { gsap } from "@/lib/gsap";
 import GlassCard from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -17,6 +18,9 @@ type NavbarProps = {
 export default function Navbar({ lang, t }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const navRef = useRef<HTMLDivElement>(null);
+  const indicatorRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState("hero");
 
   const otherLang = lang === "es" ? "en" : "es";
 
@@ -28,13 +32,52 @@ export default function Navbar({ lang, t }: NavbarProps) {
     : `/${otherLang}`;
 
   const items = [
-    { href: "#hero", label: t.nav.hero },
-    { href: "#experience", label: t.nav.experience },
-    { href: "#projects", label: t.nav.projects },
-    { href: "#about", label: t.nav.about },
-    { href: "#skills", label: t.nav.skills },
-    { href: "#contact", label: t.nav.contact },
+    { href: "#hero", label: t.nav.hero, id: "hero" },
+    { href: "#experience", label: t.nav.experience, id: "experience" },
+    { href: "#projects", label: t.nav.projects, id: "projects" },
+    { href: "#about", label: t.nav.about, id: "about" },
+    { href: "#skills", label: t.nav.skills, id: "skills" },
+    { href: "#contact", label: t.nav.contact, id: "contact" },
   ];
+
+  useEffect(() => {
+    const sectionIds = ["hero", "experience", "projects", "about", "skills", "contact"];
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!indicatorRef.current || !navRef.current) return;
+
+    const activeLink = navRef.current.querySelector(
+      `[data-section="${activeSection}"]`
+    ) as HTMLElement | null;
+
+    if (!activeLink) return;
+
+    const navRect = navRef.current.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+
+    gsap.to(indicatorRef.current, {
+      x: linkRect.left - navRect.left,
+      width: linkRect.width,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  }, [activeSection]);
 
   return (
     <div className="sticky top-4 z-50 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -58,12 +101,28 @@ export default function Navbar({ lang, t }: NavbarProps) {
           </div>
         </a>
 
-        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6 text-sm">
+        <nav
+          ref={navRef}
+          aria-label="Main navigation"
+          className="relative hidden md:flex items-center gap-6 text-sm"
+        >
+          <div
+            ref={indicatorRef}
+            className="absolute bottom-0 h-0.5 rounded-full bg-accent-secondary"
+            style={{ width: 0 }}
+            aria-hidden="true"
+          />
           {items.map((it) => (
             <a
               key={it.href}
               href={it.href}
-              className="!text-white transition hover:!text-white/80 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-lg"
+              data-section={it.id}
+              className={cn(
+                "pb-1 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-lg",
+                activeSection === it.id
+                  ? "!text-white"
+                  : "!text-white/60 hover:!text-white/90"
+              )}
             >
               {it.label}
             </a>
@@ -103,7 +162,12 @@ export default function Navbar({ lang, t }: NavbarProps) {
                 key={it.href}
                 href={it.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl py-3 px-4 text-sm text-text-secondary hover:bg-surface-default hover:text-text-primary cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow"
+                className={cn(
+                  "rounded-xl py-3 px-4 text-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow",
+                  activeSection === it.id
+                    ? "bg-surface-default text-text-primary"
+                    : "text-text-secondary hover:bg-surface-default hover:text-text-primary"
+                )}
               >
                 {it.label}
               </a>
