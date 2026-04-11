@@ -66,12 +66,6 @@ export interface Dictionary {
     strengthsTitle: string;
     strengths: string[];
   };
-  stats: {
-    items: Array<{
-      value: number;
-      label: string;
-    }>;
-  };
   contact: {
     title: string;
     cardTitle: string;

@@ -161,14 +161,6 @@
       "Agile delivery with solid practices (docs, Git, deployment)."
     ]
   },
-  "stats": {
-    "items": [
-      { "value": 4, "label": "Projects built" },
-      { "value": 6, "label": "Technologies" },
-      { "value": 8, "label": "Academic terms" },
-      { "value": 1, "label": "Internship" }
-    ]
-  },
   "contact": {
     "title": "Contact",
     "cardTitle": "Contact information",
