@@ -1,4 +1,18 @@
 {
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Experiencia profesional en la industria tech.",
+    "current": "Actual",
+    "items": [
+      {
+        "company": "EDTeam",
+        "role": "Pasante de Frontend",
+        "period": "Abr 2026 — Presente",
+        "description": "Plataforma de educación online en tecnología líder en español. Desarrollo y mantenimiento de la aplicación web (cursos, reproductor de video, sistema de progreso, perfiles de usuario) dentro del equipo de frontend.",
+        "stack": ["React", "TypeScript", "Next.js", "TailwindCSS"]
+      }
+    ]
+  },
   "hero": {
     "eyebrow": "Estudiante de Ingeniería de Software · Ingeniero de Software",
     "title": "Construyo sistemas escalables con Clean Architecture, DDD y CQRS.",
@@ -39,7 +53,7 @@
       },
       {
         "name": "Finance App",
-        "role": "Proyecto personal",
+        "role": "Proyecto educativo",
         "description": "Sistema de gestión de bonos corporativos con motor de cálculo financiero (TCEA/TREA, flujos, cronogramas).",
         "stack": [
           "Next.js 15",
@@ -60,7 +74,7 @@
       },
       {
         "name": "Plataforma de reservas (Italia)",
-        "role": "Ingeniero de Software",
+        "role": "Desarrollador Full-Stack",
         "description": "Plataforma web de reservas con UI responsive, auth y base NoSQL optimizada.",
         "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"],
         "highlights": [
@@ -197,6 +211,7 @@
   },
   "nav": {
     "hero": "Inicio",
+    "experience": "Experiencia",
     "projects": "Proyectos",
     "about": "Sobre mí",
     "skills": "Habilidades",

@@ -29,6 +29,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
 
   const items = [
     { href: "#hero", label: t.nav.hero },
+    { href: "#experience", label: t.nav.experience },
     { href: "#projects", label: t.nav.projects },
     { href: "#about", label: t.nav.about },
     { href: "#skills", label: t.nav.skills },

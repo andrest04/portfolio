@@ -1,4 +1,18 @@
 {
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Professional experience in the tech industry.",
+    "current": "Current",
+    "items": [
+      {
+        "company": "EDTeam",
+        "role": "Frontend Intern",
+        "period": "Apr 2026 — Present",
+        "description": "Leading online tech education platform in Spanish. Developing and maintaining the web application (courses, video player, progress tracking, user profiles) within the frontend team.",
+        "stack": ["React", "TypeScript", "Next.js", "TailwindCSS"]
+      }
+    ]
+  },
   "hero": {
     "eyebrow": "Software Engineering Student · Software Engineer",
     "title": "I build scalable systems using Clean Architecture, DDD, and CQRS.",
@@ -39,7 +53,7 @@
       },
       {
         "name": "Finance App",
-        "role": "Personal Project",
+        "role": "Education Project",
         "description": "Corporate bond management system with financial calculation engine (TCEA/TREA, cash flows, schedules).",
         "stack": [
           "Next.js 15",
@@ -60,7 +74,7 @@
       },
       {
         "name": "Booking Platform (Italy)",
-        "role": "Software Engineer",
+        "role": "Full-Stack Developer",
         "description": "Web booking platform with responsive UI, auth, and optimized NoSQL database.",
         "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"],
         "highlights": [
@@ -197,6 +211,7 @@
   },
   "nav": {
     "hero": "Home",
+    "experience": "Experience",
     "projects": "Projects",
     "about": "About",
     "skills": "Skills",

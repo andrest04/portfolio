@@ -1,4 +1,16 @@
 export interface Dictionary {
+  experience: {
+    title: string;
+    subtitle: string;
+    current: string;
+    items: Array<{
+      company: string;
+      role: string;
+      period: string;
+      description: string;
+      stack: string[];
+    }>;
+  };
   hero: {
     eyebrow: string;
     title: string;
@@ -60,6 +72,7 @@ export interface Dictionary {
   };
   nav: {
     hero: string;
+    experience: string;
     projects: string;
     about: string;
     skills: string;
