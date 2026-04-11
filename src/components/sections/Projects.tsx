@@ -23,7 +23,7 @@ export default function Projects({ t }: ProjectsProps) {
           </p>
         </ScrollReveal>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {(projects.items ?? []).map((p, idx: number) => (
             <ScrollReveal key={p.name ?? idx} delay={0.08 * idx} y={40} className="h-full">
               <TiltCard className="h-full">
