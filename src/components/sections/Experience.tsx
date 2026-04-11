@@ -89,9 +89,11 @@ export default function Experience({ t }: ExperienceProps) {
                         <h3 className="text-base font-semibold text-text-primary">
                           {item.company}
                         </h3>
-                        <span className="inline-flex items-center rounded-full bg-accent-primary/10 px-2.5 py-0.5 text-xs font-medium text-accent-primary">
-                          {exp.current}
-                        </span>
+                        {/present|presente/i.test(item.period) && (
+                          <span className="inline-flex items-center rounded-full bg-accent-primary/10 px-2.5 py-0.5 text-xs font-medium text-accent-primary">
+                            {exp.current}
+                          </span>
+                        )}
                       </div>
 
                       <p className="mt-0.5 text-sm font-medium text-accent-secondary">

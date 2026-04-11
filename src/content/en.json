@@ -10,6 +10,13 @@
         "period": "Apr 2026 — Present",
         "description": "Leading online tech education platform in Spanish. Developing and maintaining the web application (courses, video player, progress tracking, user profiles) within the frontend team.",
         "stack": ["React", "TypeScript", "Next.js", "TailwindCSS"]
+      },
+      {
+        "company": "Mathyu's Solutions",
+        "role": "Full-Stack Developer",
+        "period": "Mar 2025 — Jul 2025",
+        "description": "Italian startup building a web booking platform. Developed the full-stack application with responsive UI, authentication system, and optimized NoSQL database design.",
+        "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"]
       }
     ]
   },
