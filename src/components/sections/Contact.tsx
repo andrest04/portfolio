@@ -1,12 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Check, Copy } from "lucide-react";
 import { Dictionary } from "@/types/i18n";
 
 type ContactProps = { t: Dictionary };
 
 export default function Contact({ t }: ContactProps) {
+  const [copied, setCopied] = useState(false);
   const c = t.contact;
 
   const email = "andresalbertotorresgarcia@gmail.com";
@@ -43,12 +47,26 @@ export default function Contact({ t }: ContactProps) {
                 </IconBox>
                 <div>
                   <p className="text-sm font-medium text-text-primary">{c.emailLabel}</p>
-                  <a
-                    href={`mailto:${email}`}
-                    className="cursor-pointer break-all text-sm text-text-secondary underline-offset-4 transition-colors duration-200 hover:text-text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-sm"
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(email);
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    }}
+                    className="group cursor-pointer break-all text-sm text-text-secondary underline-offset-4 transition-colors duration-200 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-sm inline-flex items-center gap-2"
                   >
-                    {email}
-                  </a>
+                    <span className="hover:underline">{email}</span>
+                    {copied ? (
+                      <Check className="h-3.5 w-3.5 text-green-400" />
+                    ) : (
+                      <Copy className="h-3.5 w-3.5 opacity-0 group-hover:opacity-60 transition-opacity" />
+                    )}
+                  </button>
+                  {copied && (
+                    <span className="text-xs text-green-400 animate-in fade-in slide-in-from-left-2 duration-200">
+                      {t.contact.locationLabel === "Ubicación" ? "¡Copiado!" : "Copied!"}
+                    </span>
+                  )}
                 </div>
               </div>
 
