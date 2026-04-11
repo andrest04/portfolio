@@ -8,6 +8,7 @@ import GlassCard from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Dictionary } from "@/types/i18n";
+import CommandPalette from "@/components/ui/CommandPalette";
 import { cn } from "@/lib/utils";
 
 type NavbarProps = {
@@ -129,6 +130,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
         </nav>
 
         <div className="flex items-center gap-2">
+          <CommandPalette lang={lang} t={t} />
           <Button variant="outline" size="sm" asChild className="rounded-2xl">
             <Link href={switchHref}>
               {lang.toUpperCase()} → {otherLang.toUpperCase()}
