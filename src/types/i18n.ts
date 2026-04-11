@@ -12,14 +12,16 @@ export interface Dictionary {
     }>;
   };
   hero: {
-    eyebrow: string;
+    name: string;
+    role: string;
     title: string;
     subtitle: string;
+    currentPosition: string;
+    currentCompany: string;
+    stack: string[];
     ctaPrimary: string;
     ctaSecondary: string;
     ctaTertiary: string;
-    highlightsTitle: string;
-    highlights: string[];
   };
   projects: {
     title: string;
@@ -38,20 +40,26 @@ export interface Dictionary {
       };
     }>;
   };
-  about: {
+  aboutSkills: {
     title: string;
     subtitle: string;
-    cards: Array<{
+    education: {
       title: string;
       items: string[];
-    }>;
-    principleLabel: string;
-    principleText: string;
-  };
-  skills: {
-    title: string;
-    subtitle: string;
-    groups: Array<{
+    };
+    focus: {
+      title: string;
+      items: string[];
+    };
+    teamwork: {
+      title: string;
+      items: string[];
+    };
+    principle: {
+      label: string;
+      text: string;
+    };
+    skills: Array<{
       title: string;
       items: string[];
     }>;
@@ -74,8 +82,7 @@ export interface Dictionary {
     hero: string;
     experience: string;
     projects: string;
-    about: string;
-    skills: string;
+    aboutSkills: string;
     contact: string;
   };
   footer: {

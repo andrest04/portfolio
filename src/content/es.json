@@ -14,20 +14,16 @@
     ]
   },
   "hero": {
-    "eyebrow": "Estudiante de Ingeniería de Software · Ingeniero de Software",
+    "name": "Andrés Torres",
+    "role": "Estudiante de Ingeniería de Software",
     "title": "Construyo sistemas escalables con Clean Architecture, DDD y CQRS.",
-    "subtitle": "Estudiante de Ingeniería de Software en la **Universidad Peruana de Ciencias Aplicadas (UPC)**, cursando el **octavo ciclo** y perteneciente al **quinto superior**. Desarrollo sistemas backend escalables y aplicaciones full-stack con .NET y Next.js, diseñando APIs robustas y soluciones enfocadas en buenas prácticas de arquitectura.",
+    "subtitle": "Estudiante de Ingeniería de Software desarrollando sistemas backend robustos y aplicaciones full-stack con .NET y Next.js.",
+    "currentPosition": "Pasante de Frontend",
+    "currentCompany": "EDTeam",
+    "stack": [".NET", "Next.js", "React", "TypeScript", "Docker", "MySQL"],
     "ctaPrimary": "Ver proyectos",
     "ctaSecondary": "Descargar CV",
-    "ctaTertiary": "Contactarme",
-    "highlightsTitle": "Highlights",
-    "highlights": [
-      "Tech Lead — EduSpace",
-      ".NET 8 · Next.js · Vue · MySQL · Docker",
-      "Clean Architecture · DDD · CQRS",
-      "Autenticación JWT + 2FA",
-      "Metodologías ágiles (Scrum)"
-    ]
+    "ctaTertiary": "Contactarme"
   },
   "projects": {
     "title": "Proyectos",
@@ -105,63 +101,45 @@
       }
     ]
   },
-  "about": {
-    "title": "Sobre mí",
+  "aboutSkills": {
+    "title": "Sobre mí & Habilidades",
     "subtitle": "Estudiante de Ingeniería de Software enfocado en arquitectura backend, sistemas escalables y liderazgo técnico.",
-    "cards": [
-      {
-        "title": "Educación",
-        "items": [
-          "Universidad Peruana de Ciencias Aplicadas (UPC)",
-          "Ingeniería de Software — 8.º ciclo",
-          "Quinto superior"
-        ]
-      },
-      {
-        "title": "Enfoque",
-        "items": [
-          "Clean Architecture, DDD y CQRS en proyectos reales",
-          "Diseño de APIs REST y modelado de datos",
-          "Escalabilidad, mantenibilidad y documentación"
-        ]
-      },
-      {
-        "title": "Trabajo en equipo",
-        "items": [
-          "Liderazgo técnico en EduSpace",
-          "Metodologías ágiles (Scrum)",
-          "Comunicación clara y orientación a resultados"
-        ]
-      }
-    ],
-    "principleLabel": "Principio:",
-    "principleText": "construir con fundamentos de arquitectura, medir resultados y mantener el código mantenible para escalar."
-  },
-  "skills": {
-    "title": "Habilidades",
-    "subtitle": "Stack y herramientas con las que he construido proyectos reales (backend + arquitectura + despliegue).",
-    "groups": [
+    "education": {
+      "title": "Educación",
+      "items": [
+        "Universidad Peruana de Ciencias Aplicadas (UPC)",
+        "Ingeniería de Software — 8.º ciclo",
+        "Quinto superior"
+      ]
+    },
+    "focus": {
+      "title": "Enfoque",
+      "items": [
+        "Clean Architecture, DDD y CQRS en proyectos reales",
+        "Diseño de APIs REST y modelado de datos",
+        "Escalabilidad, mantenibilidad y documentación"
+      ]
+    },
+    "teamwork": {
+      "title": "Trabajo en equipo",
+      "items": [
+        "Liderazgo técnico en EduSpace",
+        "Metodologías ágiles (Scrum)",
+        "Comunicación clara y orientación a resultados"
+      ]
+    },
+    "principle": {
+      "label": "Principio:",
+      "text": "construir con fundamentos de arquitectura, medir resultados y mantener el código mantenible para escalar."
+    },
+    "skills": [
       {
         "title": "Backend",
-        "items": [
-          ".NET 8",
-          "ASP.NET Core",
-          "Node.js",
-          "Express.js",
-          "Entity Framework Core",
-          "REST APIs"
-        ]
+        "items": [".NET 8", "ASP.NET Core", "Node.js", "Express.js", "Entity Framework Core", "REST APIs"]
       },
       {
         "title": "Arquitectura",
-        "items": [
-          "Clean Architecture",
-          "DDD",
-          "CQRS",
-          "Repository Pattern",
-          "Unit of Work",
-          "Microservices (base)"
-        ]
+        "items": ["Clean Architecture", "DDD", "CQRS", "Repository Pattern", "Unit of Work", "Microservices (base)"]
       },
       {
         "title": "Bases de datos",
@@ -169,25 +147,11 @@
       },
       {
         "title": "Frontend",
-        "items": [
-          "React",
-          "Next.js",
-          "Vue.js 3",
-          "TypeScript",
-          "TailwindCSS",
-          "shadcn/ui"
-        ]
+        "items": ["React", "Next.js", "Vue.js 3", "TypeScript", "TailwindCSS", "shadcn/ui"]
       },
       {
         "title": "DevOps & Herramientas",
-        "items": [
-          "Docker",
-          "Git/GitHub",
-          "Postman",
-          "Swagger/OpenAPI",
-          "Vercel",
-          "Railway"
-        ]
+        "items": ["Docker", "Git/GitHub", "Postman", "Swagger/OpenAPI", "Vercel", "Railway"]
       }
     ],
     "strengthsTitle": "Fortalezas técnicas",
@@ -213,8 +177,7 @@
     "hero": "Inicio",
     "experience": "Experiencia",
     "projects": "Proyectos",
-    "about": "Sobre mí",
-    "skills": "Habilidades",
+    "aboutSkills": "Sobre mí",
     "contact": "Contacto"
   },
   "footer": {
