@@ -18,7 +18,7 @@ export default function Projects({ t }: ProjectsProps) {
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
             {projects.title}
           </h2>
-          <p className="max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
             {projects.subtitle}
           </p>
         </ScrollReveal>
