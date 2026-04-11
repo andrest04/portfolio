@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/ui/CustomCursor";
+import PageLoader from "@/components/ui/PageLoader";
 import { getDictionary } from "@/lib/i18n";
 
 const geistSans = Geist({
@@ -139,6 +140,7 @@ export default async function RootLayout({
             {children}
           </main>
         </div>
+        <PageLoader />
         <CustomCursor />
         <Analytics />
         <SpeedInsights />
