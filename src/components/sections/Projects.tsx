@@ -25,7 +25,7 @@ export default function Projects({ t }: ProjectsProps) {
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           {(projects.items ?? []).map((p, idx: number) => (
-            <ScrollReveal key={p.name ?? idx} delay={0.08 * idx} y={40}>
+            <ScrollReveal key={p.name ?? idx} delay={0.08 * idx} y={40} className="h-full">
               <TiltCard className="h-full">
                 <GlassCard className="gradient-border h-full p-5 sm:p-6">
                   <div className="flex items-start justify-between gap-4">

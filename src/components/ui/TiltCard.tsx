@@ -70,7 +70,7 @@ export default function TiltCard({
         ref={cardRef}
         onMouseMove={handleMove}
         onMouseLeave={handleLeave}
-        className="relative"
+        className="relative h-full"
         style={{ transformStyle: "preserve-3d" }}
       >
         <div
