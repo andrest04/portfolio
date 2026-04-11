@@ -90,6 +90,15 @@ export default function CommandPalette({ lang, t }: CommandPaletteProps) {
     return () => document.removeEventListener("keydown", down);
   }, [open]);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <>
       <button
@@ -108,7 +117,12 @@ export default function CommandPalette({ lang, t }: CommandPaletteProps) {
             aria-hidden="true"
           />
 
-          <div className="fixed inset-x-0 top-[20%] z-[9991] mx-auto w-full max-w-lg px-4 animate-in fade-in slide-in-from-top-4 duration-200">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={isEs ? "Paleta de comandos" : "Command palette"}
+            className="fixed inset-x-0 top-[20%] z-[9991] mx-auto w-full max-w-lg px-4 animate-in fade-in slide-in-from-top-4 duration-200"
+          >
             <div className="overflow-hidden rounded-2xl border border-border-medium bg-[rgb(var(--bg-2))] shadow-lg backdrop-blur-[var(--glass-blur-strong)]">
               <div className="flex items-center gap-3 border-b border-border-default px-4 py-3">
                 <Search className="h-4 w-4 text-text-tertiary" />
@@ -122,7 +136,8 @@ export default function CommandPalette({ lang, t }: CommandPaletteProps) {
                 />
                 <button
                   onClick={() => { setOpen(false); setQuery(""); }}
-                  className="rounded-lg p-1 text-text-tertiary hover:text-text-secondary"
+                  className="rounded-lg p-1 text-text-tertiary hover:text-text-secondary transition-colors"
+                  aria-label={isEs ? "Cerrar" : "Close"}
                 >
                   <X className="h-4 w-4" />
                 </button>

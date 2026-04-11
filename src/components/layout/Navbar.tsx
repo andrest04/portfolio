@@ -120,8 +120,8 @@ export default function Navbar({ lang, t }: NavbarProps) {
               className={cn(
                 "pb-1 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-lg",
                 activeSection === it.id
-                  ? "!text-white"
-                  : "!text-white/60 hover:!text-white/90"
+                  ? "text-text-primary"
+                  : "text-text-secondary hover:text-text-primary"
               )}
             >
               {it.label}
@@ -143,6 +143,8 @@ export default function Navbar({ lang, t }: NavbarProps) {
             className="md:hidden rounded-2xl"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </Button>
@@ -150,7 +152,9 @@ export default function Navbar({ lang, t }: NavbarProps) {
       </GlassCard>
 
       <nav
+        id="mobile-nav"
         aria-label="Mobile navigation"
+        aria-hidden={!open}
         className={cn(
           "mt-3 md:hidden transition-all duration-200 ease-out overflow-hidden",
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"

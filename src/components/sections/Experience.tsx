@@ -111,7 +111,7 @@ export default function Experience({ t }: ExperienceProps) {
                         {item.stack.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-lg bg-surface-medium px-2.5 py-1 text-xs font-medium text-text-secondary border border-border-default"
+                            className="rounded-lg border border-border-default bg-surface-default px-3 py-1 text-xs font-medium text-text-secondary backdrop-blur-[var(--glass-backdrop)]"
                           >
                             {tech}
                           </span>

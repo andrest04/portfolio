@@ -126,8 +126,14 @@ export default async function RootLayout({
   return (
     <html lang={lang}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[rgb(var(--bg))] text-[rgba(var(--text),0.92)]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[rgb(var(--bg))] text-text-secondary`}
       >
+        <a
+          href="#hero"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10001] focus:rounded-xl focus:bg-accent-primary focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
+        >
+          {lang === "es" ? "Ir al contenido" : "Skip to content"}
+        </a>
         <div className="pointer-events-none fixed inset-0 -z-10">
           <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[rgba(var(--primary),0.18)] blur-[120px]" />
           <div className="absolute top-40 -left-40 h-[520px] w-[520px] rounded-full bg-[rgba(var(--primary-glow),0.10)] blur-[140px]" />

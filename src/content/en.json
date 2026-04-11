@@ -37,6 +37,7 @@
     "subtitle": "Selection of projects where I applied software engineering principles, clean architecture, and robust API design.",
     "viewDemo": "Live Demo",
     "viewGithub": "GitHub",
+    "featured": "Featured",
     "items": [
       {
         "name": "EduSpace",

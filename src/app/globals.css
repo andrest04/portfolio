@@ -190,10 +190,8 @@ html {
   overflow-x: hidden;
 }
 
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
+.custom-cursor-active * {
+  cursor: none !important;
 }
 
 html,
@@ -204,6 +202,7 @@ body {
 body {
   background: rgb(var(--bg));
   color: var(--color-text-secondary);
+  overflow-x: hidden;
 }
 
 /* Ambient gradient overlay for depth (bold enhancement) */
@@ -249,7 +248,7 @@ body::after {
   opacity: 0.04;
   mix-blend-mode: overlay;
   pointer-events: none;
-  z-index: 100;
+  z-index: 1;
 }
 
 ::selection {

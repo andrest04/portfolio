@@ -37,6 +37,7 @@
     "subtitle": "Selección de proyectos donde apliqué principios de ingeniería de software, arquitectura limpia y diseño robusto de APIs.",
     "viewDemo": "Ver Demo",
     "viewGithub": "GitHub",
+    "featured": "Destacado",
     "items": [
       {
         "name": "EduSpace",

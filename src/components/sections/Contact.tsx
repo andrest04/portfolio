@@ -17,12 +17,12 @@ import {
 } from "lucide-react";
 import { Dictionary } from "@/types/i18n";
 
-type ContactProps = { t: Dictionary };
+type ContactProps = { t: Dictionary; lang: string };
 
-export default function Contact({ t }: ContactProps) {
+export default function Contact({ t, lang }: ContactProps) {
   const [copied, setCopied] = useState(false);
   const c = t.contact;
-  const isEs = c.locationLabel === "Ubicación";
+  const isEs = lang === "es";
 
   const email = "andresalbertotorresgarcia@gmail.com";
   const phoneDisplay = "+51 984 300 217";
@@ -40,7 +40,7 @@ export default function Contact({ t }: ContactProps) {
     <section id="contact" className="py-16 sm:py-20 lg:py-24">
       <ScrollReveal>
         <div className="text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-text-primary sm:text-4xl">
             {c.title}
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-text-secondary sm:text-lg">
@@ -56,7 +56,7 @@ export default function Contact({ t }: ContactProps) {
             <GlassCard
               hover={false}
               variant="solid"
-              className="group relative h-full overflow-hidden p-6 transition-all duration-300 hover:border-accent-primary/30 hover:shadow-[var(--shadow-glow-primary-md)]"
+              className="group relative h-full overflow-hidden p-5 sm:p-6 transition-all duration-300 hover:border-accent-primary/30 hover:shadow-[var(--shadow-glow-primary-md)]"
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
@@ -69,7 +69,7 @@ export default function Contact({ t }: ContactProps) {
                 </div>
                 <button
                   onClick={handleCopy}
-                  className="cursor-pointer rounded-lg border border-border-default bg-surface-default p-2 text-text-tertiary transition-all hover:border-border-strong hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow"
+                  className="cursor-pointer rounded-lg border border-border-default bg-surface-default p-2.5 min-h-11 min-w-11 flex items-center justify-center text-text-tertiary transition-all hover:border-border-strong hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow"
                   aria-label={isEs ? "Copiar email" : "Copy email"}
                 >
                   {copied ? (
@@ -112,7 +112,7 @@ export default function Contact({ t }: ContactProps) {
             <GlassCard
               hover={false}
               variant="solid"
-              className="h-full p-6 transition-all duration-300 hover:border-accent-secondary/30 hover:shadow-[var(--shadow-glow-secondary-sm)]"
+              className="h-full p-5 sm:p-6 transition-all duration-300 hover:border-accent-secondary/30 hover:shadow-[var(--shadow-glow-secondary-sm)]"
             >
               <div className="flex items-center gap-3">
                 <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent-secondary/10 text-accent-secondary">
@@ -133,7 +133,7 @@ export default function Contact({ t }: ContactProps) {
 
           {/* Location */}
           <ScrollReveal delay={0.15}>
-            <GlassCard hover={false} variant="solid" className="h-full p-6">
+            <GlassCard hover={false} variant="solid" className="h-full p-5 sm:p-6">
               <div className="flex items-center gap-3">
                 <div className="grid h-10 w-10 place-items-center rounded-xl bg-accent-tertiary/10 text-accent-tertiary">
                   <MapPin className="h-5 w-5" />

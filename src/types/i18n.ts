@@ -28,6 +28,7 @@ export interface Dictionary {
     subtitle: string;
     viewDemo: string;
     viewGithub: string;
+    featured: string;
     items: Array<{
       name: string;
       role: string;

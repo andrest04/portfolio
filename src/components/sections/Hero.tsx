@@ -272,7 +272,7 @@ export default function Hero({ t }: HeroProps) {
         <a
           href="#projects"
           aria-label="Scroll to projects"
-          className="cursor-pointer text-text-tertiary transition duration-200 ease-out hover:text-accent-secondary"
+          className="cursor-pointer flex items-center justify-center min-h-11 min-w-11 rounded-full text-text-tertiary transition duration-200 ease-out hover:text-accent-secondary"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

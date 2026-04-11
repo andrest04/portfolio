@@ -151,17 +151,33 @@ export default function GradientMesh({ className = "" }: { className?: string })
     window.addEventListener("resize", resize);
 
     const startTime = performance.now();
+    let isVisible = true;
 
     const render = () => {
+      if (!isVisible) return;
       const elapsed = (performance.now() - startTime) / 1000;
       gl.uniform1f(timeLoc, prefersReducedMotion ? 0 : elapsed);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       animRef.current = requestAnimationFrame(render);
     };
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          animRef.current = requestAnimationFrame(render);
+        } else {
+          cancelAnimationFrame(animRef.current);
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+
     animRef.current = requestAnimationFrame(render);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(animRef.current);
       window.removeEventListener("resize", resize);
       gl.deleteProgram(program);

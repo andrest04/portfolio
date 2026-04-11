@@ -22,6 +22,7 @@ export default function TiltCard({
       const card = cardRef.current;
       const glare = glareRef.current;
       if (!card || !glare) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
       const rect = card.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;

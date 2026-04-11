@@ -10,7 +10,6 @@ interface ScrollRevealProps {
   delay?: number;
   y?: number;
   duration?: number;
-  stagger?: number;
   once?: boolean;
 }
 

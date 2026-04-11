@@ -23,7 +23,7 @@ export default function CustomCursor() {
       return;
     }
 
-    // cursor: none is handled globally via CSS @media (pointer: fine)
+    document.documentElement.classList.add("custom-cursor-active");
 
     const xDot = gsap.quickTo(dot, "x", { duration: 0.05, ease: "none" });
     const yDot = gsap.quickTo(dot, "y", { duration: 0.05, ease: "none" });
@@ -37,14 +37,25 @@ export default function CustomCursor() {
       yRing(e.clientY);
     };
 
-    const onEnterInteractive = () => {
-      gsap.to(ring, { scale: 1.8, opacity: 0.6, duration: 0.3 });
-      gsap.to(dot, { scale: 0.5, duration: 0.3 });
+    const isInteractive = (el: Element | null): boolean => {
+      if (!el) return false;
+      return !!el.closest(
+        "a, button, [role='button'], input, textarea, select, [data-cursor-hover]"
+      );
     };
 
-    const onLeaveInteractive = () => {
-      gsap.to(ring, { scale: 1, opacity: 0.4, duration: 0.3 });
-      gsap.to(dot, { scale: 1, duration: 0.3 });
+    const onOver = (e: MouseEvent) => {
+      if (isInteractive(e.target as Element)) {
+        gsap.to(ring, { scale: 1.8, opacity: 0.6, duration: 0.3 });
+        gsap.to(dot, { scale: 0.5, duration: 0.3 });
+      }
+    };
+
+    const onOut = (e: MouseEvent) => {
+      if (isInteractive(e.target as Element)) {
+        gsap.to(ring, { scale: 1, opacity: 0.4, duration: 0.3 });
+        gsap.to(dot, { scale: 1, duration: 0.3 });
+      }
     };
 
     const onMouseDown = () => {
@@ -58,26 +69,18 @@ export default function CustomCursor() {
     };
 
     window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseover", onOver);
+    document.addEventListener("mouseout", onOut);
     window.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mouseup", onMouseUp);
 
-    const interactives = document.querySelectorAll(
-      "a, button, [role='button'], input, textarea, select, [data-cursor-hover]"
-    );
-    interactives.forEach((el) => {
-      el.addEventListener("mouseenter", onEnterInteractive);
-      el.addEventListener("mouseleave", onLeaveInteractive);
-    });
-
     return () => {
-      // CSS handles cursor visibility
+      document.documentElement.classList.remove("custom-cursor-active");
       window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseout", onOut);
       window.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mouseup", onMouseUp);
-      interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnterInteractive);
-        el.removeEventListener("mouseleave", onLeaveInteractive);
-      });
     };
   }, []);
 

@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       <Projects t={t} />
       <Experience t={t} />
       <AboutSkills t={t} />
-      <Contact t={t} />
+      <Contact t={t} lang={lang} />
     </>
   );
 }

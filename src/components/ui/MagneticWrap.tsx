@@ -20,6 +20,7 @@ export default function MagneticWrap({
     (e: React.MouseEvent<HTMLDivElement>) => {
       const el = ref.current;
       if (!el) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
       const rect = el.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;

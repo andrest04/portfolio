@@ -15,7 +15,7 @@ export default function Projects({ t }: ProjectsProps) {
     <section id="projects" className="py-16 sm:py-20 lg:py-24">
       <div className="flex flex-col gap-4">
         <ScrollReveal>
-          <h2 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-text-primary sm:text-4xl">
             {projects.title}
           </h2>
           <p className="mt-3 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
@@ -39,7 +39,7 @@ export default function Projects({ t }: ProjectsProps) {
                     </div>
 
                     <span className="rounded-full border border-border-default bg-surface-default px-3 py-1 text-xs text-text-secondary backdrop-blur-[var(--glass-backdrop)]">
-                      Featured
+                      {projects.featured}
                     </span>
                   </div>
 
@@ -51,7 +51,7 @@ export default function Projects({ t }: ProjectsProps) {
                     {(p.stack ?? []).slice(0, 6).map((tag: string) => (
                       <span
                         key={tag}
-                        className="rounded-xl border border-border-default bg-surface-default px-3 py-1 text-xs text-text-secondary backdrop-blur-[var(--glass-backdrop)]"
+                        className="rounded-lg border border-border-default bg-surface-default px-3 py-1 text-xs text-text-secondary backdrop-blur-[var(--glass-backdrop)]"
                       >
                         {tag}
                       </span>
