@@ -15,7 +15,7 @@
         "company": "Mathyu's Solutions",
         "role": "Desarrollador Full-Stack",
         "period": "Mar 2025 — Jul 2025",
-        "description": "Startup italiana de desarrollo de plataforma web de reservas. Desarrollo de la aplicación full-stack con UI responsive, sistema de autenticación y diseño de base de datos NoSQL optimizada.",
+        "description": "Empresa peruana de desarrollo de software y transformación digital. Desarrollé una plataforma web de reservas para un cliente italiano con UI responsive, sistema de autenticación y diseño de base de datos NoSQL optimizada.",
         "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"]
       }
     ]
