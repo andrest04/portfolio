@@ -1,7 +1,7 @@
-import GlassCard from "@/components/ui/GlassCard"
-import MotionIn from "@/components/ui/MotionIn"
-import { Button } from "@/components/ui/button"
-import { Dictionary } from "@/types/i18n"
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import GlassCard from "@/components/ui/GlassCard";
+import { Button } from "@/components/ui/button";
+import { Dictionary } from "@/types/i18n";
 
 type ProjectsProps = {
   t: Dictionary;
@@ -13,18 +13,18 @@ export default function Projects({ t }: ProjectsProps) {
   return (
     <section id="projects" className="py-16 sm:py-20 lg:py-24">
       <div className="flex flex-col gap-4">
-        <MotionIn>
+        <ScrollReveal>
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
             {projects.title}
           </h2>
           <p className="max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
             {projects.subtitle}
           </p>
-        </MotionIn>
+        </ScrollReveal>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {(projects.items ?? []).map((p, idx: number) => (
-            <MotionIn key={p.name ?? idx} delay={0.04 * idx}>
+            <ScrollReveal key={p.name ?? idx} delay={0.08 * idx} y={40}>
               <GlassCard className="h-full p-5 sm:p-6">
                 <div className="flex items-start justify-between gap-4">
                   <div>
@@ -94,7 +94,7 @@ export default function Projects({ t }: ProjectsProps) {
                   ) : null}
                 </div>
               </GlassCard>
-            </MotionIn>
+            </ScrollReveal>
           ))}
         </div>
       </div>

@@ -1,8 +1,8 @@
-import GlassCard from "@/components/ui/GlassCard"
-import MotionIn from "@/components/ui/MotionIn"
-import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react"
-import { Dictionary } from "@/types/i18n"
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import GlassCard from "@/components/ui/GlassCard";
+import { Button } from "@/components/ui/button";
+import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
+import { Dictionary } from "@/types/i18n";
 
 type ContactProps = { t: Dictionary };
 
@@ -18,14 +18,14 @@ export default function Contact({ t }: ContactProps) {
 
   return (
     <section id="contact" className="py-16 sm:py-20 lg:py-24">
-      <MotionIn>
+      <ScrollReveal>
         <h2 className="text-center text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
           {c.title}
         </h2>
-      </MotionIn>
+      </ScrollReveal>
 
       <div className="mx-auto mt-8 max-w-3xl">
-        <MotionIn delay={0.06}>
+        <ScrollReveal delay={0.1} y={40}>
           <GlassCard variant="solid" className="p-6 sm:p-8">
             <div>
               <h3 className="text-lg font-semibold text-text-primary">
@@ -96,7 +96,7 @@ export default function Contact({ t }: ContactProps) {
               </div>
             </div>
           </GlassCard>
-        </MotionIn>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -132,5 +132,5 @@ function SocialBtn({
         <span className="sr-only">(opens in new tab)</span>
       </a>
     </Button>
-  )
+  );
 }

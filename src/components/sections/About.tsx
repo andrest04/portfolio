@@ -1,5 +1,5 @@
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
-import MotionIn from "@/components/ui/MotionIn";
 import { Dictionary } from "@/types/i18n";
 
 type AboutProps = { t: Dictionary };
@@ -11,26 +11,26 @@ export default function About({ t }: AboutProps) {
     <section id="about" className="py-16 sm:py-20 lg:py-24">
       <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
         <div className="lg:col-span-5">
-          <MotionIn>
+          <ScrollReveal>
             <h2 className="text-3xl font-semibold leading-tight tracking-tight text-text-primary sm:text-4xl">
               {about.title}
             </h2>
             <p className="mt-3 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg">
               {about.subtitle}
             </p>
-          </MotionIn>
+          </ScrollReveal>
 
-          <MotionIn delay={0.06}>
+          <ScrollReveal delay={0.1}>
             <div className="mt-6 h-px w-24 bg-border-medium relative overflow-hidden">
               <div className="h-px w-10 bg-gradient-to-r from-accent-primary to-accent-secondary" />
             </div>
-          </MotionIn>
+          </ScrollReveal>
         </div>
 
         <div className="lg:col-span-7">
           <div className="grid gap-6 sm:grid-cols-2">
             {(about.cards ?? []).map((c, idx: number) => (
-              <MotionIn key={c.title ?? idx} delay={0.04 * idx}>
+              <ScrollReveal key={c.title ?? idx} delay={0.08 * idx} y={40}>
                 <GlassCard hover={false} className="h-full p-5 sm:p-6">
                   <h3 className="text-base font-semibold text-text-primary">
                     {c.title}
@@ -45,10 +45,10 @@ export default function About({ t }: AboutProps) {
                     ))}
                   </ul>
                 </GlassCard>
-              </MotionIn>
+              </ScrollReveal>
             ))}
 
-            <MotionIn delay={0.14}>
+            <ScrollReveal delay={0.2}>
               <GlassCard hover={false} variant="solid" className="sm:col-span-2 p-5 sm:p-6 border-accent-primary/20">
                 <p className="text-sm leading-relaxed text-text-secondary">
                   <span className="font-medium text-accent-primary">
@@ -57,7 +57,7 @@ export default function About({ t }: AboutProps) {
                   {about.principleText}
                 </p>
               </GlassCard>
-            </MotionIn>
+            </ScrollReveal>
           </div>
         </div>
       </div>

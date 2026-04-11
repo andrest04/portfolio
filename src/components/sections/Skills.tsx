@@ -1,5 +1,5 @@
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import GlassCard from "@/components/ui/GlassCard";
-import MotionIn from "@/components/ui/MotionIn";
 import { Dictionary } from "@/types/i18n";
 
 type SkillsProps = { t: Dictionary };
@@ -9,20 +9,20 @@ export default function Skills({ t }: SkillsProps) {
 
   return (
     <section id="skills" className="py-16 sm:py-20 lg:py-24">
-      <MotionIn>
+      <ScrollReveal>
         <h2 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
           {skills.title}
         </h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
           {skills.subtitle}
         </p>
-      </MotionIn>
+      </ScrollReveal>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-12 lg:items-start">
         <div className="lg:col-span-8">
           <div className="grid gap-6 sm:grid-cols-2">
             {(skills.groups ?? []).map((g, idx: number) => (
-              <MotionIn key={g.title ?? idx} delay={0.04 * idx}>
+              <ScrollReveal key={g.title ?? idx} delay={0.08 * idx} y={40}>
                 <GlassCard hover={false} className="h-full p-5 sm:p-6">
                   <h3 className="text-base font-semibold text-text-primary">
                     {g.title}
@@ -39,13 +39,13 @@ export default function Skills({ t }: SkillsProps) {
                     ))}
                   </ul>
                 </GlassCard>
-              </MotionIn>
+              </ScrollReveal>
             ))}
           </div>
         </div>
 
         <div className="lg:col-span-4">
-          <MotionIn delay={0.12}>
+          <ScrollReveal delay={0.15}>
             <GlassCard hover={false} variant="solid" className="p-5 sm:p-6">
               <h3 className="text-base font-semibold text-text-primary">
                 {skills.strengthsTitle}
@@ -60,7 +60,7 @@ export default function Skills({ t }: SkillsProps) {
                 ))}
               </ul>
             </GlassCard>
-          </MotionIn>
+          </ScrollReveal>
         </div>
       </div>
     </section>
