@@ -1,9 +1,8 @@
 "use client";
 
 import { Mail, Check, Copy, ArrowUpRight } from "lucide-react";
-import GlassCard from "@/components/ui/GlassCard";
+import Card from "@/components/ui/Card";
 import { Button } from "@/components/ui/button";
-import MagneticWrap from "@/components/ui/MagneticWrap";
 import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
 
 type ContactEmailCardProps = {
@@ -20,10 +19,10 @@ export default function ContactEmailCard({
   const { copied, copy } = useCopyToClipboard();
 
   return (
-    <GlassCard
+    <Card
       hover={false}
       variant="solid"
-      className="group relative h-full overflow-hidden p-5 sm:p-6 transition-all duration-300 hover:border-accent-primary/30 hover:shadow-[var(--shadow-glow-primary-md)]"
+      className="group relative h-full overflow-hidden p-5 sm:p-6 transition-colors duration-200 hover:border-border-strong"
     >
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
@@ -34,7 +33,7 @@ export default function ContactEmailCard({
         </div>
         <button
           onClick={() => copy(email)}
-          className="cursor-pointer rounded-lg border border-border-default bg-surface-default p-2.5 min-h-11 min-w-11 flex items-center justify-center text-text-tertiary transition-all hover:border-border-strong hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow"
+          className="cursor-pointer rounded-lg border border-border-default bg-surface-default p-2.5 min-h-11 min-w-11 flex items-center justify-center text-text-tertiary transition-all hover:border-border-strong hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           aria-label={isEs ? "Copiar email" : "Copy email"}
         >
           {copied ? (
@@ -54,19 +53,13 @@ export default function ContactEmailCard({
       )}
 
       <div className="mt-4">
-        <MagneticWrap>
-          <Button
-            asChild
-            size="sm"
-            className="rounded-xl bg-accent-primary hover:shadow-[var(--shadow-glow-primary-md)] hover:scale-[1.02]"
-          >
-            <a href={`mailto:${email}`}>
-              {isEs ? "Enviar email" : "Send email"}
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
-          </Button>
-        </MagneticWrap>
+        <Button asChild size="sm" className="rounded-md">
+          <a href={`mailto:${email}`}>
+            {isEs ? "Enviar email" : "Send email"}
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </Button>
       </div>
-    </GlassCard>
+    </Card>
   );
 }

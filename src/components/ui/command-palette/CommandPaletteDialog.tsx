@@ -42,7 +42,7 @@ export default function CommandPaletteDialog({
         aria-label={isEs ? "Paleta de comandos" : "Command palette"}
         className="fixed inset-x-0 top-[20%] z-[9991] mx-auto w-full max-w-lg px-4 animate-in fade-in slide-in-from-top-4 duration-200"
       >
-        <div className="overflow-hidden rounded-2xl border border-border-medium bg-[rgb(var(--bg-2))] shadow-lg backdrop-blur-[var(--glass-blur-strong)]">
+        <div className="overflow-hidden rounded-2xl border border-border-medium bg-[rgb(var(--bg-2))] shadow-lg ">
           <div className="flex items-center gap-3 border-b border-border-default px-4 py-3">
             <Search className="h-4 w-4 text-text-tertiary" />
             <input

@@ -25,7 +25,7 @@ export default function NavbarLinks({ items, activeSection }: NavbarLinksProps) 
     >
       <div
         ref={indicatorRef}
-        className="absolute bottom-0 h-0.5 rounded-full bg-accent-secondary"
+        className="absolute bottom-0 h-0.5 rounded-full bg-white"
         style={{ width: 0 }}
         aria-hidden="true"
       />
@@ -35,7 +35,7 @@ export default function NavbarLinks({ items, activeSection }: NavbarLinksProps) 
           href={it.href}
           data-section={it.id}
           className={cn(
-            "pb-1 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-lg",
+            "pb-1 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-lg",
             activeSection === it.id
               ? "text-text-primary"
               : "text-text-secondary hover:text-text-primary"

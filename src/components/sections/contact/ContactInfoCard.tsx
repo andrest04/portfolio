@@ -1,4 +1,4 @@
-import GlassCard from "@/components/ui/GlassCard";
+import Card from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
 
 type ContactInfoCardProps = {
@@ -23,7 +23,7 @@ export default function ContactInfoCard({
   valueLinkClass,
 }: ContactInfoCardProps) {
   return (
-    <GlassCard
+    <Card
       hover={false}
       variant="solid"
       className={cn("h-full p-5 sm:p-6 transition-all duration-300", hoverClass)}
@@ -54,6 +54,6 @@ export default function ContactInfoCard({
       ) : (
         <p className="mt-3 text-sm text-text-secondary">{value}</p>
       )}
-    </GlassCard>
+    </Card>
   );
 }

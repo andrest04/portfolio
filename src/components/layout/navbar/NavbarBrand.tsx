@@ -5,7 +5,7 @@ type NavbarBrandProps = {
 export default function NavbarBrand({ lang }: NavbarBrandProps) {
   return (
     <a href="#" className="flex items-center gap-3 cursor-pointer">
-      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-surface-default text-sm font-semibold text-text-primary shadow-[var(--shadow-ring)]">
+      <div className="grid h-11 w-11 place-items-center rounded-md border border-white/10 bg-white/5 text-sm font-semibold text-text-primary">
         AT.
       </div>
       <div className="hidden sm:block">

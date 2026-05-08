@@ -1,5 +1,4 @@
-import TiltCard from "@/components/ui/TiltCard";
-import GlassCard from "@/components/ui/GlassCard";
+import Card from "@/components/ui/Card";
 import TechChip from "@/components/ui/TechChip";
 import { Button } from "@/components/ui/button";
 
@@ -29,72 +28,70 @@ export default function ProjectCard({
   viewDemoLabel,
 }: ProjectCardProps) {
   return (
-    <TiltCard className="h-full">
-      <GlassCard className="gradient-border h-full p-5 sm:p-6">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <h3 className="text-lg font-semibold text-text-primary">
-              {project.name}
-            </h3>
-            <p className="mt-1 text-sm text-text-secondary">{project.role}</p>
-          </div>
-
-          <span className="rounded-full border border-border-default bg-surface-default px-3 py-1 text-xs text-text-secondary backdrop-blur-[var(--glass-backdrop)]">
-            {featuredLabel}
-          </span>
+    <Card className="h-full p-5 sm:p-6">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="text-lg font-semibold text-text-primary">
+            {project.name}
+          </h3>
+          <p className="mt-1 text-sm text-text-secondary">{project.role}</p>
         </div>
 
-        <p className="mt-4 text-sm leading-relaxed text-text-secondary">
-          {project.description}
-        </p>
+        <span className="rounded-full border border-border-default bg-surface-default px-3 py-1 text-xs text-text-secondary">
+          {featuredLabel}
+        </span>
+      </div>
 
-        <div className="mt-5 flex flex-wrap gap-2">
-          {(project.stack ?? []).slice(0, 6).map((tag) => (
-            <TechChip key={tag}>{tag}</TechChip>
-          ))}
-        </div>
+      <p className="mt-4 text-sm leading-relaxed text-text-secondary">
+        {project.description}
+      </p>
 
-        <ul className="mt-5 space-y-2 text-sm text-text-secondary">
-          {(project.highlights ?? []).slice(0, 4).map((h, i) => (
-            <li key={i} className="flex gap-3">
-              <span
-                aria-hidden="true"
-                className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-accent-secondary"
-              />
-              <span>{h}</span>
-            </li>
-          ))}
-        </ul>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {(project.stack ?? []).slice(0, 6).map((tag) => (
+          <TechChip key={tag}>{tag}</TechChip>
+        ))}
+      </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          {project.links?.github ? (
-            <Button
-              variant="outline"
-              size="default"
-              asChild
-              className="rounded-xl text-xs cursor-pointer"
-            >
-              <a href={project.links.github} target="_blank" rel="noreferrer">
-                {viewGithubLabel}
-                <span className="sr-only">(opens in new tab)</span>
-              </a>
-            </Button>
-          ) : null}
+      <ul className="mt-5 space-y-2 text-sm text-text-secondary">
+        {(project.highlights ?? []).slice(0, 4).map((h, i) => (
+          <li key={i} className="flex gap-3">
+            <span
+              aria-hidden="true"
+              className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-text-tertiary"
+            />
+            <span>{h}</span>
+          </li>
+        ))}
+      </ul>
 
-          {project.links?.demo ? (
-            <Button
-              size="default"
-              asChild
-              className="rounded-xl bg-accent-secondary text-xs hover:shadow-[var(--shadow-glow-secondary-lg)] hover:scale-[1.02] cursor-pointer"
-            >
-              <a href={project.links.demo} target="_blank" rel="noreferrer">
-                {viewDemoLabel}
-                <span className="sr-only">(opens in new tab)</span>
-              </a>
-            </Button>
-          ) : null}
-        </div>
-      </GlassCard>
-    </TiltCard>
+      <div className="mt-6 flex flex-wrap gap-3">
+        {project.links?.github ? (
+          <Button
+            variant="outline"
+            size="default"
+            asChild
+            className="rounded-md text-xs cursor-pointer"
+          >
+            <a href={project.links.github} target="_blank" rel="noreferrer">
+              {viewGithubLabel}
+              <span className="sr-only">(opens in new tab)</span>
+            </a>
+          </Button>
+        ) : null}
+
+        {project.links?.demo ? (
+          <Button
+            size="default"
+            asChild
+            className="rounded-md text-xs cursor-pointer"
+          >
+            <a href={project.links.demo} target="_blank" rel="noreferrer">
+              {viewDemoLabel}
+              <span className="sr-only">(opens in new tab)</span>
+            </a>
+          </Button>
+        ) : null}
+      </div>
+    </Card>
   );
 }

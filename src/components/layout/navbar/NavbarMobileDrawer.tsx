@@ -1,4 +1,4 @@
-import GlassCard from "@/components/ui/GlassCard";
+import Card from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/components/layout/navbar/NavbarLinks";
 
@@ -25,7 +25,7 @@ export default function NavbarMobileDrawer({
         open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
       )}
     >
-      <GlassCard variant="default" className="p-3">
+      <Card variant="default" className="p-3">
         <div className="flex flex-col">
           {items.map((it) => (
             <a
@@ -33,7 +33,7 @@ export default function NavbarMobileDrawer({
               href={it.href}
               onClick={onItemSelect}
               className={cn(
-                "rounded-xl py-3 px-4 text-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow",
+                "rounded-xl py-3 px-4 text-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40",
                 activeSection === it.id
                   ? "bg-surface-default text-text-primary"
                   : "text-text-secondary hover:bg-surface-default hover:text-text-primary"
@@ -43,7 +43,7 @@ export default function NavbarMobileDrawer({
             </a>
           ))}
         </div>
-      </GlassCard>
+      </Card>
     </nav>
   );
 }

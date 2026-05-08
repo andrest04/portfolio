@@ -42,10 +42,10 @@ export default function Contact({ t, lang }: ContactProps) {
               label={c.phoneLabel}
               value={PHONE_DISPLAY}
               href={`tel:${PHONE_HREF}`}
-              iconBgClass="bg-accent-secondary/10"
-              iconColorClass="text-accent-secondary"
-              hoverClass="hover:border-accent-secondary/30 hover:shadow-[var(--shadow-glow-secondary-sm)]"
-              valueLinkClass="focus-visible:ring-accent-secondary-glow"
+              iconBgClass="bg-white/5"
+              iconColorClass="text-text-primary"
+              hoverClass="hover:border-border-strong"
+              valueLinkClass="focus-visible:ring-white/30"
             />
           </ScrollReveal>
 
@@ -54,8 +54,8 @@ export default function Contact({ t, lang }: ContactProps) {
               icon={<MapPin className="h-5 w-5" />}
               label={c.locationLabel}
               value={c.locationValue}
-              iconBgClass="bg-accent-tertiary/10"
-              iconColorClass="text-accent-tertiary"
+              iconBgClass="bg-white/5"
+              iconColorClass="text-text-primary"
             />
           </ScrollReveal>
 
@@ -65,9 +65,9 @@ export default function Contact({ t, lang }: ContactProps) {
               icon={<Linkedin className="h-5 w-5" />}
               label={c.linkedinLabel}
               handle="andres-torres-garcia"
-              iconBgClass="bg-[#0A66C2]/10"
-              iconColorClass="text-[#0A66C2]"
-              hoverClass="hover:border-[#0A66C2]/30 hover:shadow-[0_0_24px_rgba(10,102,194,0.15)]"
+              iconBgClass="bg-white/5"
+              iconColorClass="text-text-primary"
+              hoverClass="hover:border-border-strong"
             />
           </ScrollReveal>
 
@@ -77,9 +77,9 @@ export default function Contact({ t, lang }: ContactProps) {
               icon={<Github className="h-5 w-5" />}
               label={c.githubLabel}
               handle="andrest04"
-              iconBgClass="bg-surface-strong"
+              iconBgClass="bg-white/5"
               iconColorClass="text-text-primary"
-              hoverClass="hover:border-text-primary/20 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
+              hoverClass="hover:border-border-strong"
             />
           </ScrollReveal>
         </div>

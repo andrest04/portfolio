@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import dynamic from "next/dynamic";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
 import { Dictionary } from "@/types/i18n";
 import HeroHeader from "@/components/sections/hero/HeroHeader";
@@ -9,10 +8,6 @@ import HeroActions from "@/components/sections/hero/HeroActions";
 import HeroStack from "@/components/sections/hero/HeroStack";
 import HeroCurrentPosition from "@/components/sections/hero/HeroCurrentPosition";
 import { useHeroAnimation } from "@/components/sections/hero/useHeroAnimation";
-
-const GradientMesh = dynamic(() => import("@/components/ui/GradientMesh"), {
-  ssr: false,
-});
 
 type HeroProps = {
   t: Dictionary;
@@ -23,9 +18,6 @@ export default function Hero({ t }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const titleBeforeRef = useRef<HTMLSpanElement>(null);
-  const titleGradientRef = useRef<HTMLSpanElement>(null);
-  const titleAfterRef = useRef<HTMLSpanElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const stackRef = useRef<HTMLDivElement>(null);
@@ -36,9 +28,6 @@ export default function Hero({ t }: HeroProps) {
     section: sectionRef,
     header: headerRef,
     title: titleRef,
-    titleBefore: titleBeforeRef,
-    titleGradient: titleGradientRef,
-    titleAfter: titleAfterRef,
     subtitle: subtitleRef,
     cta: ctaRef,
     stack: stackRef,
@@ -48,34 +37,16 @@ export default function Hero({ t }: HeroProps) {
 
   return (
     <section ref={sectionRef} id="hero" className="relative py-16 sm:py-20 lg:py-24">
-      <div className="pointer-events-none absolute -inset-y-16 left-1/2 -z-10 w-screen -translate-x-1/2 overflow-hidden">
-        <GradientMesh className="h-full w-full opacity-60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgb(var(--bg))]" />
-      </div>
-
       <div className="mx-auto max-w-3xl text-center">
         <HeroHeader ref={headerRef} name={hero.name} role={hero.role} />
 
-        {(() => {
-          const [before, after] = hero.title.split("Clean Architecture");
-          return (
-            <h1
-              ref={titleRef}
-              className="mt-6 text-3xl font-semibold leading-tight tracking-tight text-text-primary sm:text-4xl lg:text-5xl"
-              style={{ opacity: 0 }}
-            >
-              {before && <span ref={titleBeforeRef}>{before}</span>}
-              <span
-                ref={titleGradientRef}
-                className="inline-block bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent"
-                style={{ clipPath: "inset(0 100% 0 0)" }}
-              >
-                Clean Architecture
-              </span>
-              {after && <span ref={titleAfterRef}>{after}</span>}
-            </h1>
-          );
-        })()}
+        <h1
+          ref={titleRef}
+          className="mt-6 text-3xl font-semibold leading-tight tracking-tight text-text-primary sm:text-4xl lg:text-5xl"
+          style={{ opacity: 0 }}
+        >
+          {hero.title}
+        </h1>
 
         <p
           ref={subtitleRef}
