@@ -7,9 +7,9 @@ Personal portfolio showcasing software engineering projects with emphasis on Cle
 - **Framework**: Next.js 16 (App Router, React Server Components)
 - **Language**: TypeScript (strict mode)
 - **Styling**: Tailwind CSS 4, shadcn/ui components
-- **Animation**: Framer Motion
+- **Animation**: GSAP (ScrollTrigger, SplitText) and IntersectionObserver
 - **i18n**: Custom implementation with middleware-based routing (`/en`, `/es`)
-- **Architecture**: Server-first with glass-morphism UI design
+- **Architecture**: Server-first with a minimalist, monochrome UI
 
 ## Project Structure
 
@@ -21,7 +21,7 @@ src/
 │   └── globals.css
 ├── components/
 │   ├── layout/           # Navbar
-│   ├── sections/         # Hero, Projects, About, Skills, Contact
+│   ├── sections/         # Hero, Projects, Experience, AboutSkills, Contact
 │   └── ui/               # Reusable UI components (Button, Card, Input, etc.)
 ├── content/              # i18n JSON dictionaries (en.json, es.json)
 ├── lib/                  # Utilities and i18n helpers
@@ -49,9 +49,9 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 ## Key Features
 
 - **Internationalization**: Automatic locale detection with `/en` and `/es` routes
-- **Responsive Design**: Mobile-first approach with glass-morphism aesthetics
+- **Responsive Design**: Mobile-first, minimalist monochrome aesthetic with light/dark mode
 - **Type Safety**: Strict TypeScript with no `any` types
-- **Animation**: Smooth transitions with Framer Motion
+- **Animation**: Smooth scroll-triggered reveals with GSAP and IntersectionObserver
 - **CV Download**: Dynamic PDF serving via API route
 - **SEO**: Sitemap and robots.txt generation
 
