@@ -94,6 +94,10 @@ export default function Hero({ t }: HeroProps) {
         >
           <div className="relative aspect-square w-full motion-safe:animate-[blob-drift_32s_ease-in-out_infinite]">
             <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-[18%] rounded-full bg-[radial-gradient(closest-side,rgb(var(--surface)/0.55),rgb(var(--surface)/0.18)_40%,rgb(var(--surface)/0.06)_65%,transparent_80%)] blur-3xl motion-safe:animate-[hero-glow-pulse_8s_ease-in-out_infinite]"
+            />
+            <div
               className="relative h-full w-full overflow-hidden border border-border-medium bg-surface-subtle transition-[border-radius] duration-[7000ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
               style={{ borderRadius: "63% 37% 54% 46% / 55% 48% 52% 45%" }}
             >

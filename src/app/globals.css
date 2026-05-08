@@ -261,6 +261,17 @@ a:not([class*="bg-"]):hover {
     }
   }
 
+  @keyframes hero-glow-pulse {
+    0%, 100% {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+
   @keyframes hero-breathe {
     0%, 100% {
       letter-spacing: -0.02em;
