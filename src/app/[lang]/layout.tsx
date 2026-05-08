@@ -4,8 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
-import CustomCursor from "@/components/ui/CustomCursor";
-import PageLoader from "@/components/ui/PageLoader";
 import { getDictionary } from "@/lib/i18n";
 
 const geistSans = Geist({
@@ -130,24 +128,16 @@ export default async function RootLayout({
       >
         <a
           href="#hero"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10001] focus:rounded-xl focus:bg-accent-primary focus:px-4 focus:py-2 focus:text-white focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10001] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black focus:shadow-lg"
         >
           {lang === "es" ? "Ir al contenido" : "Skip to content"}
         </a>
-        <div className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[rgba(var(--primary),0.18)] blur-[120px]" />
-          <div className="absolute top-40 -left-40 h-[520px] w-[520px] rounded-full bg-[rgba(var(--primary-glow),0.10)] blur-[140px]" />
-          <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(255,255,255,0.06),transparent_60%)]" />
-        </div>
-
         <div className="flex min-h-screen flex-col">
           <Navbar lang={lang as "es" | "en"} t={t} />
           <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 sm:px-6 lg:px-8">
             {children}
           </main>
         </div>
-        <PageLoader />
-        <CustomCursor />
         <Analytics />
         <SpeedInsights />
       </body>

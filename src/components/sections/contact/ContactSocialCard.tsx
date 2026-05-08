@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import GlassCard from "@/components/ui/GlassCard";
+import Card from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
 
 type ContactSocialCardProps = {
@@ -23,7 +23,7 @@ export default function ContactSocialCard({
 }: ContactSocialCardProps) {
   return (
     <a href={href} target="_blank" rel="noreferrer" className="block h-full">
-      <GlassCard
+      <Card
         hover={false}
         className={cn("group h-full p-6 transition-all duration-300", hoverClass)}
       >
@@ -45,7 +45,7 @@ export default function ContactSocialCard({
           </div>
           <ArrowUpRight className="h-4 w-4 text-text-tertiary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-text-secondary" />
         </div>
-      </GlassCard>
+      </Card>
     </a>
   );
 }

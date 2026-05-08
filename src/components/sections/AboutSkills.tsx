@@ -1,5 +1,5 @@
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import GlassCard from "@/components/ui/GlassCard";
+import Card from "@/components/ui/Card";
 import { Dictionary } from "@/types/i18n";
 
 type AboutSkillsProps = { t: Dictionary };
@@ -21,9 +21,7 @@ export default function AboutSkills({ t }: AboutSkillsProps) {
       </ScrollReveal>
 
       <ScrollReveal delay={0.1}>
-        <div className="mt-6 h-px w-24 bg-border-medium relative overflow-hidden">
-          <div className="h-px w-10 bg-gradient-to-r from-accent-primary to-accent-secondary" />
-        </div>
+        <div className="mt-6 h-px w-24 bg-border-medium" />
       </ScrollReveal>
 
       {/* Bento Grid */}
@@ -31,7 +29,7 @@ export default function AboutSkills({ t }: AboutSkillsProps) {
         {/* Info panels — Education, Focus, Teamwork */}
         {infoPanels.map((panel, idx) => (
           <ScrollReveal key={panel.title} delay={0.08 * idx} y={30}>
-            <GlassCard hover={false} className="h-full p-5 sm:p-6">
+            <Card hover={false} className="h-full p-5 sm:p-6">
               <h3 className="text-base font-semibold text-text-primary">
                 {panel.title}
               </h3>
@@ -46,14 +44,14 @@ export default function AboutSkills({ t }: AboutSkillsProps) {
                   </li>
                 ))}
               </ul>
-            </GlassCard>
+            </Card>
           </ScrollReveal>
         ))}
 
         {/* Skills groups */}
         {data.skills.map((group, idx) => (
           <ScrollReveal key={group.title} delay={0.06 * idx} y={30}>
-            <GlassCard hover={false} className="h-full p-5 sm:p-6">
+            <Card hover={false} className="h-full p-5 sm:p-6">
               <h3 className="text-base font-semibold text-text-primary">
                 {group.title}
               </h3>
@@ -61,31 +59,31 @@ export default function AboutSkills({ t }: AboutSkillsProps) {
                 {group.items.map((item) => (
                   <li
                     key={item}
-                    className="rounded-xl border border-border-default bg-surface-default px-3 py-1.5 text-xs text-text-secondary backdrop-blur-[var(--glass-backdrop)] sm:text-sm"
+                    className="rounded-xl border border-border-default bg-surface-default px-3 py-1.5 text-xs text-text-secondary sm:text-sm"
                   >
                     {item}
                   </li>
                 ))}
               </ul>
-            </GlassCard>
+            </Card>
           </ScrollReveal>
         ))}
 
         {/* Principle */}
         <ScrollReveal delay={0.2} className="sm:col-span-2 lg:col-span-3">
-          <GlassCard hover={false} variant="solid" className="p-5 sm:p-6 border-accent-primary/20">
+          <Card hover={false} variant="solid" className="p-5 sm:p-6 border-accent-primary/20">
             <p className="text-sm leading-relaxed text-text-secondary">
               <span className="font-medium text-accent-primary">
                 {data.principle.label}
               </span>{" "}
               {data.principle.text}
             </p>
-          </GlassCard>
+          </Card>
         </ScrollReveal>
 
         {/* Strengths */}
         <ScrollReveal delay={0.15} className="sm:col-span-2 lg:col-span-3">
-          <GlassCard hover={false} variant="solid" className="p-5 sm:p-6">
+          <Card hover={false} variant="solid" className="p-5 sm:p-6">
             <h3 className="text-base font-semibold text-text-primary">
               {data.strengthsTitle}
             </h3>
@@ -100,7 +98,7 @@ export default function AboutSkills({ t }: AboutSkillsProps) {
                 </li>
               ))}
             </ul>
-          </GlassCard>
+          </Card>
         </ScrollReveal>
       </div>
     </section>

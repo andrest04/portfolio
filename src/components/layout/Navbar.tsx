@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import GlassCard from "@/components/ui/GlassCard";
+import Card from "@/components/ui/Card";
 import { Menu, X } from "lucide-react";
 import { Dictionary } from "@/types/i18n";
 import CommandPalette from "@/components/ui/CommandPalette";
@@ -35,7 +35,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
 
   return (
     <div className="sticky top-4 z-50 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-      <GlassCard
+      <Card
         variant="solid"
         className="flex items-center justify-between px-4 py-3 sm:px-5"
       >
@@ -59,7 +59,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
             {open ? <X size={18} /> : <Menu size={18} />}
           </Button>
         </div>
-      </GlassCard>
+      </Card>
 
       <NavbarMobileDrawer
         items={items}

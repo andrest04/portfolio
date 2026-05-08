@@ -1,10 +1,10 @@
-import GlassCard from "@/components/ui/GlassCard";
+import Card from "@/components/ui/Card";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-4">
-      <GlassCard variant="solid" className="max-w-md p-8 text-center">
+      <Card variant="solid" className="max-w-md p-8 text-center">
         <div className="mb-6 flex justify-center">
           <div className="grid h-16 w-16 place-items-center rounded-2xl bg-surface-strong text-3xl font-bold text-text-primary">
             404
@@ -22,12 +22,12 @@ export default function NotFound() {
         <div className="mt-6">
           <Link
             href="/"
-            className="inline-flex items-center justify-center rounded-2xl bg-accent-secondary px-5 py-3 text-sm font-medium text-white shadow-[var(--shadow-ring)] transition duration-200 ease-out hover:shadow-[var(--shadow-glow-secondary-lg)] hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-secondary-glow"
+            className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-medium text-black transition-colors duration-200 ease-out hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
           >
             Go home
           </Link>
         </div>
-      </GlassCard>
+      </Card>
     </div>
   );
 }
