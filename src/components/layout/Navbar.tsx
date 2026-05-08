@@ -1,38 +1,31 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { gsap } from "@/lib/gsap";
-import GlassCard from "@/components/ui/GlassCard";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import GlassCard from "@/components/ui/GlassCard";
 import { Menu, X } from "lucide-react";
 import { Dictionary } from "@/types/i18n";
 import CommandPalette from "@/components/ui/CommandPalette";
-import { cn } from "@/lib/utils";
+import NavbarBrand from "@/components/layout/navbar/NavbarBrand";
+import NavbarLinks, {
+  type NavItem,
+} from "@/components/layout/navbar/NavbarLinks";
+import NavbarLangSwitch from "@/components/layout/navbar/NavbarLangSwitch";
+import NavbarMobileDrawer from "@/components/layout/navbar/NavbarMobileDrawer";
+import { useActiveSection } from "@/components/layout/navbar/useActiveSection";
 
 type NavbarProps = {
   lang: "es" | "en";
   t: Dictionary;
 };
 
+const SECTION_IDS = ["hero", "projects", "experience", "about-skills", "contact"];
+
 export default function Navbar({ lang, t }: NavbarProps) {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  const navRef = useRef<HTMLDivElement>(null);
-  const indicatorRef = useRef<HTMLDivElement>(null);
-  const [activeSection, setActiveSection] = useState("hero");
+  const activeSection = useActiveSection(SECTION_IDS);
 
-  const otherLang = lang === "es" ? "en" : "es";
-
-  const switchHref = pathname
-    ? pathname
-        .split("/")
-        .map((p, i) => (i === 1 ? otherLang : p))
-        .join("/")
-    : `/${otherLang}`;
-
-  const items = [
+  const items: NavItem[] = [
     { href: "#hero", label: t.nav.hero, id: "hero" },
     { href: "#projects", label: t.nav.projects, id: "projects" },
     { href: "#experience", label: t.nav.experience, id: "experience" },
@@ -40,102 +33,19 @@ export default function Navbar({ lang, t }: NavbarProps) {
     { href: "#contact", label: t.nav.contact, id: "contact" },
   ];
 
-  useEffect(() => {
-    const sectionIds = ["hero", "projects", "experience", "about-skills", "contact"];
-    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px" }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!indicatorRef.current || !navRef.current) return;
-
-    const activeLink = navRef.current.querySelector(
-      `[data-section="${activeSection}"]`
-    ) as HTMLElement | null;
-
-    if (!activeLink) return;
-
-    const navRect = navRef.current.getBoundingClientRect();
-    const linkRect = activeLink.getBoundingClientRect();
-
-    gsap.to(indicatorRef.current, {
-      x: linkRect.left - navRect.left,
-      width: linkRect.width,
-      duration: 0.3,
-      ease: "power2.out",
-    });
-  }, [activeSection]);
-
   return (
     <div className="sticky top-4 z-50 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
       <GlassCard
         variant="solid"
         className="flex items-center justify-between px-4 py-3 sm:px-5"
       >
-        <a href="#" className="flex items-center gap-3 cursor-pointer">
-          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-surface-default text-sm font-semibold text-text-primary shadow-[var(--shadow-ring)]">
-            AT.
-          </div>
-          <div className="hidden sm:block">
-            <p className="text-sm font-semibold text-text-primary">
-              Andrés Torres
-            </p>
-            <p className="text-xs text-text-secondary">
-              {lang === "es"
-                ? "Estudiante · Full-Stack"
-                : "Student · Full-Stack"}
-            </p>
-          </div>
-        </a>
+        <NavbarBrand lang={lang} />
 
-        <nav
-          ref={navRef}
-          aria-label="Main navigation"
-          className="relative hidden md:flex items-center gap-6 text-sm"
-        >
-          <div
-            ref={indicatorRef}
-            className="absolute bottom-0 h-0.5 rounded-full bg-accent-secondary"
-            style={{ width: 0 }}
-            aria-hidden="true"
-          />
-          {items.map((it) => (
-            <a
-              key={it.href}
-              href={it.href}
-              data-section={it.id}
-              className={cn(
-                "pb-1 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow rounded-lg",
-                activeSection === it.id
-                  ? "text-text-primary"
-                  : "text-text-secondary hover:text-text-primary"
-              )}
-            >
-              {it.label}
-            </a>
-          ))}
-        </nav>
+        <NavbarLinks items={items} activeSection={activeSection} />
 
         <div className="flex items-center gap-2">
           <CommandPalette lang={lang} t={t} />
-          <Button variant="outline" size="sm" asChild className="rounded-2xl">
-            <Link href={switchHref}>
-              {lang.toUpperCase()} → {otherLang.toUpperCase()}
-            </Link>
-          </Button>
+          <NavbarLangSwitch lang={lang} />
 
           <Button
             variant="outline"
@@ -151,35 +61,12 @@ export default function Navbar({ lang, t }: NavbarProps) {
         </div>
       </GlassCard>
 
-      <nav
-        id="mobile-nav"
-        aria-label="Mobile navigation"
-        aria-hidden={!open}
-        className={cn(
-          "mt-3 md:hidden transition-all duration-200 ease-out overflow-hidden",
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        )}
-      >
-        <GlassCard variant="default" className="p-3">
-          <div className="flex flex-col">
-            {items.map((it) => (
-              <a
-                key={it.href}
-                href={it.href}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "rounded-xl py-3 px-4 text-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary-glow",
-                  activeSection === it.id
-                    ? "bg-surface-default text-text-primary"
-                    : "text-text-secondary hover:bg-surface-default hover:text-text-primary"
-                )}
-              >
-                {it.label}
-              </a>
-            ))}
-          </div>
-        </GlassCard>
-      </nav>
+      <NavbarMobileDrawer
+        items={items}
+        activeSection={activeSection}
+        open={open}
+        onItemSelect={() => setOpen(false)}
+      />
     </div>
   );
 }
