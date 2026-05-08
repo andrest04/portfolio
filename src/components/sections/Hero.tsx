@@ -82,7 +82,12 @@ export default function Hero({ t }: HeroProps) {
               </Button>
             </MagneticButton>
 
-            <Button asChild variant="ghost" size="lg" className="rounded-full px-5">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="rounded-full border-text-primary bg-transparent px-7 text-text-primary hover:bg-text-primary hover:text-background"
+            >
               <a href="#contact">{hero.ctaTertiary}</a>
             </Button>
           </div>
