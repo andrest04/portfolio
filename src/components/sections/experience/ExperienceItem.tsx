@@ -1,6 +1,6 @@
 import { Briefcase } from "lucide-react";
-import Card from "@/components/ui/Card";
-import TechChip from "@/components/ui/TechChip";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export type ExperienceItemData = {
   company: string;
@@ -24,8 +24,8 @@ export default function ExperienceItem({ item, currentLabel }: ExperienceItemPro
         <div className="h-3 w-3 rounded-full border border-white/40 bg-[rgb(var(--bg))]" />
       </div>
 
-      <Card hover={false} className="flex-1 p-5 sm:p-6">
-        <div className="flex items-start gap-4">
+      <Card className="flex-1 rounded-lg border-border-default bg-surface-default py-5 shadow-none sm:py-6">
+        <CardContent className="flex items-start gap-4 px-5 sm:px-6">
           <div className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-accent-primary/10 text-accent-primary">
             <Briefcase size={20} />
           </div>
@@ -36,9 +36,9 @@ export default function ExperienceItem({ item, currentLabel }: ExperienceItemPro
                 {item.company}
               </h3>
               {isCurrent && (
-                <span className="inline-flex items-center rounded-full bg-accent-primary/10 px-2.5 py-0.5 text-xs font-medium text-accent-primary">
+                <Badge className="bg-accent-primary/10 text-accent-primary hover:bg-accent-primary/15">
                   {currentLabel}
-                </span>
+                </Badge>
               )}
             </div>
 
@@ -53,11 +53,17 @@ export default function ExperienceItem({ item, currentLabel }: ExperienceItemPro
 
             <div className="mt-3 flex flex-wrap gap-2">
               {item.stack.map((tech) => (
-                <TechChip key={tech}>{tech}</TechChip>
+                <Badge
+                  key={tech}
+                  variant="outline"
+                  className="rounded-lg border-border-default bg-surface-default px-3 py-1 text-text-secondary"
+                >
+                  {tech}
+                </Badge>
               ))}
             </div>
           </div>
-        </div>
+        </CardContent>
       </Card>
     </div>
   );

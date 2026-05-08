@@ -1,4 +1,4 @@
-import TechChip from "@/components/ui/TechChip";
+import { Badge } from "@/components/ui/badge";
 
 type HeroStackProps = {
   items: string[];
@@ -13,9 +13,13 @@ export default function HeroStack({ items, ref }: HeroStackProps) {
       style={{ opacity: 0 }}
     >
       {items.map((tech) => (
-        <TechChip key={tech} interactive>
+        <Badge
+          key={tech}
+          variant="outline"
+          className="rounded-lg border-border-default bg-surface-default px-3 py-1 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary"
+        >
           {tech}
-        </TechChip>
+        </Badge>
       ))}
     </div>
   );

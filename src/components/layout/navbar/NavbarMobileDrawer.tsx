@@ -1,4 +1,4 @@
-import Card from "@/components/ui/Card";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/components/layout/navbar/NavbarLinks";
 
@@ -25,7 +25,7 @@ export default function NavbarMobileDrawer({
         open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
       )}
     >
-      <Card variant="default" className="p-3">
+      <Card className="rounded-lg border-border-default bg-surface-default p-3 shadow-none">
         <div className="flex flex-col">
           {items.map((it) => (
             <a

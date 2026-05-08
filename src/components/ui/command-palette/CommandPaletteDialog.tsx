@@ -1,6 +1,7 @@
 "use client";
 
 import { Search, X } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import type { PaletteItem } from "@/components/ui/command-palette/commandPaletteItems";
 
 type CommandPaletteDialogProps = {
@@ -45,12 +46,12 @@ export default function CommandPaletteDialog({
         <div className="overflow-hidden rounded-2xl border border-border-medium bg-[rgb(var(--bg-2))] shadow-lg ">
           <div className="flex items-center gap-3 border-b border-border-default px-4 py-3">
             <Search className="h-4 w-4 text-text-tertiary" />
-            <input
+            <Input
               type="text"
               value={query}
               onChange={(e) => onQueryChange(e.target.value)}
               placeholder={isEs ? "Buscar..." : "Search..."}
-              className="flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-tertiary outline-none"
+              className="flex-1 border-0 bg-transparent px-0 py-0 text-sm text-text-primary shadow-none placeholder:text-text-tertiary focus-visible:ring-0 focus-visible:ring-offset-0"
               autoFocus
             />
             <button

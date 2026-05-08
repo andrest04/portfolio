@@ -1,10 +1,10 @@
-import Card from "@/components/ui/Card";
+import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-4">
-      <Card variant="solid" className="max-w-md p-8 text-center">
+      <Card className="max-w-md rounded-lg border-border-medium bg-surface-medium p-8 text-center shadow-none">
         <div className="mb-6 flex justify-center">
           <div className="grid h-16 w-16 place-items-center rounded-2xl bg-surface-strong text-3xl font-bold text-text-primary">
             404
