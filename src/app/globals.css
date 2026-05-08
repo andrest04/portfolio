@@ -70,6 +70,56 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+.light {
+  --bg: 255 255 255;
+  --bg-2: 245 245 245;
+  --surface: 0 0 0;
+
+  --text: 0 0 0;
+
+  --accent-primary: rgb(0 0 0);
+  --accent-secondary: rgb(64 64 64);
+  --accent-tertiary: rgb(64 64 64);
+
+  --surface-subtle: 0.035;
+  --surface-default: 0.06;
+  --surface-medium: 0.09;
+  --surface-strong: 0.12;
+
+  --border-subtle: 0.08;
+  --border-default: 0.12;
+  --border-medium: 0.18;
+  --border-strong: 0.26;
+  --border-emphasis: 0.34;
+
+  --text-primary: 0.95;
+  --text-secondary: 0.7;
+  --text-tertiary: 0.52;
+  --text-disabled: 0.34;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.14);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.145 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --border: oklch(0 0 0 / 12%);
+  --input: oklch(0 0 0 / 12%);
+  --ring: oklch(0.708 0 0);
+}
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -78,21 +128,21 @@
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-tertiary: var(--accent-tertiary);
 
-  --color-surface-subtle: rgba(255, 255, 255, var(--surface-subtle));
-  --color-surface-default: rgba(255, 255, 255, var(--surface-default));
-  --color-surface-medium: rgba(255, 255, 255, var(--surface-medium));
-  --color-surface-strong: rgba(255, 255, 255, var(--surface-strong));
+  --color-surface-subtle: rgb(var(--surface) / var(--surface-subtle));
+  --color-surface-default: rgb(var(--surface) / var(--surface-default));
+  --color-surface-medium: rgb(var(--surface) / var(--surface-medium));
+  --color-surface-strong: rgb(var(--surface) / var(--surface-strong));
 
-  --color-border-subtle: rgba(255, 255, 255, var(--border-subtle));
-  --color-border-default: rgba(255, 255, 255, var(--border-default));
-  --color-border-medium: rgba(255, 255, 255, var(--border-medium));
-  --color-border-strong: rgba(255, 255, 255, var(--border-strong));
-  --color-border-emphasis: rgba(255, 255, 255, var(--border-emphasis));
+  --color-border-subtle: rgb(var(--surface) / var(--border-subtle));
+  --color-border-default: rgb(var(--surface) / var(--border-default));
+  --color-border-medium: rgb(var(--surface) / var(--border-medium));
+  --color-border-strong: rgb(var(--surface) / var(--border-strong));
+  --color-border-emphasis: rgb(var(--surface) / var(--border-emphasis));
 
-  --color-text-primary: rgba(255, 255, 255, var(--text-primary));
-  --color-text-secondary: rgba(255, 255, 255, var(--text-secondary));
-  --color-text-tertiary: rgba(255, 255, 255, var(--text-tertiary));
-  --color-text-disabled: rgba(255, 255, 255, var(--text-disabled));
+  --color-text-primary: rgb(var(--text) / var(--text-primary));
+  --color-text-secondary: rgb(var(--text) / var(--text-secondary));
+  --color-text-tertiary: rgb(var(--text) / var(--text-tertiary));
+  --color-text-disabled: rgb(var(--text) / var(--text-disabled));
 
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: calc(var(--radius) - 1px);
@@ -151,12 +201,12 @@ body {
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.18);
-  color: rgb(255 255 255);
+  background: rgba(var(--surface), 0.18);
+  color: rgb(var(--text));
 }
 
 a:not([class*="bg-"]) {
-  color: rgb(255 255 255);
+  color: rgb(var(--text));
   transition: opacity 200ms ease-out;
 }
 

@@ -186,7 +186,9 @@
     "experience": "Experience",
     "projects": "Projects",
     "aboutSkills": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "toggleTheme": "Toggle theme",
+    "openCommandPalette": "Open command palette"
   },
   "footer": {
     "text": "Built with Next.js · Electric Blue Glass",

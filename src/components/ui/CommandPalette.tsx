@@ -18,9 +18,10 @@ export default function CommandPalette({ lang, t }: CommandPaletteProps) {
   return (
     <>
       <button
+        type="button"
         onClick={() => setOpen(true)}
         className="hidden md:inline-flex items-center gap-2 rounded-xl border border-border-default bg-surface-default px-3 py-1.5 text-xs text-text-tertiary transition-colors hover:border-border-strong hover:text-text-secondary"
-        aria-label="Open command palette"
+        aria-label={t.nav.openCommandPalette}
       >
         <span>⌘K</span>
       </button>

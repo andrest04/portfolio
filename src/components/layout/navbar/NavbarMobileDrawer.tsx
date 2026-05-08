@@ -1,12 +1,17 @@
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/components/layout/navbar/NavbarLinks";
+import NavbarLangSwitch from "@/components/layout/navbar/NavbarLangSwitch";
+import NavbarThemeToggle from "@/components/layout/navbar/NavbarThemeToggle";
+import type { Dictionary } from "@/types/i18n";
 
 type NavbarMobileDrawerProps = {
   items: NavItem[];
   activeSection: string;
   open: boolean;
   onItemSelect: () => void;
+  lang: "es" | "en";
+  t: Dictionary;
 };
 
 export default function NavbarMobileDrawer({
@@ -14,6 +19,8 @@ export default function NavbarMobileDrawer({
   activeSection,
   open,
   onItemSelect,
+  lang,
+  t,
 }: NavbarMobileDrawerProps) {
   return (
     <nav
@@ -27,6 +34,10 @@ export default function NavbarMobileDrawer({
     >
       <Card className="rounded-lg border-border-default bg-surface-default p-3 shadow-none">
         <div className="flex flex-col">
+          <div className="flex items-center justify-between gap-2 px-2 pb-2">
+            <NavbarThemeToggle ariaLabel={t.nav.toggleTheme} />
+            <NavbarLangSwitch lang={lang} />
+          </div>
           {items.map((it) => (
             <a
               key={it.href}

@@ -13,6 +13,7 @@ import NavbarLinks, {
 import NavbarLangSwitch from "@/components/layout/navbar/NavbarLangSwitch";
 import NavbarMobileDrawer from "@/components/layout/navbar/NavbarMobileDrawer";
 import { useActiveSection } from "@/components/layout/navbar/useActiveSection";
+import NavbarThemeToggle from "@/components/layout/navbar/NavbarThemeToggle";
 
 type NavbarProps = {
   lang: "es" | "en";
@@ -44,6 +45,7 @@ export default function Navbar({ lang, t }: NavbarProps) {
 
         <div className="flex items-center gap-2">
           <CommandPalette lang={lang} t={t} />
+          <NavbarThemeToggle ariaLabel={t.nav.toggleTheme} />
           <NavbarLangSwitch lang={lang} />
 
           <Button
@@ -64,6 +66,8 @@ export default function Navbar({ lang, t }: NavbarProps) {
         items={items}
         activeSection={activeSection}
         open={open}
+        lang={lang}
+        t={t}
         onItemSelect={() => setOpen(false)}
       />
     </div>

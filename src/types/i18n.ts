@@ -85,6 +85,8 @@ export interface Dictionary {
     projects: string;
     aboutSkills: string;
     contact: string;
+    toggleTheme: string;
+    openCommandPalette: string;
   };
   footer: {
     text: string;

@@ -5,6 +5,10 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 
+function isNotNull<T>(value: T | null): value is T {
+  return value !== null;
+}
+
 type HeroRefs = {
   section: RefObject<HTMLElement | null>;
   header: RefObject<HTMLDivElement | null>;
@@ -27,7 +31,7 @@ export function useHeroAnimation(refs: HeroRefs) {
         refs.stack.current,
         refs.position.current,
         refs.scrollIndicator.current,
-      ].filter((el): el is HTMLElement => el !== null);
+      ].filter(isNotNull);
 
       if (targets.length === 0) return;
 
