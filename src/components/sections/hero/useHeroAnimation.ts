@@ -24,7 +24,7 @@ export function useHeroAnimation(refs: HeroRefs) {
         refs.subtitle.current,
         refs.cta.current,
         refs.scrollIndicator.current,
-      ].filter((el): el is HTMLElement => el !== null);
+      ].filter((el): el is HTMLDivElement | HTMLParagraphElement => el !== null);
       const portraitEl = refs.portrait.current;
 
       if (prefersReducedMotion()) {
