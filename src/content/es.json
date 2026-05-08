@@ -191,7 +191,7 @@
     "openCommandPalette": "Abrir paleta de comandos"
   },
   "footer": {
-    "text": "Construido con Next.js · Electric Blue Glass",
+    "text": "Construido con Next.js y Tailwind CSS",
     "rights": "Todos los derechos reservados."
   }
 }

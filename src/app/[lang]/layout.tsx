@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import { getDictionary } from "@/lib/i18n";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 import ThemeScript from "@/components/providers/ThemeScript";
@@ -143,6 +144,7 @@ export default async function RootLayout({
             <main className="mx-auto w-full max-w-[1440px] flex-1 px-4 sm:px-6 lg:px-8">
               {children}
             </main>
+            <Footer t={t} />
           </div>
           <Analytics />
           <SpeedInsights />
