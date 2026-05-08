@@ -21,13 +21,23 @@ function applyThemeClass(theme: Theme) {
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = React.useState<Theme>("dark");
+  const [theme, setThemeState] = React.useState<Theme>(() => {
+    if (typeof document === "undefined") return "dark";
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark") return stored;
+    return document.documentElement.classList.contains("light") ? "light" : "dark";
+  });
 
   React.useEffect(() => {
-    const applied: Theme = document.documentElement.classList.contains("light")
-      ? "light"
-      : "dark";
-    setThemeState(applied);
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    const resolved: Theme =
+      stored === "light" || stored === "dark"
+        ? stored
+        : document.documentElement.classList.contains("light")
+          ? "light"
+          : "dark";
+    setThemeState(resolved);
+    applyThemeClass(resolved);
   }, []);
 
   const setTheme = React.useCallback((next: Theme) => {

@@ -6,6 +6,7 @@ import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import { getDictionary } from "@/lib/i18n";
 import ThemeProvider from "@/components/providers/ThemeProvider";
+import ThemeScript from "@/components/providers/ThemeScript";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -125,12 +126,7 @@ export default async function RootLayout({
   return (
     <html lang={lang} suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}var d=document.documentElement;d.classList.remove('dark','light');d.classList.add(t);d.style.colorScheme=t;}catch(e){}})();",
-          }}
-        />
+        <ThemeScript />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[rgb(var(--bg))] text-text-secondary`}

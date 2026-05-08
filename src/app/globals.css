@@ -101,23 +101,29 @@
   --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.12);
   --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.14);
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.145 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --border: oklch(0 0 0 / 12%);
-  --input: oklch(0 0 0 / 12%);
-  --ring: oklch(0.708 0 0);
+  /*
+    IMPORTANT:
+    These tokens are consumed via rgb(var(--token)) in @theme inline below.
+    Keep them as space-separated RGB triplets (not oklch()) to avoid invalid
+    computed colors (which made several cards/text effectively invisible in light mode).
+  */
+  --background: 255 255 255;
+  --foreground: 17 17 17;
+  --card: 255 255 255;
+  --card-foreground: 17 17 17;
+  --popover: 255 255 255;
+  --popover-foreground: 17 17 17;
+  --primary: 17 17 17;
+  --primary-foreground: 255 255 255;
+  --secondary: 245 245 245;
+  --secondary-foreground: 24 24 24;
+  --muted: 240 240 240;
+  --muted-foreground: 71 71 71;
+  --accent: 240 240 240;
+  --accent-foreground: 24 24 24;
+  --border: 0 0 0;
+  --input: 0 0 0;
+  --ring: 0 0 0;
 }
 
 @theme inline {
@@ -184,18 +190,13 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-html,
-body {
-  height: 100%;
+  overflow-x: clip;
 }
 
 body {
   background: rgb(var(--bg));
   color: var(--color-text-secondary);
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -215,37 +216,32 @@ a:not([class*="bg-"]):hover {
 }
 
 .dark {
-  --background: oklch(0 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0 0 0);
-  --secondary: oklch(0.205 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.205 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.205 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.985 0 0);
-  --chart-2: oklch(0.85 0 0);
-  --chart-3: oklch(0.7 0 0);
-  --chart-4: oklch(0.55 0 0);
-  --chart-5: oklch(0.4 0 0);
-  --sidebar: oklch(0 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.985 0 0);
-  --sidebar-primary-foreground: oklch(0 0 0);
-  --sidebar-accent: oklch(0.205 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Keep these as RGB triplets too (see note above). */
+  --background: 0 0 0;
+  --foreground: 255 255 255;
+  --card: 0 0 0;
+  --card-foreground: 255 255 255;
+  --popover: 10 10 10;
+  --popover-foreground: 255 255 255;
+  --primary: 255 255 255;
+  --primary-foreground: 0 0 0;
+  --secondary: 20 20 20;
+  --secondary-foreground: 255 255 255;
+  --muted: 20 20 20;
+  --muted-foreground: 163 163 163;
+  --accent: 20 20 20;
+  --accent-foreground: 255 255 255;
+  --border: 255 255 255;
+  --input: 255 255 255;
+  --ring: 255 255 255;
+  --sidebar: 0 0 0;
+  --sidebar-foreground: 255 255 255;
+  --sidebar-primary: 255 255 255;
+  --sidebar-primary-foreground: 0 0 0;
+  --sidebar-accent: 20 20 20;
+  --sidebar-accent-foreground: 255 255 255;
+  --sidebar-border: 255 255 255;
+  --sidebar-ring: 163 163 163;
 }
 
 @layer base {
