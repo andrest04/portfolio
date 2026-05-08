@@ -14,7 +14,7 @@ export default function HeroCurrentPosition({
   return (
     <div
       ref={ref}
-      className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent-primary/20 bg-surface-default px-4 py-2 text-sm text-text-secondary backdrop-blur-[var(--glass-backdrop)]"
+      className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent-primary/20 bg-surface-default px-4 py-2 text-sm text-text-secondary"
       style={{ opacity: 0 }}
     >
       <Image src="/edteam-logo.svg" alt="EDTeam" width={18} height={18} />

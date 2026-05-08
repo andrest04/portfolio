@@ -19,7 +19,7 @@ export default function CommandPalette({ lang, t }: CommandPaletteProps) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="hidden md:inline-flex items-center gap-2 rounded-xl border border-border-default bg-surface-default px-3 py-1.5 text-xs text-text-tertiary backdrop-blur-[var(--glass-backdrop)] transition-colors hover:border-border-strong hover:text-text-secondary"
+        className="hidden md:inline-flex items-center gap-2 rounded-xl border border-border-default bg-surface-default px-3 py-1.5 text-xs text-text-tertiary transition-colors hover:border-border-strong hover:text-text-secondary"
         aria-label="Open command palette"
       >
         <span>⌘K</span>

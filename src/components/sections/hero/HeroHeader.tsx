@@ -13,7 +13,7 @@ export default function HeroHeader({ name, role, ref }: HeroHeaderProps) {
       className="flex flex-col items-center gap-4"
       style={{ opacity: 0 }}
     >
-      <div className="relative h-32 w-32 overflow-hidden rounded-2xl border-2 border-border-medium shadow-[var(--shadow-glow-primary-md)]">
+      <div className="relative h-32 w-32 overflow-hidden rounded-full border border-white/10">
         <Image
           src="/profile.png"
           alt="Andrés Torres"
@@ -28,7 +28,7 @@ export default function HeroHeader({ name, role, ref }: HeroHeaderProps) {
         <h2 className="text-lg font-semibold text-text-primary sm:text-xl">
           {name}
         </h2>
-        <p className="text-sm text-accent-secondary">{role}</p>
+        <p className="text-sm text-text-tertiary">{role}</p>
       </div>
     </div>
   );
