@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { setUserLocale } from "@/lib/locale-actions";
+import type { Locale } from "@/lib/i18n";
 
 export function useCommandPalette() {
   const [open, setOpen] = useState(false);
@@ -19,8 +21,12 @@ export function useCommandPalette() {
   const select = useCallback(
     (href: string) => {
       close();
-      setTimeout(() => {
-        if (href.startsWith("#")) {
+      setTimeout(async () => {
+        if (href.startsWith("locale:")) {
+          const nextLocale = href.slice("locale:".length) as Locale;
+          await setUserLocale(nextLocale);
+          router.refresh();
+        } else if (href.startsWith("#")) {
           document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
         } else if (href.startsWith("http")) {
           window.open(href, "_blank");

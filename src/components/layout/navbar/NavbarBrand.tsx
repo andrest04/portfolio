@@ -1,10 +1,9 @@
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
-type NavbarBrandProps = {
-  lang: "es" | "en";
-};
+export default function NavbarBrand() {
+  const lang = useLocale();
 
-export default function NavbarBrand({ lang }: NavbarBrandProps) {
   return (
     <a href="#" className="flex items-center gap-3 cursor-pointer">
       <div className="grid h-11 w-11 place-items-center overflow-hidden rounded-md border border-white/10 bg-white/5">

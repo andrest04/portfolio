@@ -4,8 +4,9 @@ import { Dictionary } from "@/types/i18n";
 import ContactEmailCard from "@/components/sections/contact/ContactEmailCard";
 import ContactInfoCard from "@/components/sections/contact/ContactInfoCard";
 import ContactSocialCard from "@/components/sections/contact/ContactSocialCard";
+import { getLocale } from "next-intl/server";
 
-type ContactProps = { t: Dictionary; lang: string };
+type ContactProps = { t: Dictionary };
 
 const EMAIL = "andresalbertotorresgarcia@gmail.com";
 const PHONE_DISPLAY = "+51 984 300 217";
@@ -13,9 +14,10 @@ const PHONE_HREF = "+51984300217";
 const LINKEDIN = "https://linkedin.com/in/andres-torres-garcia";
 const GITHUB = "https://github.com/andrest04";
 
-export default function Contact({ t, lang }: ContactProps) {
+export default async function Contact({ t }: ContactProps) {
   const c = t.contact;
-  const isEs = lang === "es";
+  const locale = await getLocale();
+  const isEs = locale === "es";
 
   return (
     <section id="contact" className="py-16 sm:py-20 lg:py-24">

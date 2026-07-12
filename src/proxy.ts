@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { LOCALE_COOKIE } from "@/lib/i18n";
 
-const SUPPORTED = ["es", "en"] as const;
-type Lang = (typeof SUPPORTED)[number];
+type Lang = "es" | "en";
 
 function detectLang(req: NextRequest): Lang {
   const header = req.headers.get("accept-language") || "";
@@ -24,13 +24,13 @@ export default function proxy(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const hasLangPrefix = SUPPORTED.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`));
-  if (hasLangPrefix) return NextResponse.next();
+  if (req.cookies.get(LOCALE_COOKIE)) {
+    return NextResponse.next();
+  }
 
-  const lang = detectLang(req);
-  const url = req.nextUrl.clone();
-  url.pathname = `/${lang}${pathname === "/" ? "" : pathname}`;
-  return NextResponse.redirect(url);
+  const res = NextResponse.next();
+  res.cookies.set(LOCALE_COOKIE, detectLang(req), { path: "/", maxAge: 60 * 60 * 24 * 365 });
+  return res;
 }
 
 export const config = {

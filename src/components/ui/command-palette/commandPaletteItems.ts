@@ -37,7 +37,7 @@ export function getCommandPaletteItems(
     { icon: createElement(User, { className: iconClass }), label: t.nav.aboutSkills, href: "#about-skills", group: navGroup },
     { icon: createElement(Mail, { className: iconClass }), label: t.nav.contact, href: "#contact", group: navGroup },
     { icon: createElement(Download, { className: iconClass }), label: t.hero.ctaSecondary, href: "/api/cv", group: actionsGroup },
-    { icon: createElement(Globe, { className: iconClass }), label: isEs ? "Switch to English" : "Cambiar a Español", href: `/${otherLang}`, group: actionsGroup },
+    { icon: createElement(Globe, { className: iconClass }), label: isEs ? "Switch to English" : "Cambiar a Español", href: `locale:${otherLang}`, group: actionsGroup },
     { icon: createElement(Github, { className: iconClass }), label: "GitHub", href: "https://github.com/andrest04", group: linksGroup },
     { icon: createElement(Linkedin, { className: iconClass }), label: "LinkedIn", href: "https://linkedin.com/in/andres-torres-garcia", group: linksGroup },
   ];

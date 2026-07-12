@@ -5,6 +5,8 @@ export const i18n = {
 
 export type Locale = (typeof i18n)['locales'][number];
 
+export const LOCALE_COOKIE = 'NEXT_LOCALE';
+
 const dictionaries = {
   en: () => import('@/content/en.json').then((module) => module.default),
   es: () => import('@/content/es.json').then((module) => module.default),

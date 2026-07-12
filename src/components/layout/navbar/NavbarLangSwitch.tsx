@@ -1,29 +1,34 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTransition } from "react";
+import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { setUserLocale } from "@/lib/locale-actions";
+import type { Locale } from "@/lib/i18n";
 
-type NavbarLangSwitchProps = {
-  lang: "es" | "en";
-};
+export default function NavbarLangSwitch() {
+  const locale = useLocale() as Locale;
+  const otherLang: Locale = locale === "es" ? "en" : "es";
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
-export default function NavbarLangSwitch({ lang }: NavbarLangSwitchProps) {
-  const pathname = usePathname();
-  const otherLang = lang === "es" ? "en" : "es";
-
-  const switchHref = pathname
-    ? pathname
-        .split("/")
-        .map((p, i) => (i === 1 ? otherLang : p))
-        .join("/")
-    : `/${otherLang}`;
+  const handleClick = () => {
+    startTransition(async () => {
+      await setUserLocale(otherLang);
+      router.refresh();
+    });
+  };
 
   return (
-    <Button variant="outline" size="sm" asChild className="rounded-2xl">
-      <Link href={switchHref}>
-        {lang.toUpperCase()} → {otherLang.toUpperCase()}
-      </Link>
+    <Button
+      variant="outline"
+      size="sm"
+      className="rounded-2xl"
+      disabled={isPending}
+      onClick={handleClick}
+    >
+      {locale.toUpperCase()} → {otherLang.toUpperCase()}
     </Button>
   );
 }

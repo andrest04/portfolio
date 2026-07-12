@@ -10,7 +10,6 @@ type NavbarMobileDrawerProps = {
   activeSection: string;
   open: boolean;
   onItemSelect: () => void;
-  lang: "es" | "en";
   t: Dictionary;
 };
 
@@ -19,7 +18,6 @@ export default function NavbarMobileDrawer({
   activeSection,
   open,
   onItemSelect,
-  lang,
   t,
 }: NavbarMobileDrawerProps) {
   return (
@@ -36,7 +34,7 @@ export default function NavbarMobileDrawer({
         <div className="flex flex-col">
           <div className="flex items-center justify-between gap-2 px-2 pb-2">
             <NavbarThemeToggle ariaLabel={t.nav.toggleTheme} />
-            <NavbarLangSwitch lang={lang} />
+            <NavbarLangSwitch />
           </div>
           {items.map((it) => (
             <a

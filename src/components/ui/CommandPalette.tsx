@@ -1,16 +1,17 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { Dictionary } from "@/types/i18n";
 import { getCommandPaletteItems } from "@/components/ui/command-palette/commandPaletteItems";
 import { useCommandPalette } from "@/components/ui/command-palette/useCommandPalette";
 import CommandPaletteDialog from "@/components/ui/command-palette/CommandPaletteDialog";
 
 type CommandPaletteProps = {
-  lang: "es" | "en";
   t: Dictionary;
 };
 
-export default function CommandPalette({ lang, t }: CommandPaletteProps) {
+export default function CommandPalette({ t }: CommandPaletteProps) {
+  const lang = useLocale() as "es" | "en";
   const { open, query, setQuery, setOpen, close, select } = useCommandPalette();
   const items = getCommandPaletteItems(t, lang);
   const isEs = lang === "es";
