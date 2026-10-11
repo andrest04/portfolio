@@ -16,9 +16,9 @@ Replace the project's shadcn primitives in `src/components/ui/` with the Obsidia
 
 ## Tasks
 - [x] P1 `button` (importers: ProjectCard, Navbar, ContactEmailCard, NavbarLangSwitch, Hero, NavbarThemeToggle). Route: delegated writer (reading prepares the write).
-- [ ] P2 `card` (11 importer files). Route: delegated writer.
-- [ ] P3 `badge` (ExperienceItem, ProjectCard). Route: delegated writer or inline if mechanical.
-- [ ] P4 `input` + `textarea` (CommandPaletteDialog and any textarea importer). Route: delegated writer or inline if mechanical.
+- [x] P2 `card` (11 importer files). Route: delegated writer.
+- [x] P3 `badge` (ExperienceItem, ProjectCard). Route: delegated writer or inline if mechanical.
+- [x] P4 `input` + `textarea` (CommandPaletteDialog and any textarea importer). Route: delegated writer or inline if mechanical.
 - [ ] P5 Parent visual check in Chrome (dark and light, desktop), once P1-P4 are in.
 
 ## Acceptance criteria
@@ -38,5 +38,11 @@ Replace the project's shadcn primitives in `src/components/ui/` with the Obsidia
   - Known failing check, NOT caused by this feature: `npx eslint src` reports 2 `react-hooks/set-state-in-effect` errors in `src/components/providers/ThemeProvider.tsx:39` and `src/components/layout/navbar/NavbarThemeToggle.tsx:17` (files untouched here). Treat as known baseline failures for P2-P4; the rest of `npx eslint src` must stay clean. Not fixed (out of scope); needs a decision.
   - Visual result NOT judged yet (P5).
 
+- P2/P4 (writer, uncommitted): `@obsidian/card`, `@obsidian/input`, `@obsidian/textarea` via CLI were all skipped as byte-identical (modulo CRLF) to the files already in `src/components/ui/` (the shadcn originals match Obsidian). No file change, no caller change.
+- P3 (writer, uncommitted): `@obsidian/badge` installed; only badge.tsx changed. Differences: import `Slot` from `@radix-ui/react-slot` (already a dependency) instead of `radix-ui`; `variant` has no default value in the signature (cva default still "default"); `data-variant` attribute removed; `ghost` and `link` variants removed (callers use only default and `outline`); `outline` no longer sets `border-border` (uses base `border` color); base `border` moved from per-variant to the base class with `border-transparent` per variant. Callers unchanged. No new tokens needed.
+  - `npx tsc --noEmit`: exit 0. `npx eslint src`: only the 2 known errors. `npm run build`: ok. `rg "Program Files"`: no matches. Visual result NOT judged (P5).
+
+- Parent independent check (P1-P4): normalized comparison (CRLF ignored) of `src/components/ui/{button,card,badge,input,textarea}.tsx` against the registry JSON: all five IDENTICAL. `git diff b2cf2aa` on card/input/textarea is empty, so they were already Obsidian-identical since the initial commit 600b3c5; only button and badge actually changed in this feature. `git status` before commit: only badge.tsx and the doc modified. `npx tsc --noEmit` clean.
+
 ## Next step
-P2 (`card`).
+P5 (parent visual check in Chrome, dark and light), then decide with the user the non-primitive blocks (separate feature).
