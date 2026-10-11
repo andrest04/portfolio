@@ -19,7 +19,7 @@ Replace the project's shadcn primitives in `src/components/ui/` with the Obsidia
 - [x] P2 `card` (11 importer files). Route: delegated writer.
 - [x] P3 `badge` (ExperienceItem, ProjectCard). Route: delegated writer or inline if mechanical.
 - [x] P4 `input` + `textarea` (CommandPaletteDialog and any textarea importer). Route: delegated writer or inline if mechanical.
-- [ ] P5 Parent visual check in Chrome (dark and light, desktop), once P1-P4 are in.
+- [x] P5 Parent visual check in Chrome (dark and light, desktop), once P1-P4 are in.
 
 ## Acceptance criteria
 - `npx tsc --noEmit`, `npx eslint` (project config) and `npm run build` pass after each task.
@@ -44,5 +44,14 @@ Replace the project's shadcn primitives in `src/components/ui/` with the Obsidia
 
 - Parent independent check (P1-P4): normalized comparison (CRLF ignored) of `src/components/ui/{button,card,badge,input,textarea}.tsx` against the registry JSON: all five IDENTICAL. `git diff b2cf2aa` on card/input/textarea is empty, so they were already Obsidian-identical since the initial commit 600b3c5; only button and badge actually changed in this feature. `git status` before commit: only badge.tsx and the doc modified. `npx tsc --noEmit` clean.
 
+- P5 visual check (parent, Chrome, production build on :3001, 1920px viewport):
+  - Light, Projects: default button ("Live Demo") renders black with legible white text; outline ("GitHub") white with border; badges ("Featured", tech tags) and cards render correctly.
+  - Dark, Projects: default button renders white with dark text; outline dark with light text; badges and cards correct.
+  - Dark, Hero: "View projects" (default) white/black, "Contact me" (outline) readable; prism, portrait and text intact.
+  - Dark, Contact: "Send email" (default) light with dark text, cards correct.
+  - Command palette (input, `data-slot="input"`): opened by dispatching Ctrl+K from the page (the real keystroke is captured by a Chrome extension overlay in this browser); typed text shows and results filter ("exp" -> Experience under Navigation).
+  - Known small visual difference: Obsidian outline adds `dark:bg-input/30`, and the Hero "Contact me" override `bg-transparent` has no `dark:` counterpart in tailwind-merge, so in dark the CTA gets a faint fill instead of being fully transparent. Accepted for now, not changed.
+  - NOT verified: button hover/focus states, mobile widths, the Experience and About sections, the mobile drawer.
+
 ## Next step
-P5 (parent visual check in Chrome, dark and light), then decide with the user the non-primitive blocks (separate feature).
+Decide with the user the non-primitive Obsidian blocks (flip-text, draggable-marquee, footer, ...) as a separate feature; and whether to fix the 2 baseline eslint errors (ThemeProvider.tsx:39, NavbarThemeToggle.tsx:17).
