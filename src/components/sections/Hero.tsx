@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { DiscoverButton } from "@/components/block/discover-button";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
 import HeroPrismBackground from "@/components/sections/hero/HeroPrismBackground";
 import MagneticButton from "@/components/ui/MagneticButton";
@@ -77,9 +78,11 @@ export default function Hero({ t }: HeroProps) {
             style={{ opacity: 0 }}
           >
             <MagneticButton>
-              <Button asChild size="lg" className="rounded-full px-7">
-                <a href="#projects">{hero.ctaPrimary}</a>
-              </Button>
+              <DiscoverButton
+                label={hero.ctaPrimary}
+                href="#projects"
+                className="discover-cta"
+              />
             </MagneticButton>
 
             <Button

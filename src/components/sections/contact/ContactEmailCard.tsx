@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Check, Copy, ArrowUpRight } from "lucide-react";
+import { Mail, Check, Copy } from "lucide-react";
 import {
   Card,
   CardHeader,
@@ -8,7 +8,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { DiscoverButton } from "@/components/block/discover-button";
 import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
 
 type ContactEmailCardProps = {
@@ -59,12 +59,11 @@ export default function ContactEmailCard({
       </CardContent>
 
       <CardFooter className="px-5 sm:px-6">
-        <Button asChild size="sm" className="rounded-md">
-          <a href={`mailto:${email}`}>
-            {isEs ? "Enviar email" : "Send email"}
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </a>
-        </Button>
+        <DiscoverButton
+          label={isEs ? "Enviar email" : "Send email"}
+          href={`mailto:${email}`}
+          className="discover-cta"
+        />
       </CardFooter>
     </Card>
   );

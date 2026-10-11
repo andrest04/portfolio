@@ -308,3 +308,21 @@ a:not([class*="bg-"]):hover {
     }
   }
 }
+
+/*
+ * Theme bridge for the vendored ObsidianUI discover-button, whose CSS assumes a
+ * dark background. --text and --bg are swapped by the .light/.dark classes, so
+ * one rule is legible in both themes: tinted pill + --text label at rest, then a
+ * --text fill with --bg label on hover (icon always sits on the fill).
+ */
+.discover-cta {
+  --obsidian-discover-surface: rgb(var(--text) / 0.08);
+  --obsidian-discover-text: rgb(var(--text));
+  --obsidian-discover-fill: rgb(var(--text));
+  --obsidian-discover-active-text: rgb(var(--bg));
+  --ring: rgb(var(--text));
+}
+
+.obsidian-discover-button.discover-cta {
+  border-color: rgb(var(--text) / 0.25);
+}
