@@ -326,3 +326,27 @@ a:not([class*="bg-"]):hover {
 .obsidian-discover-button.discover-cta {
   border-color: rgb(var(--text) / 0.25);
 }
+
+/*
+ * Keyframes for the vendored ObsidianUI flip-text block, which ships none. Each
+ * character flips in on the X axis using the --flip-* custom properties the block
+ * sets inline. Gated on no-preference so reduced-motion users get static text.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .flip-char {
+    animation: flip-char-in var(--flip-duration) cubic-bezier(0.22, 1, 0.36, 1)
+      var(--flip-delay) var(--flip-iteration) both;
+    transform-origin: 50% 60%;
+  }
+
+  @keyframes flip-char-in {
+    from {
+      opacity: 0;
+      transform: rotateX(-100deg) translateY(30%);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0deg) translateY(0);
+    }
+  }
+}

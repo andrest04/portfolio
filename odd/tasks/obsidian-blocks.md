@@ -18,7 +18,7 @@ Bring the ObsidianUI (`@obsidian`) non-primitive blocks into the portfolio where
 ## Tasks
 - [x] B1 `draggable-marquee`: draggable strip of the portfolio's skills in AboutSkills, rendering the existing skill pills as text through the block's `renderItem` (items carry a symbolic `src`). Existing skill groups and all text stay. Route: delegated writer.
 - [x] B2 `discover-button`: use it (it renders an `<a>` when `href` is set) for the Hero primary CTA ("View projects", `#projects`) and the Contact "Send email" CTA (mailto), with i18n labels instead of the demo label. Route: delegated writer.
-- [ ] B3 `flip-text`: use it for the Hero `<h1>` title in place of the GSAP `SplitText` character animation (both animate characters, so keep only one). Patch the block to render a `span` (a `div` is invalid inside `h1`), `loop={false}`, add a reduced-motion guard, keep the rest of `useHeroAnimation` (eyebrow, subtitle, CTA, portrait, scroll indicator). Route: delegated writer.
+- [x] B3 `flip-text`: use it for the Hero `<h1>` title in place of the GSAP `SplitText` character animation (both animate characters, so keep only one). Patch the block to render a `span` (a `div` is invalid inside `h1`), `loop={false}`, add a reduced-motion guard, keep the rest of `useHeroAnimation` (eyebrow, subtitle, CTA, portrait, scroll indicator). Route: delegated writer.
 - [ ] B4 `footer`: rebuild `src/components/layout/Footer.tsx` on the Obsidian `footer` structure with the portfolio's own wordmark/name, real links (GitHub, LinkedIn, mailto) and `t.footer` i18n texts; ship the CSS the block needs (`font-serif-elegant`, `wordmark-gradient`, `#light-*` ids) and use no `<h1>`. Route: delegated writer.
 - [ ] B5 Parent visual check in Chrome (dark and light): AboutSkills marquee, Hero CTAs and title animation, Contact CTA, Footer.
 
@@ -40,5 +40,10 @@ Bring the ObsidianUI (`@obsidian`) non-primitive blocks into the portfolio where
 
 - B2 parent re-verification: call-site diffs keep `hero.ctaPrimary` -> `#projects` and `isEs ? "Enviar email" : "Send email"` -> `mailto:${email}`; `--text`/`--bg` triplets swap under `.light` (0 0 0 / 255 255 255), so the single `.discover-cta` rule inverts correctly; `npx tsc --noEmit` clean; `src/lib/utils.ts` unchanged. Visual contrast, hover animation and sizes pending in B5. Known differences to judge there: the block is 66px tall (old buttons were `size="lg"`/`"sm"`), the Contact CTA lost its small `ArrowUpRight` (the block has its own arrow), and the block adds an enter animation on top of `MagneticButton`.
 
+- B3 (delegated writer): `npx tsc --noEmit` clean; `npx eslint src` only the 2 baseline errors; `npm run build` OK; `rg "Program Files|obsidianui" src public package.json` no matches; `src/lib/utils.ts` unchanged. Visual/timing check pending (B5).
+- B3 patches: vendored `flip-text.tsx` renders a `span` instead of `div`. The block ships no CSS, so `flip-char` keyframes (rotateX flip-in) live in `globals.css` under `prefers-reduced-motion: no-preference` (static text otherwise). Hero: `h1` has `aria-label`, FlipText wrapped in `aria-hidden` span, inline `opacity:0` removed, `duration={1.6}` `loop={false}`. `useHeroAnimation`: SplitText removed, replaced by a 1.2s no-op tween so portrait "-=0.7" pacing stays.
+
+- B3 parent re-verification: diffs match the report (SplitText step removed from `useHeroAnimation.ts`, placeholder `tl.to({}, {duration: 1.2})`, `hero.title` still the text, `aria-label` on the h1 and `aria-hidden` on the flip span, inline `opacity:0` removed from the h1); vendored `flip-text.tsx` has only the `div` -> `span` patch; registry JSON for `flip-text` has no `css` field, so the `@keyframes flip-char-in` in `globals.css` are OUR interpretation of the effect, not Obsidian code (gated on `prefers-reduced-motion: no-preference`); `npx tsc --noEmit` clean. To judge in B5: flip look in both themes, word wrapping on mobile, entrance pacing (portrait starts ~0.3s earlier than before).
+
 ## Next step
-B3 (flip-text for the Hero title).
+B4 (footer).

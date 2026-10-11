@@ -2,7 +2,7 @@
 
 import { RefObject } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap, SplitText } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 
 type HeroRefs = {
@@ -40,23 +40,10 @@ export function useHeroAnimation(refs: HeroRefs) {
 
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      if (titleEl) {
-        const split = new SplitText(titleEl, { type: "chars,words" });
-        gsap.set(titleEl, { opacity: 1 });
-        gsap.set(split.chars, {
-          opacity: 0,
-          yPercent: 60,
-          filter: "blur(8px)",
-        });
-        tl.to(split.chars, {
-          opacity: 1,
-          yPercent: 0,
-          filter: "blur(0px)",
-          duration: 0.9,
-          ease: "power3.out",
-          stagger: 0.018,
-        });
-      }
+      // The title is animated by the FlipText block (CSS); keep its slot in the
+      // timeline so the portrait and ambient offsets below keep the same pacing.
+      if (titleEl) gsap.set(titleEl, { opacity: 1 });
+      tl.to({}, { duration: 1.2 });
 
       if (portraitEl) {
         tl.to(
