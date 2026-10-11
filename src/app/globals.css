@@ -277,12 +277,14 @@ a:not([class*="bg-"]):hover {
     }
   }
 
+  /* Scale instead of letter-spacing: animating letter-spacing changed the line
+     widths and made the hero title reflow between 3 and 4 lines. */
   @keyframes hero-breathe {
     0%, 100% {
-      letter-spacing: -0.02em;
+      transform: scale(1);
     }
     50% {
-      letter-spacing: -0.014em;
+      transform: scale(1.012);
     }
   }
 

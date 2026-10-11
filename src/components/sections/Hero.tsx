@@ -59,7 +59,7 @@ export default function Hero({ t }: HeroProps) {
 
           <h1
             ref={titleRef}
-            className="mt-8 text-4xl font-semibold leading-[1.05] tracking-tight text-text-primary sm:text-5xl lg:text-6xl motion-safe:animate-[hero-breathe_9s_ease-in-out_infinite]"
+            className="mt-8 text-4xl font-semibold leading-[1.05] tracking-tight text-text-primary sm:text-5xl lg:text-6xl origin-left motion-safe:animate-[hero-breathe_9s_ease-in-out_infinite]"
             aria-label={hero.title}
           >
             <span aria-hidden="true">
