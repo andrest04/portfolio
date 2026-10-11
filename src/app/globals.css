@@ -416,3 +416,55 @@ a:not([class*="bg-"]):hover {
     }
   }
 }
+
+/* ------------------------------------------------------------------
+ * hover-img bridge (Projects list)
+ * Maps the vendored ObsidianUI `hover-img` block to the site tokens
+ * (--bg / --text, swapped by .light / .dark). The `:root` prefix keeps the
+ * specificity above `.dark .hover-img-container` regardless of CSS order.
+ * ------------------------------------------------------------------ */
+:root .hover-img-container.hover-img-site {
+  --hi-bg: rgb(var(--bg));
+  --hi-text: rgb(var(--text));
+  --hi-text-muted: rgb(var(--text) / var(--text-secondary));
+  --hi-border: rgb(var(--text) / 0.15);
+
+  font-family: inherit;
+  min-height: auto;
+  background: transparent;
+  color: var(--hi-text);
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow: visible;
+}
+
+:root .hover-img-site .hover-img-projects {
+  max-width: none;
+}
+
+:root .hover-img-site .hover-img-project {
+  padding: 1.75rem 0;
+}
+
+:root .hover-img-site .hover-img-project-header h3 {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  font-weight: 600;
+}
+
+:root .hover-img-site .hover-img-project-header p {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  :root .hover-img-site .hover-img-project {
+    padding: 1.5rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root .hover-img-site .hover-img-project-header h3,
+  :root .hover-img-site .hover-img-project-header p {
+    transition: none;
+    transform: none;
+  }
+}
