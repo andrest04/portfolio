@@ -159,6 +159,11 @@
   --radius-4xl: calc(var(--radius) + 8px);
 
   --color-primary: var(--accent-primary);
+  --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-foreground: rgb(var(--secondary-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
   --color-foreground: var(--color-text-primary);
   --color-background: rgb(var(--bg));
   --color-ring: rgb(var(--ring) / 0.5);
