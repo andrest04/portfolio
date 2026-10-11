@@ -350,3 +350,67 @@ a:not([class*="bg-"]):hover {
     }
   }
 }
+
+/*
+ * ObsidianUI footer block: the registry item ships no CSS, so this is our
+ * interpretation. System serif (no web font, no network request); the wordmark
+ * gradient and the nested light cones use --text/--bg, which .light/.dark swap,
+ * so the footer is legible in both themes.
+ */
+.font-serif-elegant {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+}
+
+.wordmark-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--text) / 0.55) 0%,
+    rgb(var(--text) / 0.12) 70%,
+    rgb(var(--text) / 0) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+#lighting-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#lightings {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 140%;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.lighting-section {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 50% 60% at 50% 0%,
+    rgb(var(--text) / 0.035),
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #lightings {
+    animation: footer-light-breathe 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes footer-light-breathe {
+    from {
+      opacity: 0.7;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

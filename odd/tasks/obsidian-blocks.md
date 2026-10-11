@@ -19,7 +19,7 @@ Bring the ObsidianUI (`@obsidian`) non-primitive blocks into the portfolio where
 - [x] B1 `draggable-marquee`: draggable strip of the portfolio's skills in AboutSkills, rendering the existing skill pills as text through the block's `renderItem` (items carry a symbolic `src`). Existing skill groups and all text stay. Route: delegated writer.
 - [x] B2 `discover-button`: use it (it renders an `<a>` when `href` is set) for the Hero primary CTA ("View projects", `#projects`) and the Contact "Send email" CTA (mailto), with i18n labels instead of the demo label. Route: delegated writer.
 - [x] B3 `flip-text`: use it for the Hero `<h1>` title in place of the GSAP `SplitText` character animation (both animate characters, so keep only one). Patch the block to render a `span` (a `div` is invalid inside `h1`), `loop={false}`, add a reduced-motion guard, keep the rest of `useHeroAnimation` (eyebrow, subtitle, CTA, portrait, scroll indicator). Route: delegated writer.
-- [ ] B4 `footer`: rebuild `src/components/layout/Footer.tsx` on the Obsidian `footer` structure with the portfolio's own wordmark/name, real links (GitHub, LinkedIn, mailto) and `t.footer` i18n texts; ship the CSS the block needs (`font-serif-elegant`, `wordmark-gradient`, `#light-*` ids) and use no `<h1>`. Route: delegated writer.
+- [x] B4 `footer`: rebuild `src/components/layout/Footer.tsx` on the Obsidian `footer` structure with the portfolio's own wordmark/name, real links (GitHub, LinkedIn, mailto) and `t.footer` i18n texts; ship the CSS the block needs (`font-serif-elegant`, `wordmark-gradient`, `#light-*` ids) and use no `<h1>`. Route: delegated writer.
 - [ ] B5 Parent visual check in Chrome (dark and light): AboutSkills marquee, Hero CTAs and title animation, Contact CTA, Footer.
 
 ## Acceptance criteria
@@ -45,5 +45,8 @@ Bring the ObsidianUI (`@obsidian`) non-primitive blocks into the portfolio where
 
 - B3 parent re-verification: diffs match the report (SplitText step removed from `useHeroAnimation.ts`, placeholder `tl.to({}, {duration: 1.2})`, `hero.title` still the text, `aria-label` on the h1 and `aria-hidden` on the flip span, inline `opacity:0` removed from the h1); vendored `flip-text.tsx` has only the `div` -> `span` patch; registry JSON for `flip-text` has no `css` field, so the `@keyframes flip-char-in` in `globals.css` are OUR interpretation of the effect, not Obsidian code (gated on `prefers-reduced-motion: no-preference`); `npx tsc --noEmit` clean. To judge in B5: flip look in both themes, word wrapping on mobile, entrance pacing (portrait starts ~0.3s earlier than before).
 
+- B4 (delegated writer): `npx tsc --noEmit` clean; `npx eslint src` only the 2 baseline errors; `npm run build` OK; `rg "Obsidian|obsidianui|Program Files|href=\"#\"|<h1"` on the two footer files only matches the English patch comment in the vendored block; `src/lib/utils.ts` unchanged. Visual check pending (B5).
+- B4 patch: vendored `block/footer.tsx` is props-ified (`wordmark`, `intro`, `children`, `legal`, `className`); brand copy, badge, headline, fake links and `<h1>` removed; wordmark is a decorative `aria-hidden` div sized `min(11vw,12rem)`. Theme choice (a): follows `--bg`/`--text`. The registry ships no CSS, so `.font-serif-elegant` (system serif), `.wordmark-gradient`, `#lighting-*`/`.lighting-section` glow (reduced-motion gated) in `globals.css` are our interpretation. No new strings.
+
 ## Next step
-B4 (footer).
+B5 (parent visual check).
