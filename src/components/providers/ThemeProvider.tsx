@@ -20,35 +20,55 @@ function applyThemeClass(theme: Theme) {
   document.documentElement.style.colorScheme = theme;
 }
 
-export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = React.useState<Theme>(() => {
-    if (typeof document === "undefined") return "dark";
+function readStoredTheme(): Theme | null {
+  try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === "light" || stored === "dark") return stored;
-    return document.documentElement.classList.contains("light") ? "light" : "dark";
-  });
+    return stored === "light" || stored === "dark" ? stored : null;
+  } catch {
+    return null;
+  }
+}
 
-  React.useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    const resolved: Theme =
-      stored === "light" || stored === "dark"
-        ? stored
-        : document.documentElement.classList.contains("light")
-          ? "light"
-          : "dark";
-    setThemeState(resolved);
-    applyThemeClass(resolved);
-  }, []);
+function writeStoredTheme(theme: Theme) {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // Storage can be unavailable (private mode, blocked cookies); the class still applies.
+  }
+}
+
+// The class on <html> (set by ThemeScript before hydration) is the source of truth.
+function subscribe(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+}
+
+function getSnapshot(): Theme {
+  const { classList } = document.documentElement;
+  if (classList.contains("light")) return "light";
+  if (classList.contains("dark")) return "dark";
+  return readStoredTheme() ?? "dark";
+}
+
+function getServerSnapshot(): Theme {
+  return "dark";
+}
+
+export default function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const theme = React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const setTheme = React.useCallback((next: Theme) => {
-    setThemeState(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
+    writeStoredTheme(next);
     applyThemeClass(next);
   }, []);
 
   const toggleTheme = React.useCallback(() => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }, [setTheme, theme]);
+    setTheme(getSnapshot() === "dark" ? "light" : "dark");
+  }, [setTheme]);
 
   const value = React.useMemo<ThemeContextValue>(
     () => ({ theme, setTheme, toggleTheme }),

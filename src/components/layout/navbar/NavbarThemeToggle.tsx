@@ -5,17 +5,24 @@ import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
+const subscribeNoop = () => () => {};
+
+// false on the server and during hydration, true afterwards (no effect + setState).
+function useIsClient() {
+  return React.useSyncExternalStore(
+    subscribeNoop,
+    () => true,
+    () => false,
+  );
+}
+
 export default function NavbarThemeToggle({
   ariaLabel,
 }: {
   ariaLabel: string;
 }) {
   const { theme, toggleTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useIsClient();
 
   return (
     <Button
