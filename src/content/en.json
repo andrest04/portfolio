@@ -162,6 +162,7 @@
         "items": ["Docker", "Git/GitHub", "Postman", "Swagger/OpenAPI", "Vercel", "Railway"]
       }
     ],
+    "marqueeLabel": "Skills strip. Drag or use the left and right arrow keys.",
     "strengthsTitle": "Technical strengths",
     "strengths": [
       "API design and data modeling with scalability in mind.",

@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { DiscoverButton } from "@/components/block/discover-button";
+import { FlipText } from "@/components/block/flip-text";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
 import HeroPrismBackground from "@/components/sections/hero/HeroPrismBackground";
 import MagneticButton from "@/components/ui/MagneticButton";
@@ -58,9 +60,13 @@ export default function Hero({ t }: HeroProps) {
           <h1
             ref={titleRef}
             className="mt-8 text-4xl font-semibold leading-[1.05] tracking-tight text-text-primary sm:text-5xl lg:text-6xl motion-safe:animate-[hero-breathe_9s_ease-in-out_infinite]"
-            style={{ opacity: 0 }}
+            aria-label={hero.title}
           >
-            {hero.title}
+            <span aria-hidden="true">
+              <FlipText loop={false} duration={1.6} className="leading-[1.05]">
+                {hero.title}
+              </FlipText>
+            </span>
           </h1>
 
           <p
@@ -77,9 +83,11 @@ export default function Hero({ t }: HeroProps) {
             style={{ opacity: 0 }}
           >
             <MagneticButton>
-              <Button asChild size="lg" className="rounded-full px-7">
-                <a href="#projects">{hero.ctaPrimary}</a>
-              </Button>
+              <DiscoverButton
+                label={hero.ctaPrimary}
+                href="#projects"
+                className="discover-cta"
+              />
             </MagneticButton>
 
             <Button

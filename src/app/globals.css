@@ -308,3 +308,109 @@ a:not([class*="bg-"]):hover {
     }
   }
 }
+
+/*
+ * Theme bridge for the vendored ObsidianUI discover-button, whose CSS assumes a
+ * dark background. --text and --bg are swapped by the .light/.dark classes, so
+ * one rule is legible in both themes: tinted pill + --text label at rest, then a
+ * --text fill with --bg label on hover (icon always sits on the fill).
+ */
+.discover-cta {
+  --obsidian-discover-surface: rgb(var(--text) / 0.08);
+  --obsidian-discover-text: rgb(var(--text));
+  --obsidian-discover-fill: rgb(var(--text));
+  --obsidian-discover-active-text: rgb(var(--bg));
+  --ring: rgb(var(--text));
+}
+
+.obsidian-discover-button.discover-cta {
+  border-color: rgb(var(--text) / 0.25);
+}
+
+/*
+ * Keyframes for the vendored ObsidianUI flip-text block, which ships none. Each
+ * character flips in on the X axis using the --flip-* custom properties the block
+ * sets inline. Gated on no-preference so reduced-motion users get static text.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .flip-char {
+    animation: flip-char-in var(--flip-duration) cubic-bezier(0.22, 1, 0.36, 1)
+      var(--flip-delay) var(--flip-iteration) both;
+    transform-origin: 50% 60%;
+  }
+
+  @keyframes flip-char-in {
+    from {
+      opacity: 0;
+      transform: rotateX(-100deg) translateY(30%);
+    }
+    to {
+      opacity: 1;
+      transform: rotateX(0deg) translateY(0);
+    }
+  }
+}
+
+/*
+ * ObsidianUI footer block: the registry item ships no CSS, so this is our
+ * interpretation. System serif (no web font, no network request); the wordmark
+ * gradient and the nested light cones use --text/--bg, which .light/.dark swap,
+ * so the footer is legible in both themes.
+ */
+.font-serif-elegant {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+}
+
+.wordmark-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--text) / 0.55) 0%,
+    rgb(var(--text) / 0.12) 70%,
+    rgb(var(--text) / 0) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+#lighting-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#lightings {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 140%;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.lighting-section {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 50% 60% at 50% 0%,
+    rgb(var(--text) / 0.035),
+    transparent 70%
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #lightings {
+    animation: footer-light-breathe 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes footer-light-breathe {
+    from {
+      opacity: 0.7;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
