@@ -1,5 +1,6 @@
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Card, CardContent } from "@/components/ui/card";
+import SkillsMarquee from "@/components/sections/about/SkillsMarquee";
 import { Dictionary } from "@/types/i18n";
 
 type AboutSkillsProps = { t: Dictionary };
@@ -72,6 +73,14 @@ export default function AboutSkills({ t }: AboutSkillsProps) {
             </Card>
           </ScrollReveal>
         ))}
+
+        {/* Skills strip */}
+        <ScrollReveal delay={0.1} className="sm:col-span-2 lg:col-span-3">
+          <SkillsMarquee
+            skills={data.skills.flatMap((group) => group.items)}
+            label={data.marqueeLabel}
+          />
+        </ScrollReveal>
 
         {/* Principle */}
         <ScrollReveal delay={0.2} className="sm:col-span-2 lg:col-span-3">

@@ -64,6 +64,7 @@ export interface Dictionary {
       title: string;
       items: string[];
     }>;
+    marqueeLabel: string;
     strengthsTitle: string;
     strengths: string[];
   };

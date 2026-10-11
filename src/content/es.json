@@ -162,6 +162,7 @@
         "items": ["Docker", "Git/GitHub", "Postman", "Swagger/OpenAPI", "Vercel", "Railway"]
       }
     ],
+    "marqueeLabel": "Franja de habilidades. Arrastra o usa las flechas izquierda y derecha.",
     "strengthsTitle": "Fortalezas técnicas",
     "strengths": [
       "Diseño de APIs y modelado de datos pensando en escalabilidad.",
