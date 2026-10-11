@@ -5,7 +5,8 @@ import React from 'react';
  * - props-ified: brand copy, fake links, badge and headline were removed in
  *   favour of `wordmark`, `intro`, `children` and `legal` slots;
  * - the wordmark is decorative (`aria-hidden`, a `div` instead of an `h1`);
- * - colors follow the site theme tokens (`--bg` / `--text`) instead of fixed black.
+ * - colors follow the site theme tokens (`--bg` / `--text`) instead of fixed black;
+ * - below `md` the legal line is lifted above the wordmark so they do not overlap.
  * The `lighting-*` and `wordmark-gradient` CSS lives in `src/app/globals.css`.
  */
 interface FooterProps {
@@ -61,7 +62,7 @@ const Footer: React.FC<FooterProps> = ({
       </div>
 
       {legal ? (
-        <div className="mt-auto pb-8 z-10 text-center w-full relative">
+        <div className="mt-auto pb-8 max-md:pb-[calc(min(11vw,12rem)+2rem)] z-10 text-center w-full relative">
           {legal}
         </div>
       ) : null}
