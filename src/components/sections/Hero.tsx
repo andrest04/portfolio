@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
-import MorphingBlob from "@/components/ui/MorphingBlob";
+import HeroPrismBackground from "@/components/sections/hero/HeroPrismBackground";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { Dictionary } from "@/types/i18n";
 import { useHeroAnimation } from "@/components/sections/hero/useHeroAnimation";
@@ -37,9 +37,9 @@ export default function Hero({ t }: HeroProps) {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative flex min-h-[88svh] flex-col justify-center overflow-hidden py-20 sm:py-24 lg:py-28"
+      className="relative isolate flex min-h-[88svh] flex-col justify-center overflow-y-clip py-20 sm:py-24 lg:py-28"
     >
-      <MorphingBlob className="left-[60%] top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2" />
+      <HeroPrismBackground />
 
       <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
