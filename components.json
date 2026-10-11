@@ -18,5 +18,7 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {}
+  "registries": {
+    "@obsidian": "https://www.obsidianui.dev/r/{name}.json"
+  }
 }
