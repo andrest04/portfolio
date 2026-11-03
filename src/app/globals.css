@@ -280,3 +280,274 @@ p {
     text-align: right;
   }
 }
+
+/* Hero: two halves split by tone, the instrument in the lighter one */
+
+.hero {
+  /* Width of the longest authored line, in em, so both lines always fit the half. */
+  --line-em: 14.4;
+  position: relative;
+  display: grid;
+}
+
+.hero[data-locale="es"] {
+  --line-em: 16.2;
+}
+
+.hero__copy {
+  --copy-width: calc(100vw - 2 * var(--margin));
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  gap: 12px;
+  padding: 16px var(--margin) 32px;
+}
+
+.hero__instrument {
+  order: -1;
+  display: grid;
+  background: var(--surface);
+  padding: 4px var(--margin) 12px;
+}
+
+.lines {
+  width: 100%;
+  font-size: calc(var(--copy-width) / var(--line-em));
+  white-space: nowrap;
+}
+
+.lines .line {
+  display: block;
+  overflow: clip;
+  /* Room for the accent on the capital row and for descenders inside the mask. */
+  padding-block: 0.14em;
+  margin-block: -0.14em;
+}
+
+.lines [data-line] {
+  display: block;
+}
+
+.hero__sentence {
+  max-width: 44ch;
+}
+
+@media (max-width: 599px) {
+  .hero__sentence {
+    max-width: none;
+    line-height: 1.5;
+  }
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+}
+
+@media (min-width: 768px) {
+  .hero__copy {
+    gap: 20px;
+    padding-block: 40px;
+  }
+
+  .hero__instrument {
+    padding: 32px var(--margin) 48px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    min-height: 100svh;
+  }
+
+  .hero__copy {
+    --copy-width: calc(50vw - var(--margin) - 24px);
+    gap: 24px;
+    padding: 96px 24px var(--margin) var(--margin);
+  }
+
+  .hero__instrument {
+    order: 0;
+    place-items: center;
+    padding: 88px var(--margin) var(--margin);
+  }
+}
+
+/* The instrument: a fragment of the Finance App, with its own table lines and controls */
+
+[data-ui].instrument {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  font-size: var(--step-small);
+  line-height: 1.4;
+}
+
+[data-ui] .readouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+[data-ui] .readouts dt {
+  font-weight: 600;
+}
+
+[data-ui] .readouts dd {
+  font-size: var(--step-figure);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+[data-ui] .readouts .readouts__note {
+  font-size: var(--step-small);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+[data-ui] .fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+}
+
+[data-ui] .field {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: end;
+}
+
+[data-ui] .field output {
+  font-size: var(--step-body);
+  font-weight: 500;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+[data-ui] .field input {
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+[data-ui] .field input::-webkit-slider-runnable-track {
+  height: 3px;
+  background: var(--ink);
+}
+
+[data-ui] .field input::-moz-range-track {
+  height: 3px;
+  background: var(--ink);
+}
+
+[data-ui] .field input::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 30px;
+  margin-top: -13.5px;
+  background: var(--ink);
+  transition: transform 150ms var(--ease-out);
+}
+
+[data-ui] .field input::-moz-range-thumb {
+  width: 18px;
+  height: 30px;
+  border: 0;
+  border-radius: 0;
+  background: var(--ink);
+  transition: transform 150ms var(--ease-out);
+}
+
+[data-ui] .field input:hover::-webkit-slider-thumb {
+  transform: scaleX(1.25);
+}
+
+[data-ui] .field input:hover::-moz-range-thumb {
+  transform: scaleX(1.25);
+}
+
+[data-ui] .field input:active::-webkit-slider-thumb {
+  transform: scale(1.25, 1.1);
+}
+
+[data-ui] .field input:active::-moz-range-thumb {
+  transform: scale(1.25, 1.1);
+}
+
+[data-ui] .schedule {
+  max-height: 4.875rem;
+  overflow-y: auto;
+  scrollbar-color: var(--muted) var(--surface);
+  scrollbar-width: thin;
+}
+
+[data-ui] .schedule table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+[data-ui] .schedule th,
+[data-ui] .schedule td {
+  padding: 0.2rem 0 0.2rem 0.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 22%, var(--surface));
+  text-align: right;
+  font-weight: 400;
+}
+
+[data-ui] .schedule th:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+[data-ui] .schedule thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  font-weight: 600;
+  border-bottom-color: var(--ink);
+}
+
+[data-ui] .instrument__foot {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+[data-ui] .instrument__foot .link {
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+@media (min-width: 1100px) {
+  [data-ui].instrument {
+    width: min(100%, 580px);
+  }
+}
+
+@media (min-width: 600px) {
+  [data-ui].instrument {
+    gap: 24px;
+  }
+
+  [data-ui] .schedule {
+    max-height: clamp(7.5rem, 22svh, 15rem);
+  }
+
+  [data-ui] .schedule th,
+  [data-ui] .schedule td {
+    padding-block: 0.3rem;
+  }
+
+  [data-ui] .fields {
+    gap: 12px 32px;
+  }
+}

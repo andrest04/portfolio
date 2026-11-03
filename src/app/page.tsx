@@ -1,4 +1,5 @@
 import SiteNav from "@/components/layout/SiteNav";
+import Hero from "@/components/sections/Hero";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { getLocale } from "next-intl/server";
 
@@ -9,6 +10,7 @@ export default async function Page() {
   return (
     <main id="main" tabIndex={-1}>
       <SiteNav t={t} locale={locale} />
+      <Hero t={t} locale={locale} />
     </main>
   );
 }
