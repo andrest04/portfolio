@@ -69,6 +69,8 @@ Strategy `single-pr`. Forecast is far above 400 authored lines, mostly deletions
 - Hero order on phones is instrument first per the blueprint; DOM order stays headline first for assistive technology.
 - `public/og.png` is the real hero at 1200x630, with the schedule cut to two rows so it fits.
 
+- Name corrected to Kataleya Flowers and the repository link updated after the repo rename. Commit `e985790`.
+
 ## Verification (production build)
 
 - `npm test`: 14 pass, 0 fail.
@@ -95,4 +97,4 @@ Skills `design-taste-frontend` and `impeccable` installed globally. Before-inspe
 
 ## Next step
 
-Parent reviews the screenshots. Push and PR stay with the user.
+None. Merged into main and pushed at the user's request on 2026-11-02.
