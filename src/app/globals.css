@@ -997,3 +997,76 @@ details[open] > summary .ledger__toggle {
     grid-column: 9 / span 4;
   }
 }
+
+/* Motion: every hidden start state lives behind html.js and no-preference */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .js .lines [data-line] {
+    transform: translateY(110%);
+    animation: line-up 900ms var(--ease-out) forwards;
+    animation-delay: calc(var(--i) * 110ms + 60ms);
+  }
+
+  .js [data-follow],
+  .js [data-load] {
+    opacity: 0;
+    animation: rise-in 700ms var(--ease-out) forwards;
+  }
+
+  .js [data-follow] {
+    animation-delay: 620ms;
+  }
+
+  .js [data-load] {
+    animation-delay: calc(var(--load) * 80ms + 300ms);
+  }
+
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms var(--ease-out),
+      transform 900ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 75ms);
+  }
+
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* The one moving picture: the visible project image drifts slowly. */
+  .ledger.is-playing .ledger__row:is(:hover, :has(details[open])) .ledger__frame img {
+    animation: drift 24s ease-in-out infinite alternate;
+  }
+
+  @keyframes line-up {
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes drift {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.07) translateY(-1.5%);
+    }
+  }
+}

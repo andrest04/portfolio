@@ -1,4 +1,5 @@
 import SiteNav from "@/components/layout/SiteNav";
+import RevealObserver from "@/components/motion/RevealObserver";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 import Experience from "@/components/sections/Experience";
@@ -23,6 +24,7 @@ export default async function Page() {
       </section>
       <About t={t} />
       <Contact t={t} />
+      <RevealObserver locale={locale} />
     </main>
   );
 }

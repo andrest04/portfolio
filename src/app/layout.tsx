@@ -14,6 +14,12 @@ const literata = Literata({
   display: "swap",
 });
 
+/**
+ * Runs before first paint so hidden start states only apply when script is available,
+ * and lifts them again if the app never hydrates.
+ */
+const MOTION_GATE = `(function(){var r=document.documentElement;r.classList.add("js");setTimeout(function(){if(!r.dataset.reveal)r.classList.remove("js")},4000)})();`;
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const isEn = locale === "en";
@@ -106,7 +112,10 @@ export default async function RootLayout({
   const t = await getDictionary(locale);
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: MOTION_GATE }} />
+      </head>
       <body className={literata.className}>
         <a href="#main" className="skip-link">
           {t.meta.skipLink}
