@@ -79,6 +79,16 @@ Strategy `single-pr`. Forecast is far above 400 authored lines, mostly deletions
 - WARN `small-title` at 390px: the two-line rule forces 24px at that width (22px in Spanish), and the instrument carries the large type on that screen.
 - Both locales render, language switch works, keyboard reaches and moves the sliders, disclosures toggle, no console errors or hydration warnings, external links resolve.
 
+## Parent review fixes
+
+Commit: `fix(ui): drop the generic EduSpace picture, the bullets and sliced schedule rows`.
+
+- Detail images: removed EduSpace, a stock-looking laptop with generic analytics ("Users: last 7 days") that implied it was EduSpace's product. Kept Finance App (its own French-method chart and TCEA and TREA panels), Booking (its real rates) and Kataleya (its real best sellers).
+- Removed every round dot and the EDTeam logo, which reads as a small spinner at 16px on putty, and the hanging indent. `public/edteam-logo.svg` is unused and outside the allowed surface.
+- Schedule height is a whole multiple of a fixed row height (5 rows at 1440x900, 4 at 1280x800 and 768, 2 at 390), with row snapping. Measured: 0 sliced rows at rest, after arrow keys and after an arbitrary scrollTop.
+- Removing the EduSpace crop raised `empty-screens` (screens 2 and 6 under 20%). Contact top padding now matches the About band, so the last screen holds more of that band.
+- Result: `inspect.mjs` 0 FAIL, 2 WARN (`no-footage`, `small-title`, same defences). `npm test` 14 pass, `npm run lint` clean, `npm run build` compiled, `lint.mjs src` 0 FAIL, 0 WARN.
+
 ## Progress
 
 Skills `design-taste-frontend` and `impeccable` installed globally. Before-inspection: 14 FAIL, 5 WARN in `.taste-skill/before`. After-inspection: 0 FAIL, 2 WARN in `.taste-skill/after`. Engram mirror `odd/portfolio-redesign/tasks` pending, for the parent to synchronize.

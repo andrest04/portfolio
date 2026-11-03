@@ -62,9 +62,7 @@
         },
         "image": {
           "main": "/work/eduspace.webp",
-          "mainAlt": "Landing de EduSpace: coordinación de campus inteligente para instituciones educativas, con una fotografía de estudiantes.",
-          "detail": "/work/eduspace-detail.webp",
-          "detailAlt": "Panel de monitoreo mostrado en la landing de EduSpace, con gráficos de ocupación sobre una pantalla oscura."
+          "mainAlt": "Landing de EduSpace: coordinación de campus inteligente para instituciones educativas, con una fotografía de estudiantes."
         }
       },
       {

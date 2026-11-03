@@ -62,9 +62,7 @@
         },
         "image": {
           "main": "/work/eduspace.webp",
-          "mainAlt": "EduSpace landing page: smart campus coordination for educational institutions, with a photograph of students.",
-          "detail": "/work/eduspace-detail.webp",
-          "detailAlt": "Monitoring dashboard shown on the EduSpace landing page, with occupancy charts on a dark screen."
+          "mainAlt": "EduSpace landing page: smart campus coordination for educational institutions, with a photograph of students."
         }
       },
       {

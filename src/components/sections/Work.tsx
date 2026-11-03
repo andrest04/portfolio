@@ -48,14 +48,16 @@ export default function Work({ t }: { t: Dictionary }) {
 
                 <div className="ledger__panel">
                   <p>{project.description}</p>
-                  <Image
-                    className="ledger__detail"
-                    src={project.image.detail}
-                    alt={project.image.detailAlt}
-                    width={1200}
-                    height={750}
-                    sizes={DETAIL_SIZES}
-                  />
+                  {project.image.detail && (
+                    <Image
+                      className="ledger__detail"
+                      src={project.image.detail}
+                      alt={project.image.detailAlt ?? ""}
+                      width={1200}
+                      height={750}
+                      sizes={DETAIL_SIZES}
+                    />
+                  )}
                   <p>{project.highlights.join(", ")}</p>
                   <p className="ledger__stack">{project.stack.join(", ")}</p>
                   <p className="ledger__links">

@@ -57,8 +57,8 @@ export interface Dictionary {
       image: {
         main: string;
         mainAlt: string;
-        detail: string;
-        detailAlt: string;
+        detail?: string;
+        detailAlt?: string;
       };
     }>;
   };

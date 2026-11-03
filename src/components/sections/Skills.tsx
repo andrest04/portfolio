@@ -13,10 +13,7 @@ export default function Skills({ t }: { t: Dictionary["skills"] }) {
           {t.groups.map((group, index) => (
             <li key={group.title} data-reveal style={{ "--i": index + 2 } as React.CSSProperties}>
               <div className="rows__pair">
-                <span className="rows__name">
-                  <span className="rows__dot" aria-hidden="true" />
-                  <h3>{group.title}</h3>
-                </span>
+                <h3 className="rows__name">{group.title}</h3>
                 <p>{group.items.join(", ")}</p>
               </div>
             </li>
@@ -33,10 +30,7 @@ export default function Skills({ t }: { t: Dictionary["skills"] }) {
             <ul className="rows">
               {note.items.map((item, index) => (
                 <li key={item} data-reveal style={{ "--i": index + 1 } as React.CSSProperties}>
-                  <span className="rows__name rows__name--sentence">
-                    <span className="rows__dot" aria-hidden="true" />
-                    <span>{item}</span>
-                  </span>
+                  {item}
                 </li>
               ))}
             </ul>
