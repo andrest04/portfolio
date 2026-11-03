@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { Card } from "@/components/ui/card";
 
 export default function Error({
   error,
@@ -16,44 +15,18 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-[60vh] items-center justify-center px-4">
-      <Card className="max-w-md rounded-lg border-border-medium bg-surface-medium p-8 text-center shadow-none">
-        <div className="mb-6 flex justify-center">
-          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-surface-strong text-2xl">
-            ⚠️
-          </div>
-        </div>
-
-        <h2 className="text-2xl font-semibold text-text-primary">
-          Something went wrong
-        </h2>
-
-        <p className="mt-3 text-sm text-text-secondary">
-          An unexpected error occurred. Please try again or contact support if the problem persists.
-        </p>
-
-        {error.digest && (
-          <p className="mt-2 text-xs text-text-tertiary font-mono">
-            Error ID: {error.digest}
-          </p>
-        )}
-
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <button
-            onClick={reset}
-            className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-medium text-black transition-colors duration-200 ease-out hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
-          >
-            Try again
-          </button>
-
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-white/15 bg-transparent px-5 py-3 text-sm font-medium text-text-primary transition-colors duration-200 ease-out hover:border-white/30 hover:bg-white/5"
-          >
-            Go home
-          </Link>
-        </div>
-      </Card>
-    </div>
+    <main className="mx-auto grid min-h-[80svh] max-w-[520px] content-center justify-items-start gap-6 px-5">
+      <h1 className="text-head">Something went wrong</h1>
+      <p>An unexpected error occurred. Please try again or contact me if the problem persists.</p>
+      {error.digest && <p className="text-small text-muted">Error ID: {error.digest}</p>}
+      <div className="flex flex-wrap items-center gap-6">
+        <button type="button" onClick={reset} className="button cursor-pointer">
+          Try again
+        </button>
+        <Link href="/" className="link">
+          Go home
+        </Link>
+      </div>
+    </main>
   );
 }

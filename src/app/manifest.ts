@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Portfolio of Andrés Torres, Full-Stack Developer specialized in .NET, React and Node.js.",
     start_url: "/",
     display: "standalone",
-    background_color: "#000000",
-    theme_color: "#000000",
+    background_color: "#dedad3",
+    theme_color: "#dedad3",
     icons: [
       {
         src: "/web-app-manifest-192x192.png",

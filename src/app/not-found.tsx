@@ -1,33 +1,13 @@
-import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center px-4">
-      <Card className="max-w-md rounded-lg border-border-medium bg-surface-medium p-8 text-center shadow-none">
-        <div className="mb-6 flex justify-center">
-          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-surface-strong text-3xl font-bold text-text-primary">
-            404
-          </div>
-        </div>
-
-        <h2 className="text-2xl font-semibold text-text-primary">
-          Page not found
-        </h2>
-
-        <p className="mt-3 text-sm text-text-secondary">
-          The page you are looking for does not exist or has been moved.
-        </p>
-
-        <div className="mt-6">
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-medium text-black transition-colors duration-200 ease-out hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
-          >
-            Go home
-          </Link>
-        </div>
-      </Card>
-    </div>
+    <main className="mx-auto grid min-h-[80svh] max-w-[520px] content-center justify-items-start gap-6 px-5">
+      <h1 className="text-head">Page not found</h1>
+      <p>The page you are looking for does not exist or has been moved.</p>
+      <Link href="/" className="button">
+        Go home
+      </Link>
+    </main>
   );
 }

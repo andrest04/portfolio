@@ -1,43 +1,49 @@
 {
-  "experience": {
-    "title": "Experience",
-    "subtitle": "Professional experience in the tech industry.",
-    "current": "Current",
-    "items": [
-      {
-        "company": "EDTeam",
-        "role": "Frontend Intern",
-        "period": "Apr 2026 — Present",
-        "description": "Leading online tech education platform in Spanish. Developing and maintaining the web application (courses, video player, progress tracking, user profiles) within the frontend team.",
-        "stack": ["React", "TypeScript", "Next.js", "TailwindCSS"]
-      },
-      {
-        "company": "Mathyu's Solutions",
-        "role": "Full-Stack Developer",
-        "period": "Mar 2025 — Jul 2025",
-        "description": "Peruvian software development and digital transformation company. Built a web booking platform for an Italian client with responsive UI, authentication system, and optimized NoSQL database design.",
-        "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"]
-      }
-    ]
+  "meta": {
+    "skipLink": "Skip to content",
+    "switchLanguage": "Cambiar el idioma a español",
+    "otherLanguage": "Español"
+  },
+  "nav": {
+    "label": "Main",
+    "work": "Work",
+    "experience": "Experience",
+    "skills": "Skills",
+    "about": "About",
+    "contact": "Contact"
   },
   "hero": {
     "name": "Andrés Torres",
     "role": "Software Engineering Student",
-    "title": "I build scalable systems with Clean Architecture, DDD, and CQRS.",
-    "subtitle": "Software Engineering student building robust backend systems and full-stack applications with .NET and Next.js.",
-    "currentPosition": "Frontend Intern",
-    "currentCompany": "EDTeam",
-    "stack": [".NET", "Next.js", "React", "TypeScript", "Docker", "MySQL"],
+    "headline": ["Andrés Torres builds backends", "and the apps on top of them."],
+    "sentence": "Software Engineering student in Lima and Frontend Intern at EDTeam. This is the bond calculator from my Finance App: change the terms and read the result.",
     "ctaPrimary": "View projects",
-    "ctaSecondary": "Download CV",
-    "ctaTertiary": "Contact me"
+    "ctaSecondary": "Download CV"
+  },
+  "instrument": {
+    "label": "Bond calculator",
+    "tcea": "TCEA",
+    "tceaNote": "Issuer's effective annual cost",
+    "trea": "TREA",
+    "treaNote": "Investor's effective annual yield",
+    "faceValue": "Face value",
+    "term": "Term",
+    "years": "years",
+    "coupon": "Nominal annual coupon",
+    "costs": "Issue costs, each side",
+    "scheduleLabel": "Payment schedule",
+    "caption": "Calculated from these terms, not a real issuance. Semi-annual payments, French method, in Peruvian soles.",
+    "period": "Period",
+    "interest": "Interest",
+    "amortization": "Amortization",
+    "cashFlow": "Cash flow",
+    "repository": "Finance App repository"
   },
   "projects": {
-    "title": "Projects",
+    "title": "Work",
     "subtitle": "Selection of projects where I applied software engineering principles, clean architecture, and robust API design.",
     "viewDemo": "Live Demo",
     "viewGithub": "GitHub",
-    "featured": "Featured",
     "items": [
       {
         "name": "EduSpace",
@@ -53,19 +59,17 @@
         "links": {
           "demo": "https://desarrollosolucioniot.github.io/landing-page/",
           "github": "https://github.com/orgs/DesarrolloSolucionIoT/repositories"
+        },
+        "image": {
+          "main": "/work/eduspace.webp",
+          "mainAlt": "EduSpace landing page: smart campus coordination for educational institutions, with a photograph of students."
         }
       },
       {
         "name": "Finance App",
         "role": "Education Project",
         "description": "Corporate bond management system with financial calculation engine (TCEA/TREA, cash flows, schedules).",
-        "stack": [
-          "Next.js 15",
-          "TypeScript",
-          "Firebase",
-          "Tailwind",
-          "shadcn/ui"
-        ],
+        "stack": ["Next.js 15", "TypeScript", "Firebase", "Tailwind", "shadcn/ui"],
         "highlights": [
           "Roles (issuer/investor)",
           "Dashboard + validations",
@@ -74,6 +78,12 @@
         "links": {
           "demo": "https://andrest04.github.io/finance-app-landing/",
           "github": "https://github.com/andrest04/finance-app"
+        },
+        "image": {
+          "main": "/work/finance.webp",
+          "mainAlt": "Finance App landing page with the headline about bonds calculated with precision and a sample bond summary.",
+          "detail": "/work/finance-detail.webp",
+          "detailAlt": "Finance App landing page detail: a French method chart of interest and amortization beside a TCEA and TREA comparison."
         }
       },
       {
@@ -89,10 +99,16 @@
         "links": {
           "demo": "https://inti-eta.vercel.app/en",
           "github": "https://github.com/xMathyu/inti-webapp"
+        },
+        "image": {
+          "main": "/work/booking.webp",
+          "mainAlt": "Parco dei Colori home page: a child with a butterfly net in a garden in front of a glass dome.",
+          "detail": "/work/booking-detail.webp",
+          "detailAlt": "Parco dei Colori visit types and rates, three options in euros, each with a Book Now button."
         }
       },
       {
-        "name": "Kataleya Flawers",
+        "name": "Kataleya Flowers",
         "role": "Full-Stack Developer",
         "description": "Website for a flower shop with 32 years of history in Lima. E-commerce with floral arrangement catalog, customer gallery, WhatsApp ordering integration, and location map.",
         "stack": ["Next.js", "React", "Tailwind", "Cloudinary", "Vercel"],
@@ -103,44 +119,48 @@
           "Vercel deployment"
         ],
         "links": {
-          "demo": "https://kataleya-flawers.appwrite.network/",
-          "github": "https://github.com/andrest04/kataleya-flawers-web"
+          "demo": "https://www.kataleyaflowers.com/",
+          "github": "https://github.com/andrest04/kataleya-flowers-web"
+        },
+        "image": {
+          "main": "/work/kataleya.webp",
+          "mainAlt": "Kataleya Flowers home page: a bicycle basket of sunflowers and daisies in a field of sunflowers.",
+          "detail": "/work/kataleya-detail.webp",
+          "detailAlt": "Kataleya Flowers best sellers: sunflower bouquets wrapped in paper, with the catalog categories above them."
         }
       }
     ]
   },
-  "aboutSkills": {
-    "title": "About & Skills",
-    "subtitle": "Software Engineering student focused on backend architecture, scalable systems, and technical leadership.",
+  "experience": {
+    "title": "Experience",
+    "items": [
+      {
+        "company": "EDTeam",
+        "role": "Frontend Intern",
+        "period": "Apr 2026 — Present",
+        "description": "Leading online tech education platform in Spanish. Developing and maintaining the web application (courses, video player, progress tracking, user profiles) within the frontend team.",
+        "stack": ["React", "TypeScript", "Next.js", "TailwindCSS"]
+      },
+      {
+        "company": "Mathyu's Solutions",
+        "role": "Full-Stack Developer",
+        "period": "Mar 2025 — Jul 2025",
+        "description": "Peruvian software development and digital transformation company. Built a web booking platform for an Italian client with responsive UI, authentication system, and optimized NoSQL database design.",
+        "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"]
+      }
+    ],
     "education": {
       "title": "Education",
-      "items": [
-        "Universidad Peruana de Ciencias Aplicadas (UPC)",
-        "Software Engineering — 8th term",
-        "Top fifth of my class"
-      ]
-    },
-    "focus": {
-      "title": "Focus",
-      "items": [
-        "Clean Architecture, DDD, and CQRS in real projects",
-        "REST API design and data modeling",
-        "Scalability, maintainability, and documentation"
-      ]
-    },
-    "teamwork": {
-      "title": "Teamwork",
-      "items": [
-        "Technical leadership in EduSpace",
-        "Agile methodologies (Scrum)",
-        "Clear communication and results-driven mindset"
-      ]
-    },
-    "principle": {
-      "label": "Principle:",
-      "text": "build with architectural fundamentals, measure outcomes, and keep code maintainable to scale."
-    },
-    "skills": [
+      "school": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "degree": "Software Engineering",
+      "term": "8th term",
+      "standing": "Top fifth of my class"
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "intro": "Software Engineering student building robust backend systems and full-stack applications with .NET and Next.js, focused on backend architecture, scalable systems, and technical leadership.",
+    "groups": [
       {
         "title": "Backend",
         "items": [".NET 8", "ASP.NET Core", "Node.js", "Express.js", "Entity Framework Core", "REST APIs"]
@@ -162,37 +182,54 @@
         "items": ["Docker", "Git/GitHub", "Postman", "Swagger/OpenAPI", "Vercel", "Railway"]
       }
     ],
-    "marqueeLabel": "Skills strip. Drag or use the left and right arrow keys.",
-    "strengthsTitle": "Technical strengths",
-    "strengths": [
-      "API design and data modeling with scalability in mind.",
-      "Clean architecture applied end-to-end in real projects.",
-      "Agile delivery with solid practices (docs, Git, deployment)."
+    "notes": [
+      {
+        "title": "Focus",
+        "items": [
+          "Clean Architecture, DDD, and CQRS in real projects",
+          "REST API design and data modeling",
+          "Scalability, maintainability, and documentation"
+        ]
+      },
+      {
+        "title": "Teamwork",
+        "items": [
+          "Technical leadership in EduSpace",
+          "Agile methodologies (Scrum)",
+          "Clear communication and results-driven mindset"
+        ]
+      },
+      {
+        "title": "Technical strengths",
+        "items": [
+          "API design and data modeling with scalability in mind.",
+          "Clean architecture applied end-to-end in real projects.",
+          "Agile delivery with solid practices (docs, Git, deployment)."
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "About",
+    "portraitAlt": "Portrait of Andrés Torres, wearing glasses and a blue jacket.",
+    "paragraphs": [
+      "I'm in my eighth term of Software Engineering at Universidad Peruana de Ciencias Aplicadas (UPC), in the top fifth of my class.",
+      "I start from the architecture: Clean Architecture, DDD and CQRS in real projects, REST APIs and data models designed for scale, and documentation alongside the code.",
+      "On EduSpace I was Tech Lead of a five-member team. I work in Scrum, with clear communication and a results-driven mindset.",
+      "My principle: build with architectural fundamentals, measure outcomes, and keep code maintainable to scale."
     ]
   },
   "contact": {
     "title": "Contact",
-    "cardTitle": "Contact information",
-    "cardSubtitle": "Have a project in mind? Let's talk!",
+    "statement": "Have a project in mind? Let's talk!",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "locationLabel": "Location",
     "locationValue": "Lima, Peru",
-    "socialTitle": "Social links",
     "linkedinLabel": "LinkedIn",
     "githubLabel": "GitHub"
   },
-  "nav": {
-    "hero": "Home",
-    "experience": "Experience",
-    "projects": "Projects",
-    "aboutSkills": "About",
-    "contact": "Contact",
-    "toggleTheme": "Toggle theme",
-    "openCommandPalette": "Open command palette"
-  },
   "footer": {
-    "text": "Built with Next.js and Tailwind CSS",
-    "rights": "All rights reserved."
+    "description": "Andrés Torres, Lima, Peru"
   }
 }
