@@ -1,91 +1,61 @@
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Phone, MapPin, Linkedin, Github } from "lucide-react";
-import { Dictionary } from "@/types/i18n";
-import ContactEmailCard from "@/components/sections/contact/ContactEmailCard";
-import ContactInfoCard from "@/components/sections/contact/ContactInfoCard";
-import ContactSocialCard from "@/components/sections/contact/ContactSocialCard";
-import { getLocale } from "next-intl/server";
+import Image from "next/image";
+import { CONTACT } from "@/lib/contact";
+import type { Dictionary } from "@/types/i18n";
 
-type ContactProps = { t: Dictionary };
-
-const EMAIL = "andresalbertotorresgarcia@gmail.com";
-const PHONE_DISPLAY = "+51 984 300 217";
-const PHONE_HREF = "+51984300217";
-const LINKEDIN = "https://linkedin.com/in/andres-torres-garcia";
-const GITHUB = "https://github.com/andrest04";
-
-export default async function Contact({ t }: ContactProps) {
+export default function Contact({ t }: { t: Dictionary }) {
   const c = t.contact;
-  const locale = await getLocale();
-  const isEs = locale === "es";
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-24">
-      <ScrollReveal>
-        <div className="text-center">
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-text-primary sm:text-4xl">
-            {c.title}
-          </h2>
-          <p className="mx-auto mt-3 max-w-lg text-base leading-relaxed text-text-secondary sm:text-lg">
-            {c.cardSubtitle}
-          </p>
-        </div>
-      </ScrollReveal>
-
-      <div className="mx-auto mt-10 max-w-4xl">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <ScrollReveal delay={0.05} className="lg:col-span-2">
-            <ContactEmailCard email={EMAIL} label={c.emailLabel} isEs={isEs} />
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
-            <ContactInfoCard
-              icon={<Phone className="h-5 w-5" />}
-              label={c.phoneLabel}
-              value={PHONE_DISPLAY}
-              href={`tel:${PHONE_HREF}`}
-              iconBgClass="bg-white/5"
-              iconColorClass="text-text-primary"
-              hoverClass="hover:border-border-strong"
-              valueLinkClass="focus-visible:ring-white/30"
-            />
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.15}>
-            <ContactInfoCard
-              icon={<MapPin className="h-5 w-5" />}
-              label={c.locationLabel}
-              value={c.locationValue}
-              iconBgClass="bg-white/5"
-              iconColorClass="text-text-primary"
-            />
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
-            <ContactSocialCard
-              href={LINKEDIN}
-              icon={<Linkedin className="h-5 w-5" />}
-              label={c.linkedinLabel}
-              handle="andres-torres-garcia"
-              iconBgClass="bg-white/5"
-              iconColorClass="text-text-primary"
-              hoverClass="hover:border-border-strong"
-            />
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.25}>
-            <ContactSocialCard
-              href={GITHUB}
-              icon={<Github className="h-5 w-5" />}
-              label={c.githubLabel}
-              handle="andrest04"
-              iconBgClass="bg-white/5"
-              iconColorClass="text-text-primary"
-              hoverClass="hover:border-border-strong"
-            />
-          </ScrollReveal>
-        </div>
+    <section id="contact" className="contact">
+      <div className="contact__sentence">
+        <h2 data-reveal>{c.title}</h2>
+        <p data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+          {c.statement}
+        </p>
       </div>
+
+      <figure className="contact__portrait" data-reveal style={{ "--i": 2 } as React.CSSProperties}>
+        <Image src="/profile.png" alt={t.about.portraitAlt} width={170} height={170} />
+      </figure>
+
+      <dl className="contact__links" data-reveal style={{ "--i": 3 } as React.CSSProperties}>
+        <div>
+          <dt>{c.emailLabel}</dt>
+          <dd>
+            <a href={`mailto:${CONTACT.email}`} className="link">
+              {CONTACT.email}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>{c.phoneLabel}</dt>
+          <dd>
+            <a href={`tel:${CONTACT.phoneHref}`} className="link">
+              {CONTACT.phoneDisplay}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>{c.linkedinLabel}</dt>
+          <dd>
+            <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" className="link">
+              linkedin.com/in/andres-torres-garcia
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>{c.githubLabel}</dt>
+          <dd>
+            <a href={CONTACT.github} target="_blank" rel="noreferrer" className="link">
+              github.com/andrest04
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>{c.locationLabel}</dt>
+          <dd>{c.locationValue}</dd>
+        </div>
+      </dl>
     </section>
   );
 }

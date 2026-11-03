@@ -1,40 +1,63 @@
-"use client";
+import Image from "next/image";
+import type { Dictionary } from "@/types/i18n";
 
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Dictionary } from "@/types/i18n";
-import ExperienceItem from "@/components/sections/experience/ExperienceItem";
+const LOGOS: Record<string, string> = {
+  EDTeam: "/edteam-logo.svg",
+};
 
-type ExperienceProps = { t: Dictionary };
-
-export default function Experience({ t }: ExperienceProps) {
-  const exp = t.experience;
+export default function Experience({ t }: { t: Dictionary["experience"] }) {
+  const { education } = t;
 
   return (
-    <section id="experience" className="py-16 sm:py-20 lg:py-24">
-      <ScrollReveal>
-        <h2 className="text-3xl font-semibold leading-tight tracking-tight text-text-primary sm:text-4xl">
-          {exp.title}
-        </h2>
-        <p className="mt-3 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg">
-          {exp.subtitle}
-        </p>
-      </ScrollReveal>
+    <div id="experience" className="record__part">
+      <h2 data-reveal>{t.title}</h2>
 
-      <ScrollReveal delay={0.1}>
-        <div className="mt-6 h-px w-24 bg-border-medium" />
-      </ScrollReveal>
+      <ul className="rows">
+        {t.items.map((item, index) => {
+          const logo = LOGOS[item.company];
+          return (
+            <li key={item.company} data-reveal style={{ "--i": index + 1 } as React.CSSProperties}>
+              <div className="rows__ends">
+                <span className="rows__name">
+                  {logo ? (
+                    <Image src={logo} alt="" width={16} height={16} className="rows__mark" />
+                  ) : (
+                    <span className="rows__dot" aria-hidden="true" />
+                  )}
+                  <h3>{item.company}</h3>
+                </span>
+                <span className="rows__value">{item.period}</span>
+              </div>
+              <div className="rows__body">
+                <p>{item.role}</p>
+                <p>{item.description}</p>
+                <p className="rows__soft">{item.stack.join(", ")}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
 
-      <div className="relative mt-10">
-        <div className="absolute left-5 top-0 bottom-0 w-px bg-border-default sm:left-6" />
-
-        <div className="space-y-8">
-          {(exp.items ?? []).map((item, idx) => (
-            <ScrollReveal key={item.company + idx} delay={0.1 * idx} y={30}>
-              <ExperienceItem item={item} currentLabel={exp.current} />
-            </ScrollReveal>
-          ))}
-        </div>
+      <div className="rows__group">
+        <h3 className="rows__soft" data-reveal>
+          {education.title}
+        </h3>
+        <ul className="rows">
+          <li data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+            <div className="rows__ends">
+              <span className="rows__name">
+                <span className="rows__dot" aria-hidden="true" />
+                <span>{education.school}</span>
+              </span>
+              <span className="rows__value">{education.term}</span>
+            </div>
+            <div className="rows__body">
+              <p>{education.degree}</p>
+              <p>{education.standing}</p>
+            </div>
+          </li>
+        </ul>
       </div>
-    </section>
+    </div>
   );
 }
