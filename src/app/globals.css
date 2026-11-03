@@ -1,470 +1,282 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
 
 :root {
-  --bg: 0 0 0;
-  --bg-2: 10 10 10;
-  --surface: 255 255 255;
+  --bg: #dedad3;
+  --surface: #d3cec6;
+  --ink: #0a0a0a;
+  --muted: #5c5852;
+  --accent: #256f82;
+  --accent-ink: #ffffff;
 
-  --text: 255 255 255;
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  --step-figure: clamp(2.5rem, 2rem + 2.2vw, 3.75rem);
 
-  --radius: 0.5rem;
+  --margin: 20px;
+  --section-gap: clamp(96px, 12vw, 180px);
+  --column-start: 22vw;
 
-  --background: 0 0 0;
-  --foreground: 255 255 255;
-
-  --accent-primary: rgb(255 255 255);
-  --accent-secondary: rgb(163 163 163);
-  --accent-tertiary: rgb(163 163 163);
-
-  --surface-subtle: 0.02;
-  --surface-default: 0.03;
-  --surface-medium: 0.05;
-  --surface-strong: 0.08;
-
-  --border-subtle: 0.06;
-  --border-default: 0.1;
-  --border-medium: 0.14;
-  --border-strong: 0.2;
-  --border-emphasis: 0.28;
-
-  --text-primary: 0.95;
-  --text-secondary: 0.62;
-  --text-tertiary: 0.42;
-  --text-disabled: 0.28;
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.6);
-
-  --card: 0 0 0;
-  --card-foreground: 255 255 255;
-  --popover: 10 10 10;
-  --popover-foreground: 255 255 255;
-  --primary: 255 255 255;
-  --primary-foreground: 0 0 0;
-  --secondary: 20 20 20;
-  --secondary-foreground: 255 255 255;
-  --muted: 20 20 20;
-  --muted-foreground: 163 163 163;
-  --accent: 20 20 20;
-  --accent-foreground: 255 255 255;
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: 255 255 255;
-  --input: 255 255 255;
-  --ring: 255 255 255;
-  --chart-1: oklch(0.985 0 0);
-  --chart-2: oklch(0.85 0 0);
-  --chart-3: oklch(0.7 0 0);
-  --chart-4: oklch(0.55 0 0);
-  --chart-5: oklch(0.4 0 0);
-  --sidebar: oklch(0 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.985 0 0);
-  --sidebar-primary-foreground: oklch(0 0 0);
-  --sidebar-accent: oklch(0.205 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.708 0 0);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.light {
-  --bg: 255 255 255;
-  --bg-2: 245 245 245;
-  --surface: 0 0 0;
-
-  --text: 0 0 0;
-
-  --accent-primary: rgb(0 0 0);
-  --accent-secondary: rgb(64 64 64);
-  --accent-tertiary: rgb(64 64 64);
-
-  --surface-subtle: 0.035;
-  --surface-default: 0.06;
-  --surface-medium: 0.09;
-  --surface-strong: 0.12;
-
-  --border-subtle: 0.08;
-  --border-default: 0.12;
-  --border-medium: 0.18;
-  --border-strong: 0.26;
-  --border-emphasis: 0.34;
-
-  --text-primary: 0.95;
-  --text-secondary: 0.7;
-  --text-tertiary: 0.52;
-  --text-disabled: 0.34;
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.14);
-
-  /*
-    IMPORTANT:
-    These tokens are consumed via rgb(var(--token)) in @theme inline below.
-    Keep them as space-separated RGB triplets (not oklch()) to avoid invalid
-    computed colors (which made several cards/text effectively invisible in light mode).
-  */
-  --background: 255 255 255;
-  --foreground: 17 17 17;
-  --card: 255 255 255;
-  --card-foreground: 17 17 17;
-  --popover: 255 255 255;
-  --popover-foreground: 17 17 17;
-  --primary: 17 17 17;
-  --primary-foreground: 255 255 255;
-  --secondary: 245 245 245;
-  --secondary-foreground: 24 24 24;
-  --muted: 240 240 240;
-  --muted-foreground: 71 71 71;
-  --accent: 240 240 240;
-  --accent-foreground: 24 24 24;
-  --border: 0 0 0;
-  --input: 0 0 0;
-  --ring: 0 0 0;
+@media (min-width: 768px) {
+  :root {
+    --margin: 40px;
+  }
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-
-  --color-accent-primary: var(--accent-primary);
-  --color-accent-secondary: var(--accent-secondary);
-  --color-accent-tertiary: var(--accent-tertiary);
-
-  --color-surface-subtle: rgb(var(--surface) / var(--surface-subtle));
-  --color-surface-default: rgb(var(--surface) / var(--surface-default));
-  --color-surface-medium: rgb(var(--surface) / var(--surface-medium));
-  --color-surface-strong: rgb(var(--surface) / var(--surface-strong));
-
-  --color-border-subtle: rgb(var(--surface) / var(--border-subtle));
-  --color-border-default: rgb(var(--surface) / var(--border-default));
-  --color-border-medium: rgb(var(--surface) / var(--border-medium));
-  --color-border-strong: rgb(var(--surface) / var(--border-strong));
-  --color-border-emphasis: rgb(var(--surface) / var(--border-emphasis));
-
-  --color-text-primary: rgb(var(--text) / var(--text-primary));
-  --color-text-secondary: rgb(var(--text) / var(--text-secondary));
-  --color-text-tertiary: rgb(var(--text) / var(--text-tertiary));
-  --color-text-disabled: rgb(var(--text) / var(--text-disabled));
-
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: calc(var(--radius) - 1px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 2px);
-  --radius-2xl: calc(var(--radius) + 4px);
-  --radius-3xl: calc(var(--radius) + 6px);
-  --radius-4xl: calc(var(--radius) + 8px);
-
-  --color-primary: var(--accent-primary);
-  --color-primary-foreground: rgb(var(--primary-foreground));
-  --color-secondary: rgb(var(--secondary));
-  --color-secondary-foreground: rgb(var(--secondary-foreground));
-  --color-accent: rgb(var(--accent));
-  --color-accent-foreground: rgb(var(--accent-foreground));
-  --color-foreground: var(--color-text-primary);
-  --color-background: rgb(var(--bg));
-  --color-ring: rgb(var(--ring) / 0.5);
-  --color-input: rgb(var(--input) / 0.12);
-  --color-border: rgb(var(--border) / 0.1);
-  --color-destructive: var(--destructive);
-  --color-muted-foreground: rgb(var(--muted-foreground) / 0.7);
-  --color-muted: rgb(var(--muted));
-  --color-popover-foreground: rgb(var(--popover-foreground) / 0.92);
-  --color-popover: rgb(var(--popover));
-  --color-card-foreground: rgb(var(--card-foreground) / 0.92);
-  --color-card: rgb(var(--card));
-
-  --color-sidebar-ring: rgb(var(--sidebar-ring));
-  --color-sidebar-border: rgb(var(--sidebar-border) / 0.12);
-  --color-sidebar-accent-foreground: rgb(var(--sidebar-accent-foreground));
-  --color-sidebar-accent: rgb(var(--sidebar-accent));
-  --color-sidebar-primary-foreground: rgb(var(--sidebar-primary-foreground));
-  --color-sidebar-primary: rgb(var(--sidebar-primary));
-  --color-sidebar-foreground: rgb(var(--sidebar-foreground));
-  --color-sidebar: rgb(var(--sidebar));
-
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --text-small: var(--step-small);
+  --text-body: var(--step-body);
+  --text-lead: var(--step-lead);
+  --text-head: var(--step-head);
 }
 
+/* Foundation */
+
 html {
-  scroll-behavior: smooth;
-  overflow-x: clip;
+  background: var(--bg);
+  scrollbar-color: var(--muted) var(--bg);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: rgb(var(--bg));
-  color: var(--color-text-secondary);
-  overflow-x: clip;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--step-body);
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  font-variant-numeric: lining-nums;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--step-head);
+}
+
+h3 {
+  font-size: inherit;
+  letter-spacing: 0;
+  line-height: inherit;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 ::selection {
-  background: rgba(var(--surface), 0.18);
-  color: rgb(var(--text));
+  background: var(--ink);
+  color: var(--bg);
 }
 
-a:not([class*="bg-"]) {
-  color: rgb(var(--text));
-  transition: opacity 200ms ease-out;
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
 }
 
-a:not([class*="bg-"]):hover {
-  opacity: 0.7;
+/* Links and the one button */
+
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition:
+    text-decoration-thickness 150ms var(--ease-out),
+    color 150ms var(--ease-out);
 }
 
-.dark {
-  /* Keep these as RGB triplets too (see note above). */
-  --background: 0 0 0;
-  --foreground: 255 255 255;
-  --card: 0 0 0;
-  --card-foreground: 255 255 255;
-  --popover: 10 10 10;
-  --popover-foreground: 255 255 255;
-  --primary: 255 255 255;
-  --primary-foreground: 0 0 0;
-  --secondary: 20 20 20;
-  --secondary-foreground: 255 255 255;
-  --muted: 20 20 20;
-  --muted-foreground: 163 163 163;
-  --accent: 20 20 20;
-  --accent-foreground: 255 255 255;
-  --border: 255 255 255;
-  --input: 255 255 255;
-  --ring: 255 255 255;
-  --sidebar: 0 0 0;
-  --sidebar-foreground: 255 255 255;
-  --sidebar-primary: 255 255 255;
-  --sidebar-primary-foreground: 0 0 0;
-  --sidebar-accent: 20 20 20;
-  --sidebar-accent-foreground: 255 255 255;
-  --sidebar-border: 255 255 255;
-  --sidebar-ring: 163 163 163;
+.link:hover {
+  text-decoration-thickness: 2px;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  @keyframes blob-drift {
-    0%, 100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    33% {
-      transform: translate3d(2%, -3%, 0) scale(1.05);
-    }
-    66% {
-      transform: translate3d(-2%, 2%, 0) scale(0.97);
-    }
-  }
-
-  @keyframes hero-glow-pulse {
-    0%, 100% {
-      opacity: 0.85;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.06);
-    }
-  }
-
-  /* Scale instead of letter-spacing: animating letter-spacing changed the line
-     widths and made the hero title reflow between 3 and 4 lines. */
-  @keyframes hero-breathe {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.012);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-
-  @media (max-height: 500px) and (orientation: landscape) {
-    section {
-      padding-top: 2rem !important;
-      padding-bottom: 2rem !important;
-    }
-
-    .sticky {
-      top: 0.5rem;
-    }
-  }
+.link:active {
+  color: var(--muted);
 }
 
-/*
- * Theme bridge for the vendored ObsidianUI discover-button, whose CSS assumes a
- * dark background. --text and --bg are swapped by the .light/.dark classes, so
- * one rule is legible in both themes: tinted pill + --text label at rest, then a
- * --text fill with --bg label on hover (icon always sits on the fill).
- */
-.discover-cta {
-  --obsidian-discover-surface: rgb(var(--text) / 0.08);
-  --obsidian-discover-text: rgb(var(--text));
-  --obsidian-discover-fill: rgb(var(--text));
-  --obsidian-discover-active-text: rgb(var(--bg));
-  --ring: rgb(var(--text));
+.plain-link {
+  transition: color 150ms var(--ease-out);
 }
 
-.obsidian-discover-button.discover-cta {
-  border-color: rgb(var(--text) / 0.25);
+.plain-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
 }
 
-/*
- * Keyframes for the vendored ObsidianUI flip-text block, which ships none. Each
- * character flips in on the X axis using the --flip-* custom properties the block
- * sets inline. Gated on no-preference so reduced-motion users get static text.
- */
-@media (prefers-reduced-motion: no-preference) {
-  .flip-char {
-    animation: flip-char-in var(--flip-duration) cubic-bezier(0.22, 1, 0.36, 1)
-      var(--flip-delay) var(--flip-iteration) both;
-    transform-origin: 50% 60%;
-  }
+.plain-link:active {
+  color: var(--muted);
+}
 
-  @keyframes flip-char-in {
-    from {
-      opacity: 0;
-      transform: rotateX(-100deg) translateY(30%);
-    }
-    to {
-      opacity: 1;
-      transform: rotateX(0deg) translateY(0);
-    }
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 1.5rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  transition:
+    background-color 150ms var(--ease-out),
+    transform 150ms var(--ease-out);
+}
+
+.button:hover {
+  background: color-mix(in srgb, var(--accent) 82%, var(--ink));
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: var(--margin);
+  z-index: 50;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: var(--bg);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* Navigation: a plain bar over the hero */
+
+.site-nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0 1.5rem;
+  padding: 8px var(--margin) 0;
+  background: var(--surface);
+  font-size: var(--step-small);
+}
+
+.site-nav > nav {
+  order: 3;
+  width: 100%;
+}
+
+.site-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.4375rem;
+}
+
+.site-nav__links a,
+.site-nav__mark,
+.lang-switch {
+  display: inline-block;
+  padding-block: 0.375rem;
+}
+
+.site-nav__mark {
+  font-size: var(--step-body);
+  font-weight: 500;
+}
+
+.lang-switch {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition:
+    opacity 150ms var(--ease-out),
+    text-decoration-thickness 150ms var(--ease-out);
+}
+
+.lang-switch:hover {
+  text-decoration-thickness: 2px;
+}
+
+.lang-switch:active {
+  opacity: 0.6;
+}
+
+.lang-switch:disabled {
+  cursor: progress;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .site-nav__links {
+    gap: 0 1.5rem;
   }
 }
 
-/*
- * ObsidianUI footer block: the registry item ships no CSS, so this is our
- * interpretation. System serif (no web font, no network request); the wordmark
- * gradient and the nested light cones use --text/--bg, which .light/.dark swap,
- * so the footer is legible in both themes.
- */
-.font-serif-elegant {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
-}
-
-.wordmark-gradient {
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--text) / 0.55) 0%,
-    rgb(var(--text) / 0.12) 70%,
-    rgb(var(--text) / 0) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-#lighting-wrap {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-#lightings {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 140%;
-  height: 100%;
-  transform: translateX(-50%);
-}
-
-.lighting-section {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 50% 60% at 50% 0%,
-    rgb(var(--text) / 0.035),
-    transparent 70%
-  );
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  #lightings {
-    animation: footer-light-breathe 8s ease-in-out infinite alternate;
+@media (min-width: 1100px) {
+  .site-nav {
+    position: absolute;
+    inset: 0 0 auto;
+    padding-top: 24px;
+    gap: 0 1.5rem;
+    justify-content: flex-start;
+    background: transparent;
   }
 
-  @keyframes footer-light-breathe {
-    from {
-      opacity: 0.7;
-    }
-    to {
-      opacity: 1;
-    }
+  .site-nav__mark {
+    margin-right: auto;
+  }
+
+  .site-nav > nav {
+    order: 0;
+    width: auto;
   }
 }
 
-/* ------------------------------------------------------------------
- * hover-img bridge (Projects list)
- * Maps the vendored ObsidianUI `hover-img` block to the site tokens
- * (--bg / --text, swapped by .light / .dark). The `:root` prefix keeps the
- * specificity above `.dark .hover-img-container` regardless of CSS order.
- * ------------------------------------------------------------------ */
-:root .hover-img-container.hover-img-site {
-  --hi-bg: rgb(var(--bg));
-  --hi-text: rgb(var(--text));
-  --hi-text-muted: rgb(var(--text) / var(--text-secondary));
-  --hi-border: rgb(var(--text) / 0.15);
+/* Footer: a single quiet line */
 
-  font-family: inherit;
-  min-height: auto;
-  background: transparent;
-  color: var(--hi-text);
-  align-items: stretch;
-  justify-content: flex-start;
-  overflow: visible;
+.site-footer {
+  display: grid;
+  gap: 8px;
+  margin-top: 20svh;
+  padding: 0 var(--margin) 24px;
+  font-size: var(--step-small);
+  color: var(--muted);
 }
 
-:root .hover-img-site .hover-img-projects {
-  max-width: none;
+.site-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+  color: var(--ink);
 }
 
-:root .hover-img-site .hover-img-project {
-  padding: 1.75rem 0;
+.site-footer a {
+  display: inline-block;
+  padding-block: 0.25rem;
 }
 
-:root .hover-img-site .hover-img-project-header h3 {
-  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
-  font-weight: 600;
-}
-
-:root .hover-img-site .hover-img-project-header p {
-  font-size: 0.875rem;
-}
-
-@media (max-width: 768px) {
-  :root .hover-img-site .hover-img-project {
-    padding: 1.5rem 0;
+@media (min-width: 768px) {
+  .site-footer {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: baseline;
+    margin-top: 30svh;
+    padding-bottom: 30px;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  :root .hover-img-site .hover-img-project-header h3,
-  :root .hover-img-site .hover-img-project-header p {
-    transition: none;
-    transform: none;
+  .site-footer__year {
+    text-align: right;
   }
 }

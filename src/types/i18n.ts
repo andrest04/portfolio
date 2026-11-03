@@ -1,34 +1,49 @@
 export interface Dictionary {
-  experience: {
-    title: string;
-    subtitle: string;
-    current: string;
-    items: Array<{
-      company: string;
-      role: string;
-      period: string;
-      description: string;
-      stack: string[];
-    }>;
+  meta: {
+    skipLink: string;
+    switchLanguage: string;
+    otherLanguage: string;
+  };
+  nav: {
+    label: string;
+    work: string;
+    experience: string;
+    skills: string;
+    about: string;
+    contact: string;
   };
   hero: {
     name: string;
     role: string;
-    title: string;
-    subtitle: string;
-    currentPosition: string;
-    currentCompany: string;
-    stack: string[];
+    headline: string[];
+    sentence: string;
     ctaPrimary: string;
     ctaSecondary: string;
-    ctaTertiary: string;
+  };
+  instrument: {
+    label: string;
+    tcea: string;
+    tceaNote: string;
+    trea: string;
+    treaNote: string;
+    faceValue: string;
+    term: string;
+    years: string;
+    coupon: string;
+    costs: string;
+    scheduleLabel: string;
+    caption: string;
+    period: string;
+    interest: string;
+    amortization: string;
+    cashFlow: string;
+    repository: string;
   };
   projects: {
     title: string;
     subtitle: string;
     viewDemo: string;
     viewGithub: string;
-    featured: string;
     items: Array<{
       name: string;
       role: string;
@@ -39,58 +54,59 @@ export interface Dictionary {
         demo: string;
         github: string;
       };
+      image: {
+        main: string;
+        mainAlt: string;
+        detail: string;
+        detailAlt: string;
+      };
     }>;
   };
-  aboutSkills: {
+  experience: {
     title: string;
-    subtitle: string;
+    items: Array<{
+      company: string;
+      role: string;
+      period: string;
+      description: string;
+      stack: string[];
+    }>;
     education: {
       title: string;
-      items: string[];
+      school: string;
+      degree: string;
+      term: string;
+      standing: string;
     };
-    focus: {
-      title: string;
-      items: string[];
-    };
-    teamwork: {
-      title: string;
-      items: string[];
-    };
-    principle: {
-      label: string;
-      text: string;
-    };
-    skills: Array<{
+  };
+  skills: {
+    title: string;
+    intro: string;
+    groups: Array<{
       title: string;
       items: string[];
     }>;
-    marqueeLabel: string;
-    strengthsTitle: string;
-    strengths: string[];
+    notes: Array<{
+      title: string;
+      items: string[];
+    }>;
+  };
+  about: {
+    title: string;
+    portraitAlt: string;
+    paragraphs: string[];
   };
   contact: {
     title: string;
-    cardTitle: string;
-    cardSubtitle: string;
+    statement: string;
     emailLabel: string;
     phoneLabel: string;
     locationLabel: string;
     locationValue: string;
-    socialTitle: string;
     linkedinLabel: string;
     githubLabel: string;
   };
-  nav: {
-    hero: string;
-    experience: string;
-    projects: string;
-    aboutSkills: string;
-    contact: string;
-    toggleTheme: string;
-    openCommandPalette: string;
-  };
   footer: {
-    text: string;
-    rights: string;
+    description: string;
   };
 }
