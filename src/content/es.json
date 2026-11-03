@@ -108,7 +108,7 @@
         }
       },
       {
-        "name": "Kataleya Flawers",
+        "name": "Kataleya Flowers",
         "role": "Desarrollador Full-Stack",
         "description": "Sitio web para florería con 32 años de trayectoria en Lima. E-commerce con catálogo de arreglos florales, galería de clientes, integración con WhatsApp para pedidos y mapa de ubicación.",
         "stack": ["Next.js", "React", "Tailwind", "Cloudinary", "Vercel"],
@@ -120,7 +120,7 @@
         ],
         "links": {
           "demo": "https://www.kataleyaflowers.com/",
-          "github": "https://github.com/andrest04/kataleya-flawers-web"
+          "github": "https://github.com/andrest04/kataleya-flowers-web"
         },
         "image": {
           "main": "/work/kataleya.webp",
