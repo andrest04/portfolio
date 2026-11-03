@@ -36,13 +36,13 @@ Strategy `single-pr`. Forecast is far above 400 authored lines, mostly deletions
 
 ## Tasks
 
-- [ ] R1 Bond calculation module ported from `andrest04/finance-app`, with tests. Route: delegated (writer trigger, 2+ non-trivial files).
-- [ ] R2 Tokens, Literata, page shell, nav with language switch, footer, removal of the old world. Route: delegated.
-- [ ] R3 Hero with the working instrument. Route: delegated.
-- [ ] R4 Work ledger with real screenshots. Route: delegated.
-- [ ] R5 Experience, skills, about letter, contact, en and es copy, metadata facts. Route: delegated.
-- [ ] R6 Motion layer. Route: delegated.
-- [ ] R7 Gate on the production build, three look rounds at most. Route: delegated, parent reviews screenshots.
+- [x] R1 Bond calculation module ported from `andrest04/finance-app`, with tests. Route: delegated (writer trigger, 2+ non-trivial files). Commit `4af9df4`. RED: `ERR_MODULE_NOT_FOUND` on `bond.ts`. GREEN: 14 pass, 0 fail.
+- [x] R2 Tokens, Literata, page shell, nav with language switch, footer, removal of the old world. Route: delegated. Commit `07610f1`.
+- [x] R3 Hero with the working instrument. Route: delegated. Commit `c869ed9`.
+- [x] R4 Work ledger with real screenshots. Route: delegated. Commit `75738a9`.
+- [x] R5 Experience, skills, about letter, contact, en and es copy, metadata facts. Route: delegated. Commit `5cab480`.
+- [x] R6 Motion layer. Route: delegated. Commit `0682d00`.
+- [x] R7 Gate on the production build, two look rounds. Route: delegated, parent reviews screenshots. Commit: see `git log`, `fix(ui): align the instrument...`.
 
 ## Acceptance
 
@@ -57,10 +57,32 @@ Strategy `single-pr`. Forecast is far above 400 authored lines, mostly deletions
 - Metadata points to `/og.png`, which is not in `public/`.
 - Geist was loaded but never applied, so the old site rendered in `system-ui`.
 
+## Decisions and exceptions
+
+- Coupon is labelled nominal. The Finance App form calls its rate "Efectiva", but its French schedule divides the annual rate by the payment count, which is the nominal convention, while its real-time panel converts the same rate as effective. The port keeps the schedule arithmetic and labels the input honestly.
+- Zero coupon gives NaN in the source (0 / 0) and non-convergence returns the last iterate. The port repays face / n and returns null.
+- One "issue costs" control sets both the issuer and the investor commission, so both readouts move. The module keeps them separate.
+- Control ranges follow the source form: face value in multiples of 1000, term 3 to 10 years, coupon 2 to 10%. Costs stop at 5% in the UI (source allows 10%).
+- Kataleya: `kataleyaflowers.com` is live and is the homepage of the GitHub repo, so it replaces the dead demo link in both dictionaries and is the screenshot source.
+- About letter: "working in Scrum" was attached to EduSpace in the deck, but the dictionary does not state that. Reworded so Scrum is a general practice.
+- Experience and Skills share one `<section>` band so the right half is not empty; each keeps its own heading and anchor.
+- Hero order on phones is instrument first per the blueprint; DOM order stays headline first for assistive technology.
+- `public/og.png` is the real hero at 1200x630, with the schedule cut to two rows so it fits.
+
+## Verification (production build)
+
+- `npm test`: 14 pass, 0 fail.
+- `npm run lint`: clean. `npm run build`: compiled.
+- `lint.mjs src`: 0 FAIL, 0 WARN.
+- `inspect.mjs http://localhost:3100 --out .taste-skill/after`: 0 FAIL, 2 WARN.
+- WARN `no-footage`: no honest clip of a bond schedule or of these projects exists; the drifting screenshot is the moving picture.
+- WARN `small-title` at 390px: the two-line rule forces 24px at that width (22px in Spanish), and the instrument carries the large type on that screen.
+- Both locales render, language switch works, keyboard reaches and moves the sliders, disclosures toggle, no console errors or hydration warnings, external links resolve.
+
 ## Progress
 
-Skills `design-taste-frontend` and `impeccable` installed globally. Before-inspection: 14 FAIL, 5 WARN in `.taste-skill/before`.
+Skills `design-taste-frontend` and `impeccable` installed globally. Before-inspection: 14 FAIL, 5 WARN in `.taste-skill/before`. After-inspection: 0 FAIL, 2 WARN in `.taste-skill/after`. Engram mirror `odd/portfolio-redesign/tasks` pending, for the parent to synchronize.
 
 ## Next step
 
-R1.
+Parent reviews the screenshots. Push and PR stay with the user.
