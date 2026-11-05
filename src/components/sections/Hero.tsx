@@ -48,17 +48,23 @@ export default function Hero({ t, locale }: HeroProps) {
             href={project.links.demo}
             notice={t.meta.newTab}
           >
-            <Image
-              src={project.image.main}
-              alt={project.image.mainAlt}
-              fill
-              preload={index === 0}
-              sizes={
-                index === 0
-                  ? "(min-width: 1100px) 50vw, 100vw"
-                  : "(min-width: 1100px) 25vw, 50vw"
-              }
-            />
+            <span className="hero__frame">
+              {/* The caption names the link, so the picture stays out of its accessible name. */}
+              <Image
+                src={project.image.main}
+                alt=""
+                fill
+                preload={index === 0}
+                sizes={
+                  index === 0
+                    ? "(min-width: 1100px) 50vw, 100vw"
+                    : "(min-width: 1100px) 25vw, 50vw"
+                }
+              />
+            </span>
+            <span className="hero__caption">
+              <span>{project.name}</span> <span className="hero__role">{project.role}</span>
+            </span>
           </ExternalLink>
         ))}
       </div>
