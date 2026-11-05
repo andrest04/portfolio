@@ -16,28 +16,9 @@
     "name": "Andrés Torres",
     "role": "Software Engineering Student",
     "headline": ["Andrés Torres builds backends", "and the apps on top of them."],
-    "sentence": "Software Engineering student in Lima and Frontend Intern at EDTeam. This is the bond calculator from my Finance App: change the terms and read the result.",
+    "sentence": "Software Engineering student in Lima and Frontend Intern at EDTeam.",
     "ctaPrimary": "View projects",
     "ctaSecondary": "Download CV"
-  },
-  "instrument": {
-    "label": "Bond calculator",
-    "tcea": "TCEA",
-    "tceaNote": "Issuer's effective annual cost",
-    "trea": "TREA",
-    "treaNote": "Investor's effective annual yield",
-    "faceValue": "Face value",
-    "term": "Term",
-    "years": "years",
-    "coupon": "Nominal annual coupon",
-    "costs": "Issue costs, each side",
-    "scheduleLabel": "Payment schedule",
-    "caption": "Calculated from these terms, not a real issuance. Semi-annual payments, French method, in Peruvian soles.",
-    "period": "Period",
-    "interest": "Interest",
-    "amortization": "Amortization",
-    "cashFlow": "Cash flow",
-    "repository": "Finance App repository"
   },
   "projects": {
     "title": "Work",
@@ -211,7 +192,7 @@
   },
   "about": {
     "title": "About",
-    "portraitAlt": "Portrait of Andrés Torres, wearing glasses and a blue jacket.",
+    "portraitAlt": "Portrait of Andrés Torres, wearing glasses, a navy suit and a tie.",
     "paragraphs": [
       "I'm in my eighth term of Software Engineering at Universidad Peruana de Ciencias Aplicadas (UPC), in the top fifth of my class.",
       "I start from the architecture: Clean Architecture, DDD and CQRS in real projects, REST APIs and data models designed for scale, and documentation alongside the code.",

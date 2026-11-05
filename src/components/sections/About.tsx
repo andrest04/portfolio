@@ -8,7 +8,7 @@ export default function About({ t }: { t: Dictionary }) {
         <Image
           data-reveal
           className="about__portrait"
-          src="/profile.png"
+          src="/portrait.png"
           alt={t.about.portraitAlt}
           width={44}
           height={44}

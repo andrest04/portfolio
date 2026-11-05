@@ -16,28 +16,9 @@
     "name": "Andrés Torres",
     "role": "Estudiante de Ingeniería de Software",
     "headline": ["Andrés Torres construye backends", "y las apps que corren sobre ellos."],
-    "sentence": "Estudiante de Ingeniería de Software en Lima y pasante de Frontend en EDTeam. Esta es la calculadora de bonos de mi Finance App: cada cambio en las condiciones recalcula el resultado.",
+    "sentence": "Estudiante de Ingeniería de Software en Lima y pasante de Frontend en EDTeam.",
     "ctaPrimary": "Ver proyectos",
     "ctaSecondary": "Descargar CV"
-  },
-  "instrument": {
-    "label": "Calculadora de bonos",
-    "tcea": "TCEA",
-    "tceaNote": "Costo efectivo anual del emisor",
-    "trea": "TREA",
-    "treaNote": "Rendimiento efectivo anual del inversionista",
-    "faceValue": "Valor nominal",
-    "term": "Plazo",
-    "years": "años",
-    "coupon": "Cupón nominal anual",
-    "costs": "Costos, cada parte",
-    "scheduleLabel": "Cronograma de pagos",
-    "caption": "Calculado con estas condiciones, no es una emisión real. Pagos semestrales, método francés, en soles peruanos.",
-    "period": "Periodo",
-    "interest": "Interés",
-    "amortization": "Amortización",
-    "cashFlow": "Flujo",
-    "repository": "Repositorio de Finance App"
   },
   "projects": {
     "title": "Proyectos",
@@ -211,7 +192,7 @@
   },
   "about": {
     "title": "Sobre mí",
-    "portraitAlt": "Retrato de Andrés Torres, con lentes y una casaca azul.",
+    "portraitAlt": "Retrato de Andrés Torres, con lentes, traje azul marino y corbata.",
     "paragraphs": [
       "Curso el octavo ciclo de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC), en el quinto superior de mi clase.",
       "Empiezo por la arquitectura: Clean Architecture, DDD y CQRS en proyectos reales, APIs REST y modelos de datos pensados para escalar, y documentación junto al código.",

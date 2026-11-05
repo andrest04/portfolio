@@ -20,25 +20,6 @@ export interface Dictionary {
     ctaPrimary: string;
     ctaSecondary: string;
   };
-  instrument: {
-    label: string;
-    tcea: string;
-    tceaNote: string;
-    trea: string;
-    treaNote: string;
-    faceValue: string;
-    term: string;
-    years: string;
-    coupon: string;
-    costs: string;
-    scheduleLabel: string;
-    caption: string;
-    period: string;
-    interest: string;
-    amortization: string;
-    cashFlow: string;
-    repository: string;
-  };
   projects: {
     title: string;
     subtitle: string;

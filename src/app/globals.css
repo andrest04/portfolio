@@ -281,33 +281,21 @@ p {
   }
 }
 
-/* Hero: two halves split by tone, the instrument in the lighter one */
+/* Hero: the headline across the page, the copy beside three pictures of real work */
 
 .hero {
-  /* Width of the longest authored line, in em, so both lines always fit the half. */
+  /* Width of the longest authored line, in em, so both lines always fit the page. */
   --line-em: 14.4;
+  --copy-width: calc(100vw - 2 * var(--margin));
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  padding: 16px var(--margin) 32px;
 }
 
 .hero[data-locale="es"] {
   --line-em: 16.2;
-}
-
-.hero__copy {
-  --copy-width: calc(100vw - 2 * var(--margin));
-  display: grid;
-  align-content: end;
-  justify-items: start;
-  gap: 12px;
-  padding: 16px var(--margin) 32px;
-}
-
-.hero__instrument {
-  order: -1;
-  display: grid;
-  background: var(--surface);
-  padding: 4px var(--margin) 12px;
 }
 
 .lines {
@@ -328,6 +316,12 @@ p {
   display: block;
 }
 
+.hero__copy {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+}
+
 .hero__sentence {
   max-width: 44ch;
 }
@@ -346,238 +340,84 @@ p {
   gap: 8px 24px;
 }
 
+.hero__work {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.hero__picture {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: clip;
+  background: var(--surface);
+}
+
+.hero__picture:first-child {
+  grid-column: 1 / -1;
+}
+
+.hero__picture img {
+  object-fit: cover;
+  object-position: top;
+  transition: transform 500ms var(--ease-out);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero__picture:hover img {
+    transform: scale(1.03);
+  }
+}
+
 @media (min-width: 768px) {
-  .hero__copy {
-    gap: 20px;
-    padding-block: 40px;
+  .hero {
+    gap: 32px;
+    padding-block: 32px 40px;
   }
 
-  .hero__instrument {
-    padding: 32px var(--margin) 48px;
+  .hero__copy {
+    gap: 20px;
+  }
+
+  .hero__work {
+    gap: 16px;
   }
 }
 
 @media (min-width: 1100px) {
   .hero {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto minmax(420px, 1fr);
+    gap: 32px 16px;
     min-height: 100svh;
+    padding: 96px var(--margin) var(--margin);
+  }
+
+  .lines {
+    grid-column: 1 / -1;
   }
 
   .hero__copy {
-    --copy-width: calc(50vw - var(--margin) - 24px);
-    gap: 24px;
-    padding: 96px 24px var(--margin) var(--margin);
-  }
-
-  .hero__instrument {
-    order: 0;
-    place-items: center;
-    padding: 88px var(--margin) var(--margin);
-  }
-}
-
-/* The instrument: a fragment of the Finance App, with its own table lines and controls */
-
-[data-ui].instrument {
-  display: grid;
-  gap: 10px;
-  width: 100%;
-  font-size: var(--step-small);
-  line-height: 1.4;
-}
-
-[data-ui] .readouts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-[data-ui] .readouts > div,
-[data-ui] .fields > div {
-  min-width: 0;
-}
-
-[data-ui] .readouts dt {
-  font-weight: 600;
-}
-
-[data-ui] .readouts dd {
-  font-size: var(--step-figure);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  font-variant-numeric: lining-nums tabular-nums;
-}
-
-[data-ui] .readouts .readouts__note {
-  font-size: var(--step-small);
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.35;
-  color: var(--muted);
-}
-
-[data-ui] .fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px 16px;
-}
-
-[data-ui] .field {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-content: end;
-}
-
-[data-ui] .field output {
-  font-size: var(--step-body);
-  font-weight: 500;
-  font-variant-numeric: lining-nums tabular-nums;
-}
-
-[data-ui] .field input {
-  appearance: none;
-  width: 100%;
-  height: 44px;
-  background: transparent;
-  cursor: pointer;
-  touch-action: pan-y;
-}
-
-[data-ui] .field input::-webkit-slider-runnable-track {
-  height: 3px;
-  background: var(--ink);
-}
-
-[data-ui] .field input::-moz-range-track {
-  height: 3px;
-  background: var(--ink);
-}
-
-[data-ui] .field input::-webkit-slider-thumb {
-  appearance: none;
-  width: 18px;
-  height: 30px;
-  margin-top: -13.5px;
-  background: var(--ink);
-  transition: transform 150ms var(--ease-out);
-}
-
-[data-ui] .field input::-moz-range-thumb {
-  width: 18px;
-  height: 30px;
-  border: 0;
-  border-radius: 0;
-  background: var(--ink);
-  transition: transform 150ms var(--ease-out);
-}
-
-[data-ui] .field input:hover::-webkit-slider-thumb {
-  transform: scaleX(1.25);
-}
-
-[data-ui] .field input:hover::-moz-range-thumb {
-  transform: scaleX(1.25);
-}
-
-[data-ui] .field input:active::-webkit-slider-thumb {
-  transform: scale(1.25, 1.1);
-}
-
-[data-ui] .field input:active::-moz-range-thumb {
-  transform: scale(1.25, 1.1);
-}
-
-[data-ui] .schedule {
-  --row: 1.625rem;
-  --visible-rows: 2;
-  max-height: calc(var(--row) * (var(--visible-rows) + 1));
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: var(--row);
-  scrollbar-color: var(--muted) var(--surface);
-  scrollbar-width: thin;
-}
-
-[data-ui] .schedule table {
-  width: 100%;
-  border-collapse: collapse;
-  font-variant-numeric: lining-nums tabular-nums;
-}
-
-[data-ui] .schedule th,
-[data-ui] .schedule td {
-  box-sizing: border-box;
-  height: var(--row);
-  padding: 0 0 0 0.5rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 22%, var(--surface));
-  text-align: right;
-  font-weight: 400;
-}
-
-[data-ui] .schedule tbody tr {
-  scroll-snap-align: start;
-}
-
-[data-ui] .schedule th:first-child {
-  padding-left: 0;
-  text-align: left;
-}
-
-[data-ui] .schedule thead th {
-  position: sticky;
-  top: 0;
-  background: var(--surface);
-  font-weight: 600;
-  border-bottom-color: var(--ink);
-}
-
-[data-ui] .instrument__foot {
-  margin-top: 12px;
-  color: var(--muted);
-}
-
-[data-ui] .instrument__foot .link {
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-
-@media (min-width: 600px) {
-  [data-ui].instrument {
+    grid-column: 1 / 4;
+    align-self: end;
     gap: 24px;
   }
 
-  [data-ui] .readouts {
-    gap: 32px;
+  .hero__work {
+    grid-column: 4 / -1;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
   }
 
-  [data-ui] .schedule {
-    --row: 1.875rem;
-    --visible-rows: 4;
+  .hero__picture {
+    aspect-ratio: auto;
+    min-height: 0;
   }
 
-  [data-ui] .fields {
-    gap: 12px 32px;
-  }
-}
-
-@media (min-width: 1100px) {
-  [data-ui].instrument {
-    width: min(100%, 580px);
-  }
-
-}
-
-@media (min-width: 1100px) and (min-height: 850px) {
-  [data-ui] .schedule {
-    --visible-rows: 5;
-  }
-}
-
-@media (min-width: 1100px) and (min-height: 1000px) {
-  [data-ui] .schedule {
-    --visible-rows: 7;
+  .hero__picture:first-child {
+    grid-column: 1;
+    grid-row: 1 / -1;
   }
 }
 
