@@ -30,6 +30,7 @@ Route for T1-T6: delegated direct, one writer (2+ non-trivial files). RDD is off
 - [x] T5 `adapt` and `animate`: coarse-pointer touch targets, email wrapping, accordion row stability, no ghosted sections during fast scrolling. Commit `6108cbf`, delegated (writer trigger).
 - [ ] T6 Docs and cleanup: stale README, dead tokens, stale comments, detector exceptions, `DESIGN.md` and sidecar in sync, `PRODUCT.md` open decision resolved. Commit `d772211`, delegated (writer trigger). Everything is done except the `cream-palette` exception, which stays open: the detector refuses a value form for that rule, and offers only a `"*"` wildcard scoped to a file glob, which is not used here. `oversized-h1` no longer reports, so it needs no exception.
 - [ ] T7 `audit` and `polish`: technical pass, snapshot closure, and a final critique run.
+- [x] T8 Findings of the second critique that need no input: project names in link accessible names, landmarks, ledger on desktop, Contact hierarchy, quiet footer, Spanish caption and nav. Commits `7fda583`, `b8a17c8`, `635ad1e`, `7cfddcf`, `dd67afd`, delegated (writer trigger, 2+ non-trivial files). Evidence below.
 
 ## Acceptance checks
 
@@ -100,6 +101,36 @@ Evidence on `0d919c3`:
 - Browser, same-origin iframes: h1 is 34px against a 28px h2 at 320px and 390px, and 40px against 30px to 31.7px from 599px to 767px, in both languages. From 768px up it is unchanged: 46.7px in English and 41.5px in Spanish at 768px, against a 31.7px h2. No clipped lines and no horizontal overflow at 320, 390, 599, 600, 640, 700, 767, 768, 1100, 1536, and 1920px in either language.
 - Keyboard, 1536px, English: skip link, then Enter, then Tab lands on "View projects". The order then runs through the hero, Work, Contact, and footer with a visible ring, and no console errors. Fonts now load two files. The loading text appears in the response stream in the active language, and the not-found title is localized.
 - Not run: `npm run build`, owned by the parent. Not tested: real touch devices, screen readers, the error page after the `id` change (only an attribute changed), and `prefers-reduced-motion` in a live browser (checked in the CSS only). Performance figures come from the dev server, not a production build.
+
+## T8 second critique findings
+
+Route: delegated direct, one writer. Test-first exception: the content parity test covers the dictionaries; CSS and markup have no meaningful runnable RED, so they were verified in the browser.
+
+- `7fda583` `fix(a11y)`: "Live Demo" and "GitHub" names now read, for example, "Live Demo EduSpace (opens in a new tab)". `SiteNav` sits before `main`. The name link targets `#top`, because `#main` no longer includes the bar.
+- `b8a17c8` `fix(ledger)`: every preview shares one sticky slot against `.work__column`; hover wins over focus, and focus over the open row. The reveal moved from the row to its frame and details, because a transform on the row would capture the preview. Dimming now follows the summary only.
+- `635ad1e` `fix(i18n)`: small hero captions stack below 1400px, and below 1700px in Spanish. English had the same defect from 1100px to 1399px, so that range covers both languages. Nav links are inline and balanced below 768px; no copy changed.
+- `7cfddcf` `fix(contact)`: the h2 is the statement, with "Contact:" visually hidden. The email is upright Lead and the other channels are Label rows. Portrait moved to columns 6 and 7 and links to 8 to 12, so the email fits one line at 1536px. "CV" replaces "Download" and "Descarga". The footer has no links; all five channels were confirmed in Contact first.
+- `dd67afd` `docs(critique)`: second critique snapshot.
+
+Evidence on `7cfddcf`, unchanged source at `dd67afd`:
+
+- `npx tsc --noEmit`: exit 0.
+- `npm run lint`: exit 0.
+- `npm test`: 1 test, 1 pass.
+- `impeccable detect --json src`: `[]`.
+- Browser, 1536px English: all four frames share one top (24px when stuck). Hovering a closed row showed only its preview and dimmed the other lines. The pointer over the open panel dimmed nothing. Opening Booking held its summary at y=558 with the preview on screen.
+- Browser, keyboard, 1536px English: skip link, then Enter, then Tab lands on "View projects"; Tab through Work has a visible ring, Enter opens a row, and the focused row owns the preview. Accessibility tree: link, banner containing navigation, then main. No console errors.
+- Browser, 1200px frame: opening the last row kept the frames at 48px with its picture shown, no overflow. Spanish 1200px and 1536px: small frames equal (183/183, 160/160), email on one line at 1536px and broken at `@` at 1200px.
+- Browser, 390px frame with a 15px classic scrollbar, Spanish: nav wraps 2 + 3 with no link alone, height 113px. It fits one line from 405px, and by calculation on a 390px overlay-scrollbar phone (347px of 350px). Ledger rows and 16:10 pictures unchanged, no overflow.
+
+Not tested: real touch devices, screen readers, `prefers-reduced-motion` in a live browser (CSS only), the production build. No-JS layout could not be seen: a script-less iframe stayed on the "Loading..." fallback in dev, so only the sandboxed DOM and native `open` state were read.
+
+Left for Andrés:
+
+- Detail images are not clipped by CSS (shown whole at 16:10); the crop is in the source files `public/work/*-detail.webp`, whose content runs off the right edge. It needs new captures.
+- The Contact row now reads "CV" beside "CV (PDF)", as asked; the value could become a filename if the repetition bothers.
+- `src/app/error.tsx` tells visitors to contact Andrés, and the footer was its only contact link. It stays reachable through "Go home". The file was outside this task's edit surface.
+- No-JS visitors appear to stay on `src/app/loading.tsx`; check this on a production build.
 
 ## Progress
 
