@@ -118,7 +118,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Navigation links, dates, stacks, roles, hero captions, contact labels, and the footer."
+        "purpose": "Navigation links, dates, stacks, roles, hero captions, contact labels and the channels below the email, and the footer."
       }
     },
     "shadows": [],

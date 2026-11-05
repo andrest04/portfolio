@@ -168,12 +168,12 @@ A warm, near-monochrome stone palette with one restrained teal, leaving color to
 ### Hierarchy
 - **Display** (500, fluid: the hero's content width, in container units so a classic scrollbar cannot clip it, divided by the longest line's width in em, 14.4 in English and 16.2 in Spanish; 1.05; -0.02em): The hero headline only, two lines spanning the full page width from 768px. Below 768px it wraps at clamp(2.125rem, 10cqw, 2.5rem), so it stays clearly larger than the section titles.
 - **Headline** (500, clamp(1.75rem, 1.5rem + 1vw, 2.25rem), 1.05; -0.02em): Section titles.
-- **Lead** (400 italic, clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem), 1.3): The signature that closes the About letter.
+- **Lead** (400 italic, clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem), 1.3): The signature that closes the About letter. Set upright, it is also the contact email, the one action that closes the page.
 - **Title** (500, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem), 1.6): Project and company names in rows, and Andrés's name in the navigation. It differs from Body by weight alone.
 - **Body** (400, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem), 1.6): All running text and the button label. Introductory sentences are held to 44ch; the About letter to 520px.
-- **Label** (400, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem), 1.6, sentence case): Navigation links, dates, stacks, roles, hero captions, contact labels, and the footer.
+- **Label** (400, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem), 1.6, sentence case): Navigation links, dates, stacks, roles, hero captions, contact labels and the channels below the email, and the footer.
 
-The contact statement is the one considered variation: Headline size at weight 400, line height 1.15, held to 14em. Group headings within the record use Body size in Pencil Gray rather than a new step. Below 600px the hero sentence tightens to a line height of 1.5.
+The contact statement is the section's Headline, held to 14em; the word "Contact" stays in the heading for assistive technology only. Group headings within the record use Body size in Pencil Gray rather than a new step. Below 600px the hero sentence tightens to a line height of 1.5.
 
 ### Named Rules
 **The One Family Rule.** Literata sets every role. Hierarchy comes from size, the 500 weight, and italic, never from a second typeface.
@@ -190,7 +190,7 @@ The hero stacks on narrow screens: headline, copy, then three captioned pictures
 
 From 1200px, Work and the record sections hang from a shared column start at 22vw. The Work column is 560px wide with the project picture in the open ground 64px to its right, up to 640px wide. Every row's picture shares one slot that runs the height of the column, starting level with the section title, and its frame sticks 24px from the top of the viewport, so the picture of an opened row is on screen. The record splits into two equal columns with 72px between rows, and its two note groups run in two columns from 768px, aligned to those columns from 1200px.
 
-Row pairings become label-and-value columns from 600px (an 11rem label column). Below 600px the contact links run full width under the portrait. Contact moves to a 12-column grid at 900px with a 24px gap: the statement in columns 1 to 5, the square portrait in 7 and 8, and the links in 9 to 12. The About letter stays a centered column at every width, with 24px of side padding and 24px between its parts. The footer becomes a three-part line from 768px, set far below the content (20svh, then 30svh).
+Row pairings become label-and-value columns from 600px (an 11rem label column). Below 600px the contact links run full width under the portrait. Contact moves to a 12-column grid at 900px with a 24px gap: the statement in columns 1 to 5, the square portrait in 6 and 7, and the links in 8 to 12. The About letter stays a centered column at every width, with 24px of side padding and 24px between its parts. The footer is one quiet line with no links, name and place on one end and the year on the other, set far below the content (20svh, then 30svh).
 
 ## Elevation & Depth
 
@@ -216,7 +216,7 @@ The character is quiet and precise: square corners, a single filled button, and 
 
 ### Links
 - **Underlined link:** A 1px underline with a 0.2em offset thickens to 2px on hover and turns Pencil Gray when pressed. Used for the CV download, project links, and contact details.
-- **Plain link:** No underline at rest; a 1px underline appears on hover and Pencil Gray when pressed. Used in the navigation and footer, including the footer CV link.
+- **Plain link:** No underline at rest; a 1px underline appears on hover and Pencil Gray when pressed. Used in the navigation.
 - **Touch:** On coarse pointers, links and the language switch are at least 44px tall, with no change for mouse pointers.
 - **New tab:** Links that open a new tab carry a visually hidden notice from the dictionary.
 
@@ -246,6 +246,9 @@ The signature component: an exclusive accordion in which opening one row closes 
 
 ### Record Rows
 Two-ended rows for experience and education: a Title name on one end, a tabular Pencil Gray Label date on the other, with the role, description, and stack beneath. Skills use a paired variant with the group name in a fixed label column from 600px, followed by two note groups, Focus and Teamwork. These rows are not interactive.
+
+### Contact
+The closing of the page. The statement leads as the section's Headline, then the portrait, then the email in upright Lead under its Label, as the one dominant action. Phone, LinkedIn, GitHub, CV, and location follow as quiet Label rows, a Pencil Gray name in a 5.5rem column beside its value.
 
 ### About Letter
 A centered 520px column on the Folio Stone band, opening with the 44px round portrait and closing with Andrés's name in Lead italic above a Pencil Gray Label role line.

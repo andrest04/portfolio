@@ -9,14 +9,12 @@ export default function Contact({ t }: { t: Dictionary }) {
 
   return (
     <section id="contact" className="contact">
-      <div className="contact__sentence">
-        <h2 data-reveal>{c.title}</h2>
-        <p data-reveal style={{ "--i": 1 } as React.CSSProperties}>
-          {c.statement}
-        </p>
-      </div>
+      <h2 className="contact__statement" data-reveal>
+        <span className="sr-only">{c.title}: </span>
+        {c.statement}
+      </h2>
 
-      <figure className="contact__portrait" data-reveal style={{ "--i": 2 } as React.CSSProperties}>
+      <figure className="contact__portrait" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
         <Image
           src="/portrait.png"
           alt={t.about.portraitAlt}
@@ -26,8 +24,8 @@ export default function Contact({ t }: { t: Dictionary }) {
         />
       </figure>
 
-      <dl className="contact__links" data-reveal style={{ "--i": 3 } as React.CSSProperties}>
-        <div>
+      <dl className="contact__links" data-reveal style={{ "--i": 2 } as React.CSSProperties}>
+        <div className="contact__primary">
           <dt>{c.emailLabel}</dt>
           <dd>
             <a href={`mailto:${CONTACT.email}`} className="link">
