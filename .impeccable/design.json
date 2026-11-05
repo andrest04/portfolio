@@ -98,7 +98,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The hero headline only, sized from the longest authored line from 600px (14.4em in English, 16.2em in Spanish) and wrapping at a larger clamp below 600px."
+        "purpose": "The hero headline only, sized from the longest authored line from 768px (14.4em in English, 16.2em in Spanish) and wrapping at a larger clamp below 768px."
       },
       "headline": {
         "displayName": "Headline",
@@ -221,9 +221,9 @@
       "name": "Masked Headline",
       "kind": "custom",
       "refersTo": "display",
-      "description": "The hero's two authored lines rising from behind clipping masks. Sized against its container, as on the site, which divides the hero's content width by the same 14.4em from 600px and wraps at clamp(2.125rem, 10cqw, 2.5rem) below it.",
+      "description": "The hero's two authored lines rising from behind clipping masks. Sized against its container, as on the site, which divides the hero's content width by the same 14.4em from 768px and wraps at clamp(2.125rem, 10cqw, 2.5rem) below it.",
       "html": "<div class=\"ds-lines-box\"><h1 class=\"ds-lines\"><span class=\"ds-line\"><span class=\"ds-line-text\" style=\"--i: 0\">Andrés Torres builds backends</span></span><span class=\"ds-line\"><span class=\"ds-line-text\" style=\"--i: 1\">and the apps on top of them.</span></span></h1></div>",
-      "css": ".ds-lines-box { container-type: inline-size; } .ds-lines { margin: 0; color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: clamp(2.125rem, 10cqw, 2.5rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; } @media (min-width: 600px) { .ds-lines { font-size: calc(100cqw / 14.4); white-space: nowrap; } } .ds-line { display: block; overflow: clip; padding-block: 0.14em; margin-block: -0.14em; } .ds-line-text { display: block; } @media (prefers-reduced-motion: no-preference) { .ds-line-text { transform: translateY(110%); animation: ds-line-up 900ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) forwards; animation-delay: calc(var(--i) * 110ms + 60ms); } @keyframes ds-line-up { to { transform: none; } } }"
+      "css": ".ds-lines-box { container-type: inline-size; } .ds-lines { margin: 0; color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: clamp(2.125rem, 10cqw, 2.5rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; } @media (min-width: 768px) { .ds-lines { font-size: calc(100cqw / 14.4); white-space: nowrap; } } .ds-line { display: block; overflow: clip; padding-block: 0.14em; margin-block: -0.14em; } .ds-line-text { display: block; } @media (prefers-reduced-motion: no-preference) { .ds-line-text { transform: translateY(110%); animation: ds-line-up 900ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) forwards; animation-delay: calc(var(--i) * 110ms + 60ms); } @keyframes ds-line-up { to { transform: none; } } }"
     },
     {
       "name": "Hero Triptych",
@@ -292,7 +292,7 @@
       },
       {
         "name": "The Measured Line Rule",
-        "body": "The display size from 600px is derived from the width of the longest authored line, per language, so both lines always fit the available width exactly on one line each. Below 600px the headline wraps at a size above the section titles. Changing the headline copy means re-measuring it.",
+        "body": "The display size from 768px is derived from the width of the longest authored line, per language, so both lines always fit the available width exactly on one line each. Below 768px the headline wraps at a size above the section titles. Changing the headline copy means re-measuring it.",
         "section": "typography"
       },
       {

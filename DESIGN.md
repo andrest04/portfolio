@@ -166,7 +166,7 @@ A warm, near-monochrome stone palette with one restrained teal, leaving color to
 **Character:** A bookish text serif with an optical-size axis, loaded with its italic and tuned automatically to each size. Set with lining numerals throughout, it reads like a well-kept printed record; dates and stack names in rows and ledgers add tabular numerals so they align.
 
 ### Hierarchy
-- **Display** (500, fluid: the hero's content width, in container units so a classic scrollbar cannot clip it, divided by the longest line's width in em, 14.4 in English and 16.2 in Spanish; 1.05; -0.02em): The hero headline only, two lines spanning the full page width from 600px. Below 600px it wraps at clamp(2.125rem, 10cqw, 2.5rem), so it stays clearly larger than the section titles.
+- **Display** (500, fluid: the hero's content width, in container units so a classic scrollbar cannot clip it, divided by the longest line's width in em, 14.4 in English and 16.2 in Spanish; 1.05; -0.02em): The hero headline only, two lines spanning the full page width from 768px. Below 768px it wraps at clamp(2.125rem, 10cqw, 2.5rem), so it stays clearly larger than the section titles.
 - **Headline** (500, clamp(1.75rem, 1.5rem + 1vw, 2.25rem), 1.05; -0.02em): Section titles.
 - **Lead** (400 italic, clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem), 1.3): The signature that closes the About letter.
 - **Title** (500, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem), 1.6): Project and company names in rows, and Andrés's name in the navigation. It differs from Body by weight alone.
@@ -178,7 +178,7 @@ The contact statement is the one considered variation: Headline size at weight 4
 ### Named Rules
 **The One Family Rule.** Literata sets every role. Hierarchy comes from size, the 500 weight, and italic, never from a second typeface.
 
-**The Measured Line Rule.** The display size from 600px is derived from the width of the longest authored line, per language, so both lines always fit the available width exactly on one line each. Below 600px the headline wraps at a size above the section titles. Changing the headline copy means re-measuring it.
+**The Measured Line Rule.** The display size from 768px is derived from the width of the longest authored line, per language, so both lines always fit the available width exactly on one line each. Below 768px the headline wraps at a size above the section titles. Changing the headline copy means re-measuring it.
 
 **The Sentence Case Rule.** Labels stay in sentence case at weight 400 with no added tracking. Small text is differentiated by size and Pencil Gray, not by capitals.
 
@@ -275,4 +275,4 @@ Sections enter by fading in over 400ms and rising 24px over 500ms, staggered by 
 - **Don't** uppercase or letterspace labels; they stay sentence case at weight 400.
 - **Don't** add a second typeface alongside Literata.
 - **Don't** add another looping animation; the drifting project picture is the only one.
-- **Don't** set the display headline at a fixed size, or let its lines wrap from 600px up.
+- **Don't** set the display headline at a fixed size, or let its lines wrap from 768px up.

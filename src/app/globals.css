@@ -291,13 +291,13 @@ p {
   --line-em: 16.2;
 }
 
-/* Narrow screens wrap at a size above the section titles; the measured lines start at 600px. */
+/* Narrow screens wrap at a size above the section titles; the measured lines start at 768px. */
 .lines {
   width: 100%;
   font-size: clamp(2.125rem, 10cqw, 2.5rem);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .lines {
     font-size: calc(100cqw / var(--line-em));
     white-space: nowrap;
