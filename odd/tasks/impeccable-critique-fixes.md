@@ -29,7 +29,7 @@ Route for T1-T6: delegated direct, one writer (2+ non-trivial files). RDD is off
 - [x] T4 `clarify` and `distill`: contact line for hiring, consistent page title, duplicated Skills notes removed. Commit `d066b96`, delegated (writer trigger).
 - [x] T5 `adapt` and `animate`: coarse-pointer touch targets, email wrapping, accordion row stability, no ghosted sections during fast scrolling. Commit `6108cbf`, delegated (writer trigger).
 - [ ] T6 Docs and cleanup: stale README, dead tokens, stale comments, detector exceptions, `DESIGN.md` and sidecar in sync, `PRODUCT.md` open decision resolved. Commit `d772211`, delegated (writer trigger). Everything is done except the `cream-palette` exception, which stays open: the detector refuses a value form for that rule, and offers only a `"*"` wildcard scoped to a file glob, which is not used here. `oversized-h1` no longer reports, so it needs no exception.
-- [ ] T7 `audit` and `polish`: technical pass, snapshot closure, and a final critique run.
+- [x] T7 `audit` and `polish`: technical pass and a final critique run (21/32 to 23/32). Snapshots stay open because the backend evidence P1 waits on Andrés.
 - [x] T8 Findings of the second critique that need no input: project names in link accessible names, landmarks, ledger on desktop, Contact hierarchy, quiet footer, Spanish caption and nav. Commits `7fda583`, `b8a17c8`, `635ad1e`, `7cfddcf`, `dd67afd`, delegated (writer trigger, 2+ non-trivial files). Evidence below.
 
 ## Acceptance checks
@@ -129,9 +129,22 @@ Left for Andrés:
 
 - Detail images are not clipped by CSS (shown whole at 16:10); the crop is in the source files `public/work/*-detail.webp`, whose content runs off the right edge. It needs new captures.
 - The Contact row now reads "CV" beside "CV (PDF)", as asked; the value could become a filename if the repetition bothers.
-- `src/app/error.tsx` tells visitors to contact Andrés, and the footer was its only contact link. It stays reachable through "Go home". The file was outside this task's edit surface.
-- No-JS visitors appear to stay on `src/app/loading.tsx`; check this on a production build.
+- `src/app/error.tsx` tells visitors to contact Andrés, and the footer was its only contact link. It stays reachable through "Go home".
+
+## T9 content without JavaScript
+
+Route: inline, one mechanical change. A production response streamed the home page behind the `src/app/loading.tsx` fallback, so visitors without JavaScript would stay on the loading text. Removing the fallback and its dictionary key fixes it.
+
+Evidence on a fresh production server:
+
+- `npm run build`: exit 0.
+- `npx tsc --noEmit`: exit 0.
+- `npm run lint`: exit 0.
+- `npm test`: 1 test, 1 pass.
+- Home HTML: status 200, no fallback before the `h1`, no streaming template. `/api/cv`: status 200 with an attachment header.
+
+Tradeoff: there is no loading text during a slow server response anymore; the browser waits for the page instead.
 
 ## Progress
 
-Baselines committed: `6fc3a3e`, `37139cd`. T1 to T5 are closed; T6 has the one open exception above. Authored changes so far are about 585 lines before T7, above the 400 line delivery budget, so the chain choice is due when Andrés decides on delivery. T7 fixes are committed; the build and final critique remain with the parent.
+All tasks are closed except T6's `cream-palette` exception, which is Andrés's call. Nothing is pushed. The branch is past the 400 line delivery budget, so the chain choice is due when Andrés decides on delivery. Next step: Andrés reviews the branch and answers the "Waiting on Andrés" list.
