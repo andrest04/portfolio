@@ -286,7 +286,8 @@ p {
 .hero {
   /* Width of the longest authored line, in em, so both lines always fit the page. */
   --line-em: 14.4;
-  --copy-width: calc(100vw - 2 * var(--margin));
+  /* Headline sizes come from this box, which excludes the margins and any classic scrollbar. */
+  container-type: inline-size;
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -298,10 +299,17 @@ p {
   --line-em: 16.2;
 }
 
+/* Narrow screens wrap at a size above the section titles; the measured lines start at 600px. */
 .lines {
   width: 100%;
-  font-size: calc(var(--copy-width) / var(--line-em));
-  white-space: nowrap;
+  font-size: clamp(2.125rem, 10cqw, 2.5rem);
+}
+
+@media (min-width: 600px) {
+  .lines {
+    font-size: calc(100cqw / var(--line-em));
+    white-space: nowrap;
+  }
 }
 
 .lines .line {
@@ -342,15 +350,15 @@ p {
 
 .hero__work {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
 .hero__picture {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
   gap: 4px;
-  min-width: 0;
 }
 
 .hero__picture:first-child {
@@ -426,12 +434,14 @@ p {
 
   .hero__work {
     grid-column: 4 / -1;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
     min-height: 180px;
   }
 
   .hero__picture {
+    grid-template-rows: minmax(0, 1fr) auto;
+    align-content: stretch;
     min-height: 0;
   }
 
@@ -616,7 +626,7 @@ details[open] > summary .ledger__toggle {
   }
 
   .ledger summary {
-    grid-template-columns: 55% minmax(0, 1fr) auto 16px;
+    grid-template-columns: 50% minmax(0, 1fr) auto 16px;
     align-items: baseline;
     min-height: 44px;
   }
@@ -624,6 +634,7 @@ details[open] > summary .ledger__toggle {
   .ledger__role {
     grid-column: 2;
     grid-row: 1;
+    white-space: nowrap;
   }
 
   .ledger__lead {
