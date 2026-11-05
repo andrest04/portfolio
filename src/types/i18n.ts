@@ -4,7 +4,6 @@ export interface Dictionary {
     switchLanguage: string;
     otherLanguage: string;
     newTab: string;
-    loading: string;
   };
   nav: {
     label: string;
