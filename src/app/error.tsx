@@ -18,7 +18,10 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="mx-auto grid min-h-[80svh] max-w-[520px] content-center justify-items-start gap-6 px-5">
+    <main
+      id="content"
+      className="mx-auto grid min-h-[80svh] max-w-[520px] content-center justify-items-start gap-6 px-5"
+    >
       <h1 className="text-head">{t.title}</h1>
       <p>{t.body}</p>
       {error.digest && (

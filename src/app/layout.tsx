@@ -118,7 +118,7 @@ export default async function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: MOTION_GATE }} />
       </head>
       <body className={literata.className}>
-        <a href="#main" className="skip-link">
+        <a href="#content" className="skip-link">
           {t.meta.skipLink}
         </a>
         <ErrorCopyProvider copy={t.error}>{children}</ErrorCopyProvider>

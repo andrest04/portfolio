@@ -227,7 +227,7 @@ The character is quiet and precise: square corners, a single filled button, and 
 - **Language switch:** A text button styled as an underlined link; it thickens on hover, fades to 0.6 when pressed, and shows a progress cursor at 0.5 opacity while the language changes.
 
 ### Skip Link
-Folio Ink fill with Stone Paper text, parked off-screen until focused, when it appears at the top of the page.
+Folio Ink fill with Stone Paper text, parked off-screen until focused, when it appears at the top of the page. It targets `#content`, the hero on the home page and the `main` of the error and not-found pages, so the next Tab lands past the navigation.
 
 ### Masked Headline
 The hero headline's lines each rise from behind their own clipping mask (900ms), staggered by 110ms after a 60ms delay. Each mask leaves 0.14em of room so accents and descenders are not cut off. The copy and pictures then fade up 16px (700ms) after a 620ms delay.

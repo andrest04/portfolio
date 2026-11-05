@@ -17,7 +17,7 @@ export default function Hero({ t, locale }: HeroProps) {
   );
 
   return (
-    <section className="hero" data-locale={locale}>
+    <section id="content" className="hero" data-locale={locale}>
       <h1 className="lines">
         {t.hero.headline.map((line, index) => (
           <span className="line" key={line}>
