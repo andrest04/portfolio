@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ExternalLink from "@/components/layout/ExternalLink";
+import LedgerRowAnchor from "@/components/motion/LedgerRowAnchor";
 import type { Dictionary } from "@/types/i18n";
 
 const PREVIEW_SIZES = "(min-width: 1200px) 40vw, 100vw";
@@ -74,6 +75,7 @@ export default function Work({ t }: { t: Dictionary }) {
             </li>
           ))}
         </ul>
+        <LedgerRowAnchor />
       </div>
     </section>
   );

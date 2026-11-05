@@ -20,7 +20,8 @@ export default function RevealObserver({ locale }: { locale: string }) {
           }
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
+      /* Starts below the fold so fast scrolling does not land on empty sections. */
+      { rootMargin: "0px 0px 25% 0px" },
     );
     document
       .querySelectorAll("[data-reveal]:not(.is-in)")

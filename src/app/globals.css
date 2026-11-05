@@ -852,6 +852,13 @@ details[open] > summary .ledger__toggle {
   overflow-wrap: anywhere;
 }
 
+/* Full width below the portrait, so the email fits or breaks only at its @. */
+@media (max-width: 599px) {
+  .contact__links {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (min-width: 900px) {
   .contact {
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -869,6 +876,22 @@ details[open] > summary .ledger__toggle {
 
   .contact__links {
     grid-column: 9 / span 4;
+  }
+}
+
+/* Touch: at least 44px tall for a finger, with no change for mouse pointers */
+
+@media (pointer: coarse) {
+  .site-nav__links a,
+  .site-nav__mark,
+  .lang-switch,
+  .hero__actions .link,
+  .ledger__links a,
+  .contact__links a,
+  .site-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
 
@@ -903,9 +926,9 @@ details[open] > summary .ledger__toggle {
     opacity: 0;
     transform: translateY(24px);
     transition:
-      opacity 700ms var(--ease-out),
-      transform 900ms var(--ease-out);
-    transition-delay: calc(var(--i, 0) * 75ms);
+      opacity 400ms var(--ease-out),
+      transform 500ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 40ms);
   }
 
   .js [data-reveal].is-in {

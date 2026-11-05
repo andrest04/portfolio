@@ -5,6 +5,7 @@ import type { Dictionary } from "@/types/i18n";
 
 export default function Contact({ t }: { t: Dictionary }) {
   const c = t.contact;
+  const [user, domain] = CONTACT.email.split("@");
 
   return (
     <section id="contact" className="contact">
@@ -24,7 +25,8 @@ export default function Contact({ t }: { t: Dictionary }) {
           <dt>{c.emailLabel}</dt>
           <dd>
             <a href={`mailto:${CONTACT.email}`} className="link">
-              {CONTACT.email}
+              {user}
+              <wbr />@{domain}
             </a>
           </dd>
         </div>
