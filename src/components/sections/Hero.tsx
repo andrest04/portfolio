@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ExternalLink from "@/components/layout/ExternalLink";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/types/i18n";
 
@@ -41,12 +42,11 @@ export default function Hero({ t, locale }: HeroProps) {
       </div>
       <div className="hero__work" data-follow>
         {projects.map((project, index) => (
-          <a
+          <ExternalLink
             key={project.name}
             className="hero__picture"
             href={project.links.demo}
-            target="_blank"
-            rel="noreferrer"
+            notice={t.meta.newTab}
           >
             <Image
               src={project.image.main}
@@ -59,7 +59,7 @@ export default function Hero({ t, locale }: HeroProps) {
                   : "(min-width: 1100px) 25vw, 50vw"
               }
             />
-          </a>
+          </ExternalLink>
         ))}
       </div>
     </section>

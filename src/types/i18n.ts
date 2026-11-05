@@ -3,6 +3,7 @@ export interface Dictionary {
     skipLink: string;
     switchLanguage: string;
     otherLanguage: string;
+    newTab: string;
   };
   nav: {
     label: string;
@@ -86,8 +87,25 @@ export interface Dictionary {
     locationValue: string;
     linkedinLabel: string;
     githubLabel: string;
+    cvLabel: string;
   };
   footer: {
     description: string;
+  };
+  cv: {
+    missing: string;
+    failed: string;
+  };
+  error: {
+    title: string;
+    body: string;
+    errorId: string;
+    retry: string;
+    home: string;
+  };
+  notFound: {
+    title: string;
+    body: string;
+    home: string;
   };
 }

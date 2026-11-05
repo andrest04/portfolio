@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ExternalLink from "@/components/layout/ExternalLink";
 import { CONTACT } from "@/lib/contact";
 import type { Dictionary } from "@/types/i18n";
 
@@ -38,16 +39,24 @@ export default function Contact({ t }: { t: Dictionary }) {
         <div>
           <dt>{c.linkedinLabel}</dt>
           <dd>
-            <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" className="link">
+            <ExternalLink href={CONTACT.linkedin} notice={t.meta.newTab} className="link">
               linkedin.com/in/andres-torres-garcia
-            </a>
+            </ExternalLink>
           </dd>
         </div>
         <div>
           <dt>{c.githubLabel}</dt>
           <dd>
-            <a href={CONTACT.github} target="_blank" rel="noreferrer" className="link">
+            <ExternalLink href={CONTACT.github} notice={t.meta.newTab} className="link">
               github.com/andrest04
+            </ExternalLink>
+          </dd>
+        </div>
+        <div>
+          <dt>{c.cvLabel}</dt>
+          <dd>
+            <a href="/api/cv" className="link">
+              {t.hero.ctaSecondary}
             </a>
           </dd>
         </div>

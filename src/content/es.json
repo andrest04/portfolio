@@ -2,7 +2,8 @@
   "meta": {
     "skipLink": "Ir al contenido",
     "switchLanguage": "Switch language to English",
-    "otherLanguage": "English"
+    "otherLanguage": "English",
+    "newTab": "(se abre en una pestaña nueva)"
   },
   "nav": {
     "label": "Principal",
@@ -18,7 +19,7 @@
     "headline": ["Andrés Torres construye backends", "y las apps que corren sobre ellos."],
     "sentence": "Estudiante de Ingeniería de Software en Lima y pasante de Frontend en EDTeam.",
     "ctaPrimary": "Ver proyectos",
-    "ctaSecondary": "Descargar CV"
+    "ctaSecondary": "CV (PDF)"
   },
   "projects": {
     "title": "Proyectos",
@@ -208,9 +209,26 @@
     "locationLabel": "Ubicación",
     "locationValue": "Lima, Perú",
     "linkedinLabel": "LinkedIn",
-    "githubLabel": "GitHub"
+    "githubLabel": "GitHub",
+    "cvLabel": "Descarga"
   },
   "footer": {
     "description": "Andrés Torres, Lima, Perú"
+  },
+  "cv": {
+    "missing": "El CV no está disponible en este momento. Puedes pedirlo por correo:",
+    "failed": "No se pudo cargar el CV. Inténtalo de nuevo o pídelo por correo:"
+  },
+  "error": {
+    "title": "Algo salió mal",
+    "body": "Ocurrió un error inesperado. Inténtalo de nuevo o contáctame si el problema continúa.",
+    "errorId": "ID del error:",
+    "retry": "Reintentar",
+    "home": "Ir al inicio"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "body": "La página que buscas no existe o se movió.",
+    "home": "Ir al inicio"
   }
 }

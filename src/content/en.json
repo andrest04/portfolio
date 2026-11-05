@@ -2,7 +2,8 @@
   "meta": {
     "skipLink": "Skip to content",
     "switchLanguage": "Cambiar el idioma a español",
-    "otherLanguage": "Español"
+    "otherLanguage": "Español",
+    "newTab": "(opens in a new tab)"
   },
   "nav": {
     "label": "Main",
@@ -18,7 +19,7 @@
     "headline": ["Andrés Torres builds backends", "and the apps on top of them."],
     "sentence": "Software Engineering student in Lima and Frontend Intern at EDTeam.",
     "ctaPrimary": "View projects",
-    "ctaSecondary": "Download CV"
+    "ctaSecondary": "CV (PDF)"
   },
   "projects": {
     "title": "Work",
@@ -208,9 +209,26 @@
     "locationLabel": "Location",
     "locationValue": "Lima, Peru",
     "linkedinLabel": "LinkedIn",
-    "githubLabel": "GitHub"
+    "githubLabel": "GitHub",
+    "cvLabel": "Download"
   },
   "footer": {
     "description": "Andrés Torres, Lima, Peru"
+  },
+  "cv": {
+    "missing": "The CV is not available right now. You can request it by email:",
+    "failed": "The CV could not be loaded. Please try again, or request it by email:"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "body": "An unexpected error occurred. Please try again, or contact me if the problem persists.",
+    "errorId": "Error ID:",
+    "retry": "Try again",
+    "home": "Go home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist or has been moved.",
+    "home": "Go home"
   }
 }

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ExternalLink from "@/components/layout/ExternalLink";
 import type { Dictionary } from "@/types/i18n";
 
 const PREVIEW_SIZES = "(min-width: 1200px) 40vw, 100vw";
@@ -61,12 +62,12 @@ export default function Work({ t }: { t: Dictionary }) {
                   <p>{project.highlights.join(", ")}</p>
                   <p className="ledger__stack">{project.stack.join(", ")}</p>
                   <p className="ledger__links">
-                    <a href={project.links.demo} target="_blank" rel="noreferrer" className="link">
+                    <ExternalLink href={project.links.demo} notice={t.meta.newTab} className="link">
                       {viewDemo}
-                    </a>
-                    <a href={project.links.github} target="_blank" rel="noreferrer" className="link">
+                    </ExternalLink>
+                    <ExternalLink href={project.links.github} notice={t.meta.newTab} className="link">
                       {viewGithub}
-                    </a>
+                    </ExternalLink>
                   </p>
                 </div>
               </details>

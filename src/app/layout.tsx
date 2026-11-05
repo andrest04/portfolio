@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Literata } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
+import { ErrorCopyProvider } from "@/components/layout/ErrorCopyProvider";
 import SiteFooter from "@/components/layout/SiteFooter";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
@@ -120,7 +121,7 @@ export default async function RootLayout({
         <a href="#main" className="skip-link">
           {t.meta.skipLink}
         </a>
-        {children}
+        <ErrorCopyProvider copy={t.error}>{children}</ErrorCopyProvider>
         <SiteFooter t={t} />
         <Analytics />
         <SpeedInsights />
