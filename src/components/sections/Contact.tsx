@@ -17,7 +17,13 @@ export default function Contact({ t }: { t: Dictionary }) {
       </div>
 
       <figure className="contact__portrait" data-reveal style={{ "--i": 2 } as React.CSSProperties}>
-        <Image src="/portrait.png" alt={t.about.portraitAlt} width={170} height={170} />
+        <Image
+          src="/portrait.png"
+          alt={t.about.portraitAlt}
+          width={170}
+          height={170}
+          sizes="(min-width: 900px) 15vw, 96px"
+        />
       </figure>
 
       <dl className="contact__links" data-reveal style={{ "--i": 3 } as React.CSSProperties}>

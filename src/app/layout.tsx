@@ -9,7 +9,7 @@ import SiteFooter from "@/components/layout/SiteFooter";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
 const literata = Literata({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   style: ["normal", "italic"],
   axes: ["opsz"],
   display: "swap",
