@@ -186,7 +186,7 @@ The contact statement is the one considered variation: Headline size at weight 4
 
 The page is a single vertical document with a side margin of 20px, widening to 40px from 768px up. Major sections are separated by a fluid gap (clamp(96px, 12vw, 180px)), and the About band and the top of Contact use their own fluid padding (clamp(72px, 8vw, 120px)). Inside sections, spacing steps through 4, 8, 12, 16, 20, 24, and 32px; it tightens within a group and opens up between groups.
 
-The hero stacks on narrow screens: headline, copy, then three captioned pictures with the first at full width above a pair, all at 4:3. From 1100px it becomes a full-viewport 12-column composition (minimum height 100svh, 16px column gap, 32px row gap), with the headline across all columns, the copy in the first three columns anchored to the bottom, and the pictures in the remaining nine at a 2:1 split, the large one spanning both rows. The picture row takes what the headline leaves of the first screen, with the copy and a 180px minimum as its floor, so the sentence and actions stay on the first screen down to about 620px tall.
+The hero stacks on narrow screens: headline, copy, then three captioned pictures with the first at full width above a pair, all at 4:3. From 1100px it becomes a full-viewport 12-column composition (minimum height 100svh, 16px column gap, 32px row gap), with the headline across all columns, the copy in the first three columns anchored to the bottom, and the pictures in the remaining nine at a 2:1 split, the large one spanning both rows. The picture row takes what the headline leaves of the first screen, with the copy and a 180px minimum as its floor, so the sentence and actions stay on the first screen down to about 620px tall. The two small captions stack name over role wherever the longest one cannot hold a line, measured at below 1400px in English and below 1700px in Spanish, so both small frames keep the same height.
 
 From 1200px, Work and the record sections hang from a shared column start at 22vw. The Work column is 560px wide with the project picture in the open ground 64px to its right, up to 640px wide. Every row's picture shares one slot that runs the height of the column, starting level with the section title, and its frame sticks 24px from the top of the viewport, so the picture of an opened row is on screen. The record splits into two equal columns with 72px between rows, and its two note groups run in two columns from 768px, aligned to those columns from 1200px.
 
@@ -222,7 +222,7 @@ The character is quiet and precise: square corners, a single filled button, and 
 
 ### Navigation
 - **Style:** A plain Label-size bar, with Andrés's name in Title on one end and the language switch on the other. No sticky behavior.
-- **Narrow:** Below 1100px it is a Folio Stone bar with the links on their own wrapping row; link gaps grow from 0.4375rem to 1.5rem at 768px.
+- **Narrow:** Below 1100px it is a Folio Stone bar with the links on their own row. Below 768px a row that has to wrap balances, so no link is left alone on a line; link gaps grow from 0.4375rem to 1.5rem at 768px.
 - **Wide:** From 1100px the bar is transparent and overlays the top of the hero, with name, links, and switch on one line.
 - **Language switch:** A text button styled as an underlined link; it thickens on hover, fades to 0.6 when pressed, and shows a progress cursor at 0.5 opacity while the language changes.
 
