@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Andrés Torres - Portfolio",
     short_name: "A. Torres",
     description:
-      "Portfolio of Andrés Torres, Full-Stack Developer specialized in .NET, React and Node.js.",
+      "Portfolio of Andrés Torres, Software Engineer specialized in .NET, React and Node.js.",
     start_url: "/",
     display: "standalone",
     background_color: "#dedad3",

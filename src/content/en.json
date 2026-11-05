@@ -3,7 +3,8 @@
     "skipLink": "Skip to content",
     "switchLanguage": "Cambiar el idioma a español",
     "otherLanguage": "Español",
-    "newTab": "(opens in a new tab)"
+    "newTab": "(opens in a new tab)",
+    "loading": "Loading..."
   },
   "nav": {
     "label": "Main",
