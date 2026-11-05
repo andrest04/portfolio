@@ -22,12 +22,15 @@ export default function Work({ t }: { t: Dictionary }) {
             <li
               className="ledger__row"
               key={project.name}
-              data-reveal
               style={{ "--i": index + 2 } as React.CSSProperties}
             >
-              {/* Outside <details> so hover can show it while the row is closed. */}
+              {/*
+                Outside <details> so hover can show it while the row is closed. The reveal sits
+                on the frame and the details, because a transform on the row would capture the
+                preview, which is positioned against the whole column from 1200px.
+              */}
               <figure className="ledger__preview">
-                <div className="ledger__frame">
+                <div className="ledger__frame" data-reveal>
                   <Image
                     src={project.image.main}
                     alt={project.image.mainAlt}
@@ -38,7 +41,7 @@ export default function Work({ t }: { t: Dictionary }) {
                 </div>
               </figure>
 
-              <details name="work" open={index === 0}>
+              <details name="work" open={index === 0} data-reveal>
                 <summary>
                   <h3 className="ledger__name">{project.name}</h3>
                   <span className="ledger__role">{project.role}</span>
@@ -65,6 +68,7 @@ export default function Work({ t }: { t: Dictionary }) {
                   <p className="ledger__links">
                     <ExternalLink href={project.links.demo} notice={t.meta.newTab} className="link">
                       {viewDemo}
+                      <span className="sr-only"> {project.name}</span>
                     </ExternalLink>
                     <ExternalLink href={project.links.github} notice={t.meta.newTab} className="link">
                       {viewGithub}
@@ -72,7 +76,6 @@ export default function Work({ t }: { t: Dictionary }) {
                     </ExternalLink>
                   </p>
                 </div>
-                      <span className="sr-only"> {project.name}</span>
               </details>
             </li>
           ))}

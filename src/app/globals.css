@@ -549,6 +549,7 @@ details[open] > summary .ledger__toggle {
 .ledger__detail {
   width: 100%;
   height: auto;
+  background: var(--surface);
 }
 
 .ledger__stack {
@@ -569,21 +570,19 @@ details[open] > summary .ledger__toggle {
 
 @media (min-width: 1200px) {
   .work__column {
+    --preview-width: min(640px, calc(100vw - var(--column-start) - 560px - 64px - var(--margin)));
+    position: relative;
     width: 560px;
+    /* Keeps the picture inside the section when every row is closed. */
+    min-height: calc(var(--preview-width) * 0.75);
     margin-left: calc(var(--column-start) - var(--margin));
   }
 
   .ledger {
     --row-gap: 0px;
-    --preview-width: min(640px, calc(100vw - var(--column-start) - 560px - 64px - var(--margin)));
-    /* Keeps the picture of the last row inside the section when every row is closed. */
-    min-height: calc(var(--preview-width) * 0.75 + 132px);
   }
 
-  .ledger__row {
-    position: relative;
-  }
-
+  /* Every row's picture shares one slot, the height of the column, so its frame stays in view. */
   .ledger__preview {
     position: absolute;
     top: 0;
@@ -596,12 +595,6 @@ details[open] > summary .ledger__toggle {
     transition: opacity 150ms var(--ease-out);
   }
 
-  /* A closed row near the end grows its picture upward, so it stays inside the section. */
-  .ledger__row:nth-last-child(-n + 2):not(:has(details[open])) .ledger__preview {
-    top: auto;
-    bottom: 0;
-  }
-
   .ledger__frame {
     position: sticky;
     top: 24px;
@@ -610,7 +603,7 @@ details[open] > summary .ledger__toggle {
 
   /* The open row holds the picture until another row is hovered or focused. */
   .ledger__row:hover .ledger__preview,
-  .ledger__row:has(summary:focus-visible) .ledger__preview,
+  .ledger:not(:has(.ledger__row:hover)) .ledger__row:has(summary:focus-visible) .ledger__preview,
   .ledger:not(:has(.ledger__row:hover, summary:focus-visible))
     .ledger__row:has(details[open])
     .ledger__preview {
@@ -638,8 +631,9 @@ details[open] > summary .ledger__toggle {
     grid-column: 4;
   }
 
-  .ledger:has(.ledger__row:hover, summary:focus-visible)
-    .ledger__row:not(:hover, :has(summary:focus-visible))
+  /* Pointing at a row's line dims the others; the open panel alone does not. */
+  .ledger:has(summary:hover, summary:focus-visible)
+    .ledger__row:not(:has(summary:hover, summary:focus-visible))
     summary {
     color: var(--muted);
   }

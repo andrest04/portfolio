@@ -188,7 +188,7 @@ The page is a single vertical document with a side margin of 20px, widening to 4
 
 The hero stacks on narrow screens: headline, copy, then three captioned pictures with the first at full width above a pair, all at 4:3. From 1100px it becomes a full-viewport 12-column composition (minimum height 100svh, 16px column gap, 32px row gap), with the headline across all columns, the copy in the first three columns anchored to the bottom, and the pictures in the remaining nine at a 2:1 split, the large one spanning both rows. The picture row takes what the headline leaves of the first screen, with the copy and a 180px minimum as its floor, so the sentence and actions stay on the first screen down to about 620px tall.
 
-From 1200px, Work and the record sections hang from a shared column start at 22vw. The Work column is 560px wide with the project picture in the open ground 64px to its right, up to 640px wide. The record splits into two equal columns with 72px between rows, and its two note groups run in two columns from 768px, aligned to those columns from 1200px.
+From 1200px, Work and the record sections hang from a shared column start at 22vw. The Work column is 560px wide with the project picture in the open ground 64px to its right, up to 640px wide. Every row's picture shares one slot that runs the height of the column, starting level with the section title, and its frame sticks 24px from the top of the viewport, so the picture of an opened row is on screen. The record splits into two equal columns with 72px between rows, and its two note groups run in two columns from 768px, aligned to those columns from 1200px.
 
 Row pairings become label-and-value columns from 600px (an 11rem label column). Below 600px the contact links run full width under the portrait. Contact moves to a 12-column grid at 900px with a 24px gap: the statement in columns 1 to 5, the square portrait in 7 and 8, and the links in 9 to 12. The About letter stays a centered column at every width, with 24px of side padding and 24px between its parts. The footer becomes a three-part line from 768px, set far below the content (20svh, then 30svh).
 
@@ -203,7 +203,7 @@ The system is flat: there are no shadows and no borders anywhere. Depth is conve
 
 Every surface, button, and picture frame has square corners (0px). The single exception is the small portrait at the top of the About letter, a 44px circle (50%) that reads like a seal on a letter; the larger portrait beside the contact links remains square at a 1:1 ratio.
 
-Pictures are clipped to their frames at fixed ratios: 4:3 in the hero on narrower screens and in the wide ledger preview, 16:10 for the ledger on narrower screens, anchored to the top so a screenshot always shows its header. The one drawn icon is a 16px plus sign with a 1.5px stroke in the current text color.
+Pictures are clipped to their frames at fixed ratios: 4:3 in the hero on narrower screens and in the wide ledger preview, 16:10 for the ledger on narrower screens, anchored to the top so a screenshot always shows its header. Detail screenshots inside a ledger panel are shown whole, at their own 16:10, on a Folio Stone ground while they load. The one drawn icon is a 16px plus sign with a 1.5px stroke in the current text color.
 
 ## Components
 
@@ -241,7 +241,7 @@ The signature component: an exclusive accordion in which opening one row closes 
 - **Row:** Project name in Title, role in Pencil Gray Label, lead technology in tabular Label, and a drawn plus sign that rotates 45 degrees over 200ms when the row is open.
 - **Panel:** A description, an optional detail screenshot, highlights, the stack in Pencil Gray Label, and underlined links for the demo and repository.
 - **Narrow:** Each row has its own 16:10 picture above it and a 52px minimum height, with 28px between rows.
-- **Wide:** From 1200px rows sit on a single line at a 44px minimum height, with the name in the first 50% and the role kept on one line, and a sticky 4:3 picture appears in the open ground. It fades in over 150ms when a row is hovered or focused, and the open row holds it otherwise. Rows not being pointed at dim to Pencil Gray.
+- **Wide:** From 1200px rows sit on a single line at a 44px minimum height, with the name in the first 50% and the role kept on one line, and a sticky 4:3 picture appears in the open ground. One picture shows at a time, crossfading over 150ms in the same slot: the hovered row's, else the focused row's, else the open row's. While a row's line is hovered or focused, the other lines dim to Pencil Gray; the pointer over an open panel dims nothing.
 - **Drift:** The visible picture slowly scales to 1.07 and shifts up 1.5% over 24s, alternating, only while the ledger is on screen. It is the one looping animation on the page.
 
 ### Record Rows
