@@ -12,7 +12,6 @@
   --step-body: clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
   --step-head: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
-  --step-figure: clamp(2.5rem, 2rem + 2.2vw, 3.75rem);
 
   --margin: 20px;
   --section-gap: clamp(96px, 12vw, 180px);
@@ -28,15 +27,8 @@
 }
 
 @theme inline {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-ink: var(--accent-ink);
   --text-small: var(--step-small);
-  --text-body: var(--step-body);
-  --text-lead: var(--step-lead);
   --text-head: var(--step-head);
 }
 
@@ -245,7 +237,7 @@ p {
   }
 }
 
-/* Footer: a single quiet line */
+/* Footer: quiet stacked lines, becoming a three-part line from 768px */
 
 .site-footer {
   display: grid;
@@ -773,7 +765,7 @@ details[open] > summary .ledger__toggle {
   }
 }
 
-/* About: a letter on the lighter ground */
+/* About: a letter on the darker Folio Stone band */
 
 .about {
   margin-top: var(--section-gap);
@@ -908,18 +900,10 @@ details[open] > summary .ledger__toggle {
     animation-delay: calc(var(--i) * 110ms + 60ms);
   }
 
-  .js [data-follow],
-  .js [data-load] {
+  .js [data-follow] {
     opacity: 0;
     animation: rise-in 700ms var(--ease-out) forwards;
-  }
-
-  .js [data-follow] {
     animation-delay: 620ms;
-  }
-
-  .js [data-load] {
-    animation-delay: calc(var(--load) * 80ms + 300ms);
   }
 
   .js [data-reveal] {

@@ -35,7 +35,7 @@ Factual limits:
 - Andrés is still a student: eighth term of Software Engineering at UPC. "Software engineer" is the chosen self-presentation; copy must not claim a completed degree or a professional title not yet held.
 - The current position is Frontend Intern at EDTeam, and this must stay stated accurately.
 
-Open decision: the contact statement "Have a project in mind? Let's talk!" addresses clients, while the primary audience is recruiters and tech leads.
+Resolved: the contact statement addresses the primary audience, recruiters and tech leads: "Hiring? Let's talk." in English and "¿Estás contratando? Hablemos." in Spanish.
 
 ## Brand Commitments
 

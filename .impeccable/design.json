@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-05T04:50:49Z",
+  "generatedAt": "2026-11-05T06:00:00Z",
   "title": "Design System: Andrés Torres Portfolio",
   "extensions": {
     "colorMeta": {
@@ -98,7 +98,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The two-line hero headline only, sized from the longest authored line: 14.4em in English, 16.2em in Spanish."
+        "purpose": "The hero headline only, sized from the longest authored line from 600px (14.4em in English, 16.2em in Spanish) and wrapping at a larger clamp below 600px."
       },
       "headline": {
         "displayName": "Headline",
@@ -118,7 +118,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Navigation links, dates, stacks, roles, contact labels, and the footer."
+        "purpose": "Navigation links, dates, stacks, roles, hero captions, contact labels, and the footer."
       }
     },
     "shadows": [],
@@ -160,8 +160,8 @@
       },
       {
         "name": "reveal",
-        "value": "opacity 700ms, translateY(24px) 900ms, 75ms stagger",
-        "purpose": "Section content entering the viewport."
+        "value": "opacity 400ms, translateY(24px) 500ms, 40ms stagger",
+        "purpose": "Section content entering the viewport, started 25% of a viewport below the fold."
       },
       {
         "name": "drift",
@@ -206,7 +206,7 @@
       "kind": "custom",
       "refersTo": "text-link",
       "description": "The secondary action and the default link in content.",
-      "html": "<a class=\"ds-link\" href=\"#\">Download CV</a>",
+      "html": "<a class=\"ds-link\" href=\"#\">CV (PDF)</a>",
       "css": ".ds-link { color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: var(--step-body, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem)); line-height: 1.6; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: text-decoration-thickness 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), color 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-link:hover { text-decoration-thickness: 2px; } .ds-link:active { color: var(--muted, #5c5852); } .ds-link:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; }"
     },
     {
@@ -221,17 +221,17 @@
       "name": "Masked Headline",
       "kind": "custom",
       "refersTo": "display",
-      "description": "The hero's two authored lines rising from behind clipping masks. Sized against its container here rather than the viewport so it fits the panel; the site divides the page width minus margins by the same 14.4em.",
+      "description": "The hero's two authored lines rising from behind clipping masks. Sized against its container, as on the site, which divides the hero's content width by the same 14.4em from 600px and wraps at clamp(2.125rem, 10cqw, 2.5rem) below it.",
       "html": "<div class=\"ds-lines-box\"><h1 class=\"ds-lines\"><span class=\"ds-line\"><span class=\"ds-line-text\" style=\"--i: 0\">Andrés Torres builds backends</span></span><span class=\"ds-line\"><span class=\"ds-line-text\" style=\"--i: 1\">and the apps on top of them.</span></span></h1></div>",
-      "css": ".ds-lines-box { container-type: inline-size; } .ds-lines { margin: 0; color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: calc(100cqw / 14.4); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; white-space: nowrap; } .ds-line { display: block; overflow: clip; padding-block: 0.14em; margin-block: -0.14em; } .ds-line-text { display: block; } @media (prefers-reduced-motion: no-preference) { .ds-line-text { transform: translateY(110%); animation: ds-line-up 900ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) forwards; animation-delay: calc(var(--i) * 110ms + 60ms); } @keyframes ds-line-up { to { transform: none; } } }"
+      "css": ".ds-lines-box { container-type: inline-size; } .ds-lines { margin: 0; color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: clamp(2.125rem, 10cqw, 2.5rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; } @media (min-width: 600px) { .ds-lines { font-size: calc(100cqw / 14.4); white-space: nowrap; } } .ds-line { display: block; overflow: clip; padding-block: 0.14em; margin-block: -0.14em; } .ds-line-text { display: block; } @media (prefers-reduced-motion: no-preference) { .ds-line-text { transform: translateY(110%); animation: ds-line-up 900ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) forwards; animation-delay: calc(var(--i) * 110ms + 60ms); } @keyframes ds-line-up { to { transform: none; } } }"
     },
     {
       "name": "Hero Triptych",
       "kind": "custom",
       "refersTo": "hero-picture",
-      "description": "Three linked screenshots of real work, one large and two small; toned blocks stand in for the screenshots here.",
-      "html": "<div class=\"ds-triptych\"><a class=\"ds-picture\" href=\"#\" aria-label=\"EduSpace\"><span class=\"ds-picture-image\"></span></a><a class=\"ds-picture\" href=\"#\" aria-label=\"Finance App\"><span class=\"ds-picture-image\"></span></a><a class=\"ds-picture\" href=\"#\" aria-label=\"Booking Platform (Italy)\"><span class=\"ds-picture-image\"></span></a></div>",
-      "css": ".ds-triptych { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; aspect-ratio: 2 / 1; } .ds-picture { display: block; overflow: clip; background: var(--surface, #d3cec6); } .ds-picture:first-child { grid-row: 1 / -1; } .ds-picture-image { display: block; width: 100%; height: 100%; background: color-mix(in srgb, var(--surface, #d3cec6) 70%, var(--muted, #5c5852)); transition: transform 500ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-picture:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; } @media (hover: hover) and (prefers-reduced-motion: no-preference) { .ds-picture:hover .ds-picture-image { transform: scale(1.03); } }"
+      "description": "Three linked screenshots of real work, one large and two small, each named by a caption of project and role; toned blocks stand in for the screenshots here.",
+      "html": "<div class=\"ds-triptych\"><a class=\"ds-picture\" href=\"#\"><span class=\"ds-frame\"><span class=\"ds-picture-image\"></span></span><span class=\"ds-caption\"><span>Kataleya Flowers</span><span class=\"ds-caption-role\">Full-Stack Developer</span></span></a><a class=\"ds-picture\" href=\"#\"><span class=\"ds-frame\"><span class=\"ds-picture-image\"></span></span><span class=\"ds-caption\"><span>Booking Platform (Italy)</span><span class=\"ds-caption-role\">Full-Stack Developer</span></span></a><a class=\"ds-picture\" href=\"#\"><span class=\"ds-frame\"><span class=\"ds-picture-image\"></span></span><span class=\"ds-caption\"><span>EduSpace</span><span class=\"ds-caption-role\">Tech Lead</span></span></a></div>",
+      "css": ".ds-triptych { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; aspect-ratio: 2 / 1; font-family: Literata, 'Literata Fallback'; } .ds-picture { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 4px; min-height: 0; color: var(--ink, #0a0a0a); text-decoration: none; } .ds-picture:first-child { grid-row: 1 / -1; } .ds-frame { display: block; min-height: 0; overflow: clip; background: var(--surface, #d3cec6); } .ds-picture-image { display: block; width: 100%; height: 100%; background: color-mix(in srgb, var(--surface, #d3cec6) 70%, var(--muted, #5c5852)); transition: transform 500ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 12px; font-size: var(--step-small, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)); line-height: 1.6; } .ds-caption-role { color: var(--muted, #5c5852); } .ds-picture:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; } @media (hover: hover) and (prefers-reduced-motion: no-preference) { .ds-picture:hover .ds-picture-image { transform: scale(1.03); } }"
     },
     {
       "name": "Work Ledger",
@@ -292,7 +292,7 @@
       },
       {
         "name": "The Measured Line Rule",
-        "body": "The display size is derived from the width of the longest authored line, per language, so both lines always fit the page exactly on one line each. Changing the headline copy means re-measuring it.",
+        "body": "The display size from 600px is derived from the width of the longest authored line, per language, so both lines always fit the available width exactly on one line each. Below 600px the headline wraps at a size above the section titles. Changing the headline copy means re-measuring it.",
         "section": "typography"
       },
       {
@@ -326,7 +326,7 @@
       "Don't uppercase or letterspace labels; they stay sentence case at weight 400.",
       "Don't add a second typeface alongside Literata.",
       "Don't add another looping animation; the drifting project picture is the only one.",
-      "Don't set the display headline at a fixed size or let its lines wrap."
+      "Don't set the display headline at a fixed size, or let its lines wrap from 600px up."
     ]
   }
 }

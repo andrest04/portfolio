@@ -1,31 +1,36 @@
 # Portfolio
 
-Personal portfolio showcasing software engineering projects with emphasis on Clean Architecture, DDD, CQRS, and scalable backend systems.
+Personal portfolio of Andrés Torres, presenting real software engineering projects, experience, and a downloadable CV in English and Spanish.
 
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router, React Server Components)
 - **Language**: TypeScript (strict mode)
-- **Styling**: Tailwind CSS 4, shadcn/ui components
-- **Animation**: GSAP (ScrollTrigger, SplitText) and IntersectionObserver
-- **i18n**: Custom implementation with middleware-based routing (`/en`, `/es`)
-- **Architecture**: Server-first with a minimalist, monochrome UI
+- **Styling**: Hand-written CSS in `src/app/globals.css`, on Tailwind CSS 4 with a few utilities on the error and not-found pages
+- **Animation**: CSS transitions and keyframes, triggered by an IntersectionObserver
+- **i18n**: `next-intl` request config with JSON dictionaries, and the locale stored in a cookie rather than the URL
+- **Design system**: The Evidence Folio, one light theme documented in `DESIGN.md`
 
 ## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── [lang]/           # Localized routes (en, es)
 │   ├── api/cv/           # CV download endpoint
-│   └── globals.css
+│   ├── error.tsx         # Localized error boundary
+│   ├── not-found.tsx     # Localized 404 page
+│   ├── layout.tsx        # Metadata, font, and footer
+│   ├── page.tsx          # The single page
+│   └── globals.css       # All site styles and tokens
 ├── components/
-│   ├── layout/           # Navbar
-│   ├── sections/         # Hero, Projects, Experience, AboutSkills, Contact
-│   └── ui/               # Reusable UI components (Button, Card, Input, etc.)
-├── content/              # i18n JSON dictionaries (en.json, es.json)
-├── lib/                  # Utilities and i18n helpers
-└── proxy.ts              # Middleware for locale detection
+│   ├── layout/           # SiteNav, SiteFooter, LangSwitch, ExternalLink, ErrorCopyProvider
+│   ├── motion/           # RevealObserver, LedgerRowAnchor
+│   └── sections/         # Hero, Work, Experience, Skills, About, Contact
+├── content/              # en.json, es.json, and the test that keeps them in step
+├── i18n/request.ts       # Reads the locale cookie for next-intl
+├── lib/                  # Dictionary loader, locale action, and contact details
+├── types/i18n.ts         # Dictionary type
+└── proxy.ts              # Sets the locale cookie from Accept-Language on first visit
 ```
 
 ## Getting Started
@@ -45,28 +50,28 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 - `npm run build` — Create production build
 - `npm run start` — Start production server
 - `npm run lint` — Run ESLint
+- `npm test` — Run the tests with the Node.js test runner
 
 ## Key Features
 
-- **Internationalization**: Automatic locale detection with `/en` and `/es` routes
-- **Responsive Design**: Mobile-first, minimalist monochrome aesthetic with light/dark mode
-- **Type Safety**: Strict TypeScript with no `any` types
-- **Animation**: Smooth scroll-triggered reveals with GSAP and IntersectionObserver
-- **CV Download**: Dynamic PDF serving via API route
+- **Internationalization**: English and Spanish on one URL, detected on first visit and switched from the navigation
+- **Responsive Design**: One light theme, with the layout changing at 600, 768, 900, 1100, and 1200px
+- **Type Safety**: Strict TypeScript
+- **Animation**: A masked headline on load and short section reveals, all gated on script and the reduced-motion preference
+- **CV Download**: `/api/cv` serves the PDF in `public/` as an attachment, with a readable message if it is missing
 - **SEO**: Sitemap and robots.txt generation
 
 ## Code Style
 
-- Self-documenting code (no comments)
 - Strict TypeScript types
 - Path alias `@/*` for `./src/*`
-- Functional components with interface-based props
-- Tailwind utility classes with CSS custom properties
-- All user-facing text externalized in `src/content/{locale}.json`
+- Functional components with typed props
+- Plain CSS classes with CSS custom properties
+- All user-facing page text externalized in `src/content/{locale}.json`, with identical keys in both files
 
 ## Architecture Decisions
 
-- **Middleware**: Located in `src/proxy.ts` (not root `middleware.ts`)
-- **Routing**: Localized with `[lang]` dynamic segment
+- **Proxy**: Located in `src/proxy.ts`, the Next.js 16 name for middleware
+- **Routing**: A single route; the language comes from the `NEXT_LOCALE` cookie, not a path segment
 - **Components**: Server Components by default, Client Components marked with `"use client"`
-- **Content Management**: JSON-based i18n with `getDictionary()` helper
+- **Content Management**: JSON dictionaries loaded with the `getDictionary()` helper
