@@ -18,7 +18,7 @@ export default function SiteNav({ t, locale }: SiteNavProps) {
 
   return (
     <header className="site-nav">
-      <a href="#main" className="site-nav__mark plain-link">
+      <a href="#top" className="site-nav__mark plain-link">
         {t.hero.name}
       </a>
       <nav aria-label={t.nav.label}>

@@ -68,9 +68,11 @@ export default function Work({ t }: { t: Dictionary }) {
                     </ExternalLink>
                     <ExternalLink href={project.links.github} notice={t.meta.newTab} className="link">
                       {viewGithub}
+                      <span className="sr-only"> {project.name}</span>
                     </ExternalLink>
                   </p>
                 </div>
+                      <span className="sr-only"> {project.name}</span>
               </details>
             </li>
           ))}

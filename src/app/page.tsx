@@ -14,17 +14,19 @@ export default async function Page() {
   const t = await getDictionary(locale);
 
   return (
-    <main id="main" tabIndex={-1}>
+    <>
       <SiteNav t={t} locale={locale} />
-      <Hero t={t} locale={locale} />
-      <Work t={t} />
-      <section className="record">
-        <Experience t={t.experience} />
-        <Skills t={t.skills} />
-      </section>
-      <About t={t} />
-      <Contact t={t} />
-      <RevealObserver locale={locale} />
-    </main>
+      <main id="main" tabIndex={-1}>
+        <Hero t={t} locale={locale} />
+        <Work t={t} />
+        <section className="record">
+          <Experience t={t.experience} />
+          <Skills t={t.skills} />
+        </section>
+        <About t={t} />
+        <Contact t={t} />
+        <RevealObserver locale={locale} />
+      </main>
+    </>
   );
 }
