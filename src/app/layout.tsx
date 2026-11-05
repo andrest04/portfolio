@@ -26,12 +26,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const isEn = locale === "en";
 
   const title = isEn
-    ? "Andrés Torres - Full-Stack Developer | .NET, React, Node.js"
-    : "Andrés Torres - Desarrollador Full-Stack | .NET, React, Node.js";
+    ? "Andrés Torres - Software Engineer | .NET, React, Node.js"
+    : "Andrés Torres - Ingeniero de Software | .NET, React, Node.js";
 
   const description = isEn
-    ? "Portfolio of Andrés Torres, Full-Stack Developer specialized in .NET 8, React, Node.js and MySQL. 8th term Software Engineering student in Peru building scalable systems with Clean Architecture, DDD, and CQRS."
-    : "Portfolio de Andrés Torres, desarrollador Full-Stack especializado en .NET 8, React, Node.js y MySQL. Estudiante de 8.º ciclo de Ingeniería de Software en Perú construyendo sistemas escalables con Clean Architecture, DDD y CQRS.";
+    ? "Portfolio of Andrés Torres, Software Engineer specialized in .NET 8, React, Node.js and MySQL. 8th term Software Engineering student in Peru building scalable systems with Clean Architecture, DDD, and CQRS."
+    : "Portfolio de Andrés Torres, ingeniero de software especializado en .NET 8, React, Node.js y MySQL. Estudiante de 8.º ciclo de Ingeniería de Software en Perú construyendo sistemas escalables con Clean Architecture, DDD y CQRS.";
 
   return {
     metadataBase: new URL(

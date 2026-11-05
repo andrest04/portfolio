@@ -177,16 +177,7 @@
         "title": "Teamwork",
         "items": [
           "Technical leadership in EduSpace",
-          "Agile methodologies (Scrum)",
-          "Clear communication and results-driven mindset"
-        ]
-      },
-      {
-        "title": "Technical strengths",
-        "items": [
-          "API design and data modeling with scalability in mind.",
-          "Clean architecture applied end-to-end in real projects.",
-          "Agile delivery with solid practices (docs, Git, deployment)."
+          "Agile methodologies (Scrum)"
         ]
       }
     ]
@@ -203,7 +194,7 @@
   },
   "contact": {
     "title": "Contact",
-    "statement": "Have a project in mind? Let's talk!",
+    "statement": "Hiring? Let's talk.",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "locationLabel": "Location",

@@ -177,16 +177,7 @@
         "title": "Trabajo en equipo",
         "items": [
           "Liderazgo técnico en EduSpace",
-          "Metodologías ágiles (Scrum)",
-          "Comunicación clara y orientación a resultados"
-        ]
-      },
-      {
-        "title": "Fortalezas técnicas",
-        "items": [
-          "Diseño de APIs y modelado de datos pensando en escalabilidad.",
-          "Arquitectura limpia aplicada en proyectos end-to-end.",
-          "Entrega ágil con buenas prácticas (documentación, Git, deploy)."
+          "Metodologías ágiles (Scrum)"
         ]
       }
     ]
@@ -203,7 +194,7 @@
   },
   "contact": {
     "title": "Contacto",
-    "statement": "¿Tienes un proyecto en mente? ¡Hablemos!",
+    "statement": "¿Estás contratando? Hablemos.",
     "emailLabel": "Email",
     "phoneLabel": "Teléfono",
     "locationLabel": "Ubicación",
