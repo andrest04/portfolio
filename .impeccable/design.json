@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T04:50:49Z",
+  "title": "Design System: Andrés Torres Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "archive-teal": {
+        "role": "primary",
+        "displayName": "Archive Teal",
+        "canonical": "#256f82",
+        "tonalRamp": [
+          "#000e13",
+          "#002a34",
+          "#004a5a",
+          "#216b7e",
+          "#478ea1",
+          "#6ab1c5",
+          "#8fd6eb",
+          "#dcf3fa"
+        ]
+      },
+      "stone-paper": {
+        "role": "neutral",
+        "displayName": "Stone Paper",
+        "canonical": "#dedad3",
+        "tonalRamp": [
+          "#0d0b07",
+          "#28251f",
+          "#45423c",
+          "#64615b",
+          "#85827b",
+          "#a8a49e",
+          "#ccc9c2",
+          "#f0eeec"
+        ]
+      },
+      "folio-stone": {
+        "role": "neutral",
+        "displayName": "Folio Stone",
+        "canonical": "#d3cec6",
+        "tonalRamp": [
+          "#0e0b06",
+          "#28241e",
+          "#45413b",
+          "#65615a",
+          "#86827a",
+          "#a9a49d",
+          "#cdc8c0",
+          "#f0eeeb"
+        ]
+      },
+      "folio-ink": {
+        "role": "neutral",
+        "displayName": "Folio Ink",
+        "canonical": "#0a0a0a",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "pencil-gray": {
+        "role": "neutral",
+        "displayName": "Pencil Gray",
+        "canonical": "#5c5852",
+        "tonalRamp": [
+          "#0e0b06",
+          "#28241f",
+          "#45413c",
+          "#65615a",
+          "#86827b",
+          "#a9a49e",
+          "#cdc8c1",
+          "#f0eeec"
+        ]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The two-line hero headline only, sized from the longest authored line: 14.4em in English, 16.2em in Spanish."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Italic signature closing the About letter."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project and company names in rows, and the name in the navigation."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text and the button label."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Navigation links, dates, stacks, roles, contact labels, and the footer."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The shared curve for every entrance and state change."
+      },
+      {
+        "name": "state-change",
+        "value": "150ms",
+        "purpose": "Hover and pressed states on links and the button, and the ledger picture fade."
+      },
+      {
+        "name": "press-scale",
+        "value": "scale(0.98)",
+        "purpose": "The filled button while pressed."
+      },
+      {
+        "name": "toggle-rotate",
+        "value": "200ms, rotate(45deg)",
+        "purpose": "The ledger plus sign when its row is open."
+      },
+      {
+        "name": "picture-scale",
+        "value": "500ms, scale(1.03)",
+        "purpose": "Hero screenshots on hover, on hover-capable devices with motion allowed."
+      },
+      {
+        "name": "line-up",
+        "value": "900ms, translateY(110%) to none, 110ms stagger + 60ms delay",
+        "purpose": "Headline lines rising through their masks on load."
+      },
+      {
+        "name": "rise-in",
+        "value": "700ms, opacity 0 and translateY(16px) to none, 620ms delay",
+        "purpose": "Hero copy and pictures following the headline."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 700ms, translateY(24px) 900ms, 75ms stagger",
+        "purpose": "Section content entering the viewport."
+      },
+      {
+        "name": "drift",
+        "value": "24s ease-in-out infinite alternate, scale(1) to scale(1.07) translateY(-1.5%)",
+        "purpose": "The one looping animation: the visible ledger picture, while on screen."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "pair",
+        "value": "600px"
+      },
+      {
+        "name": "margin",
+        "value": "768px"
+      },
+      {
+        "name": "contact-grid",
+        "value": "900px"
+      },
+      {
+        "name": "hero-grid",
+        "value": "1100px"
+      },
+      {
+        "name": "column",
+        "value": "1200px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single filled button: the one use of Archive Teal.",
+      "html": "<a class=\"ds-button\" href=\"#\">View projects</a>",
+      "css": ".ds-button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.5rem; background: var(--accent, #256f82); color: var(--accent-ink, #ffffff); font-family: Literata, 'Literata Fallback'; font-size: var(--step-body, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem)); line-height: 1.6; text-decoration: none; transition: background-color 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), transform 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-button:hover { background: color-mix(in srgb, var(--accent, #256f82) 82%, var(--ink, #0a0a0a)); } .ds-button:active { transform: scale(0.98); } .ds-button:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Underlined Link",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "The secondary action and the default link in content.",
+      "html": "<a class=\"ds-link\" href=\"#\">Download CV</a>",
+      "css": ".ds-link { color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: var(--step-body, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem)); line-height: 1.6; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: text-decoration-thickness 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), color 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-link:hover { text-decoration-thickness: 2px; } .ds-link:active { color: var(--muted, #5c5852); } .ds-link:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Plain Label-size bar: a Folio Stone band below 1100px, transparent from 1100px where it overlays the hero.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\">Andrés Torres</a><ul class=\"ds-nav-links\"><li><a class=\"ds-nav-link\" href=\"#\">Work</a></li><li><a class=\"ds-nav-link\" href=\"#\">Experience</a></li><li><a class=\"ds-nav-link\" href=\"#\">Skills</a></li><li><a class=\"ds-nav-link\" href=\"#\">About</a></li><li><a class=\"ds-nav-link\" href=\"#\">Contact</a></li></ul><button class=\"ds-lang\" type=\"button\">Español</button></header>",
+      "css": ".ds-nav { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0 1.5rem; padding: 8px 20px 0; background: var(--surface, #d3cec6); color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: var(--step-small, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)); line-height: 1.6; } .ds-nav-links { order: 3; width: 100%; display: flex; flex-wrap: wrap; gap: 0 0.4375rem; margin: 0; padding: 0; list-style: none; } .ds-nav-mark, .ds-nav-link, .ds-lang { display: inline-block; padding-block: 0.375rem; color: inherit; } .ds-nav-mark { font-size: var(--step-body, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem)); font-weight: 500; text-decoration: none; } .ds-nav-link { text-decoration: none; transition: color 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-nav-mark:hover, .ds-nav-link:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; } .ds-nav-mark:active, .ds-nav-link:active { color: var(--muted, #5c5852); } .ds-lang { padding-inline: 0; background: none; border: 0; font: inherit; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: opacity 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), text-decoration-thickness 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-lang:hover { text-decoration-thickness: 2px; } .ds-lang:active { opacity: 0.6; } .ds-lang:disabled { cursor: progress; opacity: 0.5; } .ds-nav-mark:focus-visible, .ds-nav-link:focus-visible, .ds-lang:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; } @media (min-width: 768px) { .ds-nav { padding-inline: 40px; } .ds-nav-links { gap: 0 1.5rem; } } @media (min-width: 1100px) { .ds-nav { padding-top: 24px; justify-content: flex-start; background: transparent; } .ds-nav-mark { margin-right: auto; } .ds-nav-links { order: 0; width: auto; } }"
+    },
+    {
+      "name": "Masked Headline",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "The hero's two authored lines rising from behind clipping masks. Sized against its container here rather than the viewport so it fits the panel; the site divides the page width minus margins by the same 14.4em.",
+      "html": "<div class=\"ds-lines-box\"><h1 class=\"ds-lines\"><span class=\"ds-line\"><span class=\"ds-line-text\" style=\"--i: 0\">Andrés Torres builds backends</span></span><span class=\"ds-line\"><span class=\"ds-line-text\" style=\"--i: 1\">and the apps on top of them.</span></span></h1></div>",
+      "css": ".ds-lines-box { container-type: inline-size; } .ds-lines { margin: 0; color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: calc(100cqw / 14.4); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; white-space: nowrap; } .ds-line { display: block; overflow: clip; padding-block: 0.14em; margin-block: -0.14em; } .ds-line-text { display: block; } @media (prefers-reduced-motion: no-preference) { .ds-line-text { transform: translateY(110%); animation: ds-line-up 900ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)) forwards; animation-delay: calc(var(--i) * 110ms + 60ms); } @keyframes ds-line-up { to { transform: none; } } }"
+    },
+    {
+      "name": "Hero Triptych",
+      "kind": "custom",
+      "refersTo": "hero-picture",
+      "description": "Three linked screenshots of real work, one large and two small; toned blocks stand in for the screenshots here.",
+      "html": "<div class=\"ds-triptych\"><a class=\"ds-picture\" href=\"#\" aria-label=\"EduSpace\"><span class=\"ds-picture-image\"></span></a><a class=\"ds-picture\" href=\"#\" aria-label=\"Finance App\"><span class=\"ds-picture-image\"></span></a><a class=\"ds-picture\" href=\"#\" aria-label=\"Booking Platform (Italy)\"><span class=\"ds-picture-image\"></span></a></div>",
+      "css": ".ds-triptych { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; aspect-ratio: 2 / 1; } .ds-picture { display: block; overflow: clip; background: var(--surface, #d3cec6); } .ds-picture:first-child { grid-row: 1 / -1; } .ds-picture-image { display: block; width: 100%; height: 100%; background: color-mix(in srgb, var(--surface, #d3cec6) 70%, var(--muted, #5c5852)); transition: transform 500ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-picture:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; } @media (hover: hover) and (prefers-reduced-motion: no-preference) { .ds-picture:hover .ds-picture-image { transform: scale(1.03); } }"
+    },
+    {
+      "name": "Work Ledger",
+      "kind": "custom",
+      "refersTo": "ledger-row",
+      "description": "The signature component: an exclusive accordion of project rows with a drawn plus toggle. Rows not being pointed at dim to Pencil Gray. The sticky picture beside the rows on the site is omitted here.",
+      "html": "<ul class=\"ds-ledger\"><li class=\"ds-ledger-row\"><details class=\"ds-ledger-details\" name=\"ds-work\" open><summary class=\"ds-ledger-summary\"><span class=\"ds-ledger-name\">EduSpace</span><span class=\"ds-ledger-role\">Tech Lead</span><span class=\"ds-ledger-lead\">.NET 8</span><svg class=\"ds-ledger-toggle\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M8 2v12M2 8h12\" stroke=\"currentColor\" stroke-width=\"1.5\" fill=\"none\"/></svg></summary><div class=\"ds-ledger-panel\"><p>Enterprise platform for educational management with Clean Architecture, DDD, and CQRS. Developed two parallel versions (production + experimental) for comparative analysis and A/B testing as part of experimental design methodology.</p><p class=\"ds-ledger-stack\">.NET 8, ASP.NET Core, MySQL, Docker, Vue 3</p><p class=\"ds-ledger-links\"><a class=\"ds-ledger-link\" href=\"#\">Live Demo</a><a class=\"ds-ledger-link\" href=\"#\">GitHub</a></p></div></details></li><li class=\"ds-ledger-row\"><details class=\"ds-ledger-details\" name=\"ds-work\"><summary class=\"ds-ledger-summary\"><span class=\"ds-ledger-name\">Finance App</span><span class=\"ds-ledger-role\">Education Project</span><span class=\"ds-ledger-lead\">Next.js 15</span><svg class=\"ds-ledger-toggle\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M8 2v12M2 8h12\" stroke=\"currentColor\" stroke-width=\"1.5\" fill=\"none\"/></svg></summary><div class=\"ds-ledger-panel\"><p>Corporate bond management system with financial calculation engine (TCEA/TREA, cash flows, schedules).</p><p class=\"ds-ledger-stack\">Next.js 15, TypeScript, Firebase, Tailwind, shadcn/ui</p><p class=\"ds-ledger-links\"><a class=\"ds-ledger-link\" href=\"#\">Live Demo</a><a class=\"ds-ledger-link\" href=\"#\">GitHub</a></p></div></details></li></ul>",
+      "css": ".ds-ledger { margin: 0; padding: 0; list-style: none; color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: var(--step-body, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem)); line-height: 1.6; } .ds-ledger-summary { display: grid; grid-template-columns: minmax(0, 1fr) auto 16px; align-items: baseline; gap: 0 12px; min-height: 52px; padding-block: 10px; cursor: pointer; list-style: none; transition: color 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-ledger-summary::-webkit-details-marker { display: none; } .ds-ledger-summary:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; } .ds-ledger-summary:active .ds-ledger-name { color: var(--muted, #5c5852); } .ds-ledger-name { grid-column: 1; font-weight: 500; } .ds-ledger-lead { grid-column: 2; grid-row: 1; font-size: var(--step-small, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)); font-variant-numeric: lining-nums tabular-nums; } .ds-ledger-role { grid-column: 1 / -1; grid-row: 2; font-size: var(--step-small, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)); color: var(--muted, #5c5852); } .ds-ledger-toggle { grid-column: 3; grid-row: 1; align-self: center; width: 16px; height: 16px; transition: transform 200ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-ledger-details[open] > .ds-ledger-summary .ds-ledger-toggle { transform: rotate(45deg); } .ds-ledger-panel { display: grid; gap: 12px; padding-block: 8px 12px; } .ds-ledger-panel p { margin: 0; } .ds-ledger-panel .ds-ledger-stack { color: var(--muted, #5c5852); font-size: var(--step-small, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)); } .ds-ledger-links { display: flex; flex-wrap: wrap; gap: 0 24px; } .ds-ledger-link { display: inline-block; padding-block: 0.5rem; color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: text-decoration-thickness 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), color 150ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-ledger-link:hover { text-decoration-thickness: 2px; } .ds-ledger-link:active { color: var(--muted, #5c5852); } .ds-ledger-link:focus-visible { outline: 2px solid var(--ink, #0a0a0a); outline-offset: 3px; } @media (min-width: 1200px) { .ds-ledger:has(.ds-ledger-row:hover, .ds-ledger-summary:focus-visible) .ds-ledger-row:not(:hover, :has(.ds-ledger-summary:focus-visible)) .ds-ledger-summary { color: var(--muted, #5c5852); } }"
+    },
+    {
+      "name": "Record Row",
+      "kind": "custom",
+      "refersTo": "record-value",
+      "description": "A two-ended row for experience and education. Not interactive in the build, so it has no hover or focus state.",
+      "html": "<div class=\"ds-row\"><div class=\"ds-row-ends\"><span class=\"ds-row-name\">EDTeam</span><span class=\"ds-row-value\">Apr 2026 — Present</span></div><div class=\"ds-row-body\"><p>Frontend Intern</p><p class=\"ds-row-soft\">React, TypeScript, Next.js, TailwindCSS</p></div></div>",
+      "css": ".ds-row { color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: var(--step-body, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem)); line-height: 1.6; } .ds-row-ends { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 16px; } .ds-row-name { font-weight: 500; } .ds-row-value { font-size: var(--step-small, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)); color: var(--muted, #5c5852); font-variant-numeric: lining-nums tabular-nums; } .ds-row-body { display: grid; gap: 4px; margin-top: 4px; } .ds-row-body p { margin: 0; } .ds-row-body .ds-row-soft { color: var(--muted, #5c5852); font-size: var(--step-small, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)); }"
+    },
+    {
+      "name": "About Letter",
+      "kind": "custom",
+      "refersTo": "about-band",
+      "description": "A centered letter on the Folio Stone band, closed by a Lead italic signature. A toned circle stands in for the portrait. Not interactive in the build, so it has no hover or focus state.",
+      "html": "<section class=\"ds-about\"><div class=\"ds-letter\"><span class=\"ds-portrait\" role=\"img\" aria-label=\"Portrait\"></span><h2 class=\"ds-letter-title\">About</h2><p class=\"ds-letter-text\">I&#x27;m in my eighth term of Software Engineering at Universidad Peruana de Ciencias Aplicadas (UPC), in the top fifth of my class.</p><p class=\"ds-sign\"><em class=\"ds-sign-name\">Andrés Torres</em><span class=\"ds-sign-role\">Software Engineering Student</span></p></div></section>",
+      "css": ".ds-about { padding: clamp(72px, 8vw, 120px) 24px; background: var(--surface, #d3cec6); color: var(--ink, #0a0a0a); font-family: Literata, 'Literata Fallback'; font-size: var(--step-body, clamp(1.0625rem, 1.02rem + 0.15vw, 1.1875rem)); line-height: 1.6; } .ds-letter { display: grid; gap: 24px; max-width: 520px; margin-inline: auto; } .ds-portrait { display: block; width: 44px; height: 44px; border-radius: 50%; background: var(--muted, #5c5852); } .ds-letter-title { margin: 0; font-size: var(--step-head, clamp(1.75rem, 1.5rem + 1vw, 2.25rem)); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; } .ds-letter-text { margin: 0; } .ds-sign { display: grid; margin: 0; } .ds-sign-name { font-size: var(--step-lead, clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem)); line-height: 1.3; } .ds-sign-role { color: var(--muted, #5c5852); font-size: var(--step-small, clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Evidence Folio",
+    "overview": "**Creative North Star: \"The Evidence Folio\"**\n\nThe site is a dossier on stone paper where screenshots of real work carry the visual weight. The tone is sober, exact, and documentary: a warm paper ground, near-black ink, and one serif family set at a few deliberate sizes. Everything around the screenshots stays quiet so the evidence is what the eye lands on first.\n\nDensity is calm and generous between sections, tight inside them. Records read as ledgers and two-ended rows rather than as framed objects: a name on one end, a date or stack on the other, with whitespace doing the separating. The page is flat, square-cornered, and tonal, and it spends its only saturated color on a single filled button.\n\nMotion is sparse and documentary. One long ease-out curve carries every entrance and state change, the headline rises through a mask once on load, sections settle into place as they enter the viewport, and one project picture drifts slowly while it is in view. All hidden start states are gated so the page is complete without script or with reduced motion.",
+    "keyCharacteristics": [
+      "Stone paper ground with near-black ink and a single teal accent.",
+      "One serif family, Literata, across every role.",
+      "Flat surfaces: tonal shifts only, no shadows or borders.",
+      "Square corners and a single filled button.",
+      "Screenshots of real work as the main carriers of color and weight.",
+      "English and Spanish carry the same layout, with the display size measured per language."
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Archive Teal is the fill of the filled button and has no other use. The system is Primary plus Neutral, with no Secondary or Tertiary color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Single Filled Button Rule",
+        "body": "A view carries one filled button. Every other action is an underlined or plain text link.",
+        "section": "colors"
+      },
+      {
+        "name": "The Color Lives In The Evidence Rule",
+        "body": "Screenshots of real work supply the page's color and visual weight; the interface around them stays in stone and ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Literata sets every role. Hierarchy comes from size, the 500 weight, and italic, never from a second typeface.",
+        "section": "typography"
+      },
+      {
+        "name": "The Measured Line Rule",
+        "body": "The display size is derived from the width of the longest authored line, per language, so both lines always fit the page exactly on one line each. Changing the headline copy means re-measuring it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Labels stay in sentence case at weight 400 with no added tracking. Small text is differentiated by size and Pencil Gray, not by capitals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Folio Rule",
+        "body": "Surfaces separate by tone and space only. No shadows and no borders.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do let screenshots of real work carry the visual weight, at the sizes the hero triptych and Work ledger give them.",
+      "Do keep Archive Teal (#256f82) to the fill of the filled button, with Paper White (#ffffff) text.",
+      "Do create depth by placing Folio Stone (#d3cec6) on Stone Paper (#dedad3).",
+      "Do set every role in Literata and build hierarchy from size, weight 500, and italic.",
+      "Do use Pencil Gray (#5c5852) for secondary text and keep Folio Ink (#0a0a0a) for primary text.",
+      "Do give every focusable element the 2px Folio Ink ring at a 3px offset.",
+      "Do run state changes at 150ms on the shared ease-out, cubic-bezier(0.16, 1, 0.3, 1).",
+      "Do keep every hidden entrance state behind both the no-preference motion query and the script-present flag.",
+      "Do re-measure the display line width in both English and Spanish whenever the headline copy changes."
+    ],
+    "donts": [
+      "Don't add shadows or borders; depth is tonal only.",
+      "Don't introduce a Secondary or Tertiary color; the palette is Primary plus Neutral.",
+      "Don't use Archive Teal for text, links, or decoration; it appears only as the button fill.",
+      "Don't add a second filled button to a view; secondary actions stay text links, as the CV link does beside the hero button.",
+      "Don't round corners other than the 44px About portrait.",
+      "Don't uppercase or letterspace labels; they stay sentence case at weight 400.",
+      "Don't add a second typeface alongside Literata.",
+      "Don't add another looping animation; the drifting project picture is the only one.",
+      "Don't set the display headline at a fixed size or let its lines wrap."
+    ]
+  }
+}

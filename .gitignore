@@ -48,3 +48,7 @@ AGENTS.md
 
 # design tooling output
 .taste-skill/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/live/*
+!.impeccable/live/config.json
