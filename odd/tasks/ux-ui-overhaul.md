@@ -113,6 +113,21 @@ Look fixes, Attendia removal, and T8 to T10, observed on `298a25f`, 2026-11-09.
 - Fonts: the page requests one file, Archivo latin with the width axis, 90,096 bytes. The latin-ext (86 kB) and Vietnamese (34 kB) files are emitted by the build and are only fetched if a page uses those glyphs.
 - Console: no errors.
 
+T11, review fix batch, observed on `5f893cc`, 2026-11-09. T11 stays open. Commits: `fd8e2ee` (accessibility), `0c3fe6b` (head and icon), `5f893cc` (topology, copy, opening and index, rail, entries, and the content test, in one commit because the content shape change stops the old components compiling).
+
+- Test-first: RED 15 tests, 10 pass, 5 fail (named projects, roles and short names, number parity). GREEN 15 of 15.
+- `npx tsc --noEmit`: exit 0. `npx eslint src`: exit 0. `npm test`: 15 pass. `npm run build`: exit 0. `impeccable detect --json src`: `[]`. `impeccable detect --json http://localhost:3200`: `[]`. `lint.mjs src`: 0 FAIL, 0 WARN. Run on the final tree, not per commit.
+- Topology shipped: sticky heads. Band order in the DOM and on screen is ochre, EDteam head, oxide, independent head, slate, Mathyu's head, chalk, education head, basalt, ochre close; no duplicate ids. Each head is a direct child of `main`; from 1200px wide and 640px tall the heads of the bands still below stack at the bottom of the viewport (four at the top of the page) and release in place. Below those sizes they sit in the flow.
+- Real viewports in headless Chrome, English and Spanish, 320, 390, 768, 1200x800, 1440x900, 1536x700, 1920x1080: no horizontal overflow while scrolling the whole page, no console errors. Top of the stack: 576px at 1200x800, 668px at 1440x900 (74% of the height is ochre above it), 468px at 1536x700, 848px at 1920x1080. The headline block ends at 456, 498, 443, 525px and the project index at 411, 424, 406, 431px (English); the tightest case is Spanish at 1200x800, 554px against 576px. Headline: two lines on desktop except Spanish at 1200px (three).
+- Focus: tabbing through all 31 links and buttons in `main` at 1440x900, none ends under a head or off screen. After a rail tick focus is on the band's heading, after an index link on the project, after the primary action on the entry, each without an outline.
+- Rail: with the EDteam head at 50% of the viewport height the marker is still on Teleperformance, at 30% it is on EDteam; a jump into the middle of a band also updates it. Phone menu: closes when focus leaves it and on Escape, which returns focus to the button.
+- Language switch by keyboard: the language changes and focus stays on the switch. `/api/cv`: 200, `filename="Andres_Torres_CV.pdf"`.
+- Touch emulation at 390px: `pointer: coarse` matches and no link or button is under 44x44 with the menu open. Reduced motion emulation: no running animations, no transforms, marker transition 0s. Script disabled: at 390px the rail is the full list in the flow, no period marked, no overflow; at 1440px the column and the sticky heads work.
+- Head: canonical `https://andres-torres.com/`, `og:image` `https://andres-torres.com/og.png`. `icon0.svg` is 293 bytes.
+- Page height: 7,097px at 1440 and 10,067px at 390 in English (before: 7,719 and 10,661).
+- Taste-skill inspector, final: `palette-terracotta`, `off-centre`, `no-footage` as before, and three warnings that come with the sticky heads: `untitled-section` (a band's heading is its strip, a sibling), `pinned-over-picture`, `long-pin`. Type sizes in use: 13, 15, 18, 22, 34, 88.
+- Not checked: a real phone, a screen reader, the language switch with script disabled in a browser.
+
 ## Progress
 
 T0 to T10 are closed. Remaining: T11 (finish review, documenter, final critique and audit).
@@ -120,6 +135,9 @@ T0 to T10 are closed. Remaining: T11 (finish review, documenter, final critique 
 Open for Andrés:
 
 - `PRODUCT.md` still lists Attendia and six projects.
+- The desktop headline is 88px at 1440px wide (96px before) so it holds two lines beside the project index in both languages; the entry and band headings are 34px (46px before) so every band head is one size.
+- `favicon.ico`, `icon1.png`, and `apple-icon.png` still show the old mark, and `public/Andres_Torres_CV_Software_Engineer.pdf` keeps its file name on disk.
+- A crawler without the cookie gets the Spanish page; one URL serves both languages.
 - `public/og.png` still shows the old look.
 - The removed Attendia screenshot was moved out of `public/work/`, not destroyed.
 - The first screen shows the next two periods as link strips, then the surface entry continues in ochre. The periods' own bands follow further down, so oxide and slate each appear twice.
