@@ -130,16 +130,20 @@ T11, review fix batch, observed on `5f893cc`, 2026-11-09. T11 stays open. Commit
 
 ## Progress
 
-T0 to T10 are closed. Remaining: T11 (finish review, documenter, final critique and audit).
+Closed at Andrés's request on 2026-11-10 ("enough for a small thing"). T0 to T10 are done. T11 is partly done and stays open.
 
-Open for Andrés:
+Observed by the parent on `ac29f8b`: `npm test` 15 of 15, `npm run build` exit 0, the home page served by `next start` on port 3100 in English and Spanish, and the first viewport at 1440x900 and 390x844 (`.impeccable/review/`).
 
-- `PRODUCT.md` still lists Attendia and six projects.
-- The desktop headline is 88px at 1440px wide (96px before) so it holds two lines beside the project index in both languages; the entry and band headings are 34px (46px before) so every band head is one size.
-- `favicon.ico`, `icon1.png`, and `apple-icon.png` still show the old mark, and `public/Andres_Torres_CV_Software_Engineer.pdf` keeps its file name on disk.
-- A crawler without the cookie gets the Spanish page; one URL serves both languages.
-- `public/og.png` still shows the old look.
-- The removed Attendia screenshot was moved out of `public/work/`, not destroyed.
-- The first screen shows the next two periods as link strips, then the surface entry continues in ochre. The periods' own bands follow further down, so oxide and slate each appear twice.
-- The dates line sits under the headline, not above it, because the craft floor bans a label above a heading.
-- The final headline wording.
+Scores on record: critique 22/32 before the redesign and 22/32 on the first Strata build, measured before the review fix batch; audit 15/20 before and 16/20 after. No critique, finish review, or audit was run after the fix batch, so there is no final score.
+
+Not done:
+
+- A second finish review and a final critique after the fix batch.
+- `DESIGN.md` and `.impeccable/design.json` still describe Evidence Folio; the documenter did not run.
+- Provenance for the rasters in `public/work/`.
+- `public/og.png`, `favicon.ico`, `icon1.png`, and `apple-icon.png` still show the old look.
+- The headline wording is not approved by Andrés.
+- Known and accepted for now: the sticky heads pass over screenshots while scrolling and cut the first project tag at the 1440x900 fold; "Teleperformance" truncates in the phone bar at 390px; the name appears in the rail and in the headline.
+- Not tested: a real phone, a screen reader.
+
+Nothing is pushed. Push, pull request, and merge are Andrés's.
