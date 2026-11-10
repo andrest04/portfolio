@@ -1,37 +1,30 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Literata } from "next/font/google";
+import { Archivo } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
 import { ErrorCopyProvider } from "@/components/layout/ErrorCopyProvider";
 import SiteFooter from "@/components/layout/SiteFooter";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
-const literata = Literata({
+/** One variable family: the width axis separates display from text, the weight axis does the rest. */
+const archivo = Archivo({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
+  axes: ["wdth"],
   display: "swap",
+  variable: "--font-archivo",
 });
 
-/**
- * Runs before first paint so hidden start states only apply when script is available,
- * and lifts them again if the app never hydrates.
- */
-const MOTION_GATE = `(function(){var r=document.documentElement;r.classList.add("js");setTimeout(function(){if(!r.dataset.reveal)r.classList.remove("js")},4000)})();`;
+/** Basalt: the tone of the rail, which is the first thing under the browser chrome on a phone. */
+export const viewport: Viewport = {
+  themeColor: "#1b1c1e",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
+  const locale = (await getLocale()) as Locale;
+  const { meta } = await getDictionary(locale);
   const isEn = locale === "en";
-
-  const title = isEn
-    ? "Andrés Torres - Software Engineer | .NET, React, Node.js"
-    : "Andrés Torres - Ingeniero de Software | .NET, React, Node.js";
-
-  const description = isEn
-    ? "Portfolio of Andrés Torres, Software Engineer specialized in .NET 8, React, Node.js and MySQL. 8th term Software Engineering student in Peru building scalable systems with Clean Architecture, DDD, and CQRS."
-    : "Portfolio de Andrés Torres, ingeniero de software especializado en .NET 8, React, Node.js y MySQL. Estudiante de 8.º ciclo de Ingeniería de Software en Perú construyendo sistemas escalables con Clean Architecture, DDD y CQRS.";
 
   return {
     metadataBase: new URL(
@@ -40,50 +33,26 @@ export async function generateMetadata(): Promise<Metadata> {
           ? `https://${process.env.VERCEL_URL}`
           : "http://localhost:3000"),
     ),
-    title,
-    description,
+    title: meta.title,
+    description: meta.description,
 
     keywords: isEn
-      ? [
-          "full-stack developer",
-          "software engineer",
-          ".NET",
-          "React",
-          "Node.js",
-          "MySQL",
-          "Clean Architecture",
-          "DDD",
-          "CQRS",
-          "Peru",
-          "Lima",
-        ]
-      : [
-          "desarrollador full-stack",
-          "ingeniero software",
-          ".NET",
-          "React",
-          "Node.js",
-          "MySQL",
-          "Clean Architecture",
-          "DDD",
-          "CQRS",
-          "Perú",
-          "Lima",
-        ],
+      ? ["Andrés Torres", "software engineering student", "portfolio", "Lima", "Peru"]
+      : ["Andrés Torres", "estudiante de ingeniería de software", "portafolio", "Lima", "Perú"],
 
     authors: [{ name: "Andrés Torres" }],
 
     openGraph: {
-      title,
-      description,
+      title: meta.title,
+      description: meta.description,
       url: "https://andres-torres.com",
-      siteName: "Andrés Torres Portfolio",
+      siteName: "Andrés Torres",
       images: [
         {
           url: "/og.png",
           width: 1200,
           height: 630,
-          alt: title,
+          alt: meta.title,
         },
       ],
       type: "website",
@@ -92,8 +61,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: meta.title,
+      description: meta.description,
       images: ["/og.png"],
     },
 
@@ -113,12 +82,9 @@ export default async function RootLayout({
   const t = await getDictionary(locale);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: MOTION_GATE }} />
-      </head>
-      <body className={literata.className}>
-        <a href="#content" className="skip-link">
+    <html lang={locale} className={archivo.variable}>
+      <body>
+        <a href="#main" className="skip-link">
           {t.meta.skipLink}
         </a>
         <ErrorCopyProvider copy={t.error}>{children}</ErrorCopyProvider>

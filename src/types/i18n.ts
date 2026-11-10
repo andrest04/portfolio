@@ -1,5 +1,48 @@
+/** A position on the depth rail: the year in large type and a short note under it. */
+export interface Tick {
+  year: string;
+  note: string;
+}
+
+export interface Stratum {
+  id: string;
+  tick: Tick;
+  /** The period in words, as shown beside the heading. */
+  period: string;
+  company: string;
+  /** Null when the period has no employer. */
+  role: string | null;
+  location: string;
+  points: string[];
+  /** Ids of the projects that began in this period, in page order. */
+  projects: string[];
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  period: string;
+  what: string;
+  did: string;
+  facts: string[];
+  tech: string[];
+  links: {
+    live: string | null;
+    github: string | null;
+  };
+  /** Null until a real screenshot exists; the page then shows a labelled blank. */
+  image: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  } | null;
+}
+
 export interface Dictionary {
   meta: {
+    title: string;
+    description: string;
     skipLink: string;
     switchLanguage: string;
     otherLanguage: string;
@@ -7,80 +50,74 @@ export interface Dictionary {
   };
   nav: {
     label: string;
-    work: string;
     experience: string;
-    skills: string;
-    about: string;
+    education: string;
+    contact: string;
+  };
+  rail: {
+    label: string;
+    title: string[];
+    jump: string;
+    cv: string;
     contact: string;
   };
   hero: {
     name: string;
-    role: string;
-    headline: string[];
-    sentence: string;
+    headline: string;
+    datum: string;
+    status: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    below: string;
   };
-  projects: {
-    title: string;
-    subtitle: string;
-    viewDemo: string;
-    viewGithub: string;
-    items: Array<{
-      name: string;
-      role: string;
-      description: string;
-      stack: string[];
-      highlights: string[];
-      links: {
-        demo: string;
-        github: string;
-      };
-      image: {
-        main: string;
-        mainAlt: string;
-        detail?: string;
-        detailAlt?: string;
-      };
-    }>;
-  };
-  experience: {
-    title: string;
-    items: Array<{
-      company: string;
-      role: string;
-      period: string;
-      description: string;
-      stack: string[];
-    }>;
-    education: {
+  record: {
+    sample: string;
+    did: string;
+    facts: string;
+    tech: string;
+    live: string;
+    github: string;
+    missingPicture: {
       title: string;
-      school: string;
-      degree: string;
-      term: string;
-      standing: string;
+      body: string;
     };
   };
-  skills: {
-    title: string;
-    intro: string;
-    groups: Array<{
+  strata: Stratum[];
+  projects: Project[];
+  bedrock: {
+    id: string;
+    tick: Tick;
+    period: string;
+    school: string;
+    degree: string;
+    details: string[];
+    certifications: {
       title: string;
-      items: string[];
-    }>;
-    notes: Array<{
+      items: Array<{
+        name: string;
+        issuer: string;
+        date: string;
+      }>;
+    };
+    languages: {
       title: string;
-      items: string[];
-    }>;
-  };
-  about: {
-    title: string;
-    portraitAlt: string;
-    paragraphs: string[];
+      items: Array<{
+        name: string;
+        level: string;
+      }>;
+    };
+    skills: {
+      title: string;
+      groups: Array<{
+        title: string;
+        items: string[];
+      }>;
+    };
   };
   contact: {
-    title: string;
+    id: string;
     statement: string;
+    lead: string;
     emailLabel: string;
     phoneLabel: string;
     locationLabel: string;
@@ -90,7 +127,8 @@ export interface Dictionary {
     cvLabel: string;
   };
   footer: {
-    description: string;
+    signature: string;
+    status: string;
   };
   cv: {
     missing: string;

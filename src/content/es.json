@@ -1,5 +1,7 @@
 {
   "meta": {
+    "title": "Andrés Torres, estudiante de Ingeniería de Software en Lima",
+    "description": "Portafolio de Andrés Torres: practicante de Reporting en Teleperformance Perú y estudiante de noveno ciclo de Ingeniería de Software en la UPC. Experiencia laboral, seis proyectos con código y enlaces en vivo, y el CV.",
     "skipLink": "Ir al contenido",
     "switchLanguage": "Switch language to English",
     "otherLanguage": "English",
@@ -7,195 +9,274 @@
   },
   "nav": {
     "label": "Principal",
-    "work": "Proyectos",
     "experience": "Experiencia",
-    "skills": "Habilidades",
-    "about": "Sobre mí",
+    "education": "Formación",
+    "contact": "Contacto"
+  },
+  "rail": {
+    "label": "Períodos",
+    "title": ["Profundidad", "en años"],
+    "jump": "Ir a un período",
+    "cv": "CV (PDF)",
     "contact": "Contacto"
   },
   "hero": {
     "name": "Andrés Torres",
-    "role": "Estudiante de Ingeniería de Software",
-    "headline": ["Andrés Torres construye backends", "y las apps que corren sobre ellos."],
-    "sentence": "Estudiante de Ingeniería de Software en Lima y pasante de Frontend en EDTeam.",
-    "ctaPrimary": "Ver proyectos",
-    "ctaSecondary": "CV (PDF)"
+    "headline": "Andrés Torres construye software.",
+    "datum": "Superficie · agosto de 2026 a hoy",
+    "status": "Practicante de Reporting en Teleperformance Perú. Noveno ciclo de Ingeniería de Software en la UPC, quinto superior de la carrera.",
+    "ctaPrimary": "Ver la trayectoria",
+    "ctaSecondary": "CV (PDF)",
+    "below": "Bajo la superficie"
   },
-  "projects": {
-    "title": "Proyectos",
-    "subtitle": "Selección de proyectos donde apliqué principios de ingeniería de software, arquitectura limpia y diseño robusto de APIs.",
-    "viewDemo": "Ver Demo",
-    "viewGithub": "GitHub",
-    "items": [
-      {
-        "name": "EduSpace",
-        "role": "Tech Lead",
-        "description": "Plataforma enterprise para gestión educativa con Clean Architecture, DDD y CQRS. Desarrollé dos versiones paralelas (producción + experimental) para análisis comparativo y A/B testing como parte de metodología de diseño de experimentos.",
-        "stack": [".NET 8", "ASP.NET Core", "MySQL", "Docker", "Vue 3"],
-        "highlights": [
-          "Equipo de 5",
-          "Diseño de experimentos (2 versiones)",
-          "JWT + 2FA",
-          "Swagger/OpenAPI"
-        ],
-        "links": {
-          "demo": "https://desarrollosolucioniot.github.io/landing-page/",
-          "github": "https://github.com/orgs/DesarrolloSolucionIoT/repositories"
-        },
-        "image": {
-          "main": "/work/eduspace.webp",
-          "mainAlt": "Landing de EduSpace: coordinación de campus inteligente para instituciones educativas, con una fotografía de estudiantes."
-        }
-      },
-      {
-        "name": "Finance App",
-        "role": "Proyecto educativo",
-        "description": "Sistema de gestión de bonos corporativos con motor de cálculo financiero (TCEA/TREA, flujos, cronogramas).",
-        "stack": ["Next.js 15", "TypeScript", "Firebase", "Tailwind", "shadcn/ui"],
-        "highlights": [
-          "Roles (emisor/inversionista)",
-          "Dashboard + validaciones",
-          "Deploy en Vercel"
-        ],
-        "links": {
-          "demo": "https://andrest04.github.io/finance-app-landing/",
-          "github": "https://github.com/andrest04/finance-app"
-        },
-        "image": {
-          "main": "/work/finance.webp",
-          "mainAlt": "Landing de Finance App con el titular sobre bonos calculados con precisión y un resumen de bono de muestra.",
-          "detail": "/work/finance-detail.webp",
-          "detailAlt": "Detalle de la landing de Finance App: gráfico del método francés con interés y amortización junto a una comparación de TCEA y TREA."
-        }
-      },
-      {
-        "name": "Plataforma de reservas (Italia)",
-        "role": "Desarrollador Full-Stack",
-        "description": "Plataforma web de reservas con UI responsive, auth y base NoSQL optimizada.",
-        "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"],
-        "highlights": [
-          "Scrum",
-          "Diseño/optimización Firestore",
-          "Autenticación"
-        ],
-        "links": {
-          "demo": "https://inti-eta.vercel.app/en",
-          "github": "https://github.com/xMathyu/inti-webapp"
-        },
-        "image": {
-          "main": "/work/booking.webp",
-          "mainAlt": "Página de inicio de Parco dei Colori: un niño con una red para mariposas en un jardín frente a una cúpula de vidrio.",
-          "detail": "/work/booking-detail.webp",
-          "detailAlt": "Tipos de visita y tarifas de Parco dei Colori, tres opciones en euros, cada una con un botón de reserva."
-        }
-      },
-      {
-        "name": "Kataleya Flowers",
-        "role": "Desarrollador Full-Stack",
-        "description": "Sitio web para florería con 32 años de trayectoria en Lima. E-commerce con catálogo de arreglos florales, galería de clientes, integración con WhatsApp para pedidos y mapa de ubicación.",
-        "stack": ["Next.js", "React", "Tailwind", "Cloudinary", "Vercel"],
-        "highlights": [
-          "Proyecto individual",
-          "Integración WhatsApp",
-          "Optimización de imágenes con Cloudinary",
-          "Deploy en Vercel"
-        ],
-        "links": {
-          "demo": "https://www.kataleyaflowers.com/",
-          "github": "https://github.com/andrest04/kataleya-flowers-web"
-        },
-        "image": {
-          "main": "/work/kataleya.webp",
-          "mainAlt": "Página de inicio de Kataleya Flowers: una canasta de bicicleta con girasoles y margaritas en un campo de girasoles.",
-          "detail": "/work/kataleya-detail.webp",
-          "detailAlt": "Más vendidos de Kataleya Flowers: ramos de girasoles envueltos en papel, con las categorías del catálogo encima."
-        }
-      }
-    ]
-  },
-  "experience": {
-    "title": "Experiencia",
-    "items": [
-      {
-        "company": "EDTeam",
-        "role": "Pasante de Frontend",
-        "period": "Abr 2026 — Presente",
-        "description": "Plataforma de educación online en tecnología líder en español. Desarrollo y mantenimiento de la aplicación web (cursos, reproductor de video, sistema de progreso, perfiles de usuario) dentro del equipo de frontend.",
-        "stack": ["React", "TypeScript", "Next.js", "TailwindCSS"]
-      },
-      {
-        "company": "Mathyu's Solutions",
-        "role": "Desarrollador Full-Stack",
-        "period": "Mar 2025 — Jul 2025",
-        "description": "Empresa peruana de desarrollo de software y transformación digital. Desarrollé una plataforma web de reservas para un cliente italiano con UI responsive, sistema de autenticación y diseño de base de datos NoSQL optimizada.",
-        "stack": ["Next.js", "React", "Firebase Auth", "Firestore", "Tailwind"]
-      }
-    ],
-    "education": {
-      "title": "Educación",
-      "school": "Universidad Peruana de Ciencias Aplicadas (UPC)",
-      "degree": "Ingeniería de Software",
-      "term": "8.º ciclo",
-      "standing": "Quinto superior"
+  "record": {
+    "sample": "Muestra",
+    "did": "Mi parte",
+    "facts": "En el registro",
+    "tech": "Hecho con",
+    "live": "Sitio en vivo",
+    "github": "GitHub",
+    "missingPicture": {
+      "title": "Aún sin captura",
+      "body": "Aquí irá una captura real cuando se tome."
     }
   },
-  "skills": {
-    "title": "Habilidades",
-    "intro": "Estudiante de Ingeniería de Software desarrollando sistemas backend robustos y aplicaciones full-stack con .NET y Next.js, enfocado en arquitectura backend, sistemas escalables y liderazgo técnico.",
-    "groups": [
-      {
-        "title": "Backend",
-        "items": [".NET 8", "ASP.NET Core", "Node.js", "Express.js", "Entity Framework Core", "REST APIs"]
+  "strata": [
+    {
+      "id": "surface",
+      "tick": { "year": "2026", "note": "hoy" },
+      "period": "Agosto de 2026 a hoy",
+      "company": "Teleperformance Perú",
+      "role": "Practicante preprofesional de Reporting",
+      "location": "Lima",
+      "points": [
+        "Analizo bases de datos de clientes en soluciones de reporting para encontrar tendencias, cuartiles y estrategias de mejora.",
+        "Hago seguimiento a los indicadores de calidad, productividad y resolución en el primer contacto (FCR), en cortes periódicos y en tiempo real, y emito las alertas de las que dependen las decisiones operativas.",
+        "Preparo los informes de resultados que reciben el ejecutivo de cuenta, el director de operaciones y el cliente."
+      ],
+      "projects": ["vozella"]
+    },
+    {
+      "id": "edteam",
+      "tick": { "year": "2026", "note": "abr – may" },
+      "period": "Abril a mayo de 2026",
+      "company": "EDteam",
+      "role": "Practicante de Frontend",
+      "location": "Lima",
+      "points": [
+        "Participé en la migración de dos aplicaciones separadas de EDteam, una landing estática y una plataforma dinámica de cursos, a una sola aplicación hecha con Next.js, React y TailwindCSS.",
+        "Al eliminar la duplicación, el mantenimiento y la actualización de contenido quedaron en un solo lugar.",
+        "Llevé mis tareas en tableros Kanban en Notion y el control de versiones en GitLab. Mis cambios salieron mediante pull requests revisados, validados con mis propias pruebas antes de producción.",
+        "Trabajé con flujos de Spec-Driven Development, apoyados en herramientas de IA (Claude Code) y skills personalizadas."
+      ],
+      "projects": ["attendia"]
+    },
+    {
+      "id": "independent",
+      "tick": { "year": "2025", "note": "ago – mar" },
+      "period": "Agosto de 2025 a marzo de 2026",
+      "company": "Trabajo independiente y universitario",
+      "role": null,
+      "location": "Lima",
+      "points": [
+        "Sin empleador en estos meses: un proyecto universitario en equipo y un sitio web para una florería, ambos descritos abajo."
+      ],
+      "projects": ["eduspace", "kataleya"]
+    },
+    {
+      "id": "mathyus",
+      "tick": { "year": "2025", "note": "mar – jul" },
+      "period": "Marzo a julio de 2025",
+      "company": "Mathyu's Solutions",
+      "role": "Desarrollador Full-Stack",
+      "location": "Lima",
+      "points": [
+        "Trabajé en un equipo Scrum en una plataforma web de reservas para espacios recreativos en Italia, hecha con Next.js, React y Firebase. Las partes que construí están en la primera muestra de abajo."
+      ],
+      "projects": ["booking", "finance"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "vozella",
+      "name": "Vozella",
+      "period": "Agosto a noviembre de 2026",
+      "what": "Una aplicación de escritorio para Windows que graba una reunión sin que un bot entre a la llamada y luego la pone por escrito.",
+      "did": "Soy su único desarrollador. Está en beta y funciona solo en Windows.",
+      "facts": [
+        "Última versión: v0.10.1, noviembre de 2026",
+        "Un monorepo con un módulo nativo de audio escrito en Rust",
+        "624 commits"
+      ],
+      "tech": ["Electron", "React", "TypeScript", "Rust"],
+      "links": {
+        "live": "https://andrest04.github.io/vozella/",
+        "github": "https://github.com/andrest04/vozella"
       },
-      {
-        "title": "Arquitectura",
-        "items": ["Clean Architecture", "DDD", "CQRS", "Repository Pattern", "Unit of Work", "Microservices (base)"]
-      },
-      {
-        "title": "Bases de datos",
-        "items": ["MySQL", "Firebase/Firestore", "MongoDB", "SQL Server"]
-      },
-      {
-        "title": "Frontend",
-        "items": ["React", "Next.js", "Vue.js 3", "TypeScript", "TailwindCSS", "shadcn/ui"]
-      },
-      {
-        "title": "DevOps & Herramientas",
-        "items": ["Docker", "Git/GitHub", "Postman", "Swagger/OpenAPI", "Vercel", "Railway"]
+      "image": {
+        "src": "/work/vozella.png",
+        "alt": "Pantalla «Record meeting» de Vozella: un campo de título, las fuentes de micrófono y audio del sistema, y los botones Record e Import audio.",
+        "width": 1475,
+        "height": 1028
       }
+    },
+    {
+      "id": "attendia",
+      "name": "Attendia",
+      "period": "Mayo a noviembre de 2026",
+      "what": "Un aula virtual en español con video y chat, donde los docentes ven un medidor de atención en vivo y reciben reportes de cada clase.",
+      "did": "Partió de la aplicación de video de referencia de Twilio, que es de código abierto. Yo añadí encima la capa de aula: roles, seguimiento de atención, grabación, el panel del docente y la API del servidor.",
+      "facts": [
+        "21 rutas de servidor, con cerca de 536 pruebas de servidor",
+        "La CI ejecuta lint, verificación de tipos, pruebas y la compilación",
+        "Desplegado en Azure Container Apps"
+      ],
+      "tech": ["React", "Express", "Twilio Video", "Firebase"],
+      "links": {
+        "live": "https://attendia.purplemushroom-1f6e5ae3.brazilsouth.azurecontainerapps.io/",
+        "github": "https://github.com/andrest04/attendia"
+      },
+      "image": null
+    },
+    {
+      "id": "eduspace",
+      "name": "EduSpace",
+      "period": "Septiembre de 2025 a julio de 2026",
+      "what": "Un sistema para que los colegios gestionen aulas, espacios compartidos, reuniones del personal y reportes de mantenimiento.",
+      "did": "Fui el líder técnico de un equipo universitario de cinco personas y escribí la mayor parte del backend y del frontend web.",
+      "facts": [
+        "El backend de 2026 tiene seis bounded contexts y 54 endpoints REST",
+        "Cerca de 336 pruebas automatizadas",
+        "CI y despliegue en Azure"
+      ],
+      "tech": [".NET 8", "EF Core", "MySQL", "Vue"],
+      "links": {
+        "live": "https://eduspace-frontend-web-app.vercel.app",
+        "github": "https://github.com/DesarrolloSolucionIoT/eduspace-platform"
+      },
+      "image": {
+        "src": "/work/eduspace.webp",
+        "alt": "Landing de EduSpace: coordinación de campus inteligente para instituciones educativas, con una fotografía de estudiantes.",
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "id": "kataleya",
+      "name": "Kataleya Flowers",
+      "period": "Marzo a septiembre de 2026",
+      "what": "Un sitio web y panel de administración para una florería de Lima. Los clientes recorren el catálogo y piden por WhatsApp, la dueña gestiona los productos desde el panel, y se incluye el libro de reclamaciones que exige la ley.",
+      "did": "Lo construí por mi cuenta y está en producción.",
+      "facts": [
+        "22 páginas de administración",
+        "Cerca de 236 pruebas unitarias y cerca de 120 pruebas de navegador",
+        "La capa de datos está detrás de una sola interfaz de almacenamiento"
+      ],
+      "tech": ["Next.js", "Appwrite", "Resend", "Playwright"],
+      "links": {
+        "live": "https://www.kataleyaflowers.com/",
+        "github": "https://github.com/andrest04/kataleya-flowers-web"
+      },
+      "image": {
+        "src": "/work/kataleya.webp",
+        "alt": "Página de inicio de Kataleya Flowers: una canasta de bicicleta con girasoles y margaritas en un campo de girasoles.",
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "id": "booking",
+      "name": "Plataforma de reservas, Italia",
+      "period": "Marzo a abril de 2025 en el repositorio",
+      "what": "Un sitio donde los visitantes eligen un tipo de visita y un horario, reservan y pagan, y el personal gestiona los horarios.",
+      "did": "Fui parte de un equipo de seis en Mathyu's Solutions. Construí el formulario de confirmación de reserva con los datos de los asistentes, la página de inicio de sesión que te devuelve a tu reserva, la verificación de acceso de administrador y el formulario de suscripción. Los pagos funcionan con Stripe y no fueron trabajo mío.",
+      "facts": [
+        "Dos idiomas: inglés e italiano",
+        "48 de los 200 commits del proyecto son míos"
+      ],
+      "tech": ["Next.js", "Firebase", "Stripe"],
+      "links": {
+        "live": "https://inti-eta.vercel.app",
+        "github": "https://github.com/xMathyu/inti-webapp"
+      },
+      "image": {
+        "src": "/work/booking.webp",
+        "alt": "Página de inicio de Parco dei Colori: un niño con una red para mariposas en un jardín frente a una cúpula de vidrio.",
+        "width": 1600,
+        "height": 1200
+      }
+    },
+    {
+      "id": "finance",
+      "name": "Finance App",
+      "period": "Mayo de 2025 a marzo de 2026",
+      "what": "Una aplicación web donde emisores e inversionistas registran bonos corporativos y obtienen cronogramas de pago, con tasas de costo y de rendimiento (método francés, TCEA, TREA).",
+      "did": "La construí por mi cuenta.",
+      "facts": [
+        "Cerca de 1180 líneas de código de cálculo, con un solucionador de tasas Newton-Raphson",
+        "Dos roles: emisor e inversionista",
+        "Exportación a PDF"
+      ],
+      "tech": ["Next.js", "TypeScript", "Firebase"],
+      "links": {
+        "live": "https://finance-app-kappa-six.vercel.app/",
+        "github": "https://github.com/andrest04/finance-app"
+      },
+      "image": {
+        "src": "/work/finance.webp",
+        "alt": "Landing de Finance App con el titular sobre bonos calculados con precisión y un resumen de bono de muestra.",
+        "width": 1600,
+        "height": 1200
+      }
+    }
+  ],
+  "bedrock": {
+    "id": "bedrock",
+    "tick": { "year": "2022", "note": "base" },
+    "period": "Roca base · desde agosto de 2022",
+    "school": "UPC",
+    "degree": "Estudiante de Ingeniería de Software",
+    "details": [
+      "Universidad Peruana de Ciencias Aplicadas, Lima",
+      "Noveno ciclo",
+      "Quinto superior de la carrera",
+      "Agosto de 2022 a julio de 2027, previsto"
     ],
-    "notes": [
-      {
-        "title": "Enfoque",
-        "items": [
-          "Clean Architecture, DDD y CQRS en proyectos reales",
-          "Diseño de APIs REST y modelado de datos",
-          "Escalabilidad, mantenibilidad y documentación"
-        ]
-      },
-      {
-        "title": "Trabajo en equipo",
-        "items": [
-          "Liderazgo técnico en EduSpace",
-          "Metodologías ágiles (Scrum)"
-        ]
-      }
-    ]
-  },
-  "about": {
-    "title": "Sobre mí",
-    "portraitAlt": "Retrato de Andrés Torres, con lentes, traje azul marino y corbata.",
-    "paragraphs": [
-      "Curso el octavo ciclo de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas (UPC), en el quinto superior de mi clase.",
-      "Empiezo por la arquitectura: Clean Architecture, DDD y CQRS en proyectos reales, APIs REST y modelos de datos pensados para escalar, y documentación junto al código.",
-      "En EduSpace fui Tech Lead de un equipo de cinco personas. Trabajo con Scrum, con comunicación clara y orientación a resultados.",
-      "Mi principio: construir con fundamentos de arquitectura, medir resultados y mantener el código mantenible para escalar."
-    ]
+    "certifications": {
+      "title": "Certificaciones",
+      "items": [
+        { "name": "Claude Code in Action", "issuer": "Anthropic", "date": "Febrero de 2026" },
+        { "name": "Prompt Design in Vertex AI Skill Badge", "issuer": "Google Cloud Skills Boost", "date": "Noviembre de 2025" },
+        { "name": "Introducción a MongoDB", "issuer": "MongoDB", "date": "Junio de 2024" },
+        { "name": "Introducción a la Programación en Python", "issuer": "Coursera", "date": "Octubre de 2023" },
+        { "name": "Introducción al Desarrollo Web", "issuer": "Universidad de los Andes", "date": "Octubre de 2023" },
+        { "name": "Scrum Fundamentals Certified (SFC)", "issuer": "SCRUMstudy", "date": "Septiembre de 2023" }
+      ]
+    },
+    "languages": {
+      "title": "Idiomas",
+      "items": [
+        { "name": "Español", "level": "Nativo" },
+        { "name": "Inglés", "level": "B1, intermedio" }
+      ]
+    },
+    "skills": {
+      "title": "Habilidades",
+      "groups": [
+        { "title": "Lenguajes", "items": ["JavaScript", "TypeScript", "C#", "C++", "Python", "SQL"] },
+        { "title": "Frontend", "items": ["React", "Next.js", "Vue.js", "TailwindCSS"] },
+        { "title": "Backend", "items": [".NET 8", "ASP.NET Core", "Node.js"] },
+        { "title": "Datos", "items": ["MySQL", "MongoDB", "Firebase/Firestore", "SQL Server"] },
+        { "title": "Herramientas", "items": ["Docker", "Git", "GitHub", "GitLab", "Swagger/OpenAPI", "Vercel"] },
+        { "title": "Formas de trabajo", "items": ["Scrum", "Spec-Driven Development"] }
+      ]
+    }
   },
   "contact": {
-    "title": "Contacto",
+    "id": "contact",
     "statement": "¿Estás contratando? Hablemos.",
-    "emailLabel": "Email",
+    "lead": "El correo es la forma más rápida de contactarme.",
+    "emailLabel": "Correo",
     "phoneLabel": "Teléfono",
     "locationLabel": "Ubicación",
     "locationValue": "Lima, Perú",
@@ -204,7 +285,8 @@
     "cvLabel": "CV"
   },
   "footer": {
-    "description": "Andrés Torres, Lima, Perú"
+    "signature": "Andrés Torres, Lima, Perú",
+    "status": "Sigo siendo estudiante: el título de Ingeniería de Software en la UPC está previsto para julio de 2027."
   },
   "cv": {
     "missing": "El CV no está disponible en este momento. Puedes pedirlo por correo:",

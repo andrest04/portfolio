@@ -26,7 +26,7 @@ export default function LangSwitch({ locale, label, accessibleLabel }: LangSwitc
   return (
     <button
       type="button"
-      className="lang-switch"
+      className="lang-switch link link--plain"
       lang={target}
       aria-label={accessibleLabel}
       disabled={isPending}
