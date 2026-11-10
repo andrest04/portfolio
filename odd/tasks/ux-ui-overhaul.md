@@ -35,9 +35,9 @@ Strategy: `ask-on-risk`. Forecast: well over 400 authored changed lines, so the 
 - [x] T5 First viewport: depth rail, surface stratum, navigation. Route: delegated, same writer. Commit `e622e90`.
 - [x] T6 Strata: one stratum per job with its project samples; education as bedrock. Route: delegated, same writer. Commit `e622e90`.
 - [x] T7 Close: contact, CV, footer signature. Route: delegated, same writer. Commits `e622e90`, `8376491` (error pages and manifest).
-- [ ] T8 Motion and the rail interaction, gated by `prefers-reduced-motion`.
-- [ ] T9 States and edge cases: error, not-found, focus, touch targets, long Spanish strings, phone layout.
-- [ ] T10 Hardening: measured contrast, landmarks, image weight and hints, Person JSON-LD, unused assets.
+- [x] T8 Motion and the rail interaction, gated by `prefers-reduced-motion`. Route: delegated, one writer. Commits `e992234`, `85d401d` (styles in `0436d7e`).
+- [x] T9 States and edge cases: error, not-found, focus, touch targets, long Spanish strings, phone layout. Route: delegated, same writer. Commits `85d401d`, `0436d7e`.
+- [x] T10 Hardening: measured contrast, landmarks, image weight and hints, Person JSON-LD, unused assets. Route: delegated, same writer. Commits `298a25f`, `7ee72ed` (picture sizes).
 - [ ] T11 Finish: Impeccable finish review, documenter, final critique and audit, before/after report.
 
 ## Decisions
@@ -46,10 +46,11 @@ Strategy: `ask-on-risk`. Forecast: well over 400 authored changed lines, so the 
 - 2026-11-09: evidence comes from Andrés's own repositories, and other projects may be added (Andrés).
 - 2026-11-09: the page leads with work experience and the CV, as a general software engineer, with a timeline; technology detail is secondary (Andrés, after the first hand of directions).
 - 2026-11-09: direction "Strata" chosen over the assigned "Stamped logbook" (Andrés).
+- 2026-11-09: Attendia removed from the project list (Andrés), because no product screen can be captured without a production login.
 
 ## Waiting on Andrés
 
-- An Attendia screenshot, and any further material Andrés said he would send.
+- Any further material Andrés said he would send.
 - Claims the repositories do not support: "JWT + 2FA" (EduSpace), "Cloudinary" and "e-commerce" (Kataleya), Firestore design and the July 2025 end date (Booking, Mathyu's Solutions), and the "Tech Lead" title.
 - The final headline in both languages.
 
@@ -95,13 +96,32 @@ T3 to T7, observed on `d01d7a5`, 2026-11-09. One writer; the content, the page, 
 - Console: no errors. The only messages are the Vercel Analytics and Speed Insights scripts, which do not load outside Vercel.
 - Not checked: a real phone or touch device, a screen reader, the page with JavaScript disabled in a browser (the markup is server-rendered and the rail starts on the first period), `prefers-reduced-motion` in a browser (the rule is in the stylesheet), and real window resizing.
 
+Look fixes, Attendia removal, and T8 to T10, observed on `298a25f`, 2026-11-09.
+
+- `npx tsc --noEmit`: exit 0. `npx eslint src`: exit 0. `npm test`: 10 pass. `npm run build`: exit 0. `impeccable detect --json src`: `[]`. These ran on the final tree, not on each commit.
+- `rg -i attendia src public`: no matches. Five projects, numbered 01 Vozella, 02 EduSpace, 03 Kataleya Flowers, 04 Booking Platform, 05 Finance App. The EDteam entry and its edge strip render without a tag row. The missing-picture state, its copy, and its styles were removed because nothing uses them.
+- Taste-skill inspector at 1440, 768, and 390px on `next start -p 3200`. Before: `micro-label` (37), `side-scroll`, `covered-text`, `font-not-dealt`, plus the three below. After the first pass one new finding appeared, `eyebrow` at 768px (the primary action above the first edge strip); more space under the actions cleared it. Final: `palette-terracotta` (oxide is a contract colour), `off-centre` (the fixed rail), `no-footage`. `.taste-skill/direction.json` now records Strata, Archivo, and the five colours; the folder is git-ignored, so that change is local.
+- Opening screen: the band of empty ochre is gone. At 1440x900 the CV link ends at 408px, the two edges start at 497 and 619px, and the first entry's heading is inside the viewport. At 1536x700 the edges start at 434 and 546px. Headline: two lines on desktop in both languages, three at most on phones in Spanish.
+- No horizontal overflow at 320, 390, 768, 1200, 1440, and 1536px in English and Spanish, measured while scrolling the whole page.
+- Labels: no uppercase letter-spaced text of 14px or less outside navigation and links. Smallest running text in `main` and the footer: 16px at 320px, 18px at 1440px.
+- Motion: 1.3s after load nothing in the opening screen carries a transform; after scrolling through, all six bands are settled with no transform left. A band jumped over by a rail link settles when it is first seen. The rail marker's transform equals the offset of the current tick (282px for the fourth) and it parks at the contact band.
+- Reduced motion was emulated by removing the `motion` class, which leaves the same rules inactive as the media query does: no element in `main` carries a transform. The real media query was not toggled in a browser.
+- Phone menu: closed it is `display: none` with `aria-expanded="false"`; open it shows six links; Escape closes it and focus returns to the button; choosing a period closes it and scrolls there.
+- Without script, emulated by removing the `js` class at 390 and 320px: the rail is in the flow under the masthead as the full list of six links, no button, no marked period, no overflow. JavaScript was not actually disabled in a browser.
+- Coarse pointers: with the token the `pointer: coarse` query sets (`--target: 2.75rem`) applied by hand at 390px and the menu open, no link or button is under 44x44. The inspector's 390px run emulates touch and its screenshots show the 44px tags. A real touch device was not used.
+- Person JSON-LD is in the document head: name, URL, role and employer from the first period, the university as `affiliation`, `knowsLanguage`, and two `sameAs` links.
+- Fonts: the page requests one file, Archivo latin with the width axis, 90,096 bytes. The latin-ext (86 kB) and Vietnamese (34 kB) files are emitted by the build and are only fetched if a page uses those glyphs.
+- Console: no errors.
+
 ## Progress
 
-T0 to T7 are closed. Remaining: T8 (the signature motion; only hover transitions, the rail marker, and smooth scrolling exist, all off under reduced motion), T9 (states and edge cases beyond the error pages, the missing-picture blank, focus, and targets done here), T10 (hardening: Person JSON-LD, image weight, unused assets such as `public/portrait.png`, `public/edteam-logo.svg`, and the three `*-detail.webp` files), T11 (finish review, documenter, final critique and audit).
+T0 to T10 are closed. Remaining: T11 (finish review, documenter, final critique and audit).
 
 Open for Andrés:
 
-- `public/work/vozella.png` is referenced by the page and is still untracked; it was outside the writer's edit surface.
+- `PRODUCT.md` still lists Attendia and six projects.
+- `public/og.png` still shows the old look.
+- The removed Attendia screenshot was moved out of `public/work/`, not destroyed.
 - The first screen shows the next two periods as link strips, then the surface entry continues in ochre. The periods' own bands follow further down, so oxide and slate each appear twice.
 - The dates line sits under the headline, not above it, because the craft floor bans a label above a heading.
-- Attendia needs a screenshot, and whether it was a solo or a team project is not stated.
+- The final headline wording.
