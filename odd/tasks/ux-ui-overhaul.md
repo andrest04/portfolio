@@ -30,11 +30,11 @@ Strategy: `ask-on-risk`. Forecast: well over 400 authored changed lines, so the 
 - [x] T0 Recover the base and confirm it is green. Route: inline (git state and bounded checks).
 - [x] T1 Measured baseline: Impeccable critique and detector, taste-skill inspector, and measurements at 390, 768, 1200, and 1536px in both languages. Route: delegated, two isolated assessors (mapping trigger, evidence beyond the inline budget). The Impeccable audit is deferred to T10 and T11, where its findings are acted on.
 - [x] T2 Design direction. Andrés chose "Strata" on the Impeccable decision page (second hand, after asking for an experience-led page built from the CV). Direction contract: `.impeccable/surfaces/src-app-page-tsx.md`. Chosen sketch: `.impeccable/mocks/decision/r2-model-pick.html`. Build path: code-led (no image generation available). Route: inline (decision round). `DESIGN.md` and `.impeccable/design.json` are rewritten at finish by the Impeccable documenter, from the built page.
-- [ ] T3 Content model: experience from the CV (Teleperformance Perú, EDteam, Mathyu's Solutions), education, certifications, languages, and the agreed project list, in `src/content/en.json`, `src/content/es.json`, and `src/types/i18n.ts`; `PRODUCT.md` facts brought up to date.
-- [ ] T4 Foundations: Strata tokens in `src/app/globals.css`, type in `src/app/layout.tsx`.
-- [ ] T5 First viewport: depth rail, surface stratum, navigation.
-- [ ] T6 Strata: one stratum per job with its project samples; education as bedrock.
-- [ ] T7 Close: contact, CV, footer signature.
+- [x] T3 Content model: experience from the CV (Teleperformance Perú, EDteam, Mathyu's Solutions), education, certifications, languages, and the agreed project list, in `src/content/en.json`, `src/content/es.json`, and `src/types/i18n.ts`; `PRODUCT.md` facts brought up to date. Route: delegated, one writer (writer trigger: more than two non-trivial files). Commits `e622e90`, `d01d7a5`.
+- [x] T4 Foundations: Strata tokens in `src/app/globals.css`, type in `src/app/layout.tsx`. Route: delegated, same writer. Commit `e622e90`.
+- [x] T5 First viewport: depth rail, surface stratum, navigation. Route: delegated, same writer. Commit `e622e90`.
+- [x] T6 Strata: one stratum per job with its project samples; education as bedrock. Route: delegated, same writer. Commit `e622e90`.
+- [x] T7 Close: contact, CV, footer signature. Route: delegated, same writer. Commits `e622e90`, `8376491` (error pages and manifest).
 - [ ] T8 Motion and the rail interaction, gated by `prefers-reduced-motion`.
 - [ ] T9 States and edge cases: error, not-found, focus, touch targets, long Spanish strings, phone layout.
 - [ ] T10 Hardening: measured contrast, landmarks, image weight and hints, Person JSON-LD, unused assets.
@@ -49,7 +49,7 @@ Strategy: `ask-on-risk`. Forecast: well over 400 authored changed lines, so the 
 
 ## Waiting on Andrés
 
-- The project list, and further material Andrés said he would send.
+- An Attendia screenshot, and any further material Andrés said he would send.
 - Claims the repositories do not support: "JWT + 2FA" (EduSpace), "Cloudinary" and "e-commerce" (Kataleya), Firestore design and the July 2025 end date (Booking, Mathyu's Solutions), and the "Tech Lead" title.
 - The final headline in both languages.
 
@@ -80,6 +80,28 @@ T1 baseline, observed on `09c67ec`, 2026-11-09. Snapshot: `.impeccable/critique/
 
 Priority findings: the pictures show landing pages while the claim is backend architecture; Work hides three of four projects and their links; copy repeats itself; the record and the ending are flat; no persistent route to the CV or contact.
 
+T3 to T7, observed on `d01d7a5`, 2026-11-09. One writer; the content, the page, and the stylesheet share one commit because the old sections stop compiling as soon as the content shape changes.
+
+- Test-first, `src/content/content.test.ts`: RED on the old content, 10 tests, 1 pass, 9 fail (`projects is not iterable`, `strata` undefined). GREEN after the new content, 10 tests, 10 pass.
+- `npx tsc --noEmit`: exit 0. `npx eslint src`: exit 0. `npm test`: 10 pass. `npm run build`: exit 0. `impeccable detect --json src`: `[]`.
+- Rendered on `next start -p 3200` from this build, in same-origin iframes whose layout width was 320, 390, 768, 1200, 1440, 1536, and 1920px, in English and Spanish: no horizontal overflow at any width, including with the rail scrolled to every period.
+- First viewport: at 1440x900 and 1536x700 the opening screen is exactly one viewport high in both languages, with the navigation, headline, dates line, status sentence, primary action, CV link, and the edges of the next two periods inside it. At 390x844 the same content ends at 478px (English) and 544px (Spanish); the two edges start at 516 and 666px (English).
+- Headline: two lines on desktop, at most three at 320 and 390px. Its text content is one string with ordinary spaces.
+- Contrast, computed from the rendered colours: basalt on ochre 7.54, chalk on oxide 4.72, chalk on slate 7.83, basalt on chalk 14.58, chalk on basalt 14.58, ochre on basalt 7.54. No other text pair is rendered.
+- Structure: one `main`; the masthead and the rail are outside it; two named navigations; six sections, each named by its heading; the skip link target exists. Outline: one `h1`, an `h2` per period and for the close, an `h3` per sample and per bedrock group.
+- Targets: none under 24px high at any width. With the coarse-pointer token applied by hand at 390px, none under 44x44, the open jump menu included. A real coarse pointer was not available.
+- Keyboard: focus order runs skip link, masthead, rail, then the page; the ring is a 3px solid outline in the band's ink. Rail links, the contact link, and the primary action scroll to their targets and the marker follows.
+- Pictures: five screenshots render at their own proportions, lazily; Attendia shows the labelled blank. Sample links read "Live site: <name> (opens in a new tab)" and "GitHub: <name> (opens in a new tab)".
+- Console: no errors. The only messages are the Vercel Analytics and Speed Insights scripts, which do not load outside Vercel.
+- Not checked: a real phone or touch device, a screen reader, the page with JavaScript disabled in a browser (the markup is server-rendered and the rail starts on the first period), `prefers-reduced-motion` in a browser (the rule is in the stylesheet), and real window resizing.
+
 ## Progress
 
-T0, T1, and T2 are closed. Next step: T3, which waits on the project list.
+T0 to T7 are closed. Remaining: T8 (the signature motion; only hover transitions, the rail marker, and smooth scrolling exist, all off under reduced motion), T9 (states and edge cases beyond the error pages, the missing-picture blank, focus, and targets done here), T10 (hardening: Person JSON-LD, image weight, unused assets such as `public/portrait.png`, `public/edteam-logo.svg`, and the three `*-detail.webp` files), T11 (finish review, documenter, final critique and audit).
+
+Open for Andrés:
+
+- `public/work/vozella.png` is referenced by the page and is still untracked; it was outside the writer's edit surface.
+- The first screen shows the next two periods as link strips, then the surface entry continues in ochre. The periods' own bands follow further down, so oxide and slate each appear twice.
+- The dates line sits under the headline, not above it, because the craft floor bans a label above a heading.
+- Attendia needs a screenshot, and whether it was a solo or a team project is not stated.
