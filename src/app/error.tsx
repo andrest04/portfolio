@@ -18,18 +18,15 @@ export default function Error({
   }, [error]);
 
   return (
-    <main
-      id="content"
-      className="mx-auto grid min-h-[80svh] max-w-[520px] content-center justify-items-start gap-6 px-5"
-    >
-      <h1 className="text-head">{t.title}</h1>
+    <main id="main" tabIndex={-1} className="fault tone--ochre">
+      <h1>{t.title}</h1>
       <p>{t.body}</p>
       {error.digest && (
-        <p className="text-small text-muted">
+        <p className="label">
           {t.errorId} {error.digest}
         </p>
       )}
-      <div className="flex flex-wrap items-center gap-6">
+      <div className="fault__actions">
         <button type="button" onClick={reset} className="button cursor-pointer">
           {t.retry}
         </button>
