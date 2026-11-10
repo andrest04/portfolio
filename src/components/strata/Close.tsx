@@ -15,7 +15,7 @@ export default function Close({ t, edge }: { t: Dictionary; edge: number }) {
   const [user, domain] = CONTACT.email.split("@");
 
   return (
-    <section id={c.id} className="stratum tone--ochre" aria-labelledby={titleId}>
+    <section id={c.id} className="stratum tone--ochre" aria-labelledby={titleId} data-settle>
       <StratumEdge variant={edge} />
       <div className="close__inner">
         <h2 id={titleId} className="close__statement">

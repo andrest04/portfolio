@@ -7,7 +7,7 @@ export default function Bedrock({ t, edge }: { t: Dictionary["bedrock"]; edge: n
 
   return (
     <section id={t.id} className="stratum tone--basalt" aria-labelledby={titleId}>
-      <div className="stratum__body">
+      <div className="stratum__body" data-settle>
         <StratumEdge variant={edge} />
         <div className="stratum__inner">
           <header className="stratum__head">

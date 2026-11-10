@@ -21,6 +21,13 @@ export const viewport: Viewport = {
   themeColor: "#1b1c1e",
 };
 
+/**
+ * Runs before first paint. `js` switches the rail from its script-free form to the bar and
+ * marker; `motion` allows the start states of the settle animation. If the page has not
+ * hydrated after the wait, `motion` is taken back so nothing stays out of place.
+ */
+const SCRIPT_GATE = `(function(){var r=document.documentElement;r.classList.add("js","motion");setTimeout(function(){if(!r.dataset.motion)r.classList.remove("motion")},3000)})();`;
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = (await getLocale()) as Locale;
   const { meta } = await getDictionary(locale);
@@ -82,7 +89,10 @@ export default async function RootLayout({
   const t = await getDictionary(locale);
 
   return (
-    <html lang={locale} className={archivo.variable}>
+    <html lang={locale} className={archivo.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SCRIPT_GATE }} />
+      </head>
       <body>
         <a href="#main" className="skip-link">
           {t.meta.skipLink}

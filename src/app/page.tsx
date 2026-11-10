@@ -1,4 +1,5 @@
 import Masthead from "@/components/layout/Masthead";
+import SettleObserver from "@/components/motion/SettleObserver";
 import DepthRail, { type RailStop } from "@/components/rail/DepthRail";
 import Bedrock from "@/components/strata/Bedrock";
 import Close from "@/components/strata/Close";
@@ -61,6 +62,7 @@ export default async function Page() {
         ))}
         <Bedrock t={t.bedrock} edge={deeper.length} />
         <Close t={t} edge={deeper.length + 1} />
+        <SettleObserver locale={locale} />
       </main>
     </>
   );
