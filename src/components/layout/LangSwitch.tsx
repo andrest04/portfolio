@@ -30,6 +30,7 @@ export default function LangSwitch({ locale, label, accessibleLabel }: LangSwitc
       lang={target}
       aria-label={accessibleLabel}
       disabled={isPending}
+      aria-busy={isPending}
       onClick={handleClick}
     >
       {label}
