@@ -29,16 +29,29 @@ Strategy: `ask-on-risk`. Forecast: well over 400 authored changed lines, so the 
 
 - [x] T0 Recover the base and confirm it is green. Route: inline (git state and bounded checks).
 - [x] T1 Measured baseline: Impeccable critique and detector, taste-skill inspector, and measurements at 390, 768, 1200, and 1536px in both languages. Route: delegated, two isolated assessors (mapping trigger, evidence beyond the inline budget). The Impeccable audit is deferred to T10 and T11, where its findings are acted on.
-- [ ] T2 Design direction, presented to Andrés for approval; `DESIGN.md`, `.impeccable/design.json`, and `.taste-skill/direction.json` updated after approval.
-- [ ] T3 Foundations: tokens in `src/app/globals.css`, type in `src/app/layout.tsx`.
-- [ ] T4 Navigation: mobile pattern and active section state.
-- [ ] T5 Hero.
-- [ ] T6 Work, and case pages if approved.
-- [ ] T7 Experience and skills, About, Contact, footer.
-- [ ] T8 Motion, gated by `prefers-reduced-motion`.
-- [ ] T9 States and edge cases: error, not-found, focus, touch targets, long Spanish strings.
+- [x] T2 Design direction. Andrés chose "Strata" on the Impeccable decision page (second hand, after asking for an experience-led page built from the CV). Direction contract: `.impeccable/surfaces/src-app-page-tsx.md`. Chosen sketch: `.impeccable/mocks/decision/r2-model-pick.html`. Build path: code-led (no image generation available). Route: inline (decision round). `DESIGN.md` and `.impeccable/design.json` are rewritten at finish by the Impeccable documenter, from the built page.
+- [ ] T3 Content model: experience from the CV (Teleperformance Perú, EDteam, Mathyu's Solutions), education, certifications, languages, and the agreed project list, in `src/content/en.json`, `src/content/es.json`, and `src/types/i18n.ts`; `PRODUCT.md` facts brought up to date.
+- [ ] T4 Foundations: Strata tokens in `src/app/globals.css`, type in `src/app/layout.tsx`.
+- [ ] T5 First viewport: depth rail, surface stratum, navigation.
+- [ ] T6 Strata: one stratum per job with its project samples; education as bedrock.
+- [ ] T7 Close: contact, CV, footer signature.
+- [ ] T8 Motion and the rail interaction, gated by `prefers-reduced-motion`.
+- [ ] T9 States and edge cases: error, not-found, focus, touch targets, long Spanish strings, phone layout.
 - [ ] T10 Hardening: measured contrast, landmarks, image weight and hints, Person JSON-LD, unused assets.
-- [ ] T11 Final verification and before/after report.
+- [ ] T11 Finish: Impeccable finish review, documenter, final critique and audit, before/after report.
+
+## Decisions
+
+- 2026-11-09: replace the visual world instead of evolving Evidence Folio (Andrés).
+- 2026-11-09: evidence comes from Andrés's own repositories, and other projects may be added (Andrés).
+- 2026-11-09: the page leads with work experience and the CV, as a general software engineer, with a timeline; technology detail is secondary (Andrés, after the first hand of directions).
+- 2026-11-09: direction "Strata" chosen over the assigned "Stamped logbook" (Andrés).
+
+## Waiting on Andrés
+
+- The project list, and further material Andrés said he would send.
+- Claims the repositories do not support: "JWT + 2FA" (EduSpace), "Cloudinary" and "e-commerce" (Kataleya), Firestore design and the July 2025 end date (Booking, Mathyu's Solutions), and the "Tech Lead" title.
+- The final headline in both languages.
 
 ## Acceptance checks
 
@@ -69,4 +82,4 @@ Priority findings: the pictures show landing pages while the claim is backend ar
 
 ## Progress
 
-T0 and T1 are closed. Next step: T2, the design direction, which waits on Andrés's choice between evolving the current look and replacing it.
+T0, T1, and T2 are closed. Next step: T3, which waits on the project list.

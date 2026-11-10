@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Strata sketch</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1440px;height:900px;overflow:hidden}
+  body{background:#e9eef0;color:#1b1c1e;font-family:"Archivo","Arial Narrow",Arial,sans-serif;position:relative}
+  .rail{position:absolute;left:0;top:0;width:150px;height:900px;background:#1b1c1e;color:#f3f1ea;padding:36px 0}
+  .rail b{display:block;font-size:17px;letter-spacing:.1em;text-transform:uppercase;padding:0 28px 28px}
+  .tick{position:absolute;left:0;width:150px;border-top:2px solid #f3f1ea;padding:6px 28px;font-size:34px;font-weight:700}
+  .tick small{display:block;font-size:13px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+  .s1{position:absolute;left:150px;right:0;top:0;height:560px;background:#e0a11b;padding:36px 64px}
+  .nav{display:flex;justify-content:space-between;font-size:16px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+  .nav span+span{margin-left:28px}
+  .now{margin-top:74px;font-size:17px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+  h1{font-size:96px;line-height:.95;font-weight:800;letter-spacing:-.02em;margin-top:14px;max-width:1040px}
+  .meta{position:absolute;left:64px;bottom:34px;right:64px;display:flex;justify-content:space-between;align-items:end}
+  .meta p{font-size:22px;line-height:1.3;max-width:520px;font-family:Arial,sans-serif}
+  .btn{background:#1b1c1e;color:#f3f1ea;padding:18px 28px;font-size:20px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .cv{font-size:20px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid #1b1c1e;margin-left:22px;padding-bottom:4px}
+  .s2{position:absolute;left:150px;right:0;top:540px;height:190px;background:#b5432a;color:#f3f1ea;padding:38px 64px;clip-path:polygon(0 12%,22% 0,48% 10%,74% 2%,100% 9%,100% 100%,0 100%)}
+  .s3{position:absolute;left:150px;right:0;top:710px;height:190px;background:#2f4a66;color:#f3f1ea;padding:38px 64px;clip-path:polygon(0 6%,30% 12%,56% 0,82% 9%,100% 3%,100% 100%,0 100%)}
+  .row{display:flex;justify-content:space-between;align-items:baseline}
+  .row strong{font-size:46px;font-weight:800;letter-spacing:-.01em}
+  .row span{font-size:20px;font-family:Arial,sans-serif}
+  .tag{display:inline-block;border:2px solid #f3f1ea;padding:4px 10px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-top:10px;margin-right:8px}
+</style>
+</head>
+<body>
+  <div class="rail">
+    <b>Depth<br>in years</b>
+    <div class="tick" style="top:150px">2026<small>now</small></div>
+    <div class="tick" style="top:560px">2026<small>spring</small></div>
+    <div class="tick" style="top:730px">2025</div>
+  </div>
+  <div class="s1">
+    <div class="nav"><span>Andrés Torres</span><span><span>Experience</span><span>Projects</span><span>Contact</span><span>EN / ES</span></span></div>
+    <div class="now">Surface · August 2026 to today</div>
+    <h1>Software engineer. Three jobs deep, still digging.</h1>
+    <div class="meta">
+      <p>Reporting intern at Teleperformance Perú. Ninth term of Software Engineering at UPC, top fifth of the class.</p>
+      <div><span class="btn">Read the record</span><span class="cv">CV (PDF)</span></div>
+    </div>
+  </div>
+  <div class="s2">
+    <div class="row"><strong>EDteam · Frontend Intern</strong><span>April to May 2026</span></div>
+    <span class="tag">Sample 02 · EduSpace IoT</span><span class="tag">Sample 03 · Attendia</span>
+  </div>
+  <div class="s3">
+    <div class="row"><strong>Mathyu's Solutions · Full-Stack Developer</strong><span>March to July 2025</span></div>
+    <span class="tag">Sample 04 · Booking Platform, Italy</span>
+  </div>
+</body>
+</html>
