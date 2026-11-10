@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Azulejo hall sketch</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1440px;height:900px;overflow:hidden}
+  body{background:#ffffff;color:#0d1b3d;font-family:"Times New Roman",Georgia,serif;position:relative;background-image:linear-gradient(#c9d6ee 1px,transparent 1px),linear-gradient(90deg,#c9d6ee 1px,transparent 1px);background-size:90px 90px}
+  .frieze{position:absolute;left:0;right:0;top:0;height:90px;background:#1746a2;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 60px;font-size:18px;letter-spacing:.18em;text-transform:uppercase;border-bottom:8px solid #d9a400}
+  .frieze span+span{margin-left:30px}
+  .panel{position:absolute;left:90px;right:90px;top:180px;height:450px;border:10px solid #1746a2;outline:4px solid #d9a400;outline-offset:6px;background:rgba(255,255,255,.86);padding:50px 64px}
+  .year{font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:#1746a2}
+  h1{font-size:100px;line-height:.95;font-weight:700;color:#1746a2;letter-spacing:-.01em;margin-top:16px}
+  .cart{position:absolute;left:64px;right:64px;bottom:44px;display:flex;justify-content:space-between;align-items:end}
+  .cart p{font-size:23px;line-height:1.3;max-width:560px}
+  .btn{background:#1746a2;color:#fff;padding:18px 28px;font-size:19px;letter-spacing:.14em;text-transform:uppercase}
+  .cv{font-size:19px;letter-spacing:.14em;text-transform:uppercase;border-bottom:3px solid #1746a2;margin-left:22px;color:#1746a2}
+  .next{position:absolute;left:90px;right:90px;top:720px;height:180px;border:10px solid #1746a2;border-bottom:0;background:#1746a2;color:#fff;padding:36px 64px;display:flex;justify-content:space-between;align-items:baseline}
+  .next strong{font-size:50px}
+  .next span{font-size:22px}
+</style>
+</head>
+<body>
+  <div class="frieze"><span>Andrés Torres</span><span><span>Panels</span><span>Projects</span><span>Contact</span><span>EN / ES</span></span></div>
+  <div class="panel">
+    <div class="year">Panel I · Lima, 2022 to 2026</div>
+    <h1>A software engineer, told in four panels.</h1>
+    <div class="cart">
+      <p>Ninth term at UPC, top fifth of the class. Three jobs so far, each one painted below in order.</p>
+      <div><span class="btn">Walk the hall</span><span class="cv">CV (PDF)</span></div>
+    </div>
+  </div>
+  <div class="next"><strong>Panel II · Teleperformance Perú</strong><span>Reporting intern, August 2026 to today</span></div>
+</body>
+</html>

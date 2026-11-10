@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Line map sketch</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1440px;height:900px;overflow:hidden}
+  body{background:#fbfbf8;color:#111;font-family:Helvetica,Arial,sans-serif;position:relative}
+  h1{position:absolute;left:48px;top:44px;width:560px;font-size:64px;line-height:1;font-weight:700;letter-spacing:-.02em}
+  .status{position:absolute;left:48px;top:262px;width:420px;font-size:19px;line-height:1.35}
+  .nav{position:absolute;right:48px;top:48px;font-size:16px;font-weight:700}
+  .nav span{margin-left:28px}
+  svg{position:absolute;left:0;top:0}
+  .st{position:absolute;font-size:15px;font-weight:700;line-height:1.1}
+  .st small{display:block;font-weight:400;font-size:13px}
+  .key{position:absolute;left:48px;right:48px;bottom:36px;display:grid;grid-template-columns:repeat(4,1fr) auto;gap:24px;border-top:3px solid #111;padding-top:16px;align-items:start}
+  .key div{font-size:20px;font-weight:700;display:flex;gap:12px;align-items:center}
+  .key i{display:inline-block;width:44px;height:12px}
+  .btn{background:#111;color:#fbfbf8;padding:14px 22px;font-size:18px;font-weight:700}
+</style>
+</head>
+<body>
+  <svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M520 420 H760 L880 300 H1380" stroke="#e3262e" stroke-width="16"/>
+    <path d="M100 520 H640 L760 420 L880 540 H1380" stroke="#0a57c2" stroke-width="16"/>
+    <path d="M100 640 H520 L640 520 L760 640 H1380" stroke="#f2b705" stroke-width="16"/>
+    <path d="M300 760 L420 640 H640 L760 760 H1380" stroke="#0b8f4d" stroke-width="16"/>
+    <g fill="#fbfbf8" stroke="#111" stroke-width="5">
+      <circle cx="560" cy="420" r="13"/><circle cx="760" cy="420" r="18"/><circle cx="960" cy="300" r="13"/><circle cx="1140" cy="300" r="13"/><circle cx="1320" cy="300" r="13"/>
+      <circle cx="200" cy="520" r="13"/><circle cx="420" cy="520" r="13"/><circle cx="640" cy="520" r="18"/><circle cx="1000" cy="540" r="13"/><circle cx="1220" cy="540" r="13"/>
+      <circle cx="200" cy="640" r="13"/><circle cx="420" cy="640" r="18"/><circle cx="900" cy="640" r="13"/><circle cx="1140" cy="640" r="13"/>
+      <circle cx="880" cy="760" r="13"/><circle cx="1100" cy="760" r="13"/><circle cx="1320" cy="760" r="13"/>
+    </g>
+  </svg>
+  <h1>Andrés Torres builds backends and the apps on top of them.</h1>
+  <p class="status">Software engineering student at UPC, eighth term. Frontend Intern at EDTeam.</p>
+  <div class="nav"><span>Lines</span><span>Record</span><span>Contact</span><span>EN / ES</span></div>
+  <div class="st" style="left:920px;top:252px">Interfaces/REST<small>54 endpoints</small></div>
+  <div class="st" style="left:1090px;top:252px">Command services</div>
+  <div class="st" style="left:1280px;top:252px">MySQL 8</div>
+  <div class="st" style="left:720px;top:368px">Auth</div>
+  <div class="st" style="left:160px;top:472px">BonoForm</div>
+  <div class="st" style="left:370px;top:472px">Newton-Raphson</div>
+  <div class="st" style="left:960px;top:566px">TCEA / TREA</div>
+  <div class="st" style="left:1180px;top:566px">Firestore</div>
+  <div class="st" style="left:160px;top:592px">Schedules</div>
+  <div class="st" style="left:860px;top:592px">Reservations</div>
+  <div class="st" style="left:1100px;top:592px">Stripe</div>
+  <div class="st" style="left:840px;top:786px">Server actions</div>
+  <div class="st" style="left:1050px;top:786px">DocumentStore</div>
+  <div class="st" style="left:1280px;top:786px">Appwrite</div>
+  <div class="key">
+    <div><i style="background:#e3262e"></i>EduSpace</div>
+    <div><i style="background:#0a57c2"></i>Finance App</div>
+    <div><i style="background:#f2b705"></i>Booking Platform</div>
+    <div><i style="background:#0b8f4d"></i>Kataleya Flowers</div>
+    <span class="btn">CV (PDF)</span>
+  </div>
+</body>
+</html>

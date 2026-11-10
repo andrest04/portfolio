@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stamped logbook sketch</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1440px;height:900px;overflow:hidden}
+  body{background:#15171c;color:#15171c;font-family:"Courier New",Courier,monospace;position:relative}
+  .nav{position:absolute;left:60px;right:60px;top:26px;display:flex;justify-content:space-between;color:#e6efe9;font-size:15px;letter-spacing:.14em;text-transform:uppercase}
+  .nav span+span{margin-left:28px}
+  .book{position:absolute;left:60px;right:60px;top:70px;bottom:40px;display:grid;grid-template-columns:1fr 1fr}
+  .page{background:#e6efe9;background-image:repeating-linear-gradient(60deg,rgba(15,122,90,.10) 0 1px,transparent 1px 9px),repeating-linear-gradient(-60deg,rgba(31,63,191,.08) 0 1px,transparent 1px 9px);padding:44px 48px;position:relative}
+  .left{border-right:3px solid #15171c}
+  .no{position:absolute;right:40px;top:30px;font-size:18px;letter-spacing:.3em}
+  .photo{width:170px;height:214px;background:#b9c9c0 url("http://localhost:3100/portrait.png") center/cover;border:2px solid #15171c}
+  .id{display:grid;grid-template-columns:170px 1fr;gap:32px;margin-top:38px}
+  dl{font-size:15px;line-height:1.35}
+  dt{letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin-top:12px;opacity:.7}
+  dd{font-size:21px;font-weight:700}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:62px;line-height:1;font-weight:700;letter-spacing:-.01em;margin-top:38px}
+  .mrz{position:absolute;left:48px;right:48px;bottom:112px;font-size:19px;letter-spacing:.16em;line-height:1.5}
+  .actions{position:absolute;left:48px;bottom:40px;display:flex;gap:20px;align-items:center}
+  .btn{background:#15171c;color:#e6efe9;padding:16px 24px;font-size:17px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+  .cv{font-size:17px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border-bottom:3px solid #15171c;padding-bottom:3px}
+  .stamp{position:absolute;border:5px double currentColor;padding:14px 20px;text-transform:uppercase;font-weight:700;transform:rotate(-8deg);text-align:center}
+  .stamp b{display:block;letter-spacing:.06em}
+  .stamp i{display:block;font-style:normal;letter-spacing:.14em;margin-top:6px}
+  .a{color:#1f3fbf;left:70px;top:90px;width:520px}.a b{font-size:42px}.a i{font-size:19px}
+  .b{color:#c8102e;left:250px;top:400px;width:340px;border-radius:50%;padding:46px 20px}.b b{font-size:28px}.b i{font-size:14px}
+  .c{color:#0f7a5a;left:50px;top:560px;width:330px}.c b{font-size:24px}.c i{font-size:13px}
+  .foot{position:absolute;right:48px;bottom:40px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body>
+  <div class="nav"><span>Andrés Torres</span><span><span>Entries</span><span>Projects</span><span>Contact</span><span>EN / ES</span></span></div>
+  <div class="book">
+    <div class="page left">
+      <div class="no">AT 2022 2027</div>
+      <div style="font-size:15px;letter-spacing:.2em;text-transform:uppercase">Record of work · Page 01</div>
+      <div class="id">
+        <div class="photo"></div>
+        <dl>
+          <dt>Holder</dt><dd>Andrés Torres</dd>
+          <dt>Occupation</dt><dd>Software engineer</dd>
+          <dt>Issued</dt><dd>Lima, Peru</dd>
+          <dt>Status</dt><dd>UPC, ninth term</dd>
+        </dl>
+      </div>
+      <h1>Three employers stamped. Every date checked.</h1>
+      <div class="mrz">P&lt;PER&lt;TORRES&lt;&lt;ANDRES&lt;&lt;&lt;&lt;SOFTWARE&lt;ENGINEER<br>UPC2022&lt;&lt;2027&lt;TOP&lt;FIFTH&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+      <div class="actions"><span class="btn">Turn the page</span><span class="cv">CV (PDF)</span></div>
+    </div>
+    <div class="page">
+      <div class="no">02</div>
+      <div class="stamp a"><b>Teleperformance Perú</b><i>Reporting intern · Entry Aug 2026 · Current</i></div>
+      <div class="stamp b"><b>EDteam</b><i>Frontend intern<br>Apr 2026 to May 2026</i></div>
+      <div class="stamp c"><b>Mathyu's Solutions</b><i>Full-stack developer · Mar 2025 to Jul 2025</i></div>
+      <div class="foot">Projects on pages 03 to 08</div>
+    </div>
+  </div>
+</body>
+</html>

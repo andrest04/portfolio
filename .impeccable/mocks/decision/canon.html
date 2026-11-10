@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Category standard sketch</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1440px;height:900px;overflow:hidden}
+  body{background:#fff;color:#111827;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:28px 96px;font-size:16px}
+  .nav b{font-size:18px}
+  .nav span{margin-left:32px}
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;padding:56px 96px 48px;align-items:center}
+  h1{font-size:60px;line-height:1.05;letter-spacing:-.03em;font-weight:700}
+  p{font-size:20px;line-height:1.5;color:#4b5563;margin-top:20px;max-width:520px}
+  .actions{margin-top:32px;display:flex;gap:16px}
+  .btn{background:#2563eb;color:#fff;padding:14px 24px;border-radius:10px;font-size:17px;font-weight:600}
+  .ghost{border:1px solid #d1d5db;padding:14px 24px;border-radius:10px;font-size:17px;font-weight:600}
+  .portrait{height:320px;border-radius:24px;background:#e5e7eb url("http://localhost:3100/portrait.png") center/cover}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:0 96px}
+  .card{border:1px solid #e5e7eb;border-radius:16px;overflow:hidden}
+  .card i{display:block;height:140px;background:#e5e7eb center/cover}
+  .card div{padding:16px;font-size:18px;font-weight:600}
+  .card small{display:block;font-weight:400;color:#6b7280;font-size:14px;margin-top:4px}
+</style>
+</head>
+<body>
+  <div class="nav"><b>Andrés Torres</b><div><span>Work</span><span>Experience</span><span>About</span><span>Contact</span><span>EN / ES</span></div></div>
+  <div class="hero">
+    <div>
+      <h1>Andrés Torres builds backends and the apps on top of them.</h1>
+      <p>Software engineering student at UPC, eighth term. Frontend Intern at EDTeam.</p>
+      <div class="actions"><span class="btn">View projects</span><span class="ghost">CV (PDF)</span></div>
+    </div>
+    <div class="portrait"></div>
+  </div>
+  <div class="cards">
+    <div class="card"><i style="background-image:url(http://localhost:3100/work/eduspace.webp)"></i><div>EduSpace<small>.NET 8 · Vue</small></div></div>
+    <div class="card"><i style="background-image:url(http://localhost:3100/work/finance.webp)"></i><div>Finance App<small>Next.js · Firebase</small></div></div>
+    <div class="card"><i style="background-image:url(http://localhost:3100/work/booking.webp)"></i><div>Booking Platform<small>Next.js · Stripe</small></div></div>
+    <div class="card"><i style="background-image:url(http://localhost:3100/work/kataleya.webp)"></i><div>Kataleya Flowers<small>Next.js · Appwrite</small></div></div>
+  </div>
+</body>
+</html>
