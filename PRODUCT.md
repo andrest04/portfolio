@@ -12,13 +12,13 @@ Recruiters and tech leads evaluating Andrés Torres as a candidate, deciding whe
 
 ## Product Purpose
 
-A personal portfolio that presents Andrés Torres as a software engineer and gives an evaluator enough real evidence to take the next step. The site's calls to action are viewing the projects and downloading the CV.
+A personal portfolio that presents Andrés Torres as a software engineer and gives an evaluator enough real evidence to take the next step. The site's calls to action are downloading the CV, making contact, and opening a project.
 
 ## Positioning
 
-Andrés presents as a software engineer, not as a backend or frontend specialist. The current copy states the distinguishing claim: building backends and the apps on top of them, starting from the architecture. Real projects back this up, including a Tech Lead role and software for real businesses.
+Andrés presents as a general software engineer, not as a backend or frontend specialist and not as a list of technologies. Andrés asked for this on 2026-11-09: the page leads with work experience, in reverse order of time, and each project sits in the period where it began. Technologies appear as a short secondary line per item and are never the navigation.
 
-Open decision: the target role is deliberately not narrowed to one specialty.
+The target role is deliberately not narrowed to one specialty.
 
 ## Operating Context
 
@@ -26,16 +26,18 @@ Evaluators can verify the site's claims through live demos, GitHub repositories,
 
 ## Capabilities and Constraints
 
-- Sections: hero, work, experience and education, skills, about, contact.
+- Structure: an opening screen, one band per period of work with its projects, education with certifications, languages and a short skills list, and a closing contact band. A persistent rail links to every period, the CV, and contact.
 - Available in English and Spanish, with the language selected by cookie rather than by route. Content lives in `src/content/en.json` and `src/content/es.json`, and any copy change must cover both.
 - CV download, plus links to live demos and GitHub for each project.
 
 Factual limits:
 
-- Andrés is still a student: eighth term of Software Engineering at UPC. "Software engineer" is the chosen self-presentation; copy must not claim a completed degree or a professional title not yet held.
-- The current position is Frontend Intern at EDTeam, and this must stay stated accurately.
+- Andrés is still a student: ninth term of Software Engineering at UPC, August 2022 to July 2027 (expected). Copy must not claim a completed degree or a professional title not yet held, and Spanish copy must not use "Ingeniero de Software" as a title for Andrés.
+- The current position is Reporting intern at Teleperformance Perú, since August 2026, and this must stay stated accurately.
+- Attendia started from Twilio's open-source reference video app, and its copy must say so.
+- Project copy must not claim what the repositories do not support: no "2FA", "Cloudinary", or "e-commerce", no Firestore design or optimisation, and no payments work on the booking platform. `src/content/content.test.ts` checks the first three.
 
-Resolved: the contact statement addresses the primary audience, recruiters and tech leads: "Hiring? Let's talk." in English and "¿Estás contratando? Hablemos." in Spanish.
+The contact statement addresses the primary audience, recruiters and tech leads: "Hiring? Let's talk." in English and "¿Estás contratando? Hablemos." in Spanish.
 
 ## Brand Commitments
 
@@ -44,10 +46,10 @@ Resolved: the contact statement addresses the primary audience, recruiters and t
 
 ## Evidence on Hand
 
-- Projects: EduSpace (Tech Lead of a five-member team), Finance App, Booking Platform for an Italian client, and Kataleya Flowers (solo project for a flower shop in Lima). Screenshots are in `public/work/`.
-- Experience: EDTeam (Frontend Intern, Apr 2026 to present) and Mathyu's Solutions (Full-Stack Developer, Mar 2025 to Jul 2025).
-- Education: Software Engineering at UPC, top fifth of the class.
-- Portrait: `public/portrait.png`.
+- Experience: Teleperformance Perú (Reporting intern, Aug 2026 to present), EDteam (Frontend intern, Apr 2026 to May 2026), and Mathyu's Solutions (Full-Stack Developer, Mar 2025 to Jul 2025).
+- Six projects: Vozella (solo, beta, Windows only), Attendia, EduSpace (technical lead of a five-person university team), Kataleya Flowers (solo, in production for a flower shop in Lima), Booking Platform for recreational spaces in Italy (team of six at Mathyu's Solutions), and Finance App (solo). Screenshots are in `public/work/`; Attendia has none yet.
+- Education: Software Engineering at UPC, top fifth of the class ("Quinto Superior"). Six certifications. Languages: Spanish (native) and English (B1).
+- The CV, served from `/api/cv`.
 
 Absent from the current content, and not to be fabricated: testimonials, employer references, usage or performance metrics, press, and awards.
 
