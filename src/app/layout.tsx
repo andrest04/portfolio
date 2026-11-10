@@ -7,6 +7,7 @@ import "./globals.css";
 import { ErrorCopyProvider } from "@/components/layout/ErrorCopyProvider";
 import SiteFooter from "@/components/layout/SiteFooter";
 import { getDictionary, type Locale } from "@/lib/i18n";
+import { personJsonLd, SITE_URL } from "@/lib/site";
 
 /** One variable family: the width axis separates display from text, the weight axis does the rest. */
 const archivo = Archivo({
@@ -52,7 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: "https://andres-torres.com",
+      url: SITE_URL,
       siteName: "Andrés Torres",
       images: [
         {
@@ -92,6 +93,7 @@ export default async function RootLayout({
     <html lang={locale} className={archivo.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: SCRIPT_GATE }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: personJsonLd(t) }} />
       </head>
       <body>
         <a href="#main" className="skip-link">
