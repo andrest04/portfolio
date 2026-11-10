@@ -7,6 +7,9 @@ export type Locale = (typeof i18n)['locales'][number];
 
 export const LOCALE_COOKIE = 'NEXT_LOCALE';
 
+/** The form field the language switch posts. */
+export const LOCALE_FIELD = 'locale';
+
 const dictionaries = {
   en: () => import('@/content/en.json').then((module) => module.default),
   es: () => import('@/content/es.json').then((module) => module.default),

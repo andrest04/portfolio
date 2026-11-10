@@ -4,7 +4,7 @@ import { join } from "path";
 import { CONTACT } from "@/lib/contact";
 import { getDictionary, i18n, LOCALE_COOKIE } from "@/lib/i18n";
 
-const DOWNLOAD_NAME = "Andres_Torres_CV_Software_Engineer.pdf";
+const DOWNLOAD_NAME = "Andres_Torres_CV.pdf";
 
 async function readableFailure(request: NextRequest, reason: "missing" | "failed", status: number) {
   const cookie = request.cookies.get(LOCALE_COOKIE)?.value;
