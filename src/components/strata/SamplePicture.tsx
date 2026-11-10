@@ -1,36 +1,14 @@
 import Image from "next/image";
-import type { Dictionary, Project } from "@/types/i18n";
+import type { Project } from "@/types/i18n";
 
-/** The picture column is 7/12 of the content from 1280px, and the full content width below it. */
+/**
+ * The rendered width of a picture: 7/12 of the content beside the rail from 1280px (capped
+ * from 1920px), and the full content width between the gutters below that.
+ */
 const SIZES =
-  "(min-width: 1920px) 900px, (min-width: 1280px) 50vw, (min-width: 960px) calc(100vw - 280px), calc(100vw - 40px)";
+  "(min-width: 1920px) 868px, (min-width: 1280px) 45vw, (min-width: 960px) calc(91vw - 150px), (min-width: 445px) 91vw, calc(100vw - 40px)";
 
-type SamplePictureProps = {
-  image: Project["image"];
-  copy: Dictionary["record"]["missingPicture"];
-};
-
-export default function SamplePicture({ image, copy }: SamplePictureProps) {
-  if (!image) {
-    return (
-      <div className="sample__picture blank">
-        <svg
-          className="blank__cross"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M0 0 100 100M100 0 0 100" vectorEffect="non-scaling-stroke" />
-        </svg>
-        <p className="blank__label">
-          <strong className="label">{copy.title}</strong>
-          <span>{copy.body}</span>
-        </p>
-      </div>
-    );
-  }
-
+export default function SamplePicture({ image }: { image: Project["image"] }) {
   return (
     <figure className="sample__picture">
       <Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes={SIZES} />

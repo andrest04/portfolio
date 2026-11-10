@@ -13,6 +13,8 @@ type HeroProps = {
 };
 
 export default function Hero({ t, recordId, below, numbered }: HeroProps) {
+  const tagged = (stratum: Stratum) => samplesOf(stratum.projects, numbered);
+
   return (
     <div className="hero">
       <div className="hero__sheet">
@@ -43,13 +45,15 @@ export default function Hero({ t, recordId, below, numbered }: HeroProps) {
                 <span className="peek__title">{stratumTitle(stratum.company, stratum.role)}</span>
                 <span className="stratum__when">{stratum.period}</span>
               </span>
-              <span className="peek__tags tags">
-                {samplesOf(stratum.projects, numbered).map(({ project, number }) => (
-                  <span key={project.id} className="tag">
-                    {t.record.sample} {number} · {project.name}
-                  </span>
-                ))}
-              </span>
+              {tagged(stratum).length > 0 && (
+                <span className="peek__tags tags">
+                  {tagged(stratum).map(({ project, number }) => (
+                    <span key={project.id} className="tag">
+                      {t.record.sample} {number} · {project.name}
+                    </span>
+                  ))}
+                </span>
+              )}
             </a>
           </li>
         ))}

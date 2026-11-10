@@ -23,7 +23,7 @@ export default function Stratum({ stratum, tone, edge, numbered, t, lead, entryI
   return (
     <section id={stratum.id} className={`stratum tone--${tone}`} aria-labelledby={titleId}>
       {lead}
-      <div className="stratum__body" id={entryId}>
+      <div className="stratum__body" id={entryId} data-settle>
         <StratumEdge variant={edge} />
         <div className="stratum__inner">
           <header className="stratum__head">
@@ -33,15 +33,17 @@ export default function Stratum({ stratum, tone, edge, numbered, t, lead, entryI
             <p className="stratum__when">
               {stratum.period}, {stratum.location}
             </p>
-            <ul className="tags">
-              {samples.map(({ project, number }) => (
-                <li key={project.id}>
-                  <a className="tag" href={`#sample-${project.id}`}>
-                    {t.record.sample} {number} · {project.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {samples.length > 0 && (
+              <ul className="tags">
+                {samples.map(({ project, number }) => (
+                  <li key={project.id}>
+                    <a className="tag" href={`#sample-${project.id}`}>
+                      {t.record.sample} {number} · {project.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </header>
 
           <ul className="points">
@@ -50,11 +52,14 @@ export default function Stratum({ stratum, tone, edge, numbered, t, lead, entryI
             ))}
           </ul>
 
-          <div className="samples">
-            {samples.map((sample) => (
-              <Sample key={sample.project.id} sample={sample} t={t} />
-            ))}
-          </div>
+          {/* A period may have no sample: the entry then stands on its own points. */}
+          {samples.length > 0 && (
+            <div className="samples">
+              {samples.map((sample) => (
+                <Sample key={sample.project.id} sample={sample} t={t} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

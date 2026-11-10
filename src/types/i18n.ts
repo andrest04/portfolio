@@ -14,7 +14,7 @@ export interface Stratum {
   role: string | null;
   location: string;
   points: string[];
-  /** Ids of the projects that began in this period, in page order. */
+  /** Ids of the projects that began in this period, in page order. May be empty. */
   projects: string[];
 }
 
@@ -30,13 +30,13 @@ export interface Project {
     live: string | null;
     github: string | null;
   };
-  /** Null until a real screenshot exists; the page then shows a labelled blank. */
+  /** A real screenshot of the project, shown whole. */
   image: {
     src: string;
     alt: string;
     width: number;
     height: number;
-  } | null;
+  };
 }
 
 export interface Dictionary {
@@ -77,10 +77,6 @@ export interface Dictionary {
     tech: string;
     live: string;
     github: string;
-    missingPicture: {
-      title: string;
-      body: string;
-    };
   };
   strata: Stratum[];
   projects: Project[];

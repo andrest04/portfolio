@@ -7,7 +7,7 @@ type Json = string | number | boolean | null | Json[] | { [key: string]: Json };
 type Project = {
   id: string;
   links: { live: string | null; github: string | null };
-  image: { src: string; alt: string; width: number; height: number } | null;
+  image: { src: string; alt: string; width: number; height: number };
 };
 
 type Content = {
@@ -65,11 +65,9 @@ for (const locale of LOCALES) {
     }
   });
 
-  test(`${locale}: every project picture is an explicit null or a described file in /work`, () => {
+  test(`${locale}: every project has a described picture in /work`, () => {
     for (const project of loadContent(locale).projects) {
-      assert.ok("image" in project, `${project.id}: image must be present`);
-      if (project.image === null) continue;
-
+      assert.ok(project.image, `${project.id}: image must be present`);
       assert.match(project.image.src, /^\/work\/[\w-]+\.(png|webp)$/, `${project.id}: image.src`);
       assert.ok(project.image.alt.trim().length > 0, `${project.id}: image.alt`);
       assert.ok(project.image.width > 0 && project.image.height > 0, `${project.id}: image size`);
@@ -107,7 +105,7 @@ test("both languages place the same projects in the same strata, with the same l
     projects: content.projects.map(({ id, links, image }) => ({
       id,
       links,
-      image: image && { src: image.src, width: image.width, height: image.height },
+      image: { src: image.src, width: image.width, height: image.height },
     })),
   });
 

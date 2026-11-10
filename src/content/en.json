@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Andrés Torres, software engineering student in Lima",
-    "description": "Portfolio of Andrés Torres: reporting intern at Teleperformance Perú and ninth-term Software Engineering student at UPC. Work experience, six projects with code and live links, and the CV.",
+    "description": "Portfolio of Andrés Torres: reporting intern at Teleperformance Perú and ninth-term Software Engineering student at UPC. Work experience, five projects with code and live links, and the CV.",
     "skipLink": "Skip to content",
     "switchLanguage": "Cambiar el idioma a español",
     "otherLanguage": "Español",
@@ -35,11 +35,7 @@
     "facts": "On record",
     "tech": "Built with",
     "live": "Live site",
-    "github": "GitHub",
-    "missingPicture": {
-      "title": "No screenshot yet",
-      "body": "A real capture goes here once one is taken."
-    }
+    "github": "GitHub"
   },
   "strata": [
     {
@@ -69,7 +65,7 @@
         "I tracked my tasks on Kanban boards in Notion and kept versions in GitLab. My changes went out through reviewed pull requests, validated with my own tests before production.",
         "I worked with Spec-Driven Development flows, supported by AI tools (Claude Code) and custom skills."
       ],
-      "projects": ["attendia"]
+      "projects": []
     },
     {
       "id": "independent",
@@ -119,24 +115,6 @@
         "width": 1475,
         "height": 1028
       }
-    },
-    {
-      "id": "attendia",
-      "name": "Attendia",
-      "period": "May to November 2026",
-      "what": "A Spanish-language virtual classroom with video and chat, where teachers see a live attention gauge and get reports on each class.",
-      "did": "It started from Twilio's open-source reference video app. I added the classroom layer on top: roles, attention tracking, recording, the teacher dashboard and the server API.",
-      "facts": [
-        "21 server routes, with about 536 server tests",
-        "CI runs lint, type checks, tests and the build",
-        "Deployed on Azure Container Apps"
-      ],
-      "tech": ["React", "Express", "Twilio Video", "Firebase"],
-      "links": {
-        "live": "https://attendia.purplemushroom-1f6e5ae3.brazilsouth.azurecontainerapps.io/",
-        "github": "https://github.com/andrest04/attendia"
-      },
-      "image": null
     },
     {
       "id": "eduspace",

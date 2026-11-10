@@ -65,7 +65,7 @@ export default function Sample({ sample, t }: SampleProps) {
         </p>
       </div>
 
-      <SamplePicture image={project.image} copy={record.missingPicture} />
+      <SamplePicture image={project.image} />
     </article>
   );
 }
