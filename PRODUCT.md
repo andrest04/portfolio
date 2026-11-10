@@ -34,7 +34,6 @@ Factual limits:
 
 - Andrés is still a student: ninth term of Software Engineering at UPC, August 2022 to July 2027 (expected). Copy must not claim a completed degree or a professional title not yet held, and Spanish copy must not use "Ingeniero de Software" as a title for Andrés.
 - The current position is Reporting intern at Teleperformance Perú, since August 2026, and this must stay stated accurately.
-- Attendia started from Twilio's open-source reference video app, and its copy must say so.
 - Project copy must not claim what the repositories do not support: no "2FA", "Cloudinary", or "e-commerce", no Firestore design or optimisation, and no payments work on the booking platform. `src/content/content.test.ts` checks the first three.
 
 The contact statement addresses the primary audience, recruiters and tech leads: "Hiring? Let's talk." in English and "¿Estás contratando? Hablemos." in Spanish.
@@ -47,7 +46,7 @@ The contact statement addresses the primary audience, recruiters and tech leads:
 ## Evidence on Hand
 
 - Experience: Teleperformance Perú (Reporting intern, Aug 2026 to present), EDteam (Frontend intern, Apr 2026 to May 2026), and Mathyu's Solutions (Full-Stack Developer, Mar 2025 to Jul 2025).
-- Six projects: Vozella (solo, beta, Windows only), Attendia, EduSpace (technical lead of a five-person university team), Kataleya Flowers (solo, in production for a flower shop in Lima), Booking Platform for recreational spaces in Italy (team of six at Mathyu's Solutions), and Finance App (solo). Screenshots are in `public/work/`; Attendia has none yet.
+- Five projects: Vozella (solo, beta, Windows only), EduSpace (technical lead of a five-person university team), Kataleya Flowers (solo, in production for a flower shop in Lima), Booking Platform for recreational spaces in Italy (team of six at Mathyu's Solutions), and Finance App (solo). Screenshots are in `public/work/`. Attendia was left out on 2026-11-09 because no product screen can be captured without a production login.
 - Education: Software Engineering at UPC, top fifth of the class ("Quinto Superior"). Six certifications. Languages: Spanish (native) and English (B1).
 - The CV, served from `/api/cv`.
 
