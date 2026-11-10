@@ -6,6 +6,8 @@ export interface Tick {
 
 export interface Stratum {
   id: string;
+  /** The employer or the kind of work in a word or two, for the rail. */
+  short: string;
   tick: Tick;
   /** The period in words, as shown beside the heading. */
   period: string;
@@ -20,6 +22,8 @@ export interface Stratum {
 
 export interface Project {
   id: string;
+  /** Who built it and where it stands, in a few words, for the project index. */
+  role: string;
   name: string;
   period: string;
   what: string;
@@ -56,7 +60,6 @@ export interface Dictionary {
   };
   rail: {
     label: string;
-    title: string[];
     jump: string;
     cv: string;
     contact: string;
@@ -64,14 +67,13 @@ export interface Dictionary {
   hero: {
     name: string;
     headline: string;
-    datum: string;
     status: string;
     ctaPrimary: string;
     ctaSecondary: string;
-    below: string;
+    projects: string;
   };
   record: {
-    sample: string;
+    project: string;
     did: string;
     facts: string;
     tech: string;
@@ -82,6 +84,7 @@ export interface Dictionary {
   projects: Project[];
   bedrock: {
     id: string;
+    short: string;
     tick: Tick;
     period: string;
     school: string;
@@ -102,12 +105,9 @@ export interface Dictionary {
         level: string;
       }>;
     };
-    skills: {
+    tools: {
       title: string;
-      groups: Array<{
-        title: string;
-        items: string[];
-      }>;
+      summary: string;
     };
   };
   contact: {
@@ -121,6 +121,7 @@ export interface Dictionary {
     linkedinLabel: string;
     githubLabel: string;
     cvLabel: string;
+    cvLink: string;
   };
   footer: {
     signature: string;

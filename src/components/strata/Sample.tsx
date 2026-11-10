@@ -1,31 +1,28 @@
 import ExternalLink from "@/components/layout/ExternalLink";
 import { ArrowOutIcon } from "@/components/strata/Icons";
 import SamplePicture from "@/components/strata/SamplePicture";
-import type { NumberedSample } from "@/components/strata/samples";
-import type { Dictionary } from "@/types/i18n";
+import { projectAnchor } from "@/components/strata/samples";
+import type { Dictionary, Project } from "@/types/i18n";
 
 type SampleProps = {
-  sample: NumberedSample;
+  project: Project;
   t: Dictionary;
 };
 
-export default function Sample({ sample, t }: SampleProps) {
-  const { project, number } = sample;
+export default function Sample({ project, t }: SampleProps) {
   const { record } = t;
-  const titleId = `sample-${project.id}-title`;
+  const anchor = projectAnchor(project.id);
+  const titleId = `${anchor}-title`;
   const links = [
     { href: project.links.live, label: record.live },
     { href: project.links.github, label: record.github },
   ];
 
   return (
-    <article id={`sample-${project.id}`} className="sample" aria-labelledby={titleId}>
+    <article id={anchor} className="sample" aria-labelledby={titleId}>
       <div className="sample__text">
         <h3 id={titleId} className="sample__title">
-          <span className="tag">
-            {record.sample} {number}
-          </span>{" "}
-          {project.name}
+          <span className="tag">{record.project}</span> {project.name}
         </h3>
         <p className="sample__period">{project.period}</p>
         <p className="sample__what">{project.what}</p>

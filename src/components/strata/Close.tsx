@@ -15,27 +15,29 @@ export default function Close({ t, edge }: { t: Dictionary; edge: number }) {
   const [user, domain] = CONTACT.email.split("@");
 
   return (
-    <section id={c.id} className="stratum tone--ochre" aria-labelledby={titleId} data-settle>
+    <section id={c.id} className="stratum tone--ochre" aria-labelledby={titleId} tabIndex={-1} data-settle>
       <StratumEdge variant={edge} />
       <div className="close__inner">
         <h2 id={titleId} className="close__statement">
           {c.statement}
         </h2>
         <p className="close__lead">{c.lead}</p>
-        <a href={`mailto:${CONTACT.email}`} className="button close__email">
-          <span className="sr-only">{c.emailLabel}: </span>
-          <span>
-            {user}
-            <wbr />@{domain}
-          </span>
+        {/* The label keeps the address whole for assistive technology; the break is visual only. */}
+        <a
+          href={`mailto:${CONTACT.email}`}
+          className="button close__email"
+          aria-label={`${c.emailLabel}: ${CONTACT.email}`}
+        >
+          {user}
+          <wbr />@{domain}
         </a>
 
         <dl className="close__links">
           <div>
             <dt className="label">{c.cvLabel}</dt>
             <dd>
-              <a href="/api/cv" className="link">
-                {t.hero.ctaSecondary}
+              <a href="/api/cv" className="link" download>
+                {c.cvLink}
                 <ArrowDownIcon />
               </a>
             </dd>

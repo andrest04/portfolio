@@ -1,24 +1,33 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import LangSwitch from "@/components/layout/LangSwitch";
 import { ArrowDownIcon, ChevronIcon } from "@/components/strata/Icons";
+import type { Locale } from "@/lib/i18n";
 import type { Dictionary, Tick } from "@/types/i18n";
 
 export type RailStop = {
+  /** The band the tick links to. */
   id: string;
+  /** The element whose top edge decides when the band has been reached: its head. */
+  headId: string;
+  /** The employer or kind of work, in a word or two. */
+  name: string;
   tick: Tick;
-  /** Who or what the period belongs to: the employer, or the school. */
-  title: string;
 };
 
 type DepthRailProps = {
   stops: RailStop[];
   labels: Dictionary["rail"];
   contactId: string;
+  /** Shown at the top of the column as the way back to the start. */
+  home: string;
+  locale: Locale;
+  language: { label: string; accessibleLabel: string };
 };
 
-/** A line just above the middle of the viewport: the band crossing it is the current one. */
-const READING_LINE = "-45% 0px -55% 0px";
+/** A band becomes the current one when its head has risen to this share of the viewport height. */
+const READING_LINE = 0.38;
 
 const MENU_ID = "rail-menu";
 
@@ -27,33 +36,50 @@ const MENU_ID = "rail-menu";
  * without script; script adds the current-period marker and the small-screen jump menu.
  * Until script runs the rail names no period, because it cannot know where the reader is.
  */
-export default function DepthRail({ stops, labels, contactId }: DepthRailProps) {
+export default function DepthRail({ stops, labels, contactId, home, locale, language }: DepthRailProps) {
   const [current, setCurrent] = useState(stops[0]?.id);
-  /* False until the observer has reported once: before that no link claims to be the current one. */
+  /* False until the position has been read once: before that no link claims to be the current one. */
   const [tracked, setTracked] = useState(false);
   const [open, setOpen] = useState(false);
-  const rail = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
   const column = useRef<HTMLOListElement>(null);
   const marker = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setCurrent(entry.target.id);
-        }
-        setTracked(true);
-      },
-      { rootMargin: READING_LINE },
-    );
+    const heads = [...stops.map((stop) => ({ id: stop.id, head: document.getElementById(stop.headId) })), { id: contactId, head: document.getElementById(contactId) }];
 
-    for (const id of [...stops.map((stop) => stop.id), contactId]) {
-      const band = document.getElementById(id);
-      if (band) observer.observe(band);
-    }
+    /* The current band is the last one whose head has crossed the reading line. A head
+       still waiting at the bottom of the viewport is below the line, so it does not count. */
+    const read = () => {
+      const line = window.innerHeight * READING_LINE;
+      let reached = heads[0].id;
+      for (const { id, head } of heads) {
+        if (head && head.getBoundingClientRect().top <= line) reached = id;
+      }
+      setCurrent(reached);
+      setTracked(true);
+    };
 
-    return () => observer.disconnect();
+    /* Read on scroll, once per frame: a jump can carry a head past the line without it
+       ever resting there, so watching for the crossing alone would miss it. */
+    let frame = 0;
+    const schedule = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        read();
+      });
+    };
+
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
   }, [stops, contactId]);
 
   /* The marker is one bar that travels to the current tick, so a change of period reads as movement. */
@@ -74,22 +100,14 @@ export default function DepthRail({ stops, labels, contactId }: DepthRailProps) 
   useEffect(() => {
     if (!open) return;
 
-    const close = (event: Event) => {
-      if (event instanceof KeyboardEvent) {
-        if (event.key !== "Escape") return;
-        toggle.current?.focus();
-      } else if (rail.current?.contains(event.target as Node)) {
-        return;
-      }
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      toggle.current?.focus();
       setOpen(false);
     };
 
-    document.addEventListener("pointerdown", close);
-    document.addEventListener("keydown", close);
-    return () => {
-      document.removeEventListener("pointerdown", close);
-      document.removeEventListener("keydown", close);
-    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
   }, [open]);
 
   const currentStop = stops.find((stop) => stop.id === current);
@@ -97,30 +115,28 @@ export default function DepthRail({ stops, labels, contactId }: DepthRailProps) 
 
   const ticks = stops.map((stop) => (
     <li key={stop.id}>
-      <a
-        href={`#${stop.id}`}
-        className="tick"
-        aria-current={marks(stop.id)}
-        onClick={() => setOpen(false)}
-      >
-        <span className="tick__year">{stop.tick.year}</span>
-        <span className="tick__note">{stop.tick.note}</span>
-        <span className="tick__title">{stop.title}</span>
+      <a href={`#${stop.id}`} className="tick" aria-current={marks(stop.id)} onClick={() => setOpen(false)}>
+        <span className="tick__name">{stop.name}</span>{" "}
+        <span className="tick__when">
+          {stop.tick.year} · {stop.tick.note}
+        </span>
       </a>
     </li>
   ));
 
   return (
-    <nav className="rail tone--basalt" aria-label={labels.label} ref={rail}>
-      <p className="rail__title">
-        {labels.title.map((line) => (
-          <span key={line} className="block">
-            {line}{" "}
-          </span>
-        ))}
-      </p>
+    <nav className="rail tone--basalt" aria-label={labels.label}>
+      <a href="#top" className="rail__home">
+        {home}
+      </a>
 
-      <div className="rail__jump">
+      {/* Focus or a press leaving the menu and its button closes it, so it never covers the focused control. */}
+      <div
+        className="rail__jump"
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+        }}
+      >
         <button
           type="button"
           className="rail__toggle"
@@ -130,28 +146,14 @@ export default function DepthRail({ stops, labels, contactId }: DepthRailProps) 
           onClick={() => setOpen((wasOpen) => !wasOpen)}
         >
           <span className="sr-only">{labels.jump}: </span>
-          {currentStop ? (
-            <span className="rail__now">
-              <b>{currentStop.tick.year}</b>
-              <span className="tick__note">{currentStop.tick.note}</span>
-            </span>
-          ) : (
-            <span className="rail__now">
-              <b>{labels.contact}</b>
-            </span>
-          )}
+          <span className="rail__now">{currentStop ? currentStop.name : labels.contact}</span>
           <ChevronIcon />
         </button>
         <ol className="rail__menu" id={MENU_ID} data-open={open}>
           {ticks}
           <li>
-            <a
-              href={`#${contactId}`}
-              className="tick"
-              aria-current={marks(contactId)}
-              onClick={() => setOpen(false)}
-            >
-              <span className="tick__word">{labels.contact}</span>
+            <a href={`#${contactId}`} className="tick" aria-current={marks(contactId)} onClick={() => setOpen(false)}>
+              <span className="tick__name">{labels.contact}</span>
             </a>
           </li>
         </ol>
@@ -166,19 +168,18 @@ export default function DepthRail({ stops, labels, contactId }: DepthRailProps) 
 
       <ul className="rail__actions">
         <li>
-          <a href="/api/cv" className="link">
+          <a href="/api/cv" className="link" download>
             {labels.cv}
             <ArrowDownIcon />
           </a>
         </li>
         <li className="rail__contact">
-          <a
-            href={`#${contactId}`}
-            className="link"
-            aria-current={marks(contactId)}
-          >
+          <a href={`#${contactId}`} className="link" aria-current={marks(contactId)}>
             {labels.contact}
           </a>
+        </li>
+        <li className="rail__language">
+          <LangSwitch locale={locale} label={language.label} accessibleLabel={language.accessibleLabel} />
         </li>
       </ul>
     </nav>

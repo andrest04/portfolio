@@ -26,14 +26,11 @@
   /* Type scale */
   --font-body: var(--font-archivo), "Arial Narrow", Arial, sans-serif;
   --text-xs: 0.8125rem;
-  --text-sm: 0.875rem;
   --text-tag: 0.9375rem;
   --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
   --text-lead: clamp(1.125rem, 1.02rem + 0.45vw, 1.375rem);
   --text-h3: clamp(1.5rem, 1.25rem + 1.1vw, 2.125rem);
-  --text-h2: clamp(1.625rem, 1.1rem + min(2.4vw, 3.6svh), 2.875rem);
-  --text-display: clamp(2.25rem, min(11vw, 11svh), 6rem);
-  --text-statement: clamp(2.5rem, 8vw, 6rem);
+  --text-display: clamp(2.25rem, min(11vw, 10.5svh), 6rem);
   --leading-display: 0.95;
   --leading-heading: 1.08;
   --leading-body: 1.5;
@@ -44,7 +41,8 @@
   --weight-text: 400;
   --weight-strong: 700;
   --weight-display: 800;
-  --measure: 68ch;
+  /* About 75 characters of this face: its zero is wider than its average letter. */
+  --measure: 56ch;
 
   /* Lines */
   --rule: 2px;
@@ -58,7 +56,11 @@
   --rail-w: 0rem;
   --rail-pad: 1.25rem;
   --bar-h: 3.5rem;
-  --masthead-h: clamp(3.5rem, 9svh, 5.5rem);
+  --masthead-h: 0rem;
+  /* The head of a band: one line of text, plus the boundary the next head draws over it. */
+  --strip-line: 2.75rem;
+  --strip-edge: clamp(0.5rem, 1vw, 0.875rem);
+  --strip-h: calc(var(--strip-line) + var(--strip-edge));
   --edge-h: clamp(0.875rem, 1.8vw, 1.75rem);
   --peek-pad: clamp(0.75rem, 2.6svh, 1.625rem);
   --button-h: 3.5rem;
@@ -82,10 +84,23 @@
   }
 }
 
+@media (min-width: 48rem) {
+  :root {
+    --masthead-h: clamp(3.5rem, 9svh, 5.5rem);
+  }
+}
+
 @media (min-width: 60rem) {
   :root {
-    --rail-w: 9.375rem;
+    --rail-w: 11.5rem;
     --bar-h: 0rem;
+  }
+}
+
+@media (min-width: 75rem) {
+  :root {
+    /* Beside the project index the headline also answers to the width it has left. */
+    --text-display: clamp(2.25rem, min(6.1vw, 10.5svh), 6rem);
   }
 }
 
@@ -160,6 +175,17 @@ body:has(.rail) {
   padding-left: var(--rail-w);
 }
 
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+/* A place an in-page link leads to takes focus without a ring: nothing was activated on it. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
 h1,
 h2,
 h3 {
@@ -178,10 +204,6 @@ h3 {
 :focus-visible {
   outline: var(--rule-heavy) solid var(--ink);
   outline-offset: var(--rule-heavy);
-}
-
-main:focus {
-  outline: none;
 }
 
 .skip-link {
@@ -246,7 +268,7 @@ main:focus {
   min-height: var(--target);
   margin-inline: calc(var(--space-1) * -1);
   padding-inline: var(--space-1);
-  font-size: var(--text-sm);
+  font-size: var(--text-tag);
   font-weight: var(--weight-strong);
   letter-spacing: var(--tracking-label);
   text-decoration: underline;
@@ -328,7 +350,7 @@ a.tag:hover {
   pointer-events: none;
 }
 
-/* Masthead: sits on the surface band and scrolls away with it. */
+/* Masthead: the page's navigation, on the surface band from tablet width up. */
 
 .masthead {
   position: absolute;
@@ -336,18 +358,19 @@ a.tag:hover {
   right: 0;
   left: var(--rail-w);
   z-index: 10;
-  display: flex;
+  display: none;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
+  justify-content: flex-end;
   height: var(--masthead-h);
   padding-inline: var(--gutter);
   --ground: var(--ochre);
   --ink: var(--basalt);
 }
 
-.masthead__name {
-  text-decoration: none;
+@media (min-width: 48rem) {
+  .masthead {
+    display: flex;
+  }
 }
 
 .masthead__links {
@@ -356,21 +379,15 @@ a.tag:hover {
   gap: var(--space-5);
 }
 
-.masthead__links li:not(:last-child) {
-  display: none;
-}
-
-@media (min-width: 48rem) {
-  .masthead__links li:not(:last-child) {
-    display: block;
-  }
+.lang-form {
+  display: flex;
 }
 
 .lang-switch {
   cursor: pointer;
 }
 
-.lang-switch:disabled {
+.lang-switch[aria-disabled="true"] {
   cursor: progress;
   text-decoration: underline dotted;
   text-decoration-thickness: var(--rule);
@@ -390,29 +407,25 @@ a.tag:hover {
   padding-inline: var(--gutter);
 }
 
-.rail__title,
+.rail__home,
 .rail__ticks {
   display: none;
 }
 
-.rail__title {
-  font-size: var(--text-xs);
-  font-weight: var(--weight-strong);
-  letter-spacing: var(--tracking-label);
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
 .rail__jump {
   display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .rail__toggle {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  min-width: 0;
   min-height: 100%;
   cursor: pointer;
+  font-weight: var(--weight-strong);
 }
 
 .rail__toggle .icon {
@@ -428,16 +441,9 @@ a.tag:hover {
 }
 
 .rail__now {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.rail__now b {
-  font-size: var(--text-lead);
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
 }
 
 .rail__menu {
@@ -459,6 +465,7 @@ a.tag:hover {
 
 .rail__actions {
   display: flex;
+  flex: none;
   align-items: center;
   gap: var(--space-4);
   white-space: nowrap;
@@ -469,21 +476,18 @@ a.tag:hover {
   display: none;
 }
 
-.tick__word {
-  grid-column: 1 / -1;
-  font-size: var(--text-lead);
-  font-weight: var(--weight-strong);
-}
-
-.rail__actions .link[aria-current] {
-  color: var(--ochre);
+/* The language switch rides in the bar only while the masthead is not on screen. */
+@media (min-width: 48rem) {
+  .rail__actions .rail__language {
+    display: none;
+  }
 }
 
 .tick {
   position: relative;
   display: grid;
-  grid-template-columns: 4.5rem 5.5rem minmax(0, 1fr);
-  align-items: baseline;
+  align-content: center;
+  gap: var(--space-1);
   min-height: var(--button-h);
   padding-block: var(--space-3);
   border-top: var(--rule) solid currentColor;
@@ -491,7 +495,35 @@ a.tag:hover {
   transition: color var(--dur-fast) var(--ease-out);
 }
 
-/* The current period: a bar over the tick. In the column one bar travels between ticks. */
+.tick__name {
+  font-weight: var(--weight-strong);
+  line-height: 1.2;
+  text-decoration: underline transparent;
+  text-decoration-thickness: var(--rule);
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+.tick__when {
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* Hover is an underline; the current period is the bar, the ochre and the heavier name. */
+.tick:hover .tick__name {
+  text-decoration-color: currentColor;
+}
+
+.js .tick[aria-current] {
+  color: var(--ochre);
+}
+
+.js .tick[aria-current] .tick__name {
+  font-weight: var(--weight-display);
+}
+
 .rail__menu .tick[aria-current]::before,
 .rail__marker {
   content: "";
@@ -519,28 +551,6 @@ a.tag:hover {
   outline-offset: calc(var(--rule-heavy) * -1);
 }
 
-.tick:hover,
-.js .tick[aria-current] {
-  color: var(--ochre);
-}
-
-.tick__year {
-  font-size: var(--text-h3);
-  font-variant-numeric: tabular-nums;
-  font-weight: var(--weight-strong);
-  line-height: 1;
-}
-
-.tick__note {
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-}
-
-.tick__title {
-  font-size: var(--text-base);
-}
-
 @media (min-width: 60rem) {
   .rail {
     inset: 0 auto 0 0;
@@ -558,48 +568,31 @@ a.tag:hover {
     display: none;
   }
 
-  .rail__title {
+  .rail__home {
     display: block;
     padding: 0 var(--rail-pad) var(--space-5);
+    font-size: var(--text-lead);
+    font-stretch: var(--width-display);
+    font-weight: var(--weight-display);
+    line-height: 1.1;
+    text-decoration: underline transparent;
+    text-decoration-thickness: var(--rule);
+    text-underline-offset: 0.2em;
+  }
+
+  .rail__home:hover {
+    text-decoration-color: currentColor;
   }
 
   .rail__ticks {
     position: relative;
     display: grid;
     align-content: start;
-    gap: clamp(var(--space-1), 1.6svh, var(--space-4));
+    gap: clamp(var(--space-1), 1.2svh, var(--space-3));
   }
 
   .rail__ticks .tick {
-    display: block;
-    padding: var(--space-2) var(--rail-pad) var(--space-3);
-  }
-
-  .rail__ticks .tick__year,
-  .rail__ticks .tick__note {
-    display: block;
-  }
-
-  .rail__ticks .tick__year {
-    margin-bottom: var(--space-1);
-  }
-
-  /* The employer is in the page beside the rail; here it is for screen readers only. */
-  .rail__ticks .tick__title {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  .rail__actions .rail__contact {
-    display: block;
-  }
-
-  .js .rail__marker {
-    display: block;
+    padding-inline: var(--rail-pad);
   }
 
   .rail__actions {
@@ -609,14 +602,23 @@ a.tag:hover {
     margin-top: auto;
     padding: var(--space-5) var(--rail-pad) 0;
   }
+
+  .rail__actions .rail__contact {
+    display: block;
+  }
+
+  .js .rail__marker {
+    display: block;
+  }
 }
 
-/* Surface: the first screen */
+/* Surface: the opening screen. Who he is on the left, what he has built on the right. */
 
-.hero__sheet {
+.hero {
   display: grid;
-  gap: clamp(var(--space-5), 5svh, var(--space-7));
-  padding: calc(var(--masthead-h) + var(--space-2)) var(--gutter) calc(var(--space-7) + var(--edge-h));
+  gap: var(--space-6) var(--space-7);
+  max-width: var(--content-max);
+  padding: max(var(--space-6), calc(var(--masthead-h) + var(--space-2))) var(--gutter) var(--space-5);
 }
 
 .hero__headline {
@@ -625,18 +627,14 @@ a.tag:hover {
   line-height: var(--leading-display);
 }
 
-.hero__datum {
+.hero__when {
   margin-top: var(--space-4);
   font-size: var(--text-lead);
 }
 
-.hero__meta {
-  display: grid;
-  gap: var(--space-5);
-}
-
 .hero__status {
   max-width: 44rem;
+  margin-top: clamp(var(--space-4), 3svh, var(--space-6));
   font-size: var(--text-lead);
   line-height: 1.3;
 }
@@ -646,88 +644,164 @@ a.tag:hover {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3) var(--space-5);
+  margin-top: clamp(var(--space-4), 3svh, var(--space-5));
 }
 
 .hero__actions .link {
   font-size: var(--text-base);
 }
 
-@media (min-width: 48rem) {
-  .hero__meta {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: end;
-  }
+/* The project index: a plain ruled list, one line of name and one of who built it. */
+
+.index__title {
+  padding-bottom: var(--space-2);
 }
 
-.peek {
-  position: relative;
+.index li {
+  border-top: var(--rule) solid currentColor;
 }
 
-.peek a {
-  display: block;
-  padding: var(--peek-pad) var(--gutter) calc(var(--peek-pad) + var(--edge-h));
+.index__row {
+  display: grid;
+  align-content: center;
+  min-height: max(3.25rem, var(--target));
+  padding-block: var(--space-1);
+  line-height: 1.25;
   text-decoration: none;
 }
 
-.peek a:focus-visible {
-  outline-offset: calc(var(--rule-heavy) * -2);
+.index__name {
+  font-size: var(--text-lead);
+  font-stretch: var(--width-display);
+  font-weight: var(--weight-display);
+  text-decoration: underline transparent;
+  text-decoration-thickness: var(--rule);
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
 }
 
-.peek__row {
+.index__row:hover .index__name {
+  text-decoration-color: currentColor;
+}
+
+.index__row:active {
+  transform: translateY(1px);
+}
+
+@media (min-width: 75rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) clamp(16.5rem, 22vw, 24rem);
+    align-items: start;
+  }
+}
+
+/* The head of a band: its name on the left, its dates on the right, in its own tone,
+   under its own boundary. The name is the band's heading and a link to it. */
+
+.strip {
+  position: relative;
+}
+
+.strip .edge {
+  height: var(--strip-edge);
+}
+
+.strip__row {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0 var(--space-5);
+  gap: var(--space-1) var(--space-5);
+  max-width: var(--content-max);
+  padding: var(--space-6) var(--gutter) 0;
 }
 
-.peek__title {
-  font-size: var(--text-h2);
-  font-stretch: var(--width-display);
-  font-weight: var(--weight-display);
-  letter-spacing: var(--tracking-display);
+.strip__name {
+  font-size: var(--text-h3);
   line-height: var(--leading-heading);
+}
+
+.strip__name a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
   text-decoration: underline transparent;
   text-decoration-thickness: var(--rule-heavy);
   text-underline-offset: 0.16em;
   transition: text-decoration-color var(--dur-fast) var(--ease-out);
 }
 
-.peek a:hover .peek__title {
+.strip__name a:hover {
   text-decoration-color: currentColor;
 }
 
-.peek__tags {
-  margin-top: var(--space-2);
+.strip__when {
+  font-size: var(--text-lead);
 }
 
-/* A stratum: one period, its entry and the samples that began in it. */
+/* On a wide, tall screen the heads of the bands still below wait at the bottom edge of the
+   viewport, each resting on the ones after it, and let go when the reader reaches them.
+   Anything a link or Tab scrolls to stops above that stack. */
 
-.stratum,
-.stratum__body {
+@media (min-width: 75rem) and (min-height: 40rem) {
+  /* The room for the next head's boundary belongs to the strip, not to its row, so no
+     link is ever under that boundary. */
+  .strip {
+    position: sticky;
+    bottom: calc(var(--below) * var(--strip-h));
+    padding-bottom: var(--strip-edge);
+  }
+
+  .strip__row {
+    flex-wrap: nowrap;
+    align-items: center;
+    height: var(--strip-line);
+    padding-block: 0;
+    white-space: nowrap;
+  }
+
+  .strip__name {
+    overflow: hidden;
+    line-height: var(--strip-line);
+    text-overflow: ellipsis;
+  }
+
+  .strip__name a {
+    display: inline;
+  }
+
+  main :is(a, button, summary, [tabindex]) {
+    scroll-margin-bottom: calc(var(--strips) * var(--strip-h) + var(--space-5));
+  }
+}
+
+/* A band: one period, what was done in it and the projects that began in it. */
+
+.stratum {
   position: relative;
 }
 
 .stratum__inner {
   max-width: var(--content-max);
-  padding: var(--space-8) var(--gutter) calc(var(--space-9) + var(--edge-h));
+  padding: var(--space-6) var(--gutter) calc(var(--space-9) + var(--edge-h));
+}
+
+.entry {
+  padding-top: var(--space-8);
 }
 
 .stratum__head {
   display: grid;
   gap: var(--space-2) var(--space-5);
+  margin-bottom: var(--space-5);
 }
 
 .stratum__title {
-  font-size: var(--text-h2);
+  font-size: var(--text-h3);
 }
 
 .stratum__when {
   font-size: var(--text-lead);
-}
-
-.stratum__head .tags {
-  margin-top: var(--space-2);
 }
 
 @media (min-width: 60rem) {
@@ -735,23 +809,24 @@ a.tag:hover {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: baseline;
   }
+}
 
-  .stratum__head .tags {
-    grid-column: 1 / -1;
-  }
+.entry__lede {
+  display: grid;
+  gap: var(--space-5);
 }
 
 .points {
   display: grid;
   gap: var(--space-4);
   max-width: var(--measure);
-  margin-top: var(--space-6);
   font-size: var(--text-lead);
   line-height: 1.4;
 }
 
 .points li {
   position: relative;
+  max-width: var(--measure);
   padding-left: calc(var(--bullet) + var(--space-4));
 }
 
@@ -773,6 +848,15 @@ a.tag:hover {
   content: none;
 }
 
+/* Several points fill the width of a wide band in two columns; one point keeps its measure. */
+@media (min-width: 75rem) {
+  .entry__lede .points:has(li + li) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-8);
+    max-width: none;
+  }
+}
+
 /* A sample: one project, with its record on one side and its picture on the other. */
 
 .samples {
@@ -790,11 +874,12 @@ a.tag:hover {
 }
 
 .sample__title {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-3) var(--space-4);
   font-size: var(--text-h3);
+}
+
+.sample__title .tag {
+  margin-right: var(--space-2);
+  vertical-align: 0.25em;
 }
 
 .sample__period {
@@ -857,17 +942,12 @@ a.tag:hover {
 .bedrock__body {
   display: grid;
   gap: var(--space-7) var(--space-8);
-  margin-top: var(--space-6);
-}
-
-.bedrock__body .points {
-  margin-top: 0;
 }
 
 .bedrock__heading {
   padding-top: var(--space-3);
   border-top: var(--rule) solid currentColor;
-  font-size: var(--text-h3);
+  font-size: var(--text-lead);
 }
 
 .bedrock__list {
@@ -884,13 +964,10 @@ a.tag:hover {
   font-weight: var(--weight-strong);
 }
 
-.skills {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  gap: var(--space-4) var(--space-6);
+.bedrock__tools p {
+  max-width: var(--measure);
   margin-top: var(--space-4);
 }
-
 
 @media (min-width: 64rem) {
   .bedrock__body {
@@ -898,7 +975,7 @@ a.tag:hover {
     grid-template-areas:
       "details certifications"
       "languages certifications"
-      "skills skills";
+      "tools tools";
   }
 
   .bedrock__details {
@@ -913,8 +990,8 @@ a.tag:hover {
     grid-area: languages;
   }
 
-  .bedrock__skills {
-    grid-area: skills;
+  .bedrock__tools {
+    grid-area: tools;
   }
 }
 
@@ -927,7 +1004,7 @@ a.tag:hover {
 
 .close__statement {
   max-width: 11em;
-  font-size: var(--text-statement);
+  font-size: var(--text-display);
   line-height: var(--leading-display);
 }
 
@@ -1000,7 +1077,7 @@ a.tag:hover {
 
 .fault h1 {
   max-width: 12em;
-  font-size: var(--text-statement);
+  font-size: var(--text-display);
   line-height: var(--leading-display);
 }
 
@@ -1022,15 +1099,14 @@ a.tag:hover {
 @media (max-width: 59.99rem) {
   html:not(.js) {
     --bar-h: 0rem;
+    --masthead-h: 0rem;
   }
 
   html:not(.js) .masthead {
     position: static;
+    height: auto;
+    padding-block: var(--space-3);
     background: var(--ground);
-  }
-
-  html:not(.js) .hero__sheet {
-    padding-top: var(--space-5);
   }
 
   html:not(.js) .rail {
@@ -1073,56 +1149,42 @@ a.tag:hover {
 
   @keyframes rise {
     from {
-      transform: translateY(100%);
+      transform: translateY(calc(100% * (var(--below) + 1)));
     }
   }
 
-  /* The opening screen arrives once: the headline, the status and actions, then the two edges. */
-  .motion .hero__sheet > *,
-  .motion .peek {
+  /* The opening screen arrives once: the headline block, then the project index. */
+  .motion .hero > * {
     animation: settle var(--dur-entrance) var(--ease-out) backwards;
   }
 
-  .motion .hero__meta {
+  .motion .hero > .index {
     animation-delay: var(--stagger);
   }
 
-  .motion .peek {
-    animation-name: rise;
-    animation-delay: calc(var(--stagger) * 2);
+  /* Then the heads waiting at the fold rise from below it, the nearest band first. */
+  @media (min-width: 75rem) and (min-height: 40rem) {
+    .motion .strip {
+      animation: rise var(--dur-entrance) var(--ease-out) backwards;
+      animation-delay: calc(var(--stagger) * (var(--strips) + 1 - var(--below)));
+    }
   }
 
-  .motion .peek + .peek {
-    animation-delay: calc(var(--stagger) * 3);
-  }
-
-  /* Further down, a boundary lifts into the band above it and the entry follows. */
+  /* Further down, a band's content settles the first time the band enters the viewport. */
   .motion [data-settle] > .edge,
-  .motion [data-settle] .stratum__head > *,
-  .motion [data-settle] .points,
-  .motion [data-settle] .close__statement {
+  .motion [data-settle] :is(.stratum__head, .entry__lede, .bedrock__body, .close__statement) {
     transition: transform var(--dur-entrance) var(--ease-out);
   }
 
-  .motion [data-settle] .stratum__head > :nth-child(2) {
+  .motion [data-settle] .entry__lede {
     transition-delay: var(--stagger);
-  }
-
-  .motion [data-settle] .stratum__head > :nth-child(3) {
-    transition-delay: calc(var(--stagger) * 2);
-  }
-
-  .motion [data-settle] .points {
-    transition-delay: calc(var(--stagger) * 3);
   }
 
   .motion [data-settle]:not(.is-settled) > .edge {
     transform: translateY(100%);
   }
 
-  .motion [data-settle]:not(.is-settled) .stratum__head > *,
-  .motion [data-settle]:not(.is-settled) .points,
-  .motion [data-settle]:not(.is-settled) .close__statement {
+  .motion [data-settle]:not(.is-settled) :is(.stratum__head, .entry__lede, .bedrock__body, .close__statement) {
     transform: translateY(var(--settle-shift));
   }
 }

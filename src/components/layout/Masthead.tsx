@@ -9,6 +9,10 @@ type MastheadProps = {
   targets: { experience: string; education: string; contact: string };
 };
 
+/**
+ * The page's own navigation, on the surface band from tablet width up. The name is not
+ * repeated here: the headline right under it opens with it, and the rail carries it.
+ */
 export default function Masthead({ t, locale, targets }: MastheadProps) {
   const links = [
     { href: `#${targets.experience}`, label: t.nav.experience },
@@ -18,9 +22,6 @@ export default function Masthead({ t, locale, targets }: MastheadProps) {
 
   return (
     <header className="masthead">
-      <a href="#top" className="masthead__name link link--plain">
-        {t.hero.name}
-      </a>
       <nav aria-label={t.nav.label}>
         <ul className="masthead__links">
           {links.map((link) => (
@@ -31,11 +32,7 @@ export default function Masthead({ t, locale, targets }: MastheadProps) {
             </li>
           ))}
           <li>
-            <LangSwitch
-              locale={locale}
-              label={t.meta.otherLanguage}
-              accessibleLabel={t.meta.switchLanguage}
-            />
+            <LangSwitch locale={locale} label={t.meta.otherLanguage} accessibleLabel={t.meta.switchLanguage} />
           </li>
         </ul>
       </nav>

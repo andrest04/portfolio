@@ -15,7 +15,6 @@
   },
   "rail": {
     "label": "Periods",
-    "title": ["Depth", "in years"],
     "jump": "Jump to a period",
     "cv": "CV (PDF)",
     "contact": "Contact"
@@ -23,16 +22,15 @@
   "hero": {
     "name": "Andrés Torres",
     "headline": "Andrés Torres builds software.",
-    "datum": "Surface · August 2026 to today",
-    "status": "Reporting intern at Teleperformance Perú. Ninth term of Software Engineering at UPC, top fifth of the class.",
-    "ctaPrimary": "Read the record",
+    "status": "Reporting intern at Teleperformance Perú, building Vozella, a meeting recorder for Windows, on the side. Ninth term of Software Engineering at UPC, top fifth of the class.",
+    "ctaPrimary": "See experience",
     "ctaSecondary": "CV (PDF)",
-    "below": "Below the surface"
+    "projects": "Projects"
   },
   "record": {
-    "sample": "Sample",
+    "project": "Project",
     "did": "My part",
-    "facts": "On record",
+    "facts": "Facts",
     "tech": "Built with",
     "live": "Live site",
     "github": "GitHub"
@@ -40,6 +38,7 @@
   "strata": [
     {
       "id": "surface",
+      "short": "Teleperformance",
       "tick": { "year": "2026", "note": "now" },
       "period": "August 2026 to today",
       "company": "Teleperformance Perú",
@@ -54,6 +53,7 @@
     },
     {
       "id": "edteam",
+      "short": "EDteam",
       "tick": { "year": "2026", "note": "Apr – May" },
       "period": "April to May 2026",
       "company": "EDteam",
@@ -69,6 +69,7 @@
     },
     {
       "id": "independent",
+      "short": "Independent work",
       "tick": { "year": "2025", "note": "Aug – Mar" },
       "period": "August 2025 to March 2026",
       "company": "Independent and university work",
@@ -81,13 +82,14 @@
     },
     {
       "id": "mathyus",
+      "short": "Mathyu's Solutions",
       "tick": { "year": "2025", "note": "Mar – Jul" },
       "period": "March to July 2025",
       "company": "Mathyu's Solutions",
       "role": "Full-Stack Developer",
       "location": "Lima",
       "points": [
-        "I worked in a Scrum team on a web booking platform for recreational spaces in Italy, built with Next.js, React and Firebase. The parts I built are listed in the first sample below."
+        "I worked in a Scrum team on a web booking platform for recreational spaces in Italy, built with Next.js, React and Firebase. The parts I built are listed under the booking platform below."
       ],
       "projects": ["booking", "finance"]
     }
@@ -95,6 +97,7 @@
   "projects": [
     {
       "id": "vozella",
+      "role": "Solo, in beta",
       "name": "Vozella",
       "period": "August to November 2026",
       "what": "A desktop app for Windows that records a meeting without a bot joining the call, then writes it down.",
@@ -111,13 +114,14 @@
       },
       "image": {
         "src": "/work/vozella.png",
-        "alt": "Vozella's Record meeting screen: a title field, the microphone and system audio sources, and the Record and Import audio buttons.",
-        "width": 1475,
-        "height": 1028
+        "alt": "Vozella showing the summary it wrote for a sample meeting called Weekly sync: a one-line overview and two action items, beside the Record, Library and Settings menu.",
+        "width": 1400,
+        "height": 978
       }
     },
     {
       "id": "eduspace",
+      "role": "University team of five",
       "name": "EduSpace",
       "period": "September 2025 to July 2026",
       "what": "A system for schools to manage classrooms, shared spaces, staff meetings and maintenance reports.",
@@ -141,6 +145,7 @@
     },
     {
       "id": "kataleya",
+      "role": "Solo, in production",
       "name": "Kataleya Flowers",
       "period": "March to September 2026",
       "what": "A website and admin panel for a flower shop in Lima. Customers browse the catalogue and order by WhatsApp, the owner manages the products from the panel, and the legally required complaints book is included.",
@@ -164,6 +169,7 @@
     },
     {
       "id": "booking",
+      "role": "Team of six at Mathyu's Solutions",
       "name": "Booking Platform, Italy",
       "period": "March to April 2025 in the repository",
       "what": "A site where visitors pick a visit type and a time slot, book and pay, and staff manage the schedules.",
@@ -186,6 +192,7 @@
     },
     {
       "id": "finance",
+      "role": "Solo",
       "name": "Finance App",
       "period": "May 2025 to March 2026",
       "what": "A web app where bond issuers and investors register corporate bonds and get payment schedules, with cost and return rates (French method, TCEA, TREA).",
@@ -210,8 +217,9 @@
   ],
   "bedrock": {
     "id": "bedrock",
-    "tick": { "year": "2022", "note": "bedrock" },
-    "period": "Bedrock · since August 2022",
+    "short": "Education",
+    "tick": { "year": "2022", "note": "since Aug" },
+    "period": "Education · since August 2022",
     "school": "UPC",
     "degree": "Software Engineering student",
     "details": [
@@ -232,22 +240,15 @@
       ]
     },
     "languages": {
-      "title": "Languages",
+      "title": "Spoken languages",
       "items": [
         { "name": "Spanish", "level": "Native" },
         { "name": "English", "level": "B1, intermediate" }
       ]
     },
-    "skills": {
-      "title": "Skills",
-      "groups": [
-        { "title": "Languages", "items": ["JavaScript", "TypeScript", "C#", "C++", "Python", "SQL"] },
-        { "title": "Frontend", "items": ["React", "Next.js", "Vue.js", "TailwindCSS"] },
-        { "title": "Backend", "items": [".NET 8", "ASP.NET Core", "Node.js"] },
-        { "title": "Data", "items": ["MySQL", "MongoDB", "Firebase/Firestore", "SQL Server"] },
-        { "title": "Tools", "items": ["Docker", "Git", "GitHub", "GitLab", "Swagger/OpenAPI", "Vercel"] },
-        { "title": "Ways of working", "items": ["Scrum", "Spec-Driven Development"] }
-      ]
+    "tools": {
+      "title": "Programming languages and tools",
+      "summary": "I work mostly in TypeScript, C# and Python, with React, Next.js, Vue, .NET and Node.js; MySQL, MongoDB and Firestore for data; Docker, Git and CI around them."
     }
   },
   "contact": {
@@ -260,7 +261,8 @@
     "locationValue": "Lima, Peru",
     "linkedinLabel": "LinkedIn",
     "githubLabel": "GitHub",
-    "cvLabel": "CV"
+    "cvLabel": "CV",
+    "cvLink": "Download (PDF)"
   },
   "footer": {
     "signature": "Andrés Torres, Lima, Peru",

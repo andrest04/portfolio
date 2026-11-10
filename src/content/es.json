@@ -15,7 +15,6 @@
   },
   "rail": {
     "label": "Períodos",
-    "title": ["Profundidad", "en años"],
     "jump": "Ir a un período",
     "cv": "CV (PDF)",
     "contact": "Contacto"
@@ -23,16 +22,15 @@
   "hero": {
     "name": "Andrés Torres",
     "headline": "Andrés Torres construye software.",
-    "datum": "Superficie · agosto de 2026 a hoy",
-    "status": "Practicante de Reporting en Teleperformance Perú. Noveno ciclo de Ingeniería de Software en la UPC, quinto superior de la carrera.",
-    "ctaPrimary": "Ver la trayectoria",
+    "status": "Practicante de Reporting en Teleperformance Perú; en paralelo construyo Vozella, un grabador de reuniones para Windows. Noveno ciclo de Ingeniería de Software en la UPC, quinto superior de la carrera.",
+    "ctaPrimary": "Ver experiencia",
     "ctaSecondary": "CV (PDF)",
-    "below": "Bajo la superficie"
+    "projects": "Proyectos"
   },
   "record": {
-    "sample": "Muestra",
+    "project": "Proyecto",
     "did": "Mi parte",
-    "facts": "En el registro",
+    "facts": "Datos",
     "tech": "Hecho con",
     "live": "Sitio en vivo",
     "github": "GitHub"
@@ -40,6 +38,7 @@
   "strata": [
     {
       "id": "surface",
+      "short": "Teleperformance",
       "tick": { "year": "2026", "note": "hoy" },
       "period": "Agosto de 2026 a hoy",
       "company": "Teleperformance Perú",
@@ -54,6 +53,7 @@
     },
     {
       "id": "edteam",
+      "short": "EDteam",
       "tick": { "year": "2026", "note": "abr – may" },
       "period": "Abril a mayo de 2026",
       "company": "EDteam",
@@ -69,6 +69,7 @@
     },
     {
       "id": "independent",
+      "short": "Trabajo independiente",
       "tick": { "year": "2025", "note": "ago – mar" },
       "period": "Agosto de 2025 a marzo de 2026",
       "company": "Trabajo independiente y universitario",
@@ -81,13 +82,14 @@
     },
     {
       "id": "mathyus",
+      "short": "Mathyu's Solutions",
       "tick": { "year": "2025", "note": "mar – jul" },
       "period": "Marzo a julio de 2025",
       "company": "Mathyu's Solutions",
       "role": "Desarrollador Full-Stack",
       "location": "Lima",
       "points": [
-        "Trabajé en un equipo Scrum en una plataforma web de reservas para espacios recreativos en Italia, hecha con Next.js, React y Firebase. Las partes que construí están en la primera muestra de abajo."
+        "Trabajé en un equipo Scrum en una plataforma web de reservas para espacios recreativos en Italia, hecha con Next.js, React y Firebase. Las partes que construí están abajo, en la plataforma de reservas."
       ],
       "projects": ["booking", "finance"]
     }
@@ -95,6 +97,7 @@
   "projects": [
     {
       "id": "vozella",
+      "role": "En solitario, en beta",
       "name": "Vozella",
       "period": "Agosto a noviembre de 2026",
       "what": "Una aplicación de escritorio para Windows que graba una reunión sin que un bot entre a la llamada y luego la pone por escrito.",
@@ -111,13 +114,14 @@
       },
       "image": {
         "src": "/work/vozella.png",
-        "alt": "Pantalla «Record meeting» de Vozella: un campo de título, las fuentes de micrófono y audio del sistema, y los botones Record e Import audio.",
-        "width": 1475,
-        "height": 1028
+        "alt": "Vozella mostrando el resumen que escribió de una reunión de ejemplo llamada Weekly sync: una línea de resumen general y dos tareas pendientes, junto al menú Record, Library y Settings.",
+        "width": 1400,
+        "height": 978
       }
     },
     {
       "id": "eduspace",
+      "role": "Equipo universitario de cinco",
       "name": "EduSpace",
       "period": "Septiembre de 2025 a julio de 2026",
       "what": "Un sistema para que los colegios gestionen aulas, espacios compartidos, reuniones del personal y reportes de mantenimiento.",
@@ -141,6 +145,7 @@
     },
     {
       "id": "kataleya",
+      "role": "En solitario, en producción",
       "name": "Kataleya Flowers",
       "period": "Marzo a septiembre de 2026",
       "what": "Un sitio web y panel de administración para una florería de Lima. Los clientes recorren el catálogo y piden por WhatsApp, la dueña gestiona los productos desde el panel, y se incluye el libro de reclamaciones que exige la ley.",
@@ -164,6 +169,7 @@
     },
     {
       "id": "booking",
+      "role": "Equipo de seis en Mathyu's Solutions",
       "name": "Plataforma de reservas, Italia",
       "period": "Marzo a abril de 2025 en el repositorio",
       "what": "Un sitio donde los visitantes eligen un tipo de visita y un horario, reservan y pagan, y el personal gestiona los horarios.",
@@ -186,12 +192,13 @@
     },
     {
       "id": "finance",
+      "role": "En solitario",
       "name": "Finance App",
       "period": "Mayo de 2025 a marzo de 2026",
       "what": "Una aplicación web donde emisores e inversionistas registran bonos corporativos y obtienen cronogramas de pago, con tasas de costo y de rendimiento (método francés, TCEA, TREA).",
       "did": "La construí por mi cuenta.",
       "facts": [
-        "Cerca de 1180 líneas de código de cálculo, con un solucionador de tasas Newton-Raphson",
+        "Cerca de 1.180 líneas de código de cálculo, con un solucionador de tasas Newton-Raphson",
         "Dos roles: emisor e inversionista",
         "Exportación a PDF"
       ],
@@ -210,8 +217,9 @@
   ],
   "bedrock": {
     "id": "bedrock",
-    "tick": { "year": "2022", "note": "base" },
-    "period": "Roca base · desde agosto de 2022",
+    "short": "Formación",
+    "tick": { "year": "2022", "note": "desde ago" },
+    "period": "Formación · desde agosto de 2022",
     "school": "UPC",
     "degree": "Estudiante de Ingeniería de Software",
     "details": [
@@ -223,12 +231,12 @@
     "certifications": {
       "title": "Certificaciones",
       "items": [
-        { "name": "Claude Code in Action", "issuer": "Anthropic", "date": "Febrero de 2026" },
-        { "name": "Prompt Design in Vertex AI Skill Badge", "issuer": "Google Cloud Skills Boost", "date": "Noviembre de 2025" },
-        { "name": "Introducción a MongoDB", "issuer": "MongoDB", "date": "Junio de 2024" },
-        { "name": "Introducción a la Programación en Python", "issuer": "Coursera", "date": "Octubre de 2023" },
-        { "name": "Introducción al Desarrollo Web", "issuer": "Universidad de los Andes", "date": "Octubre de 2023" },
-        { "name": "Scrum Fundamentals Certified (SFC)", "issuer": "SCRUMstudy", "date": "Septiembre de 2023" }
+        { "name": "Claude Code in Action", "issuer": "Anthropic", "date": "febrero de 2026" },
+        { "name": "Prompt Design in Vertex AI Skill Badge", "issuer": "Google Cloud Skills Boost", "date": "noviembre de 2025" },
+        { "name": "Introducción a MongoDB", "issuer": "MongoDB", "date": "junio de 2024" },
+        { "name": "Introducción a la Programación en Python", "issuer": "Coursera", "date": "octubre de 2023" },
+        { "name": "Introducción al Desarrollo Web", "issuer": "Universidad de los Andes", "date": "octubre de 2023" },
+        { "name": "Scrum Fundamentals Certified (SFC)", "issuer": "SCRUMstudy", "date": "septiembre de 2023" }
       ]
     },
     "languages": {
@@ -238,16 +246,9 @@
         { "name": "Inglés", "level": "B1, intermedio" }
       ]
     },
-    "skills": {
-      "title": "Habilidades",
-      "groups": [
-        { "title": "Lenguajes", "items": ["JavaScript", "TypeScript", "C#", "C++", "Python", "SQL"] },
-        { "title": "Frontend", "items": ["React", "Next.js", "Vue.js", "TailwindCSS"] },
-        { "title": "Backend", "items": [".NET 8", "ASP.NET Core", "Node.js"] },
-        { "title": "Datos", "items": ["MySQL", "MongoDB", "Firebase/Firestore", "SQL Server"] },
-        { "title": "Herramientas", "items": ["Docker", "Git", "GitHub", "GitLab", "Swagger/OpenAPI", "Vercel"] },
-        { "title": "Formas de trabajo", "items": ["Scrum", "Spec-Driven Development"] }
-      ]
+    "tools": {
+      "title": "Lenguajes y herramientas",
+      "summary": "Trabajo sobre todo con TypeScript, C# y Python, con React, Next.js, Vue, .NET y Node.js; MySQL, MongoDB y Firestore para los datos; Docker, Git y CI alrededor."
     }
   },
   "contact": {
@@ -260,7 +261,8 @@
     "locationValue": "Lima, Perú",
     "linkedinLabel": "LinkedIn",
     "githubLabel": "GitHub",
-    "cvLabel": "CV"
+    "cvLabel": "CV",
+    "cvLink": "Descargar (PDF)"
   },
   "footer": {
     "signature": "Andrés Torres, Lima, Perú",

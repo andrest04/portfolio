@@ -6,12 +6,15 @@ type Json = string | number | boolean | null | Json[] | { [key: string]: Json };
 
 type Project = {
   id: string;
+  role: string;
+  facts: string[];
   links: { live: string | null; github: string | null };
   image: { src: string; alt: string; width: number; height: number };
 };
 
 type Content = {
-  strata: Array<{ id: string; projects: string[] }>;
+  record: Record<string, string>;
+  strata: Array<{ id: string; short: string; projects: string[] }>;
   projects: Project[];
 };
 
@@ -97,6 +100,50 @@ for (const locale of LOCALES) {
     }
   });
 }
+
+/** Every run of digits in a text, with thousands separators and decimal points removed. */
+function numbersIn(text: string): string[] {
+  return (text.match(/\d[\d.,]*\d|\d/g) ?? []).map((run) => run.replace(/[.,]/g, ""));
+}
+
+for (const locale of LOCALES) {
+  test(`${locale}: projects are named, not numbered`, () => {
+    const content = loadContent(locale);
+    assert.ok(content.record.project, "record.project must label a project");
+    assert.ok(!("sample" in content.record), "record.sample must be gone");
+
+    const everything = readFileSync(new URL(`./${locale}.json`, import.meta.url), "utf8");
+    assert.doesNotMatch(everything, /(Sample|Muestra) ?\d/, "no numbered sample label may remain");
+    for (const project of content.projects) {
+      assert.ok(!("number" in project), `${project.id}: must not carry a number`);
+    }
+  });
+
+  test(`${locale}: every project states a short role and every period a short name`, () => {
+    const { projects, strata } = loadContent(locale);
+    for (const project of projects) {
+      assert.ok(typeof project.role === "string" && project.role.trim().length > 0, `${project.id}: role`);
+      assert.ok(project.role.split(/\s+/).length <= 7, `${project.id}: role must stay short`);
+    }
+    for (const stratum of strata) {
+      assert.ok(typeof stratum.short === "string" && stratum.short.trim().length > 0, `${stratum.id}: short`);
+    }
+  });
+}
+
+test("project facts carry the same numbers in both languages, each in its own format", () => {
+  const [en, es] = LOCALES.map(loadContent);
+  for (const project of en.projects) {
+    const other = es.projects.find((candidate) => candidate.id === project.id);
+    assert.ok(other, `${project.id}: missing in Spanish`);
+    assert.deepEqual(numbersIn(other.facts.join(" ")), numbersIn(project.facts.join(" ")), `${project.id}: numbers differ`);
+  }
+
+  const facts = (content: Content) => content.projects.flatMap((project) => project.facts).join(" ");
+  assert.match(facts(en), /1,180/, "English groups thousands with a comma");
+  assert.match(facts(es), /1\.180/, "Spanish groups thousands with a point");
+  assert.doesNotMatch(facts(en) + facts(es), /\b\d{4,}\b(?<!20\d\d)/, "no ungrouped number of four digits or more, years aside");
+});
 
 test("both languages place the same projects in the same strata, with the same links and pictures", () => {
   const [en, es] = LOCALES.map(loadContent);
