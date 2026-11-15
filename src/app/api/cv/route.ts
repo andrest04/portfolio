@@ -1,14 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readdir, readFile } from "fs/promises";
+import { readFile } from "fs/promises";
 import { join } from "path";
 import { CONTACT } from "@/lib/contact";
-import { getDictionary, i18n, LOCALE_COOKIE } from "@/lib/i18n";
+import { getDictionary, i18n, LOCALE_COOKIE, type Locale } from "@/lib/i18n";
 
 const DOWNLOAD_NAME = "Andres_Torres_CV.pdf";
 
-async function readableFailure(request: NextRequest, reason: "missing" | "failed", status: number) {
+const CV_FILES: Record<Locale, string> = {
+  es: "Andres_Torres_CV_es.pdf",
+  en: "Andres_Torres_CV_en.pdf",
+};
+
+function requestLocale(request: NextRequest): Locale {
   const cookie = request.cookies.get(LOCALE_COOKIE)?.value;
-  const locale = i18n.locales.find((candidate) => candidate === cookie) ?? i18n.defaultLocale;
+  return i18n.locales.find((candidate) => candidate === cookie) ?? i18n.defaultLocale;
+}
+
+async function readableFailure(locale: Locale, reason: "missing" | "failed", status: number) {
   const { cv } = await getDictionary(locale);
 
   return new NextResponse(`${cv[reason]} ${CONTACT.email}`, {
@@ -18,24 +26,21 @@ async function readableFailure(request: NextRequest, reason: "missing" | "failed
 }
 
 export async function GET(request: NextRequest) {
+  const locale = requestLocale(request);
+
   try {
-    const publicDir = join(process.cwd(), "public");
-    const files = await readdir(publicDir);
-    const pdfFile = files.find((file) => file.toLowerCase().endsWith(".pdf"));
-
-    if (!pdfFile) {
-      return readableFailure(request, "missing", 404);
-    }
-
-    const pdf = await readFile(join(publicDir, pdfFile));
+    const pdf = await readFile(join(process.cwd(), "public", CV_FILES[locale]));
 
     return new NextResponse(new Uint8Array(pdf), {
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename="${DOWNLOAD_NAME}"`,
+        "Cache-Control": "private, no-store",
+        Vary: "Cookie",
       },
     });
-  } catch {
-    return readableFailure(request, "failed", 500);
+  } catch (error) {
+    const missing = (error as NodeJS.ErrnoException).code === "ENOENT";
+    return readableFailure(locale, missing ? "missing" : "failed", missing ? 404 : 500);
   }
 }
